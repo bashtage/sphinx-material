@@ -1,0 +1,3 @@
+include LICENSE
+include README.rst
+recursive-include material_sphinx_theme/material_sphinx_theme *

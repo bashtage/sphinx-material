@@ -1,0 +1,16 @@
+.sidebar-toc ul, .md-nav--secondary ul, .md-nav--secondary ul li ul {
+     margin:0;
+     padding:0;
+     list-style:none
+}
+ li.toctree-l1, .md-nav--secondary ul li, .md-nav--secondary ul li ul li {
+     padding:0 .6rem;
+}
+ li.toctree-l1 a.reference, .md-nav--secondary a.reference{
+     display:block;
+     margin-top:.625em;
+     transition:color .125s;
+     text-overflow:ellipsis;
+     cursor:pointer;
+     overflow:hidden
+}
