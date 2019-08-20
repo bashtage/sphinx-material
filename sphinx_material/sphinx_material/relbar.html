@@ -1,0 +1,12 @@
+{%- if parents %}
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+        {%- for parent in parents %}
+          <li class="md-tabs__item"><a href="{{ parent.link|e }}"
+                                       class="md-tabs__link">{{ parent.title }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </nav>
+{%- endif %}

@@ -1,34 +1,45 @@
-Material Sphinx Theme
-=====================
+===================
+Material for Sphinx
+===================
 
-Continuous Integration
-----------------------
-|Travis Build Status|
+.. image:: images/screenshot.png
+    :alt: Material for Sphinx Screenshots
 
-
-A Material Design theme for Sphinx documentation. Based on
+This theme provides a responsive Material Design theme for Sphinx
+documentation. It derives heavily from
 `Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_,
-and `Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
+and also uses code from
+`Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
 
-Installation
-------------
+``sphinx-material`` is a work-in-progress and a number of core Sphinx features
+are not supported, including:
 
-Install via pip:
+* Sidebar customization
+* Probably others
+
+It uses some python to modify Sphinx output, which is not ideal. In the
+longer-term, I hope to move to a SASS build which will simplify styling and
+should allow most of the HTML code changes to be avoided.
+
+.. toctree::
+    :hidden:
+
+    customization
+    specimen
+    additional_samples
+    pymethod
+    numpydoc
+    rst-cheatsheet/rst-cheatsheet
+
+Getting Started
+---------------
+Install from git
 
 .. code-block:: bash
 
-    $ pip install git+https://github.com/bashtage/sphinx-material
+   pip install git+https://github.com/bashtage/sphinx-material.git
 
-or if you have the code checked out locally:
-
-.. code-block:: bash
-
-    $ python setup.py install
-
-Configuration
--------------
-
-Add the following to your conf.py:
+Update your ``conf.py`` with the required changes:
 
 .. code-block:: python
 
@@ -36,7 +47,7 @@ Add the following to your conf.py:
 
      # Register the theme as an extension to generate a sitemap.xml
     extensions.append('sphinx_material')
-    
+
     # Choose the material theme
     html_theme = 'sphinx_material'
     # Get the them path
@@ -45,14 +56,14 @@ Add the following to your conf.py:
     html_context = sphinx_material.get_html_context()
 
 
-There are a lot more ways to customize this theme, as this more comprehensive
-example shows:
+There are a lot more ways to customize this theme. See :ref:`Customization`
+or ``theme.conf`` for more details.
 
 .. code-block:: python
 
     import sphinx_material
 
-    # Required theme setup
+    # # Required theme setup
     extensions.append('sphinx_material')
     html_theme = 'sphinx_material'
     html_theme_path = sphinx_material.html_theme_path()
@@ -86,38 +97,3 @@ example shows:
         # If True, show hidden TOC entries
         'globaltoc_includehidden': False,
     }
-
-Customizing the layout
-----------------------
-
-You can customize the theme by overriding Jinja template blocks. For example,
-'layout.html' contains several blocks that can be overridden or extended.
-
-Place a 'layout.html' file in your project's '/_templates' directory.
-
-.. code-block:: bash
-
-    mkdir source/_templates
-    touch source/_templates/layout.html
-
-Then, configure your 'conf.py':
-
-.. code-block:: python
-
-    templates_path = ['_templates']
-
-Finally, edit your override file 'source/_templates/layout.html':
-
-::
-
-    {# Import the theme's layout. #}
-    {% extends '!layout.html' %}
-
-    {%- block extrahead %}
-    {# Add custom things to the head HTML tag #}
-    {# Call the parent block #}
-    {{ super() }}
-    {%- endblock %}
-
-.. |Travis Build Status| image:: https://travis-ci.org/bashtage/sphinx-material.svg?branch=master
-   :target: https://travis-ci.org/bashtage/sphinx-material
