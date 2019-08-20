@@ -10,7 +10,10 @@ setup(
     url='https://github.com/bashtage/material_sphinx_theme',
     packages=['material_sphinx_theme'],
     include_package_data=True,
-    install_requires=['Sphinx>1.3'],
+    install_requires=['Sphinx>2.0',
+                      'python-slugify',
+                      'unidecode',
+                      'beautifulsoup4'],
     license="MIT",
     classifiers=(
         'Development Status :: 3 - Alpha',

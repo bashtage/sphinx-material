@@ -86,6 +86,7 @@ import material_sphinx_theme
 
 extensions.append("material_sphinx_theme")
 html_theme_path = material_sphinx_theme.html_theme_path()
+html_context = material_sphinx_theme.get_html_context()
 html_theme = 'material_sphinx_theme'
 
 # material theme options (see theme.conf for more information)
@@ -95,60 +96,3 @@ html_theme_options = {
 
 language = 'en'
 html_last_updated_fmt = ''
-
-
-def toctree_format(toc_text):
-    from bs4 import BeautifulSoup
-
-    toc = BeautifulSoup(toc_text, features='html.parser')
-    toc.ul['class'] = 'md-nav__list'
-    toc.ul['data-md-scrollfix'] = None
-    for li in toc.ul.select('li'):
-        li['class'] = 'md-nav__item'
-        for a in li.select('a'):
-            a['class'] = 'md-nav__link'
-    return str(toc)
-
-
-def toc_format(toc_text):
-    from bs4 import BeautifulSoup
-    import slugify
-    toc = BeautifulSoup(toc_text, features='html.parser')
-    for ul in toc.select('ul'):
-        ul['class'] = 'md-nav__list'
-    for li in toc.select('li'):
-        li['class'] = 'md-nav__item'
-    for a in toc.select('a'):
-        if a['href'] == '#' and a.contents:
-            a['href'] = '#' + slugify.slugify(a.contents[0])
-        a['class'] = 'md-nav__link'
-    toc.ul['data-md-scrollfix'] = None
-    return str(toc)
-
-
-def table_fix(body_text):
-    from bs4 import BeautifulSoup
-    import re
-
-    body = BeautifulSoup(body_text, features='html.parser')
-    for table in body.select('table'):
-        classes = table.get('class', tuple())
-        if 'highlighttable' in classes or 'longtable' in classes:
-            continue
-        del table['class']
-    headers = body.find_all(re.compile('^h[1-6]$'))
-    for i, header in enumerate(headers):
-        for a in header.select('a'):
-            if 'headerlink' in a.get('class', ''):
-                header['id'] = a['href'][1:]
-    divs = body.find_all('div', {'class': 'section'})
-    for div in divs:
-        div.unwrap()
-
-    return str(body)
-
-
-html_context = {'toctree_format': toctree_format,
-                'toc_format': toc_format,
-                'table_fix': table_fix}
-
