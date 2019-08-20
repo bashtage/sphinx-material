@@ -56,3 +56,37 @@ dt:target {
 .md-typeset code {
     margin: 0
 }
+
+ul.search li div.context {
+    color: #888;
+    margin: 2px 0 0 30px;
+    text-align: left;
+}
+
+span.highlighted {
+    background-color: #fbe54e;
+}
+
+p.rubric {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+dl.field-list > dt {
+    font-weight: bold;
+    word-break: break-word;
+    padding-left: 0.5em;
+    padding-right: 5px;
+}
+
+table.longtable {
+  border-collapse: collapse;
+}
+.longtable tr {
+  border: solid;
+  border-width: 1px 0;
+}
+
+.longtable tr:first-child {
+  border-top: none;
+}

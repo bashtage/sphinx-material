@@ -44,7 +44,11 @@ Technical Documentation
 
 The statistical model is assumed to be
 
- :math:`Y = X\beta + \mu`,  where :math:`\mu\sim N\left(0,\Sigma\right).`
+.. math::
+
+   Y = X\beta + \mu
+
+where :math:`\mu\sim N\left(0,\Sigma\right)`.
 
 Depending on the properties of :math:`\Sigma`, we have currently four classes available:
 

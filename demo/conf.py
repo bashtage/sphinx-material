@@ -112,13 +112,15 @@ def toctree_format(toc_text):
 
 def toc_format(toc_text):
     from bs4 import BeautifulSoup
-
+    import slugify
     toc = BeautifulSoup(toc_text, features='html.parser')
     for ul in toc.select('ul'):
         ul['class'] = 'md-nav__list'
     for li in toc.select('li'):
         li['class'] = 'md-nav__item'
     for a in toc.select('a'):
+        if a['href'] == '#' and a.contents:
+            a['href'] = '#' + slugify.slugify(a.contents[0])
         a['class'] = 'md-nav__link'
     toc.ul['data-md-scrollfix'] = None
     return str(toc)
@@ -135,7 +137,7 @@ def table_fix(body_text):
             continue
         del table['class']
     headers = body.find_all(re.compile('^h[1-6]$'))
-    for header in headers:
+    for i, header in enumerate(headers):
         for a in header.select('a'):
             if 'headerlink' in a.get('class', ''):
                 header['id'] = a['href'][1:]

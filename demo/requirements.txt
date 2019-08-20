@@ -1,4 +1,4 @@
 sphinx>=2.0
 material_sphinx_theme
 beautifulsoup4
-lxml
+python-slugify[unidecode]

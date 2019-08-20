@@ -1385,74 +1385,8 @@
                     var e = document.querySelectorAll("[data-md-component=collapsible]");
                     Array.prototype.forEach.call(e, function(e) {
                             new i.a.Event.MatchMedia("(min-width: 1220px)", new i.a.Event.Listener(e.previousElementSibling, "click", new i.a.Nav.Collapse(e)))
-                        }), new i.a.Event.MatchMedia("(max-width: 1219px)", new i.a.Event.Listener("[data-md-component=navigation] [data-md-toggle]", "change", new i.a.Nav.Scrolling("[data-md-component=navigation] nav"))), document.querySelector("[data-md-component=search]") && (new i.a.Event.MatchMedia("(max-width: 959px)", new i.a.Event.Listener("[data-md-toggle=search]", "change", new i.a.Search.Lock("[data-md-toggle=search]"))), new i.a.Event.Listener("[data-md-component=query]", ["focus", "keyup", "change"], new i.a.Search.Result("[data-md-component=result]", function() {
-                            return fetch(t.url.base + "/search/search_index.json", {
-                                credentials: "same-origin"
-                            }).then(function(e) {
-                                return e.json()
-                            }).then(function(e) {
-                                return e.docs.map(function(e) {
-                                    return e.location = t.url.base + "/" + e.location, e
-                                })
-                            })
-                        })).listen(), new i.a.Event.Listener("[data-md-component=reset]", "click", function() {
-                            setTimeout(function() {
-                                var e = document.querySelector("[data-md-component=query]");
-                                if (!(e instanceof HTMLInputElement)) throw new ReferenceError;
-                                e.focus()
-                            }, 10)
-                        }).listen(), new i.a.Event.Listener("[data-md-toggle=search]", "change", function(e) {
-                            setTimeout(function(e) {
-                                if (!(e instanceof HTMLInputElement)) throw new ReferenceError;
-                                if (e.checked) {
-                                    var t = document.querySelector("[data-md-component=query]");
-                                    if (!(t instanceof HTMLInputElement)) throw new ReferenceError;
-                                    t.focus()
-                                }
-                            }, 400, e.target)
-                        }).listen(), new i.a.Event.Listener("[data-md-component=query]", "focus", function() {
-                            var e = document.querySelector("[data-md-toggle=search]");
-                            if (!(e instanceof HTMLInputElement)) throw new ReferenceError;
-                            e.checked || (e.checked = !0, e.dispatchEvent(new CustomEvent("change")))
-                        }).listen(), new i.a.Event.Listener(window, "keydown", function(e) {
-                            var t = document.querySelector("[data-md-toggle=search]");
-                            if (!(t instanceof HTMLInputElement)) throw new ReferenceError;
-                            var n = document.querySelector("[data-md-component=query]");
-                            if (!(n instanceof HTMLInputElement)) throw new ReferenceError;
-                            if (!(document.activeElement instanceof HTMLElement && document.activeElement.isContentEditable || e.metaKey || e.ctrlKey))
-                                if (t.checked) {
-                                    if (13 === e.keyCode) {
-                                        if (n === document.activeElement) {
-                                            e.preventDefault();
-                                            var r = document.querySelector("[data-md-component=search] [href][data-md-state=active]");
-                                            r instanceof HTMLLinkElement && (window.location = r.getAttribute("href"), t.checked = !1, t.dispatchEvent(new CustomEvent("change")), n.blur())
-                                        }
-                                    } else if (9 === e.keyCode || 27 === e.keyCode) t.checked = !1, t.dispatchEvent(new CustomEvent("change")), n.blur();
-                                    else if (-1 !== [8, 37, 39].indexOf(e.keyCode)) n !== document.activeElement && n.focus();
-                                    else if (-1 !== [38, 40].indexOf(e.keyCode)) {
-                                        var i = e.keyCode,
-                                            o = Array.prototype.slice.call(document.querySelectorAll("[data-md-component=query], [data-md-component=search] [href]")),
-                                            a = o.find(function(e) {
-                                                if (!(e instanceof HTMLElement)) throw new ReferenceError;
-                                                return "active" === e.dataset.mdState
-                                            });
-                                        a && (a.dataset.mdState = "");
-                                        var s = Math.max(0, (o.indexOf(a) + o.length + (38 === i ? -1 : 1)) % o.length);
-                                        return o[s] && (o[s].dataset.mdState = "active", o[s].focus()), e.preventDefault(), e.stopPropagation(), !1
-                                    }
-                                } else if (document.activeElement && !document.activeElement.form) {
-                                if ("TEXTAREA" === document.activeElement.tagName || "INPUT" === document.activeElement.tagName) return;
-                                70 !== e.keyCode && 83 !== e.keyCode || (n.focus(), e.preventDefault())
-                            }
-                        }).listen(), new i.a.Event.Listener(window, "keypress", function() {
-                            var e = document.querySelector("[data-md-toggle=search]");
-                            if (!(e instanceof HTMLInputElement)) throw new ReferenceError;
-                            if (e.checked) {
-                                var t = document.querySelector("[data-md-component=query]");
-                                if (!(t instanceof HTMLInputElement)) throw new ReferenceError;
-                                t !== document.activeElement && t.focus()
-                            }
-                        }).listen()), new i.a.Event.Listener(document.body, "keydown", function(e) {
+                        }), new i.a.Event.MatchMedia("(max-width: 1219px)", new i.a.Event.Listener("[data-md-component=navigation] [data-md-toggle]", "change", new i.a.Nav.Scrolling("[data-md-component=navigation] nav"))), document.querySelector("[data-md-component=search]") && (new i.a.Event.MatchMedia("(max-width: 959px)", new i.a.Event.Listener("[data-md-toggle=search]", "change", new i.a.Search.Lock("[data-md-toggle=search]")))),
+                        new i.a.Event.Listener(document.body, "keydown", function(e) {
                             if (9 === e.keyCode) {
                                 var t = document.querySelectorAll("[data-md-component=navigation] .md-nav__link[for]:not([tabindex])");
                                 Array.prototype.forEach.call(t, function(e) {
