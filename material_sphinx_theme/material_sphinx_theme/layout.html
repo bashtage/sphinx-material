@@ -1,9 +1,11 @@
 {%- extends "basic/layout.html" %}
 
+{%- block body_tag %}
+<body dir=ltr data-md-color-primary=indigo data-md-color-accent=indigo>
+{%- endblock %}
 
 {# Do this so that bootstrap is included before the main css file #}
 {%- block htmltitle %}
-    {% set script_files = script_files + ["_static/myscript.js"] %}
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -18,7 +20,7 @@
 
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&amp;display=fallback">
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
     <style>
         body,
         input {
@@ -64,6 +66,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search"
            autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <a href="#{{ pagename }}" tabindex="1" class="md-skip"> Skip to content </a>
     <header class="md-header" data-md-component="header">
         <nav class="md-header-nav md-grid">
             <div class="md-flex">
@@ -89,7 +92,7 @@
                         <div class="md-search__inner" role="search">
                             <form class="md-search__form" action="{{ pathto('search') }}"
                                   method="GET" role="form" name="search">
-                                <input type="text" class="md-search__input" name="query"
+                                <input type="text" class="md-search__input" name="q"
                                        placeholder="Search" autocapitalize="off" autocorrect="off"
                                        autocomplete="off" spellcheck="false"
                                        data-md-component="query">
@@ -199,7 +202,7 @@
                class="md-nav__button md-logo">
                 <i class="md-icon"></i>
             </a>
-            {{ docstitle }}
+            <a href="{{ pathto(master_doc) }}" title="{{ docstitle }}">{{ shorttitle }}</a>
         </label>
         {% include "globaltoc.html" %}
     </nav>
@@ -230,73 +233,83 @@
                 </div>
             </div>
         </main>
+        <footer class="md-footer">
+            <div class="md-footer-nav">
+                <nav class="md-footer-nav__inner md-grid">
+                    {% if prev %}
+                        <a href="{{ prev.link|e }}" title="Material"
+                           class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+                           rel="prev">
+                            <div class="md-flex__cell md-flex__cell--shrink">
+                                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+                            </div>
+                            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis"> <span
+        class="md-footer-nav__direction"> Previous </span> {{ prev.title }} </span>
+                            </div>
+                        </a>
+                    {% endif %}
+                    {% if next %}
+                        <a href="{{ next.link|e }}" title="Admonition"
+                           class="md-flex md-footer-nav__link md-footer-nav__link--next"
+                           rel="next">
+                        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                                class="md-flex__ellipsis"> <span
+                                class="md-footer-nav__direction"> Next </span> {{ next.title }} </span>
+                        </div>
+                        <div class="md-flex__cell md-flex__cell--shrink"><i
+                                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+                        </div>
+                    {% endif %}
+                    </a></nav>
+            </div>
+            <div class="md-footer-meta md-typeset">
+                <div class="md-footer-meta__inner md-grid">
+                    <div class="md-footer-copyright">
+                        {%- if show_copyright %}
+                            <div class="md-footer-copyright__highlight">
+                            {%- if hasdoc('copyright') %}
+                                {% trans path=pathto('copyright'), copyright=copyright|e %}&#169;
+                                    <a href="{{ path }}">Copyright</a> {{ copyright }}.
+                                {% endtrans %}
+                            {%- else %}
+                                {% trans copyright=copyright|e %}&#169; Copyright {{ copyright }}.
+                                {% endtrans %}
+                            {%- endif %}
+                        {%- endif %}
+                        </div>
+                        {%- if last_updated %}
+                            {% trans last_updated=last_updated|e %}Last updated on
+                                {{ last_updated }}.
+                            {% endtrans %}<br/>
+                        {%- endif %}
+                        {%- if show_sphinx %}
+                            {% trans sphinx_version=sphinx_version|e %}Created using
+                                <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.
+                            {% endtrans %} and
+                            <a href="https://github.com/bashtage/sphinx-material/">Material for
+                                Sphinx</a></div>
+                        {%- endif %}
+                </div>
+            </div>
+        </footer>
+        {%- block footer_scripts %}
+            <script src="{{ pathto('_static/javascripts/application.js', 1) }}"></script>
+            <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+            <script>
+                $(document).ready(function () {
+// var tables = $("table").not(".highlighttable").not(".longtable");
+// tables.removeClass().removeAttr("class");
+// const cols = $("table.longtable > colgroup > col");
+// const cols10 = cols.filter(function() { return $(this).css('width') === '10%';});
+// cols.css("width", "30%");
+// cols10.css("width", "70%");
+                })
+            </script>
+        {%- endblock %}
     </div>
 {%- endblock %}
 
 {%- block footer %}
-    <footer class="md-footer">
-        <div class="md-footer-nav">
-            <nav class="md-footer-nav__inner md-grid">
-                {% if prev %}
-                    <a href="{{ prev.link|e }}" title="Material"
-                       class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-                        <div class="md-flex__cell md-flex__cell--shrink">
-                            <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-                        </div>
-                        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-                            <span class="md-flex__ellipsis"> <span
-                                    class="md-footer-nav__direction"> Previous </span> {{ prev.title }} </span>
-                        </div>
-                    </a>
-                {% endif %}
-                {% if next %}
-                    <a href="{{ next.link|e }}" title="Admonition"
-                       class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-                    <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
-                            class="md-flex__ellipsis"> <span
-                            class="md-footer-nav__direction"> Next </span> {{ next.title }} </span>
-                    </div>
-                    <div class="md-flex__cell md-flex__cell--shrink"><i
-                            class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div>
-                {% endif %}
-                </a></nav>
-        </div>
-        <div class="md-footer-meta md-typeset">
-            <div class="md-footer-meta__inner md-grid">
-                <div class="md-footer-copyright">
-                    {%- if show_copyright %}
-                        <div class="md-footer-copyright__highlight">
-                        {%- if hasdoc('copyright') %}
-                            {% trans path=pathto('copyright'), copyright=copyright|e %}&#169;
-                                <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
-                        {%- else %}
-                            {% trans copyright=copyright|e %}&#169; Copyright {{ copyright }}.
-                            {% endtrans %}
-                        {%- endif %}
-                    {%- endif %}
-                    </div>
-                    {%- if last_updated %}
-                        {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.
-                        {% endtrans %}<br/>
-                    {%- endif %}
-                    {%- if show_sphinx %}
-                        {% trans sphinx_version=sphinx_version|e %}Created using
-                            <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.
-                        {% endtrans %} and
-                        <a href="https://github.com/bashtage/sphinx-material/">Material for
-                            Sphinx</a></div>
-                    {%- endif %}
-            </div>
-        </div>
-    </footer>
-    {%- block footer_scripts %}
-    <script src="{{ pathto('_static/javascripts/application.js', 1) }}"></script>
-    <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
-        <script>
-            $(document).ready(function(){
-                $("table").removeClass().removeAttr("class").removeAttribute("class");
-            })
-        </script>
-    {%- endblock %}
 {%- endblock %}
 

@@ -411,7 +411,7 @@ hr{
     display:none
 }
 .md-grid{
-    max-width:61rem;
+    max-width:73rem;
     margin-right:auto;
     margin-left:auto
 }
@@ -2695,6 +2695,15 @@ html .md-typeset .superfences-tabs>label:hover{
         transform:translate(100%)
     }
 }
+@media only screen and (min-width:88.25em) {
+    .md-sidebar--secondary {
+        margin-left: 73rem
+    }
+    [dir=rtl] .md-sidebar--secondary {
+        margin-right: 73rem;
+        margin-left: 0
+    }
+}
 @media only screen and (min-width:76.25em){
     .md-content{
         margin-left:12.1rem
@@ -2753,13 +2762,6 @@ html .md-typeset .superfences-tabs>label:hover{
     }
     .md-search__scrollwrap,[data-md-toggle=search]:checked~.md-header .md-search__inner{
         width:34.4rem
-    }
-    .md-sidebar--secondary{
-        margin-left:61rem
-    }
-    [dir=rtl] .md-sidebar--secondary{
-        margin-right:61rem;
-        margin-left:0
     }
     .md-tabs~.md-main .md-nav--primary>.md-nav__list>.md-nav__item--nested{
         font-size:0;

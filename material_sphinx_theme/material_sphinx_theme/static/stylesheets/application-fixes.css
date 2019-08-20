@@ -1,16 +1,58 @@
-.sidebar-toc ul, .md-nav--secondary ul, .md-nav--secondary ul li ul {
+.md-nav--primary ul, .md-nav--primary ul li ul, .md-nav--secondary ul, .md-nav--secondary ul li ul {
      margin:0;
      padding:0;
      list-style:none
 }
- li.toctree-l1, .md-nav--secondary ul li, .md-nav--secondary ul li ul li {
+ .md-nav--primary ul li, .md-nav--primary ul li ul li, .md-nav--secondary ul li, .md-nav--secondary ul li ul li {
      padding:0 .6rem;
 }
- li.toctree-l1 a.reference, .md-nav--secondary a.reference{
+ .md-nav--primary a.reference, .md-nav--secondary a.reference{
      display:block;
      margin-top:.625em;
      transition:color .125s;
      text-overflow:ellipsis;
      cursor:pointer;
      overflow:hidden
+}
+
+ .md-typeset td p, .md-typeset th p {
+     margin: 0
+ }
+
+ .md-typeset .admonition,.md-typeset details{
+    font-size: 0.85rem
+}
+
+.classifier:before {
+    font-style: normal;
+    margin: 0.5em;
+    content: ":";
+}
+
+dl.footnote > dt,
+dl.citation > dt {
+    float: left;
+}
+
+code.xref {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+table.docutils {
+    width: 100%;
+}
+
+.longtable tr td:first-child{
+    width:50%;
+    white-space:nowrap;
+}
+
+dt:target {
+    margin-top: -3.55rem;
+    padding-top: 3.45rem;
+}
+
+.md-typeset code {
+    margin: 0
 }

@@ -16,18 +16,6 @@
     containing fewer words won't appear in the result list.{% endtrans %}
   </p>
 
-  <div class="search-page-form">
-    <form class="form-inline" action="{{ pathto('search') }}" method="GET" role="form">
-      <div class="input-group">
-        <input name="q" type="text" class="form-control" />
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">{{ _('search') }}</button>
-        </span>
-      </div>
-      <span id="search-progress" style="padding-left: 10px"></span>
-    </form>
-  </div>
-
   {% if search_performed %}
     <h2>{{ _('Search Results') }}</h2>
     {% if not search_results %}

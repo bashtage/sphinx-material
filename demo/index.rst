@@ -10,6 +10,7 @@ Material Sphinx Theme Demo
     pymethod
     examples
     level1/index
+    regression
 
 
 Check this out
@@ -23,7 +24,7 @@ Check this out
 Another list
 ------------
 
-* `lorem ipsum dolor <https://github.com/bashtage/material_sphinx_theme>`_
+* `lorem ipsum dolor <https://github.com/bashtage/sphinx-material>`_
 * dolor lorem ipsum
 * lorem ipsum dolor
 * dolor lorem ipsum
