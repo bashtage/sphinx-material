@@ -5,11 +5,11 @@ Material Sphinx Theme
 Installation
 ============
 
-Install via pip::
+Install via pip:
 
-    $ pip install material_sphinx_theme
+    $ pip install sphinx-material
 
-or if you have the code checked out locally::
+or if you have the code checked out locally:
 
     $ python setup.py install
 
@@ -20,13 +20,13 @@ Add the following to your conf.py:
 
 .. code-block:: python
 
-    import material_sphinx_theme
+    import sphinx_material
 
-    html_theme_path = material_sphinx_theme.html_theme_path()
-    html_theme = 'material_sphinx_theme'
+    html_theme_path = sphinx_material.html_theme_path()
+    html_theme = 'sphinx_material'
 
     # Register the theme as an extension to generate a sitemap.xml
-    extensions.append("material_sphinx_theme")
+    extensions.append("sphinx_material")
 
     # Material theme options (see theme.conf for more information)
     html_theme_options = {
@@ -39,13 +39,13 @@ example shows:
 
 .. code-block:: python
 
-    import material_sphinx_theme
+    import sphinx_material
 
-    html_theme_path = material_sphinx_theme.html_theme_path()
-    html_theme = 'material_sphinx_theme'
+    html_theme_path = sphinx_material.html_theme_path()
+    html_theme = 'sphinx_material'
 
     # Register the theme as an extension to generate a sitemap.xml
-    extensions.append("material_sphinx_theme")
+    extensions.append("sphinx_material")
 
     # Material theme options (see theme.conf for more information)
     html_theme_options = {

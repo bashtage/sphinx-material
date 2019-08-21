@@ -1,14 +1,14 @@
 from setuptools import setup
 
 setup(
-    name='material_sphinx_theme',
-    version='0.7.11',
+    name='sphinx_material',
+    version='0.1.0',
     description='Material sphinx theme',
     long_description=open('README.rst').read(),
     author='Kevin Sheppard',
     author_email='kevin.k.sheppard@gmail.com',
-    url='https://github.com/bashtage/material_sphinx_theme',
-    packages=['material_sphinx_theme'],
+    url='https://github.com/bashtage/sphinx-material',
+    packages=['sphinx_material'],
     include_package_data=True,
     install_requires=['Sphinx>2.0',
                       'python-slugify',

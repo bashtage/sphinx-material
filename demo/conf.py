@@ -45,8 +45,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.inheritance_diagram',
               'matplotlib.sphinxext.plot_directive',
               'IPython.sphinxext.ipython_console_highlighting',
-              'IPython.sphinxext.ipython_directive',
-              ]
+              'IPython.sphinxext.ipython_directive']
 
 autosummary_generate = True
 autoclass_content = 'class'
@@ -64,7 +63,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -82,12 +80,12 @@ html_sidebars = {
            'searchbox.html']
 }
 
-import material_sphinx_theme
+import sphinx_material
 
-extensions.append("material_sphinx_theme")
-html_theme_path = material_sphinx_theme.html_theme_path()
-html_context = material_sphinx_theme.get_html_context()
-html_theme = 'material_sphinx_theme'
+extensions.append("sphinx_material")
+html_theme_path = sphinx_material.html_theme_path()
+html_context = sphinx_material.get_html_context()
+html_theme = 'sphinx_material'
 
 # material theme options (see theme.conf for more information)
 html_theme_options = {
