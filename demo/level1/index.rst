@@ -1,5 +1,5 @@
-Level 1
--------
+``Level 1`` page
+----------------
 
 This is some text.
 

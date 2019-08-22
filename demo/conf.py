@@ -89,11 +89,14 @@ html_theme = 'sphinx_material'
 
 # material theme options (see theme.conf for more information)
 html_theme_options = {
-    'base_url': 'http://bashtage.github.io/randomgen/',
-    'repo_url': 'https://github.com/bashtage/randomgen',
-    'repo_name': 'randomgen',
+    'base_url': 'http://bashtage.github.io/',
+    'repo_url': 'https://github.com/bashtage/sphinx-material',
+    'repo_name': 'Material for Sphinx',
     'google_analytics_account': 'UA-BLAH1',
-    'minify': True,
+    'html_minify': True,
+    'css_minify': True,
+    'nav_title': 'Other',
+    'logo_icon': ''
 }
 
 language = 'en'

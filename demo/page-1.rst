@@ -1,6 +1,6 @@
-==============
-This is a page
-==============
+==================
+This is a ``page``
+==================
 
 .. contents:: Table of contents
     :depth: 1

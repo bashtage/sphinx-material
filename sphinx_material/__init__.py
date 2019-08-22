@@ -2,11 +2,18 @@
 
 import os
 import re
+import sys
 import xml.etree.ElementTree as ET
+from multiprocessing import Manager
 
 import slugify
 from bs4 import BeautifulSoup
-from sphinx.util import logging
+from sphinx.util import logging, console
+
+input_list = ['A', 'B', 'C', 'D', 'E', 'F']
+
+
+__version__ = "0.1.0"
 
 
 def setup(app):
@@ -14,8 +21,16 @@ def setup(app):
     app.connect('html-page-context', add_html_link)
     app.connect('build-finished', create_sitemap)
     app.connect('build-finished', reformat_pages)
-    app.sitemap_links = []
-    app.site_pages = []
+    app.connect('build-finished', minify_css)
+    manager = Manager()
+    site_pages = manager.list()
+    sitemap_links = manager.list()
+    app.multiprocess_manager = manager
+    app.sitemap_links = sitemap_links
+    app.site_pages = site_pages
+    return {'version': __version__,
+            'parallel_read_safe': True,
+            'parallel_write_safe': True}
 
 
 def add_html_link(app, pagename, templatename, context, doctree):
@@ -23,10 +38,10 @@ def add_html_link(app, pagename, templatename, context, doctree):
     base_url = app.config['html_theme_options'].get('base_url', '')
     if base_url:
         app.sitemap_links.append(base_url + pagename + '.html')
-    minify = app.config['html_theme_options'].get('minify', False)
-    prettify = app.config['html_theme_options'].get('prettify', False)
+    minify = app.config['html_theme_options'].get('html_minify', False)
+    prettify = app.config['html_theme_options'].get('html_prettify', False)
     if minify and prettify:
-        raise ValueError('minify and prettify cannot both be True')
+        raise ValueError('html_minify and html_prettify cannot both be True')
     if minify or prettify:
         app.site_pages.append(os.path.join(app.outdir, pagename + '.html'))
 
@@ -38,7 +53,9 @@ def create_sitemap(app, exception):
         return
 
     filename = app.outdir + '/sitemap.xml'
-    print('Generating sitemap.xml in %s' % filename)
+    print('Generating sitemap for {0} pages in '
+          '{1}'.format(len(app.sitemap_links),
+                       console.colorize('blue', filename)))
 
     root = ET.Element('urlset')
     root.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
@@ -46,6 +63,7 @@ def create_sitemap(app, exception):
     for link in app.sitemap_links:
         url = ET.SubElement(root, 'url')
         ET.SubElement(url, 'loc').text = link
+    app.sitemap_links[:] = []
 
     ET.ElementTree(root).write(filename)
 
@@ -53,17 +71,50 @@ def create_sitemap(app, exception):
 def reformat_pages(app, exception):
     if exception is not None or not app.site_pages:
         return
-    minify = app.config['html_theme_options'].get('minify', False)
-    for page in app.site_pages:
+    minify = app.config['html_theme_options'].get('html_minify', False)
+    last = -1
+    npages = len(app.site_pages)
+    print('Minifying {0} files'.format(npages))
+    # TODO: Consider using parallel execution
+    for i, page in enumerate(app.site_pages):
+        if int(100 * (i / npages)) - last >= 1:
+            last = int(100 * (i / npages))
+            color_page = console.colorize('blue', page)
+            msg = 'minifying files... [{0}%] {1}'.format(last, color_page)
+            sys.stdout.write('\033[K' + msg + '\r')
         with open(page, 'r', encoding='utf-8') as content:
             if minify:
-                import htmlmin
-                html = htmlmin.minify(content.read())
+                from css_html_js_minify.html_minifier import html_minify
+                html = html_minify(content.read())
             else:
-                html = BeautifulSoup(content.read(),
-                                     features='lxml').prettify()
+                soup = BeautifulSoup(content.read(), features='lxml')
+                html = soup.prettify()
         with open(page, 'w', encoding='utf-8') as content:
             content.write(html)
+    app.site_pages[:] = []
+    print()
+
+
+def minify_css(app, exception):
+    if (exception is not None or
+            not app.config['html_theme_options'].get('css_minify', False)):
+        app.multiprocess_manager.shutdown()
+        return
+    import glob
+    from css_html_js_minify.css_minifier import css_minify
+    css_files = glob.glob(os.path.join(app.outdir, '**', '*.css'),
+                          recursive=True)
+    print('Minifying {0} css files'.format(len(css_files)))
+    for css_file in css_files:
+        colorized = console.colorize('blue', css_file)
+        msg = 'minifying css file {0}'.format(colorized)
+        sys.stdout.write('\033[K' + msg + '\r')
+        with open(css_file, 'r', encoding='utf-8') as content:
+            css = css_minify(content.read())
+        with open(css_file, 'w', encoding='utf-8') as content:
+            content.write(css)
+    print()
+    app.multiprocess_manager.shutdown()
 
 
 def html_theme_path():
