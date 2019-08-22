@@ -1,92 +1,93 @@
 .md-nav--primary ul, .md-nav--primary ul li ul, .md-nav--secondary ul, .md-nav--secondary ul li ul {
      margin:0;
      padding:0;
-     list-style:none
+     list-style:none 
 }
- .md-nav--primary ul li, .md-nav--primary ul li ul li, .md-nav--secondary ul li, .md-nav--secondary ul li ul li {
+.md-nav--primary ul li, .md-nav--primary ul li ul li, .md-nav--secondary ul li, .md-nav--secondary ul li ul li {
      padding:0 .6rem;
 }
- .md-nav--primary a.reference, .md-nav--secondary a.reference{
+.md-nav--primary a.reference, .md-nav--secondary a.reference{
      display:block;
      margin-top:.625em;
      transition:color .125s;
      text-overflow:ellipsis;
      cursor:pointer;
-     overflow:hidden
+     overflow:hidden 
 }
-
- .md-typeset td p, .md-typeset th p {
-     margin: 0
- }
-
- .md-typeset .admonition,.md-typeset details{
-    font-size: 0.85rem
+.md-typeset td p, .md-typeset th p {
+     margin: 0 
 }
-
+.md-typeset .admonition,.md-typeset details{
+     font-size: 0.85rem 
+}
 .classifier:before {
-    font-style: normal;
-    margin: 0.5em;
-    content: ":";
+     font-style: normal;
+     margin: 0.5em;
+     content: ":";
 }
-
-dl.footnote > dt,
-dl.citation > dt {
-    float: left;
+dl.footnote > dt, dl.citation > dt {
+     float: left;
 }
-
 code.xref {
-    background-color: transparent;
-    font-weight: bold;
+     background-color: transparent;
+     font-weight: bold;
 }
-
 table.docutils {
-    width: 100%;
+     width: 100%;
 }
-
 .longtable tr td:first-child{
-    width:50%;
-    white-space:nowrap;
+     width:50%;
+     white-space:nowrap;
 }
-
 dt:target {
-    margin-top: -3.55rem;
-    padding-top: 3.45rem;
+     margin-top: -3.55rem;
+     padding-top: 3.45rem;
 }
-
 .md-typeset code {
-    margin: 0
+     margin: 0 
 }
-
 ul.search li div.context {
-    color: #888;
-    margin: 2px 0 0 30px;
-    text-align: left;
+     color: #888;
+     margin: 2px 0 0 30px;
+     text-align: left;
 }
-
 span.highlighted {
-    background-color: #fbe54e;
+     background-color: #fbe54e;
 }
-
 p.rubric {
-    margin-top: 1rem;
-    font-weight: bold;
+     margin-top: 1rem;
+     font-weight: bold;
 }
-
 dl.field-list > dt {
-    font-weight: bold;
-    word-break: break-word;
-    padding-left: 0.5em;
-    padding-right: 5px;
+     font-weight: bold;
+     word-break: break-word;
+     padding-left: 0.5em;
+     padding-right: 5px;
 }
-
 table.longtable {
-  border-collapse: collapse;
+     border-collapse: collapse;
 }
 .longtable tr {
-  border: solid;
-  border-width: 1px 0;
+     border: solid;
+     border-width: 1px 0;
+}
+.longtable tr:first-child {
+     border-top: none;
+}
+.md-tabs code, kbd, pre, .md-footer-nav code, kbd, pre {
+     color: hsl(0, 0%, 100%);
 }
 
-.longtable tr:first-child {
-  border-top: none;
+.toctree-wrapper.compound li {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.1rem 0.2rem;
+}
+
+table.indextable.genindextable li {
+  margin:0 0.5rem;
+}
+
+table.indextable.genindextable li ul li {
+  list-style: none;
 }

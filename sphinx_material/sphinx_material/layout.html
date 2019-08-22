@@ -1,7 +1,7 @@
 {%- extends "basic/layout.html" %}
 
 {%- block body_tag %}
-<body dir=ltr data-md-color-primary=indigo data-md-color-accent=indigo>
+<body dir=ltr data-md-color-primary={{theme_color_primary}} data-md-color-accent=indigo>
 {%- endblock %}
 
 {# Do this so that bootstrap is included before the main css file #}
@@ -18,9 +18,11 @@
     <meta name="lang:search.result.other" content="# matching documents">
     <meta name="lang:search.tokenizer" content="[\s\-]+">
 
+    {% block font %}
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+
     <style>
         body,
         input {
@@ -33,12 +35,13 @@
             font-family: "Roboto Mono", "Courier New", Courier, monospace
         }
     </style>
+    {% endblock %}
 
     <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application.css', 1) }}"/>
     <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application-palette.css', 1) }}"/>
     <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application-fixes.css', 1) }}"/>
     <link rel="stylesheet" href="{{ pathto('_static/fonts/material-icons.css', 1) }}"/>
-    <meta name="theme-color" content="#3f51b5">
+    <meta name="theme-color" content="#{{ theme_theme_color }}">
     <script src="{{ pathto('_static/javascripts/modernizr.js', 1) }}"></script>
     {% include "google_analytics.html" %}
     {{ super() }}
@@ -114,6 +117,13 @@
                         </div>
                     </div>
                 </div>
+            {% if theme_repo_url %}
+            <div class="md-flex__cell md-flex__cell--shrink">
+                <div class="md-header-nav__source">
+                {% include "repo.html" %}
+                </div>
+            </div>
+            {% endif %}
             </div>
         </nav>
     </header>
@@ -204,6 +214,11 @@
             </a>
             <a href="{{ pathto(master_doc) }}" title="{{ docstitle }}">{{ shorttitle }}</a>
         </label>
+        {%- if theme_repo_url %}
+        <div class="md-nav__source">
+            {% include "repo.html" %}
+        </div>
+        {% endif %}
         {% include "globaltoc.html" %}
     </nav>
 {%- endmacro %}
@@ -296,16 +311,6 @@
         {%- block footer_scripts %}
             <script src="{{ pathto('_static/javascripts/application.js', 1) }}"></script>
             <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
-            <script>
-                $(document).ready(function () {
-// var tables = $("table").not(".highlighttable").not(".longtable");
-// tables.removeClass().removeAttr("class");
-// const cols = $("table.longtable > colgroup > col");
-// const cols10 = cols.filter(function() { return $(this).css('width') === '10%';});
-// cols.css("width", "30%");
-// cols10.css("width", "70%");
-                })
-            </script>
         {%- endblock %}
     </div>
 {%- endblock %}

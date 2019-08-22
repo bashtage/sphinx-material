@@ -66,7 +66,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
+# so a file named 'default.css' will overwrite the builtin 'default.css'.
 html_static_path = ['_static']
 
 
@@ -82,14 +82,18 @@ html_sidebars = {
 
 import sphinx_material
 
-extensions.append("sphinx_material")
+extensions.append('sphinx_material')
 html_theme_path = sphinx_material.html_theme_path()
 html_context = sphinx_material.get_html_context()
 html_theme = 'sphinx_material'
 
 # material theme options (see theme.conf for more information)
 html_theme_options = {
-    "base_url": "http://my-site.com/docs/"
+    'base_url': 'http://bashtage.github.io/randomgen/',
+    'repo_url': 'https://github.com/bashtage/randomgen',
+    'repo_name': 'randomgen',
+    'google_analytics_account': 'UA-BLAH1',
+    'minify': True,
 }
 
 language = 'en'

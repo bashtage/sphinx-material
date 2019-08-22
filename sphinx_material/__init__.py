@@ -13,14 +13,22 @@ def setup(app):
     """Setup connects events to the sitemap builder"""
     app.connect('html-page-context', add_html_link)
     app.connect('build-finished', create_sitemap)
+    app.connect('build-finished', reformat_pages)
     app.sitemap_links = []
+    app.site_pages = []
 
 
 def add_html_link(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
     base_url = app.config['html_theme_options'].get('base_url', '')
     if base_url:
-        app.sitemap_links.append(base_url + pagename + ".html")
+        app.sitemap_links.append(base_url + pagename + '.html')
+    minify = app.config['html_theme_options'].get('minify', False)
+    prettify = app.config['html_theme_options'].get('prettify', False)
+    if minify and prettify:
+        raise ValueError('minify and prettify cannot both be True')
+    if minify or prettify:
+        app.site_pages.append(os.path.join(app.outdir, pagename + '.html'))
 
 
 def create_sitemap(app, exception):
@@ -29,17 +37,33 @@ def create_sitemap(app, exception):
             exception is not None or not app.sitemap_links):
         return
 
-    filename = app.outdir + "/sitemap.xml"
-    print("Generating sitemap.xml in %s" % filename)
+    filename = app.outdir + '/sitemap.xml'
+    print('Generating sitemap.xml in %s' % filename)
 
-    root = ET.Element("urlset")
-    root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
+    root = ET.Element('urlset')
+    root.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
 
     for link in app.sitemap_links:
-        url = ET.SubElement(root, "url")
-        ET.SubElement(url, "loc").text = link
+        url = ET.SubElement(root, 'url')
+        ET.SubElement(url, 'loc').text = link
 
     ET.ElementTree(root).write(filename)
+
+
+def reformat_pages(app, exception):
+    if exception is not None or not app.site_pages:
+        return
+    minify = app.config['html_theme_options'].get('minify', False)
+    for page in app.site_pages:
+        with open(page, 'r', encoding='utf-8') as content:
+            if minify:
+                import htmlmin
+                html = htmlmin.minify(content.read())
+            else:
+                html = BeautifulSoup(content.read(),
+                                     features='lxml').prettify()
+        with open(page, 'w', encoding='utf-8') as content:
+            content.write(html)
 
 
 def html_theme_path():
