@@ -7,9 +7,13 @@ Installation
 
 Install via pip:
 
+.. code-block:: bash
+
     $ pip install git+https://github.com/bashtage/sphinx-material
 
 or if you have the code checked out locally:
+
+.. code-block:: bash
 
     $ python setup.py install
 

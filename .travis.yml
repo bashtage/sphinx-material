@@ -1,7 +1,12 @@
 language: python
 
 dist: bionic
-sudo: required
+sudo: false
+
+env:
+  global:
+    # Doctr deploy key for bashtage/sphinx-material
+    - secure: "JZQfkUg23nPjMa0E4Ym5Cb15nwypySxhI/eGb1R/aUPY1BerIlPVDikERzkDel9VaheFD5S2ssAaH4s8xm2E2ZNiUc8L1xtNoS7bopyYvR8m8hNwsKGAsNBOkLbYiGeuvmO4gIy05boYE1UlV7Z17G/9hk0d26Sk2cikUlb0Sy/mcZW4ZdB0cekMjNHDKbZJfKsnlQZMrb1uM4Ixen7y7KlgGamM7cdsAv2i3QoeSnHYC3+RRGoW/xdfmseOIWjN3Fj8l1mQqhrrNjrKGjToh0uAFycgkjJjHla7pjnGu0iOuiYGVAZArgl9Uh7zxEqOhHjyT8rQbq0Ia6U7yfKnoFwA2+QGf3JmNN05GOymwCeEFBcaUuz/Ln/X+WbQ0+iVAG+/LOhn/vGamJl8/5WF2ev57kH0zu0zJSE54HF+G6/j2oXzFo8MbaY1gdJ3xSFyoDrO52X/SyqzQUPMvP8yzts16ymaY5SZ3fcINSr/8HdqaucPnx8dfnxKQTIcoTUMJrZJSgUHNE/RtR4QQ5BS21AanvyhmQ1YVqb0UwuN0dzGvhiSm81VpyuTLrDkg+ot54IfmwhwZ5qE8JIwjbKJYiqA9Mret99gaYWTd/Yx6xASruCn3Uo8ZKgSxon4cLTEYOtRMJ34DMPFT/ihE4/v5kYLVEjRGs7GHN/eWUAOg7s="
 
 git:
   depth: 1000
@@ -23,10 +28,13 @@ script:
   - make html
 
 after_success:
+  - set -e
+  - cd ..
+  - pip install doctr
+  - doctr deploy --build-tags --built-docs docs/_build/html/ devel
   - |
     if [[ -z ${TRAVIS_TAG} ]]; then
       echo "Not a tagged build."
     else
-      pip install doctr
-      doctr deploy . --build-tags
+      doctr deploy --build-tags --built-docs docs/_build/html/ .
     fi
