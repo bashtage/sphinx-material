@@ -1,9 +1,9 @@
 ==============
-RST Cheatsheet
+rst Cheatsheet
 ==============
 
-The `RST Cheatsheet <https://github.com/ralsina/rst-cheatsheet>`_ covers a wide range of
-RST markup. It and its contents are
+The `rst Cheatsheet <https://github.com/ralsina/rst-cheatsheet>`_ covers a wide range of
+rst markup. It and its contents are
 `CC licensed <http://creativecommons.org/licenses/by/3.0/de/deed.en_GB>`_.
 
 .. role:: small
