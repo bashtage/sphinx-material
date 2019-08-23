@@ -86,13 +86,18 @@ html_theme_options = {
     'repo_name': 'Material for Sphinx',
     'google_analytics_account': 'UA-XXXXX',
     'html_minify': True,
+    'html_prettify': False,
     'css_minify': True,
     'nav_title': 'Material Sphinx Demo',
     'logo_icon': '&#xe869',
     'globaltoc_depth': 2,
     'color_primary': 'blue',
-    'color_accent': 'light-blue'
+    'color_accent': 'light-blue',
+    'touch_icon': 'images/apple-icon-152x152.png'
 }
 
 language = 'en'
 html_last_updated_fmt = ''
+
+todo_include_todos = True
+html_favicon = 'images/favicon.ico'

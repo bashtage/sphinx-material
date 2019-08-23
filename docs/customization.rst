@@ -1,3 +1,5 @@
+.. _customization:
+
 =============
 Customization
 =============
@@ -23,8 +25,51 @@ options are:
 The complete list of options with detailed explanations appears in
 ``theme.conf``.
 
+Configuration Options
+=====================
 
-
+``nav_title``
+   Set the name to appear in the left sidebar/header. If not provided, uses
+   html_short_title if defined, or html_title.
+``touch_icon``
+   Path to a touch icon, should be 152x152 or larger.
+``google_analytics_account``
+   Set to enable google analytics.
+``repo_url``
+   Set the repo url for the link to appear.
+``repo_name``
+   The name of the repo. If must be set if repo_url is set.
+``repo_type``
+   Must be one of github, gitlab or bitbucket.
+``base_url``
+   Specify a base_url used to generate sitemap.xml links. If not specified, then
+   no sitemap will be built.
+``globaltoc_depth``
+   The maximum depth of the global TOC; set it to -1 to allow unlimited depth.
+``globaltoc_collapse``
+   If true, TOC entries that are not ancestors of the current page are collapsed.
+``globaltoc_includehidden``
+   If true, the global TOC tree will also contain hidden entries.
+``theme_color``
+    The theme color for mobile browsers. Hex Color without the leading #.
+``color_primary``
+    Primary colo. Options are
+    red, pink, purple, deep-purple, indigo, blue, light-blue, cyan,
+    teal, green, light-green, lime, yellow, amber, orange, deep-orange,
+    brown, grey, blue-grey, and white.
+``color_accent``
+    Accent color. Options are
+    red, pink, purple, deep-purple, indigo, blue, light-blue, cyan,
+    teal, green, light-green, lime, yellow, amber, orange, and deep-orange.
+``html_minify``
+   Minify pages after creation using htmlmin.
+``html_prettify``
+   Prettify pages, usually only for debugging.
+``css_minify``
+   Minify css files found in the output directory.
+``logo_icon``
+   Set the logo icon. Should be a pre-escaped html string that indicates a
+   unicode point, e.g., ``'&#xe869'`` which is used on this site.
 
 Customizing the layout
 ======================
@@ -45,9 +90,9 @@ Then, configure your 'conf.py':
 
     templates_path = ['_templates']
 
-Finally, edit your override file 'source/_templates/layout.html':
+Finally, edit your override file ``source/_templates/layout.html``:
 
-::
+.. code-block:: jinja
 
     {# Import the theme's layout. #}
     {% extends '!layout.html' %}

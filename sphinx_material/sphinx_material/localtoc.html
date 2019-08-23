@@ -1,12 +1,13 @@
-{%- if display_toc %}
-  <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-    <div class="md-sidebar__scrollwrap">
-      <div class="md-sidebar__inner">
-        <nav class="md-nav md-nav--secondary">
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+  <div class="md-sidebar__scrollwrap">
+    <div class="md-sidebar__inner">
+      <nav class="md-nav md-nav--secondary">
+        {%- if display_toc %}
           <label class="md-nav__title" for="__toc">{{ _('Contents') }}</label>
           {{ toc_format(toc) }}
-        </nav>
-      </div>
+        {%- endif %}
+        {% include "sourcelink.html" %}
+      </nav>
     </div>
   </div>
-{%- endif %}
+</div>

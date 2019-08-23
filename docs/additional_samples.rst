@@ -1,6 +1,6 @@
-=============
-More Specimen
-=============
+==================
+Additional Samples
+==================
 
 
 Various examples of styling applied to Sphinx constructs. You can
@@ -78,7 +78,10 @@ Note
 
 Todo
 ----
-.. todo:: This is a **todo**.
+
+.. todo::
+
+   It is essential to complete **todo** items.
 
 Warning
 -------
@@ -87,6 +90,31 @@ Warning
 Danger
 ------
 .. danger:: This is **danger**-ous.
+
+Attention
+---------
+.. attention:: Do I have your **attention**?
+
+Caution
+-------
+.. caution:: Use **caution**!
+
+Error
+-----
+.. error:: You have made a grave **error**.
+
+Hint
+----
+.. hint:: Can you take a **hint**?
+
+Important
+---------
+.. important:: It is **important** to correctly use admonitions.
+
+Tip
+---
+.. tip:: Please **tip** your waiter.
+
 
 Footnotes
 =========
@@ -103,28 +131,29 @@ The following template HTML:
 
 .. code-block:: html
 
-    <i class="md-icon">&#xe869</i>
+    <span style="font-size: 2rem;" class="md-icon">&#xe869</span>
 
 translates to a the site's icon:
 
 .. raw:: html
 
-    <i class="md-icon">&#xe869</i>
+    <span style="font-size: 2rem;" class="md-icon">&#xe869</span>
 
-The material icon font provides hundreds to choose from.
+The material icon font provides hundreds to choose from. You can use the ``<i>`` tag or the
+``<span>`` tag.
 
 .. raw:: html
 
-    <i class="md-icon">&#xe158</i>
-    <i class="md-icon">&#xe155</i>
-    <i class="md-icon">&#xe195</i>
-    <i class="md-icon">&#xe255</i>
-    <i class="md-icon">&#xe3c9</i>
-    <i class="md-icon">&#xe811</i>
-    <i class="md-icon">&#xe812</i>
-    <i class="md-icon">&#xe813</i>
-    <i class="md-icon">&#xe814</i>
-    <i class="md-icon">&#xe815</i>
+    <i style="font-size: 1rem;" class="md-icon">&#xe158</i>
+    <i style="font-size: 1.2rem;" class="md-icon">&#xe155</i>
+    <i style="font-size: 1.4rem;" class="md-icon">&#xe195</i>
+    <i style="font-size: 1.6rem;" class="md-icon">&#xe255</i>
+    <i style="font-size: 1.8rem;" class="md-icon">&#xe3c9</i>
+    <i style="font-size: 2.0rem;" class="md-icon">&#xe811</i>
+    <i style="font-size: 2.2rem;" class="md-icon">&#xe812</i>
+    <i style="font-size: 2.4rem;" class="md-icon">&#xe813</i>
+    <i style="font-size: 2.6rem;" class="md-icon">&#xe814</i>
+    <i style="font-size: 2.8rem;" class="md-icon">&#xe815</i>
 
 
 Tables

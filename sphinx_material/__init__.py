@@ -74,7 +74,8 @@ def reformat_pages(app, exception):
     minify = app.config['html_theme_options'].get('html_minify', False)
     last = -1
     npages = len(app.site_pages)
-    print('Minifying {0} files'.format(npages))
+    transform = 'Minifying' if minify else 'Prettifying'
+    print('{0} {1} files'.format(transform, npages))
     # TODO: Consider using parallel execution
     for i, page in enumerate(app.site_pages):
         if int(100 * (i / npages)) - last >= 1:
@@ -210,3 +211,7 @@ def get_html_context():
     return {'toctree_format': toctree_format,
             'toc_format': toc_format,
             'table_fix': table_fix}
+
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions

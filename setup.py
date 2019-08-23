@@ -1,11 +1,13 @@
 from setuptools import setup
+import versioneer
 
 with open('requirements.txt') as reqs:
     REQUIREMENTS = [reqs.readlines()]
 
 setup(
     name='sphinx_material',
-    version='0.1.0',
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     description='Material sphinx theme',
     long_description=open('README.rst').read(),
     author='Kevin Sheppard',

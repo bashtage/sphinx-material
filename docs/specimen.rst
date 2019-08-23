@@ -83,14 +83,24 @@ Other content blocks
    Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed
    eu lectus dapibus, eleifend nulla varius, lobortis turpis. In ac
    hendrerit nisl, sit amet laoreet nibh.
-   ``js hl_lines="8" var _extends = function(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { target[key] = source[key]; } } return target; };``
-
-..
 
       Praesent at ``:::js return target``, sodales nibh vel, tempor
       felis. Fusce vel lacinia lacus. Suspendisse rhoncus nunc non nisi
       iaculis ultrices. Donec consectetur mauris non neque imperdiet,
       eget volutpat libero.
+
+   .. code-block:: javascript
+
+      var _extends = function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            target[key] = source[key];
+          }
+        }
+        return target;
+      };
+
 
 Lists
 -----
@@ -141,7 +151,18 @@ Ordered lists
 
    3. Pellentesque eget ``:::js var _extends`` ornare tellus, ut gravida
       mi.
-      ``js hl_lines="1"  var _extends = function(target) {    for (var i = 1; i < arguments.length; i++) {  var source = arguments[i];  for (var key in source) {    target[key] = source[key];  }    }    return target;  };``
+
+      .. code-block:: javascript
+
+         var _extends = function(target) {
+           for (var i = 1; i < arguments.length; i++) {
+             var source = arguments[i];
+             for (var key in source) {
+               target[key] = source[key];
+             }
+           }
+           return target;
+         };
 
 3. Vivamus id mi enim. Integer id turpis sapien. Ut condimentum lobortis
    sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis
@@ -172,20 +193,22 @@ Inline
 
 Morbi eget ``dapibus felis``. Vivamus *``venenatis porttitor``* tortor
 sit amet rutrum. Class aptent taciti sociosqu ad litora torquent per
-conubia nostra, per inceptos himenaeos.
-```Pellentesque aliquet quam enim`` <#>`__, eu volutpat urna rutrum a.
+conubia nostra, per inceptos himenaeos. |Pellentesque aliquet quam enim|_,
+eu volutpat urna rutrum a.
 
 Nam vehicula nunc ``:::js return target`` mauris, a ultricies libero
 efficitur sed. Sed molestie imperdiet consectetur. Vivamus a pharetra
 leo. Pellentesque eget ornare tellus, ut gravida mi. Fusce vel lacinia
 lacus.
 
+.. |Pellentesque aliquet quam enim| replace:: ``Pellentesque aliquet quam enim``
+.. _Pellentesque aliquet quam enim: #
+
 Listing
 ~~~~~~~
 
-::
+.. code-block:: javascript
 
-   #!js hl_lines="8"
    var _extends = function(target) {
      for (var i = 1; i < arguments.length; i++) {
        var source = arguments[i];
@@ -243,17 +266,32 @@ tellus non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor
 lobortis orci, at elementum urna sodales vitae. In in vehicula nulla,
 quis ornare libero.
 
-+---------------+---------+----------+
-| Left          | Center  | Right    |
-+===============+=========+==========+
-| Lorem         | *dolor* | ``amet`` |
-+---------------+---------+----------+
-| `ipsum <#>`__ | **sit** |          |
-+---------------+---------+----------+
+.. table::
+    :align: center
+
+    +---------------+---------+----------+
+    | Left          | Center  | Right    |
+    +===============+=========+==========+
+    | Lorem         | *dolor* | ``amet`` |
+    +---------------+---------+----------+
+    | `ipsum <#>`__ | **sit** |          |
+    +---------------+---------+----------+
 
 Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed eu
 lectus dapibus, eleifend nulla varius, lobortis turpis. In ac hendrerit
 nisl, sit amet laoreet nibh.
+
+.. table::
+    :widths: 30 70
+
+    +--------------+--------------------------------------------+
+    | Table        | with colgroups (Pandoc)                    |
+    +==============+============================================+
+    | Lorem        | ipsum dolor sit amet.                      |
+    +--------------+--------------------------------------------+
+    | Sed sagittis | eleifend rutrum. Donec vitae suscipit est. |
+    +--------------+--------------------------------------------+
+
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec ipsum a
 eros convallis facilisis eget at leo. Cras eu pulvinar eros, at accumsan dolor.

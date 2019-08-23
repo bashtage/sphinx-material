@@ -2,7 +2,10 @@
 NumPy Docstrings
 ================
 
+This page shows how ``autosummary`` works wiht ``numpydoc`` and a
+NumPy-style docstring.
+
 .. autosummary::
    :toctree: generated/
 
-    ~numpy.random.pcg64.PCG64
+    ~numpy.polynomial.Polynomial

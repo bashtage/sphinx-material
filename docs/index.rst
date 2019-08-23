@@ -16,9 +16,6 @@ and also uses code from
 are not supported, including:
 
 * Sidebar customization
-* Removing highlights after a search
-* Source links
-* Some elements need scroll wrappers
 * Probably others
 
 It uses some python to modify Sphinx output, which is not ideal. In the
@@ -30,7 +27,7 @@ should allow most of the HTML code changes to be avoided.
 
     customization
     specimen
-    more_specimen
+    additional_samples
     pymethod
     numpydoc
 
@@ -59,7 +56,8 @@ Update your ``conf.py`` with the required changes:
     html_context = sphinx_material.get_html_context()
 
 
-There are a lot more ways to customize this theme. See
+There are a lot more ways to customize this theme. See :ref:`Customization`
+or ``theme.conf`` for more details.
 
 .. code-block:: python
 

@@ -76,117 +76,19 @@
   {% include "header.html" %}
 {% endblock %}
 
-{# Displays the URL for the homepage if it's set or the master_doc if it is not #}
-{% macro homepage() -%}
-  {%- if theme_homepage %}
-    {%- if hasdoc(theme_homepage) %}
-      {{ pathto(theme_homepage) }}
-    {%- else %}
-      {{ theme_homepage }}
-    {%- endif %}
-  {%- else %}
-    {{ pathto(master_doc) }}
-  {%- endif %}
-{%- endmacro %}
-
-{# Displays the URL for the tospage if it's set or falls back to homepage macro #}
-{% macro tospage() -%}
-  {%- if theme_tospage %}
-    {%- if hasdoc(theme_tospage) %}
-      {{ pathto(theme_tospage) }}
-    {%- else %}
-      {{ theme_tospage }}
-    {%- endif %}
-  {%- else %}
-    {{ homepage() }}
-  {%- endif %}
-{%- endmacro %}
-
-{# Displays the URL for the projectpage if it's set or falls back to homepage macro #}
-{% macro projectlink() -%}
-  {%- if theme_projectlink %}
-    {%- if hasdoc(theme_projectlink) %}
-      {{ pathto(theme_projectlink) }}
-    {%- else %}
-      {{ theme_projectlink }}
-    {%- endif %}
-  {%- else %}
-    {{ homepage() }}
-  {%- endif %}
-{%- endmacro %}
-
-{# Displays the next and previous links both before and after content #}
-{% macro render_relations() -%}
-  {% if prev or next %}
-    <div class="footer-relations">
-      {% if prev %}
-        <div class="pull-left">
-          <a class="btn btn-default" href="{{ prev.link|e }}"
-             title="{{ _('previous chapter') }} (use the left arrow)">{{ prev.title }}</a>
-        </div>
-      {% endif %}
-      {%- if next and next.title != '&lt;no title&gt;' %}
-        <div class="pull-right">
-          <a class="btn btn-default" href="{{ next.link|e }}"
-             title="{{ _('next chapter') }} (use the right arrow)">{{ next.title }}</a>
-        </div>
-      {%- endif %}
-    </div>
-    <div class="clearer"></div>
-  {% endif %}
-{%- endmacro %}
-
-{%- macro material_relbar() %}
-  {%- if parents %}
-    <nav class="md-tabs" data-md-component="tabs">
-      <div class="md-tabs__inner md-grid">
-        <ul class="md-tabs__list">
-          {%- for parent in parents %}
-            <li class="md-tabs__item"><a href="{{ parent.link|e }}"
-                                         class="md-tabs__link">{{ parent.title }}</a></li>
-          {%- endfor %}
-        </ul>
-      </div>
-    </nav>
-  {%- endif %}
-{%- endmacro %}
-
-
-
-{%- macro material_sidebar() %}
-<nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="{{ pathto(master_doc) }}" title="{{ docstitle }}" class="md-nav__button md-logo">
-      {% if theme_logo_icon %}
-        <i class="md-icon">{{ theme_logo_icon|e }}</i>
-      {% else %}
-        <img src="{{ pathto('_static/' ~ logo, 1) }}" width="48" height="48">
-      {% endif %}
-    </a>
-    <a href="{{ pathto(master_doc) }}" title="{{ docstitle }}">{{ theme_nav_title or shorttitle }}</a>
-  </label>
-    {%- if theme_repo_url %}
-      <div class="md-nav__source">
-        {% include "repo.html" %}
-      </div>
-    {% endif %}
-    {% include "globaltoc.html" %}
-  </nav>
-{%- endmacro %}
-
 {%- block relbar1 %}{% endblock %}
 {%- block relbar2 %}{% endblock %}
 
 {%- block content %}
   <div class="md-container">
-    {{ material_relbar() }}
+    {% include "relbar.html" %}
     <main class="md-main">
       <div class="md-main__inner md-grid" data-md-component="container">
         {% block site_nav %}
           <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
             <div class="md-sidebar__scrollwrap">
               <div class="md-sidebar__inner">
-                {{ material_sidebar() }}
+                {% include "sidebar.html" %}
               </div>
             </div>
           </div>
