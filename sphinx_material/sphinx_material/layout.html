@@ -1,7 +1,7 @@
 {%- extends "basic/layout.html" %}
 
 {%- block body_tag %}
-  <body dir=ltr data-md-color-primary={{ theme_color_primary }} data-md-color-accent=indigo>
+  <body dir=ltr data-md-color-primary={{ theme_color_primary }} data-md-color-accent={{ theme_color_accent }}>
 {%- endblock %}
 
 {# Do this so that bootstrap is included before the main css file #}

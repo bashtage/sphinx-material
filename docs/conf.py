@@ -92,7 +92,7 @@ html_theme_options = {
     'logo_icon': '&#xe869',
     'globaltoc_depth': 2,
     'color_primary': 'blue',
-    'color_accent': 'light-blue',
+    'color_accent': 'cyan',
     'touch_icon': 'images/apple-icon-152x152.png'
 }
 
