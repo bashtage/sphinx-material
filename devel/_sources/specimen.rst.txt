@@ -1,3 +1,6 @@
+.. role:: javascript(code)
+   :language: javascript
+
 ========
 Specimen
 ========
@@ -90,6 +93,7 @@ Other content blocks
       eget volutpat libero.
 
    .. code-block:: javascript
+      :emphasize-lines: 8
 
       var _extends = function(target) {
         for (var i = 1; i < arguments.length; i++) {
@@ -149,10 +153,11 @@ Ordered lists
       rutrum a. Sed aliquet, neque at rutrum mollis, neque nisi
       tincidunt nibh.
 
-   3. Pellentesque eget ``:::js var _extends`` ornare tellus, ut gravida
+   3. Pellentesque eget :javascript:`var _extends` ornare tellus, ut gravida
       mi.
 
       .. code-block:: javascript
+         :emphasize-lines: 1
 
          var _extends = function(target) {
            for (var i = 1; i < arguments.length; i++) {
@@ -208,6 +213,7 @@ Listing
 ~~~~~~~
 
 .. code-block:: javascript
+   :emphasize-lines: 1,5,8
 
    var _extends = function(target) {
      for (var i = 1; i < arguments.length; i++) {
