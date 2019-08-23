@@ -1,4 +1,9 @@
+devel/_images/attrib.png
+devel/_images/biohazard.png
+devel/_images/magnetic-balls.jpg
+devel/_images/noncomm.png
 devel/_images/screenshot.png
+devel/_images/sharealike.png
 devel/_modules/index.html
 devel/_modules/numpy/polynomial/_polybase.html
 devel/_modules/numpy/polynomial/polynomial.html
@@ -33,6 +38,7 @@ devel/_sources/generated/numpy.polynomial.Polynomial.rst.txt
 devel/_sources/index.rst.txt
 devel/_sources/numpydoc.rst.txt
 devel/_sources/pymethod.rst.txt
+devel/_sources/rst-cheatsheet/rst-cheatsheet.rst.txt
 devel/_sources/specimen.rst.txt
 devel/_sources/subpage/index.rst.txt
 devel/_sources/subpage/subsubpage.rst.txt
@@ -125,6 +131,7 @@ devel/index.html
 devel/numpydoc.html
 devel/objects.inv
 devel/pymethod.html
+devel/rst-cheatsheet/rst-cheatsheet.html
 devel/search.html
 devel/searchindex.js
 devel/sitemap.xml
