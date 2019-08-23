@@ -2,21 +2,47 @@
 Material Sphinx Theme
 =====================
 
-Installation
-============
 
-Install via pip:
+.. image:: images/screenshot.png
+    :alt: Material for Sphinx Screenshots
 
-    $ pip install git+https://github.com/bashtage/sphinx-material
+This theme provides a material-influenced, responsive theme for Sphinx
+documentation. It derives heavily from
+`Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_,
+and also uses code from
+`Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
 
-or if you have the code checked out locally:
+``sphinx-material`` is a work-in-progress and a number of core Sphinx features
+are not supported, including:
 
-    $ python setup.py install
+* Sidebar customization
+* Removing highlights after a search
+* Source links
+* Some elements need scroll wrappers
+* Probably others
 
-Configuration
-=============
+It uses some python to modify Sphinx output, which is not ideal. In the
+longer-term, I hope to move to a SASS build which will simplify styling and
+should allow most of the HTML code changes to be avoided.
 
-Add the following to your conf.py:
+.. toctree::
+    :hidden:
+
+    customization
+    specimen
+    more_specimen
+    pymethod
+    numpydoc
+
+Getting Started
+---------------
+Install from git
+
+.. code-block:: bash
+
+   pip install git+https://github.com/bashtage/sphinx-material.git
+
+Update your ``conf.py`` with the required changes:
 
 .. code-block:: python
 
@@ -24,7 +50,7 @@ Add the following to your conf.py:
 
      # Register the theme as an extension to generate a sitemap.xml
     extensions.append('sphinx_material')
-    
+
     # Choose the material theme
     html_theme = 'sphinx_material'
     # Get the them path
@@ -33,8 +59,7 @@ Add the following to your conf.py:
     html_context = sphinx_material.get_html_context()
 
 
-There are a lot more ways to customize this theme, as this more comprehensive
-example shows:
+There are a lot more ways to customize this theme. See
 
 .. code-block:: python
 
@@ -74,35 +99,3 @@ example shows:
         # If True, show hidden TOC entries
         'globaltoc_includehidden': False,
     }
-
-Customizing the layout
-======================
-
-You can customize the theme by overriding Jinja template blocks. For example,
-'layout.html' contains several blocks that can be overridden or extended.
-
-Place a 'layout.html' file in your project's '/_templates' directory.
-
-.. code-block:: bash
-
-    mkdir source/_templates
-    touch source/_templates/layout.html
-
-Then, configure your 'conf.py':
-
-.. code-block:: python
-
-    templates_path = ['_templates']
-
-Finally, edit your override file 'source/_templates/layout.html':
-
-::
-
-    {# Import the theme's layout. #}
-    {% extends '!layout.html' %}
-
-    {%- block extrahead %}
-    {# Add custom things to the head HTML tag #}
-    {# Call the parent block #}
-    {{ super() }}
-    {%- endblock %}

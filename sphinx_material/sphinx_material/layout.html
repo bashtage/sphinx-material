@@ -158,7 +158,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="{{ pathto(master_doc) }}" title="{{ docstitle }}" class="md-nav__button md-logo">
       {% if theme_logo_icon %}
-        <i class="md-icon">{{ theme_logo_icon }}</i>
+        <i class="md-icon">{{ theme_logo_icon|e }}</i>
       {% else %}
         <img src="{{ pathto('_static/' ~ logo, 1) }}" width="48" height="48">
       {% endif %}

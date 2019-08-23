@@ -5,12 +5,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-demo/_build/
-demo/generated/
-demo/savefig/
-
-
-
 # C extensions
 *.so
 
@@ -77,6 +71,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/generated/
 
 # PyBuilder
 target/

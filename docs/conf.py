@@ -37,15 +37,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.extlinks',
               'sphinx.ext.intersphinx',
               'sphinx.ext.todo',
-              # One of mathjax or imgmath
-              'nbsphinx',
               'sphinx.ext.mathjax',
-              'sphinx.ext.viewcode',
-              # 'sphinx.ext.autosummary',
-              'sphinx.ext.inheritance_diagram',
-              'matplotlib.sphinxext.plot_directive',
-              'IPython.sphinxext.ipython_console_highlighting',
-              'IPython.sphinxext.ipython_directive']
+              'sphinx.ext.viewcode']
 
 autosummary_generate = True
 autoclass_content = 'class'
@@ -69,7 +62,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # so a file named 'default.css' will overwrite the builtin 'default.css'.
 html_static_path = ['_static']
 
-
 # -- HTML theme settings ------------------------------------------------
 
 html_show_sourcelink = True
@@ -89,14 +81,17 @@ html_theme = 'sphinx_material'
 
 # material theme options (see theme.conf for more information)
 html_theme_options = {
-    'base_url': 'http://bashtage.github.io/',
-    'repo_url': 'https://github.com/bashtage/sphinx-material',
+    'base_url': 'http://bashtage.github.io/sphinx-material/',
+    'repo_url': 'https://github.com/bashtage/sphinx-material/',
     'repo_name': 'Material for Sphinx',
-    'google_analytics_account': 'UA-BLAH1',
+    'google_analytics_account': 'UA-XXXXX',
     'html_minify': True,
     'css_minify': True,
-    'nav_title': 'Other',
-    'logo_icon': ''
+    'nav_title': 'Material Sphinx Demo',
+    'logo_icon': '&#xe869',
+    'globaltoc_depth': 2,
+    'color_primary': 'blue',
+    'color_accent': 'light-blue'
 }
 
 language = 'en'

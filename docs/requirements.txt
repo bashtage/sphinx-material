@@ -1,0 +1,3 @@
+sphinx_material
+numpy>=1.17
+numpydoc

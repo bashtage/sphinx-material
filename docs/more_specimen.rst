@@ -1,15 +1,22 @@
-==========
- Examples
-==========
+=============
+More Specimen
+=============
 
-.. toctree::
-    :hidden:
 
-    level1/index
-
-Various examples of Bootstrap styling applied to Sphinx constructs. You can
+Various examples of styling applied to Sphinx constructs. You can
 view the `source <./_sources/examples.txt>`_ of this page to see the specific
 reStructuredText used to create these examples.
+
+Subpages
+========
+
+Suppages get bread crumbs when they are not at the top level.
+
+.. toctree::
+
+    subpage/index
+
+
 
 Headings
 ========
@@ -26,7 +33,7 @@ This is a third level heading (``h3``).
 
 Code
 ====
-The Sphinx Bootstrap Theme uses Bootstrap styling for ``inline code text`` and
+The theme uses pygments for ``inline code text`` and
 ::
 
     multiline
@@ -63,8 +70,7 @@ It also works with existing Sphinx highlighting:
 
 Admonitions
 ===========
-The Sphinx Bootstrap Theme uses the Bootstrap ``alert`` classes for Sphinx
-admonitions.
+The theme uses the ``admonition`` classes for Sphinx admonitions.
 
 Note
 ----
@@ -93,36 +99,33 @@ This also references the second item [#f2]_.
 
 Icons
 =====
-Icons are different in Bootstrap 2 and 3, so you will only see an
-icon below for the version of Bootstrap that we used to build these docs.
-
-Bootstrap 2
------------
 The following template HTML:
 
 .. code-block:: html
 
-    <span class="icon-star-empty"></span>
+    <i class="md-icon">&#xe869</i>
 
-translates to a neat star:
-
-.. raw:: html
-
-    <span class="icon-star-empty"></span>
-
-Bootstrap 3
------------
-The following template HTML:
-
-.. code-block:: html
-
-    <span class="glyphicon glyphicon-star-empty"></span>
-
-translates to a neat star:
+translates to a the site's icon:
 
 .. raw:: html
 
-    <span class="glyphicon glyphicon-star-empty"></span>
+    <i class="md-icon">&#xe869</i>
+
+The material icon font provides hundreds to choose from.
+
+.. raw:: html
+
+    <i class="md-icon">&#xe158</i>
+    <i class="md-icon">&#xe155</i>
+    <i class="md-icon">&#xe195</i>
+    <i class="md-icon">&#xe255</i>
+    <i class="md-icon">&#xe3c9</i>
+    <i class="md-icon">&#xe811</i>
+    <i class="md-icon">&#xe812</i>
+    <i class="md-icon">&#xe813</i>
+    <i class="md-icon">&#xe814</i>
+    <i class="md-icon">&#xe815</i>
+
 
 Tables
 ======
@@ -135,9 +138,8 @@ tables.
 
 Grid
 ----
-A "**bordered**" grid table:
+A grid table:
 
-.. cssclass:: table-bordered
 
 +------------------------+------------+----------+----------+
 | Header1                | Header2    | Header3  | Header4  |
@@ -149,15 +151,10 @@ A "**bordered**" grid table:
 | ...                    | ...        | ...      |          |
 +------------------------+------------+----------+----------+
 
-which uses the directive::
-
-    .. cssclass:: table-bordered
 
 Simple
 ------
-A simple "**striped**" table:
-
-.. cssclass:: table-striped
+A simple table:
 
 =====  =====  =======
 H1     H2     H3
@@ -167,25 +164,6 @@ cell1  cell2  cell3
 ...    ...    ...
 =====  =====  =======
 
-which uses the directive::
-
-    .. cssclass:: table-striped
-
-And a "**hoverable**" table:
-
-.. cssclass:: table-hover
-
-=====  =====  =======
-H1     H2     H3
-=====  =====  =======
-cell1  cell2  cell3
-...    ...    ...
-...    ...    ...
-=====  =====  =======
-
-which uses the directive::
-
-    .. cssclass:: table-hover
 
 Code Documentation
 ==================

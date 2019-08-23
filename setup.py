@@ -1,5 +1,8 @@
 from setuptools import setup
 
+with open('requirements.txt') as reqs:
+    REQUIREMENTS = [reqs.readlines()]
+
 setup(
     name='sphinx_material',
     version='0.1.0',
@@ -10,10 +13,8 @@ setup(
     url='https://github.com/bashtage/sphinx-material',
     packages=['sphinx_material'],
     include_package_data=True,
-    install_requires=['Sphinx>2.0',
-                      'python-slugify',
-                      'unidecode',
-                      'beautifulsoup4'],
+    python_requires='>=3.6',
+    install_requires=REQUIREMENTS,
     license="MIT",
     classifiers=(
         'Development Status :: 3 - Alpha',
