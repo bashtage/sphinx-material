@@ -1,12 +1,11 @@
-=====================
-Material Sphinx Theme
-=====================
-
+===================
+Material for Sphinx
+===================
 
 .. image:: images/screenshot.png
     :alt: Material for Sphinx Screenshots
 
-This theme provides a material-influenced, responsive theme for Sphinx
+This theme provides a responsive Material Design theme for Sphinx
 documentation. It derives heavily from
 `Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_,
 and also uses code from
@@ -30,6 +29,7 @@ should allow most of the HTML code changes to be avoided.
     additional_samples
     pymethod
     numpydoc
+    rst-cheatsheet/rst-cheatsheet
 
 Getting Started
 ---------------
