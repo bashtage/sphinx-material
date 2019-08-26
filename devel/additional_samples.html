@@ -943,7 +943,11 @@ reStructuredText used to create these examples.
 205
 206
 207
-208</pre>
+208
+209
+210
+211
+212</pre>
            </div>
           </td>
           <td class="code">
@@ -1091,7 +1095,7 @@ reStructuredText used to create these examples.
         <span class="n">formatted</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span>
-            <span class="n">formatted</span><span class="p">[</span><span class="s2">"contents"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">)</span>
+            <span class="n">formatted</span><span class="p">[</span><span class="s2">"contents"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">fix_root</span> <span class="ow">and</span> <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#"</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
                 <span class="c1"># TODO: Replace with internal sphinx method to slugify</span>
                 <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slugify</span><span class="p">(</span><span class="n">walk_contents</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="p">))</span>
@@ -1105,16 +1109,23 @@ reStructuredText used to create these examples.
 
 
 <span class="k">def</span> <span class="nf">derender_toc</span><span class="p">(</span><span class="n">toc_text</span><span class="p">,</span> <span class="n">fix_root</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-    <span class="n">toc</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">toc_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
-    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">toc</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
-            <span class="k">continue</span>
-        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"ul"</span><span class="p">:</span>
-            <span class="n">nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="bp">NotImplemented</span><span class="p">(</span><span class="s2">"Not sure what to do here, expecting only ul"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">nodes</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">toc</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">toc_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">toc</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"ul"</span><span class="p">:</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="bp">NotImplemented</span><span class="p">(</span><span class="s2">"Not sure what to do here, expecting only ul"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nodes</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="s2">"Failed to process toctree_text</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">toc_text</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">toc_text</span>
 
 
 <span class="k">def</span> <span class="nf">walk_contents</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
@@ -1152,10 +1163,7 @@ reStructuredText used to create these examples.
 
 
 <span class="k">def</span> <span class="nf">get_html_context</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">"table_fix"</span><span class="p">:</span> <span class="n">table_fix</span><span class="p">,</span>
-        <span class="s2">"derender_toc"</span><span class="p">:</span> <span class="n">derender_toc</span><span class="p">,</span>
-    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"table_fix"</span><span class="p">:</span> <span class="n">table_fix</span><span class="p">,</span> <span class="s2">"derender_toc"</span><span class="p">:</span> <span class="n">derender_toc</span><span class="p">}</span>
 </pre>
            </div>
           </td>
