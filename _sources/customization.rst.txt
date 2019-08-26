@@ -70,6 +70,17 @@ Configuration Options
 ``logo_icon``
    Set the logo icon. Should be a pre-escaped html string that indicates a
    unicode point, e.g., ``'&#xe869'`` which is used on this site.
+``master_doc``
+   Include the master document at the top of the page in the breadcrumb bar.
+   You must also set this to true if you want to override the rootrellink block, in which
+   case the content of the overridden block will appear
+``nav_links``
+   A list of dictionaries where each has three keys:
+
+   - ``'href'``: The URL or pagename (str)
+   - ``'title'``: The title to appear (str)
+   - ``'internal'``: Flag indicating to use pathto  to find the page.  Set to False for
+     external content. (bool)
 
 Customizing the layout
 ======================
@@ -102,3 +113,18 @@ Finally, edit your override file ``source/_templates/layout.html``:
     {# Call the parent block #}
     {{ super() }}
     {%- endblock %}
+
+New Blocks
+----------
+The theme has a small number of new blocks to simplify some types of
+customization:
+
+``footerrel``
+   Previous and next in the footer.
+``font``
+   The default font inline CSS and the class to the google API. Use this
+   block when changing the font.
+``fonticon``
+   Block that contains the icon font. Use this to add additional icon fonts
+   (e.g., `FontAwesome <>`_). You should probably call ``{{ super() }}`` at
+   the end of the block to include the default icon font as well.
