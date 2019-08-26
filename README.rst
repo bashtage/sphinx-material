@@ -1,9 +1,17 @@
 Material Sphinx Theme
 =====================
 
-Continuous Integration
-----------------------
+**Continuous Integration**
+
 |Travis Build Status|
+
+**Release**
+
+|PyPI Status|
+
+**License**
+
+|MIT License|
 
 A Material Design theme for Sphinx documentation. Based on
 `Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_,
@@ -123,3 +131,9 @@ Finally, edit your override file 'source/_templates/layout.html':
 
 .. |Travis Build Status| image:: https://travis-ci.org/bashtage/sphinx-material.svg?branch=master
    :target: https://travis-ci.org/bashtage/sphinx-material
+
+.. |PyPI Status| image:: https://badge.fury.io/py/sphinx-material.svg
+    :target: https://badge.fury.io/py/sphinx-material
+
+.. |MIT License| image:: https://img.shields.io/badge/License-MIT-blue.svg
+   :target: https://opensource.org/licenses/MIT-Clause
