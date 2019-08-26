@@ -31,7 +31,7 @@
   <link href="_static/stylesheets/application-palette.css" rel="stylesheet"/>
   <link href="_static/stylesheets/application-fixes.css" rel="stylesheet"/>
   <link href="_static/fonts/material-icons.css" rel="stylesheet"/>
-  <meta content="#3f51b5" name="theme-color"/>
+  <meta content="#2196f3" name="theme-color"/>
   <script src="_static/javascripts/modernizr.js">
   </script>
   <script>
@@ -46,7 +46,7 @@
   </script>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
-   Customization — Material Sphinx Demo 1.0 documentation
+   Customization — Material for Sphinx
   </title>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
@@ -61,7 +61,6 @@
   <script src="_static/language_data.js" type="text/javascript">
   </script>
   <link href="_static/favicon.ico" rel="shortcut icon"/>
-  <link href="genindex.html" rel="index" title="Index"/>
   <link href="search.html" rel="search" title="Search"/>
   <link href="specimen.html" rel="next" title="Specimen"/>
   <link href="index.html" rel="prev" title="Material for Sphinx"/>
@@ -87,7 +86,7 @@
    <nav class="md-header-nav md-grid">
     <div class="md-flex">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="index.html" title="Material Sphinx Demo 1.0 documentation">
+      <a class="md-header-nav__button md-logo" href="index.html" title="Material for Sphinx">
        <i class="md-icon">
         
        </i>
@@ -100,7 +99,7 @@
      <div class="md-flex__cell md-flex__cell--stretch">
       <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
        <span class="md-header-nav__topic">
-        Material Sphinx Demo
+        Material for Sphinx
        </span>
        <span class="md-header-nav__topic">
         Customization
@@ -155,6 +154,22 @@
    </nav>
   </header>
   <div class="md-container">
+   <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="index.html">
+        Material
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="https://squidfunk.github.io/mkdocs-material/">
+        Material for MkDocs
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
    <main class="md-main">
     <div class="md-main__inner md-grid" data-md-component="container">
      <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
@@ -162,13 +177,13 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="index.html" title="Material Sphinx Demo 1.0 documentation">
+          <a class="md-nav__button md-logo" href="index.html" title="Material for Sphinx">
            <i class="md-icon">
             
            </i>
           </a>
-          <a href="index.html" title="Material Sphinx Demo 1.0 documentation">
-           Material Sphinx Demo
+          <a href="index.html" title="Material for Sphinx">
+           Material for Sphinx
           </a>
          </label>
          <div class="md-nav__source">
@@ -184,12 +199,58 @@
            </div>
           </a>
          </div>
-         <ul class="md-nav__list" data-md-scrollfix="">
+         <ul class="md-nav__list">
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#">
+           <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+           <label class="md-nav__link md-nav__link--active" for="__toc">
+            Customization
+           </label>
+           <a class="md-nav__link md-nav__link--active" href="#">
             Customization
            </a>
-           <ul class="md-nav__list" data-md-scrollfix="">
+           <nav class="md-nav md-nav--secondary">
+            <label class="md-nav__title" for="__toc">
+             Contents
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#customization">
+               Customization
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#configuration-options">
+                  Configuration Options
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#customizing-the-layout">
+                  Customizing the layout
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#new-blocks">
+                     New Blocks
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__extra_link" href="_sources/customization.rst.txt">
+               Show Source
+              </a>
+             </li>
+             <li class="md-nav__item" id="searchbox">
+             </li>
+            </ul>
+           </nav>
+           <ul class="md-nav__list">
             <li class="md-nav__item">
              <a class="md-nav__link" href="#configuration-options">
               Configuration Options
@@ -227,6 +288,16 @@
             rst Cheatsheet
            </a>
           </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="change-log.html">
+            Change Log
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="license.html">
+            License
+           </a>
+          </li>
          </ul>
         </nav>
        </div>
@@ -244,21 +315,30 @@
            <a class="md-nav__link" href="#customization">
             Customization
            </a>
-           <ul class="md-nav__list">
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="#configuration-options">
-              Configuration Options
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="#customizing-the-layout">
-              Customizing the layout
-             </a>
-            </li>
-           </ul>
+           <nav class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#configuration-options">
+               Configuration Options
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#customizing-the-layout">
+               Customizing the layout
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#new-blocks">
+                  New Blocks
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
           </li>
-         </ul>
-         <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item">
            <a class="md-nav__extra_link" href="_sources/customization.rst.txt">
             Show Source
@@ -548,6 +628,65 @@ unicode point, e.g.,
           which is used on this site.
          </p>
         </dd>
+        <dt>
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           master_doc
+          </span>
+         </code>
+        </dt>
+        <dd>
+         <p>
+          Include the master document at the top of the page in the breadcrumb bar.
+You must also set this to true if you want to override the rootrellink block, in which
+case the content of the overridden block will appear
+         </p>
+        </dd>
+        <dt>
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           nav_links
+          </span>
+         </code>
+        </dt>
+        <dd>
+         <p>
+          A list of dictionaries where each has three keys:
+         </p>
+         <ul class="simple">
+          <li>
+           <p>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              'href'
+             </span>
+            </code>
+            : The URL or pagename (str)
+           </p>
+          </li>
+          <li>
+           <p>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              'title'
+             </span>
+            </code>
+            : The title to appear (str)
+           </p>
+          </li>
+          <li>
+           <p>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              'internal'
+             </span>
+            </code>
+            : Flag indicating to use pathto  to find the page.  Set to False for
+external content. (bool)
+           </p>
+          </li>
+         </ul>
+        </dd>
        </dl>
        <h2 id="customizing-the-layout">
         Customizing the layout
@@ -600,6 +739,75 @@ touch source/_templates/layout.html
 </pre>
         </div>
        </div>
+       <h3 id="new-blocks">
+        New Blocks
+        <a class="headerlink" href="#new-blocks" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        The theme has a small number of new blocks to simplify some types of
+customization:
+       </p>
+       <dl class="simple">
+        <dt>
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           footerrel
+          </span>
+         </code>
+        </dt>
+        <dd>
+         <p>
+          Previous and next in the footer.
+         </p>
+        </dd>
+        <dt>
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           font
+          </span>
+         </code>
+        </dt>
+        <dd>
+         <p>
+          The default font inline CSS and the class to the google API. Use this
+block when changing the font.
+         </p>
+        </dd>
+        <dt>
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           fonticon
+          </span>
+         </code>
+        </dt>
+        <dd>
+         <p>
+          Block that contains the icon font. Use this to add additional icon fonts
+(e.g.,
+          <a href="#id2">
+           <span class="problematic" id="id3">
+            `FontAwesome &lt;&gt;`_
+           </span>
+          </a>
+          ). You should probably call
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            {{
+           </span>
+           <span class="pre">
+            super()
+           </span>
+           <span class="pre">
+            }}
+           </span>
+          </code>
+          at
+the end of the block to include the default icon font as well.
+         </p>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
