@@ -1,7 +1,8 @@
 {%- extends "basic/layout.html" %}
 
 {%- block body_tag %}
-  <body dir=ltr data-md-color-primary={{ theme_color_primary }} data-md-color-accent={{ theme_color_accent }}>
+  <body dir=ltr
+        data-md-color-primary={{ theme_color_primary }} data-md-color-accent={{ theme_color_accent }}>
 {%- endblock %}
 
 {# Do this so that bootstrap is included before the main css file #}
@@ -40,8 +41,10 @@
   <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application.css', 1) }}"/>
   <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application-palette.css', 1) }}"/>
   <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application-fixes.css', 1) }}"/>
+  {% block fonticon %}
   <link rel="stylesheet" href="{{ pathto('_static/fonts/material-icons.css', 1) }}"/>
-  <meta name="theme-color" content="#{{ theme_theme_color }}">
+  {% endblock %}
+  <meta name="theme-color" content="{{ theme_theme_color }}">
   <script src="{{ pathto('_static/javascripts/modernizr.js', 1) }}"></script>
   {% include "google_analytics.html" %}
   {% if theme_touch_icon %}
@@ -92,7 +95,13 @@
               </div>
             </div>
           </div>
-          {% include "localtoc.html" %}
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                {% include "localtoc.html" %}
+              </div>
+            </div>
+          </div>
         {% endblock %}
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
@@ -104,32 +113,36 @@
     <footer class="md-footer">
       <div class="md-footer-nav">
         <nav class="md-footer-nav__inner md-grid">
-          {% if prev %}
-            <a href="{{ prev.link|e }}" title="Material"
-               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
-               rel="prev">
-              <div class="md-flex__cell md-flex__cell--shrink">
-                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          {%- block footerrel %}
+            {% if prev %}
+              <a href="{{ prev.link|e }}" title="Material"
+                 class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+                 rel="prev">
+                <div class="md-flex__cell md-flex__cell--shrink">
+                  <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+                </div>
+                <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                  <span class="md-flex__ellipsis">
+                    <span
+                        class="md-footer-nav__direction"> Previous </span> {{ prev.title }} </span>
+                </div>
+              </a>
+            {% endif %}
+            {% if next %}
+              <a href="{{ next.link|e }}" title="Admonition"
+                 class="md-flex md-footer-nav__link md-footer-nav__link--next"
+                 rel="next">
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                  class="md-flex__ellipsis"> <span
+                  class="md-footer-nav__direction"> Next </span> {{ next.title }} </span>
               </div>
-              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis"> <span
-    class="md-footer-nav__direction"> Previous </span> {{ prev.title }} </span>
+              <div class="md-flex__cell md-flex__cell--shrink"><i
+                  class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
               </div>
-            </a>
-          {% endif %}
-          {% if next %}
-            <a href="{{ next.link|e }}" title="Admonition"
-               class="md-flex md-footer-nav__link md-footer-nav__link--next"
-               rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
-                class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> {{ next.title }} </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink"><i
-                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          {% endif %}
-          </a></nav>
+            {% endif %}
+          </a>
+          {% endblock %}
+        </nav>
       </div>
       <div class="md-footer-meta md-typeset">
         <div class="md-footer-meta__inner md-grid">

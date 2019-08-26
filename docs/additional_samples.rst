@@ -115,6 +115,11 @@ Tip
 ---
 .. tip:: Please **tip** your waiter.
 
+Custom Admonitions
+------------------
+.. admonition:: Custom
+
+   You can create your own admonitions with the default style.
 
 Footnotes
 =========

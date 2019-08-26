@@ -1,6 +1,20 @@
 {% set toctree = toctree(maxdepth=theme_globaltoc_depth|toint, collapse=theme_globaltoc_collapse|tobool, includehidden=theme_globaltoc_includehidden|tobool) %}
 {% if toctree %}
-  {{ toctree_format(toctree) }}
-{% else %}
-  {{ toc_format(toc) }}
+  {% set toctree_nodes = derender_toc(toctree, False) %}
+  <ul class="md-nav__list">
+  {%- for item in toctree_nodes recursive %}
+    <li class="md-nav__item">
+    {% if item.current %}
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> {{ item.contents }} </label>
+    {% endif %}
+      <a href="{{ item.href|e }}" class="md-nav__link{% if item.current %} md-nav__link--active{% endif %}">{{ item.contents }}</a>
+      {% if item.current %} {% include "localtoc.html" %}{% endif %}
+      {%- if item.children -%}
+        <ul class="md-nav__list"> {{ loop(item.children) }}</ul>
+      {%- endif %}
+    </li>
+  {%- endfor %}
+  </ul>
+  {# TODO: Fallback to toc? #}
 {% endif %}

@@ -11,15 +11,25 @@ documentation. It derives heavily from
 and also uses code from
 `Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
 
-``sphinx-material`` is a work-in-progress and a number of core Sphinx features
-are not supported, including:
 
-* Sidebar customization
-* Probably others
+Roadmap
+-------
+`Material for Sphinx <https://github.com/bashtage/sphinx-material>`_ is a work in progress.  While
+I believe that it is ready for use, there are a number of important limitation.  The most
+important it to improve the CSS generation to use
+`SASS <https://en.wikipedia.org/wiki/Sass_(stylesheet_language)>`_. It uses some python to
+modify Sphinx output, which is not ideal.
 
-It uses some python to modify Sphinx output, which is not ideal. In the
-longer-term, I hope to move to a SASS build which will simplify styling and
-should allow most of the HTML code changes to be avoided.
+The other issues are:
+
+* improving the documentation;
+* providing examples;
+* sidebar customization;
+* improving the search box; and
+* ensuring that all Sphinx blocks work as intended.
+
+You can see how it works on the
+`statsmodels development branch documentation <https://statsmodels/org/devel>`_.
 
 .. toctree::
     :hidden:
@@ -30,6 +40,8 @@ should allow most of the HTML code changes to be avoided.
     pymethod
     numpydoc
     rst-cheatsheet/rst-cheatsheet
+    change-log
+    license
 
 Getting Started
 ---------------
