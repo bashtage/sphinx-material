@@ -76,12 +76,13 @@ def reformat_pages(app, exception):
     npages = len(app.site_pages)
     transform = 'Minifying' if minify else 'Prettifying'
     print('{0} {1} files'.format(transform, npages))
+    transform = transform.lower()
     # TODO: Consider using parallel execution
     for i, page in enumerate(app.site_pages):
         if int(100 * (i / npages)) - last >= 1:
             last = int(100 * (i / npages))
             color_page = console.colorize('blue', page)
-            msg = 'minifying files... [{0}%] {1}'.format(last, color_page)
+            msg = '{0} files... [{1}%] {2}'.format(transform, last, color_page)
             sys.stdout.write('\033[K' + msg + '\r')
         with open(page, 'r', encoding='utf-8') as content:
             if minify:
