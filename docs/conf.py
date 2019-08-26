@@ -70,8 +70,7 @@ html_static_path = ["_static"]
 
 html_show_sourcelink = True
 html_sidebars = {
-    "**": ["logo-text.html", "globaltoc.html", "localtoc.html",
-           "searchbox.html"]
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
 }
 
 extensions.append("sphinx_material")

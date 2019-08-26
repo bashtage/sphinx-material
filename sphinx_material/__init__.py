@@ -141,7 +141,7 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool) -> List[dict]:
         formatted = {}
         if child.a is not None:
             formatted["href"] = child.a["href"]
-            formatted["contents"] = " ".join(child.a.contents)
+            formatted["contents"] = "".join(map(str, child.a.contents))
             if fix_root and formatted["href"] == "#" and child.a.contents:
                 # TODO: Replace with internal sphinx method to slugify
                 formatted["href"] = "#" + slugify(walk_contents(child.a))
@@ -155,16 +155,23 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool) -> List[dict]:
 
 
 def derender_toc(toc_text, fix_root=True) -> List[dict]:
-    toc = BeautifulSoup(toc_text, features="html.parser")
-    nodes = []
-    for child in toc.children:
-        if callable(child.isspace) and child.isspace():
-            continue
-        if child.name == "ul":
-            nodes.extend(ul_to_list(child, fix_root))
-        else:
-            raise NotImplemented("Not sure what to do here, expecting only ul")
-    return nodes
+    try:
+        toc = BeautifulSoup(toc_text, features="html.parser")
+        nodes = []
+        for child in toc.children:
+            if callable(child.isspace) and child.isspace():
+                continue
+            if child.name == "ul":
+                nodes.extend(ul_to_list(child, fix_root))
+            else:
+                raise NotImplemented("Not sure what to do here, expecting only ul")
+        return nodes
+    except Exception as exc:
+        logger = logging.getLogger(__name__)
+        logger.warning(
+            "Failed to process toctree_text\n" + str(exc) + "\n" + str(toc_text)
+        )
+        return toc_text
 
 
 def walk_contents(tags):
@@ -202,7 +209,4 @@ def table_fix(body_text):
 
 
 def get_html_context():
-    return {
-        "table_fix": table_fix,
-        "derender_toc": derender_toc,
-    }
+    return {"table_fix": table_fix, "derender_toc": derender_toc}
