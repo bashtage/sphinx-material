@@ -126,5 +126,5 @@ customization:
    block when changing the font.
 ``fonticon``
    Block that contains the icon font. Use this to add additional icon fonts
-   (e.g., `FontAwesome <>`_). You should probably call ``{{ super() }}`` at
+   (e.g., `FontAwesome <https://fontawesome.com/>`_). You should probably call ``{{ super() }}`` at
    the end of the block to include the default icon font as well.

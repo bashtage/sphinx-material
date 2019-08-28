@@ -9,8 +9,8 @@ from typing import List
 
 import bs4
 from bs4 import BeautifulSoup
-from slugify import slugify
 from sphinx.util import logging, console
+import slugify
 
 from ._version import get_versions
 
@@ -133,7 +133,7 @@ def html_theme_path():
     return [os.path.dirname(os.path.abspath(__file__))]
 
 
-def ul_to_list(node: bs4.element.Tag, fix_root: bool) -> List[dict]:
+def ul_to_list(node: bs4.element.Tag, fix_root: bool, page_name: str) -> List[dict]:
     out = []
     for child in node.find_all("li", recursive=False):
         if callable(child.isspace) and child.isspace():
@@ -143,19 +143,20 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool) -> List[dict]:
             formatted["href"] = child.a["href"]
             formatted["contents"] = "".join(map(str, child.a.contents))
             if fix_root and formatted["href"] == "#" and child.a.contents:
-                # TODO: Replace with internal sphinx method to slugify
-                contents = walk_contents(child.a)
-                formatted["href"] = "#" + slugify(contents.lower())
+                slug = slugify.slugify(page_name)
+                formatted["href"] = "#" + slug
             formatted["current"] = "current" in child.a.get("class", [])
         if child.ul is not None:
-            formatted["children"] = ul_to_list(child.ul, fix_root)
+            formatted["children"] = ul_to_list(child.ul, fix_root, page_name)
         else:
             formatted["children"] = []
         out.append(formatted)
     return out
 
 
-def derender_toc(toc_text, fix_root=True) -> List[dict]:
+def derender_toc(
+    toc_text, fix_root=True, page_name: str = "md-page-root--link"
+) -> List[dict]:
     try:
         toc = BeautifulSoup(toc_text, features="html.parser")
         nodes = []
@@ -163,7 +164,7 @@ def derender_toc(toc_text, fix_root=True) -> List[dict]:
             if callable(child.isspace) and child.isspace():
                 continue
             if child.name == "ul":
-                nodes.extend(ul_to_list(child, fix_root))
+                nodes.extend(ul_to_list(child, fix_root, page_name))
             else:
                 raise NotImplemented("Not sure what to do here, expecting only ul")
         return nodes
@@ -185,7 +186,7 @@ def walk_contents(tags):
     return "".join(out)
 
 
-def table_fix(body_text):
+def table_fix(body_text, page_name="md-page-root--link"):
     try:
         body = BeautifulSoup(body_text, features="html.parser")
         for table in body.select("table"):
@@ -193,11 +194,18 @@ def table_fix(body_text):
             if "highlighttable" in classes or "longtable" in classes:
                 continue
             del table["class"]
+        first_h1 = body.find("h1")
         headers = body.find_all(re.compile("^h[1-6]$"))
         for i, header in enumerate(headers):
             for a in header.select("a"):
                 if "headerlink" in a.get("class", ""):
                     header["id"] = a["href"][1:]
+        if first_h1:
+            slug = slugify.slugify(page_name)
+            first_h1["id"] = slug
+            for a in first_h1.select("a"):
+                a["href"] = "#" + slug
+
         divs = body.find_all("div", {"class": "section"})
         for div in divs:
             div.unwrap()
