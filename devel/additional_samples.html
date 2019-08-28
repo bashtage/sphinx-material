@@ -994,15 +994,7 @@ reStructuredText used to create these examples.
 210
 211
 212
-213
-214
-215
-216
-217
-218
-219
-220
-221</pre>
+213</pre>
            </div>
           </td>
           <td class="code">
@@ -1018,8 +1010,8 @@ reStructuredText used to create these examples.
 
 <span class="kn">import</span> <span class="nn">bs4</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">slugify</span> <span class="k">import</span> <span class="n">slugify</span>
 <span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="k">import</span> <span class="n">logging</span><span class="p">,</span> <span class="n">console</span>
-<span class="kn">import</span> <span class="nn">slugify</span>
 
 <span class="kn">from</span> <span class="nn">._version</span> <span class="k">import</span> <span class="n">get_versions</span>
 
@@ -1142,7 +1134,7 @@ reStructuredText used to create these examples.
     <span class="k">return</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))]</span>
 
 
-<span class="k">def</span> <span class="nf">ul_to_list</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">bs4</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">Tag</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="k">def</span> <span class="nf">ul_to_list</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">bs4</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">Tag</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
     <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
@@ -1152,20 +1144,19 @@ reStructuredText used to create these examples.
             <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span>
             <span class="n">formatted</span><span class="p">[</span><span class="s2">"contents"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">fix_root</span> <span class="ow">and</span> <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#"</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
-                <span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span>
-                <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slug</span>
+                <span class="c1"># TODO: Replace with internal sphinx method to slugify</span>
+                <span class="n">contents</span> <span class="o">=</span> <span class="n">walk_contents</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
+                <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slugify</span><span class="p">(</span><span class="n">contents</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
             <span class="n">formatted</span><span class="p">[</span><span class="s2">"current"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"current"</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">ul</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">formatted</span><span class="p">[</span><span class="s2">"children"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">,</span> <span class="n">page_name</span><span class="p">)</span>
+            <span class="n">formatted</span><span class="p">[</span><span class="s2">"children"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">formatted</span><span class="p">[</span><span class="s2">"children"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span>
 
 
-<span class="k">def</span> <span class="nf">derender_toc</span><span class="p">(</span>
-    <span class="n">toc_text</span><span class="p">,</span> <span class="n">fix_root</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"md-page-root--link"</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="k">def</span> <span class="nf">derender_toc</span><span class="p">(</span><span class="n">toc_text</span><span class="p">,</span> <span class="n">fix_root</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">toc</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">toc_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1173,7 +1164,7 @@ reStructuredText used to create these examples.
             <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
                 <span class="k">continue</span>
             <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"ul"</span><span class="p">:</span>
-                <span class="n">nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">,</span> <span class="n">page_name</span><span class="p">))</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="bp">NotImplemented</span><span class="p">(</span><span class="s2">"Not sure what to do here, expecting only ul"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">nodes</span>
@@ -1195,7 +1186,7 @@ reStructuredText used to create these examples.
     <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">table_fix</span><span class="p">(</span><span class="n">body_text</span><span class="p">,</span> <span class="n">page_name</span><span class="o">=</span><span class="s2">"md-page-root--link"</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">table_fix</span><span class="p">(</span><span class="n">body_text</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">body_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"table"</span><span class="p">):</span>
@@ -1203,18 +1194,11 @@ reStructuredText used to create these examples.
             <span class="k">if</span> <span class="s2">"highlighttable"</span> <span class="ow">in</span> <span class="n">classes</span> <span class="ow">or</span> <span class="s2">"longtable"</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="k">del</span> <span class="n">table</span><span class="p">[</span><span class="s2">"class"</span><span class="p">]</span>
-        <span class="n">first_h1</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)</span>
         <span class="n">headers</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">"^h[1-6]$"</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">header</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">headers</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">header</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
                 <span class="k">if</span> <span class="s2">"headerlink"</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="s2">""</span><span class="p">):</span>
                     <span class="n">header</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="k">if</span> <span class="n">first_h1</span><span class="p">:</span>
-            <span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span>
-            <span class="n">first_h1</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">slug</span>
-            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">first_h1</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
-                <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slug</span>
-
         <span class="n">divs</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"div"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"class"</span><span class="p">:</span> <span class="s2">"section"</span><span class="p">})</span>
         <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">divs</span><span class="p">:</span>
             <span class="n">div</span><span class="o">.</span><span class="n">unwrap</span><span class="p">()</span>
