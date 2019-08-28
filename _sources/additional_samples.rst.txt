@@ -1,6 +1,6 @@
-==================
-Additional Samples
-==================
+==========================
+``Additional`` ``Samples``
+==========================
 
 
 Various examples of styling applied to Sphinx constructs. You can

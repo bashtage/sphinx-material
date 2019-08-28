@@ -129,6 +129,7 @@
 ./generated/generated/numpy.polynomial.Polynomial.truncate.html
 ./generated/generated/numpy.polynomial.Polynomial.window.html
 ./generated/numpy.polynomial.Polynomial.html
+./genindex.html
 ./index.html
 ./license.html
 ./numpydoc.html
