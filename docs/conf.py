@@ -110,5 +110,5 @@ html_last_updated_fmt = ""
 todo_include_todos = True
 html_favicon = "images/favicon.ico"
 
-relinks = []
-html_use_index = False
+html_use_index = True
+html_domain_indices = True
