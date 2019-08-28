@@ -993,7 +993,8 @@ reStructuredText used to create these examples.
 209
 210
 211
-212</pre>
+212
+213</pre>
            </div>
           </td>
           <td class="code">
@@ -1144,7 +1145,8 @@ reStructuredText used to create these examples.
             <span class="n">formatted</span><span class="p">[</span><span class="s2">"contents"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">fix_root</span> <span class="ow">and</span> <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#"</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
                 <span class="c1"># TODO: Replace with internal sphinx method to slugify</span>
-                <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slugify</span><span class="p">(</span><span class="n">walk_contents</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="p">))</span>
+                <span class="n">contents</span> <span class="o">=</span> <span class="n">walk_contents</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
+                <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slugify</span><span class="p">(</span><span class="n">contents</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
             <span class="n">formatted</span><span class="p">[</span><span class="s2">"current"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"current"</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">ul</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">formatted</span><span class="p">[</span><span class="s2">"children"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">)</span>
