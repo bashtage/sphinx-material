@@ -109,3 +109,8 @@ or ``theme.conf`` for more details.
         # If True, show hidden TOC entries
         'globaltoc_includehidden': False,
     }
+
+
+Index
+~~~~~
+:ref:`genindex`
