@@ -144,7 +144,8 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool) -> List[dict]:
             formatted["contents"] = "".join(map(str, child.a.contents))
             if fix_root and formatted["href"] == "#" and child.a.contents:
                 # TODO: Replace with internal sphinx method to slugify
-                formatted["href"] = "#" + slugify(walk_contents(child.a))
+                contents = walk_contents(child.a)
+                formatted["href"] = "#" + slugify(contents.lower())
             formatted["current"] = "current" in child.a.get("class", [])
         if child.ul is not None:
             formatted["children"] = ul_to_list(child.ul, fix_root)
