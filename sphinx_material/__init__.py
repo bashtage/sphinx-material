@@ -17,6 +17,7 @@ from ._version import get_versions
 __version__ = get_versions()["version"]
 del get_versions
 
+ROOT_SUFFIX = '--page-root'
 
 def setup(app):
     """Setup connects events to the sitemap builder"""
@@ -143,7 +144,7 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool, page_name: str) -> List[di
             formatted["href"] = child.a["href"]
             formatted["contents"] = "".join(map(str, child.a.contents))
             if fix_root and formatted["href"] == "#" and child.a.contents:
-                slug = slugify.slugify(page_name)
+                slug = slugify.slugify(page_name) + ROOT_SUFFIX
                 formatted["href"] = "#" + slug
             formatted["current"] = "current" in child.a.get("class", [])
         if child.ul is not None:
@@ -201,7 +202,7 @@ def table_fix(body_text, page_name="md-page-root--link"):
                 if "headerlink" in a.get("class", ""):
                     header["id"] = a["href"][1:]
         if first_h1:
-            slug = slugify.slugify(page_name)
+            slug = slugify.slugify(page_name) + ROOT_SUFFIX
             first_h1["id"] = slug
             for a in first_h1.select("a"):
                 a["href"] = "#" + slug
