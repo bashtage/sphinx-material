@@ -19,11 +19,16 @@ setup(
     python_requires=">=3.6",
     install_requires=REQUIREMENTS,
     license="MIT",
-    classifiers=(
+    classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Natural Language :: English",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
-    ),
+        "Framework :: Sphinx :: Extension",
+        "Framework :: Sphinx :: Theme",
+        "Topic :: Documentation :: Sphinx",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+    ],
 )

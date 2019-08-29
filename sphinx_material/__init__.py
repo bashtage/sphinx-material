@@ -17,7 +17,8 @@ from ._version import get_versions
 __version__ = get_versions()["version"]
 del get_versions
 
-ROOT_SUFFIX = '--page-root'
+ROOT_SUFFIX = "--page-root"
+
 
 def setup(app):
     """Setup connects events to the sitemap builder"""
