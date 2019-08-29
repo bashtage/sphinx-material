@@ -13,6 +13,8 @@
         </li>
       {%- endfor %}
     {%- endif %}
+    {%- if include_searchbox %}
     {% include "sourcelink.html" %}
+    {%- endif %}
   </ul>
 </nav>

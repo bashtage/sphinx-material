@@ -1,3 +1,4 @@
+{% set include_searchbox=True %}
 {% set toctree = toctree(maxdepth=theme_globaltoc_depth|toint, collapse=theme_globaltoc_collapse|tobool, includehidden=theme_globaltoc_includehidden|tobool) %}
 {% if toctree %}
   {% set toctree_nodes = derender_toc(toctree, False) %}
@@ -9,7 +10,10 @@
     <label class="md-nav__link md-nav__link--active" for="__toc"> {{ item.contents }} </label>
     {% endif %}
       <a href="{{ item.href|e }}" class="md-nav__link{% if item.current %} md-nav__link--active{% endif %}">{{ item.contents }}</a>
-      {% if item.current %} {% include "localtoc.html" %}{% endif %}
+      {% if item.current %}
+        {%- set include_searchbox=False %}
+        {% include "localtoc.html" %}{% endif %}
+        {%- set include_searchbox=True %}
       {%- if item.children -%}
         <ul class="md-nav__list"> {{ loop(item.children) }}</ul>
       {%- endif %}

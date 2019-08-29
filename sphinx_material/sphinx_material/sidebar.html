@@ -4,7 +4,7 @@
       {% if theme_logo_icon %}
         <i class="md-icon">{{ theme_logo_icon }}</i>
       {% else %}
-        <img src="{{ pathto('_static/' ~ logo, 1) }}" width="48" height="48">
+        <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ html_title }} logo" width="48" height="48">
       {% endif %}
     </a>
     <a href="{{ pathto(master_doc) }}"
