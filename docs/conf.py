@@ -102,6 +102,10 @@ html_theme_options = {
             "title": "Material for MkDocs",
         },
     ],
+    "heroes": {
+        "index": "A responsive Material Design theme for Sphinx sites.",
+        "customization": "Configuration options to personalize your site.",
+    },
 }
 
 language = "en"

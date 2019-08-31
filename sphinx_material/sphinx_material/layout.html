@@ -81,8 +81,11 @@
 {%- block relbar2 %}{% endblock %}
 
 {%- block content %}
+  {% set nav_bar_tabs = parents or theme_master_doc or theme_nav_links %}
   <div class="md-container">
-    {%- block hero %}{% endblock %}
+    {%- block hero %}
+    {% include "hero.html" %}
+    {% endblock %}
     {% include "relbar.html" %}
     <main class="md-main">
       <div class="md-main__inner md-grid" data-md-component="container">
