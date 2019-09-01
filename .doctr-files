@@ -2,6 +2,7 @@
 ./_images/biohazard.png
 ./_images/magnetic-balls.jpg
 ./_images/noncomm.png
+./_images/notebook_5_0.png
 ./_images/screenshot.png
 ./_images/sharealike.png
 ./_modules/index.html
@@ -38,6 +39,8 @@
 ./_sources/generated/numpy.polynomial.Polynomial.rst.txt
 ./_sources/index.rst.txt
 ./_sources/license.rst.txt
+./_sources/markdown.md.txt
+./_sources/notebook.ipynb.txt
 ./_sources/numpydoc.rst.txt
 ./_sources/pymethod.rst.txt
 ./_sources/rst-cheatsheet/rst-cheatsheet.rst.txt
@@ -132,6 +135,8 @@
 ./genindex.html
 ./index.html
 ./license.html
+./markdown.html
+./notebook.html
 ./numpydoc.html
 ./objects.inv
 ./pymethod.html
