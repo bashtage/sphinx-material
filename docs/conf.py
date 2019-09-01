@@ -42,6 +42,8 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
+    "nbsphinx",
+    "recommonmark",
 ]
 
 autosummary_generate = True
@@ -116,3 +118,6 @@ html_favicon = "images/favicon.ico"
 
 html_use_index = True
 html_domain_indices = True
+
+nbsphinx_execute = "always"
+nbsphinx_kernel_name = "python3"

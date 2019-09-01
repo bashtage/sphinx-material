@@ -3,6 +3,11 @@ language: python
 dist: bionic
 sudo: false
 
+addons:
+  apt:
+    packages:
+      - pandoc
+
 env:
   global:
     # Doctr deploy key for bashtage/sphinx-material
@@ -24,7 +29,8 @@ install:
 
 script:
   - cd docs
-  - pip install -r requirements.txt
+  - pip install -r requirements.txt -q
+  - jupyter kernelspec list
   - make html
 
 after_success:

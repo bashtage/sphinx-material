@@ -39,6 +39,8 @@ You can see how it works on the
     additional_samples
     pymethod
     numpydoc
+    notebook.ipynb
+    markdown.md
     rst-cheatsheet/rst-cheatsheet
     change-log
     license

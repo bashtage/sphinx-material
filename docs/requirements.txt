@@ -1,3 +1,11 @@
 sphinx_material
-numpy>=1.17
+numpy>=1.16
+pandas
+matplotlib
 numpydoc
+nbsphinx
+jupyter_client
+notebook
+nbconvert
+ipykernel
+recommonmark

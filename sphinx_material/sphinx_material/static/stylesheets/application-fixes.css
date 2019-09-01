@@ -303,3 +303,8 @@
  [data-md-color-accent=deep-orange] .md-nav__extra_link:focus, [data-md-color-accent=deep-orange] .md-nav__extra_link:hover {
      color: #ff6e40
 }
+
+div.rendered_html table
+{
+    font-size: 0.8rem !important;
+}
