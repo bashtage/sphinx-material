@@ -87,7 +87,7 @@ Other content blocks
    eu lectus dapibus, eleifend nulla varius, lobortis turpis. In ac
    hendrerit nisl, sit amet laoreet nibh.
 
-      Praesent at ``:::js return target``, sodales nibh vel, tempor
+      Praesent at :javascript:`return target`, sodales nibh vel, tempor
       felis. Fusce vel lacinia lacus. Suspendisse rhoncus nunc non nisi
       iaculis ultrices. Donec consectetur mauris non neque imperdiet,
       eget volutpat libero.

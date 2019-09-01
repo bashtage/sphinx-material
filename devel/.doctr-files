@@ -2,6 +2,7 @@ devel/_images/attrib.png
 devel/_images/biohazard.png
 devel/_images/magnetic-balls.jpg
 devel/_images/noncomm.png
+devel/_images/notebook_5_0.png
 devel/_images/screenshot.png
 devel/_images/sharealike.png
 devel/_modules/index.html
@@ -38,6 +39,7 @@ devel/_sources/generated/generated/numpy.polynomial.Polynomial.window.rst.txt
 devel/_sources/generated/numpy.polynomial.Polynomial.rst.txt
 devel/_sources/index.rst.txt
 devel/_sources/license.rst.txt
+devel/_sources/notebook.ipynb.txt
 devel/_sources/numpydoc.rst.txt
 devel/_sources/pymethod.rst.txt
 devel/_sources/rst-cheatsheet/rst-cheatsheet.rst.txt
@@ -132,6 +134,7 @@ devel/generated/numpy.polynomial.Polynomial.html
 devel/genindex.html
 devel/index.html
 devel/license.html
+devel/notebook.html
 devel/numpydoc.html
 devel/objects.inv
 devel/pymethod.html
