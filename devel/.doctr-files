@@ -39,6 +39,7 @@ devel/_sources/generated/generated/numpy.polynomial.Polynomial.window.rst.txt
 devel/_sources/generated/numpy.polynomial.Polynomial.rst.txt
 devel/_sources/index.rst.txt
 devel/_sources/license.rst.txt
+devel/_sources/markdown.md.txt
 devel/_sources/notebook.ipynb.txt
 devel/_sources/numpydoc.rst.txt
 devel/_sources/pymethod.rst.txt
@@ -134,6 +135,7 @@ devel/generated/numpy.polynomial.Polynomial.html
 devel/genindex.html
 devel/index.html
 devel/license.html
+devel/markdown.html
 devel/notebook.html
 devel/numpydoc.html
 devel/objects.inv
