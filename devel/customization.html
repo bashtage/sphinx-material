@@ -238,6 +238,11 @@
                  </a>
                 </li>
                 <li class="md-nav__item">
+                 <a class="md-nav__link" href="#removing-sidebars">
+                  Removing sidebars
+                 </a>
+                </li>
+                <li class="md-nav__item">
                  <a class="md-nav__link" href="#customizing-the-layout">
                   Customizing the layout
                  </a>
@@ -265,6 +270,11 @@
             <li class="md-nav__item">
              <a class="md-nav__link" href="#configuration-options">
               Configuration Options
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#removing-sidebars">
+              Removing sidebars
              </a>
             </li>
             <li class="md-nav__item">
@@ -314,11 +324,6 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="markdown.html#h1-heading">
-            h1 Heading
-           </a>
-          </li>
-          <li class="md-nav__item">
            <a class="md-nav__link" href="rst-cheatsheet/rst-cheatsheet.html">
             rst Cheatsheet
            </a>
@@ -355,6 +360,11 @@
              <li class="md-nav__item">
               <a class="md-nav__link" href="#configuration-options">
                Configuration Options
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#removing-sidebars">
+               Removing sidebars
               </a>
              </li>
              <li class="md-nav__item">
@@ -722,7 +732,75 @@ external content. (bool)
           </li>
          </ul>
         </dd>
+        <dt>
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           heroes
+          </span>
+         </code>
+        </dt>
+        <dd>
+         <p>
+          A
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            dict[str,str]
+           </span>
+          </code>
+          where the key is a pagename and the value is the text to display in the
+page’s hero location.
+         </p>
+        </dd>
        </dl>
+       <h2 id="removing-sidebars">
+        Removing sidebars
+        <a class="headerlink" href="#removing-sidebars" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        The search box, the global toc and the local toc all respect the value in
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          html_sidebars
+         </span>
+        </code>
+        in
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          conf.py
+         </span>
+        </code>
+        . The default setting is
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">html_sidebars</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"**"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"logo-text.html"</span><span class="p">,</span> <span class="s2">"globaltoc.html"</span><span class="p">,</span> <span class="s2">"localtoc.html"</span><span class="p">,</span> <span class="s2">"searchbox.html"</span><span class="p">]</span>
+<span class="p">}</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        If this is changed to
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">html_sidebars</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"**"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"globaltoc.html"</span><span class="p">]</span>
+<span class="p">}</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        then only the global ToC would appear on all pages (
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          **
+         </span>
+        </code>
+        is a glob pattern).
+       </p>
        <h2 id="customizing-the-layout">
         Customizing the layout
         <a class="headerlink" href="#customizing-the-layout" title="Permalink to this headline">
@@ -885,7 +963,7 @@ the end of the block to include the default icon font as well.
         © Copyright 2019, Kevin Sheppard.
        </div>
        Last updated on
-                Sep 01, 2019.
+                Sep 02, 2019.
        <br/>
        Created using
        <a href="http://sphinx-doc.org/">
