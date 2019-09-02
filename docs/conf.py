@@ -16,6 +16,7 @@
 from distutils.version import LooseVersion
 
 import sphinx_material
+from recommonmark.transform import AutoStructify
 
 # -- Project information -----------------------------------------------------
 
@@ -44,6 +45,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "nbsphinx",
     "recommonmark",
+    "sphinx_markdown_tables",
 ]
 
 autosummary_generate = True
@@ -121,3 +123,12 @@ html_domain_indices = True
 
 nbsphinx_execute = "always"
 nbsphinx_kernel_name = "python3"
+
+# Enable eval_rst in markdown
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+        'enable_math': True,
+        'enable_inline_math': True,
+        'enable_eval_rst': True,
+    }, True)
+    app.add_transform(AutoStructify)
