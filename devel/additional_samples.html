@@ -1019,7 +1019,13 @@ reStructuredText used to create these examples.
 222
 223
 224
-225</pre>
+225
+226
+227
+228
+229
+230
+231</pre>
            </div>
           </td>
           <td class="code">
@@ -1194,7 +1200,13 @@ reStructuredText used to create these examples.
             <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"ul"</span><span class="p">:</span>
                 <span class="n">nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">,</span> <span class="n">page_name</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="bp">NotImplemented</span><span class="p">(</span><span class="s2">"Not sure what to do here, expecting only ul"</span><span class="p">)</span>
+                <span class="c1"># TODO: this can be hit if the TOC has a caption, in which</span>
+                <span class="c1">#   case you encounter a &lt;p&gt;.  Need to return caption</span>
+                <span class="c1">#   separately</span>
+                <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"caption is ignored for now, sorry"</span><span class="p">)</span>
+                <span class="k">continue</span>
+
         <span class="k">return</span> <span class="n">nodes</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
         <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -2078,7 +2090,7 @@ tables.
         © Copyright 2019, Kevin Sheppard.
        </div>
        Last updated on
-                Sep 02, 2019.
+                Sep 13, 2019.
        <br/>
        Created using
        <a href="http://sphinx-doc.org/">
