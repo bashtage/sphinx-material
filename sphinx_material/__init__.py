@@ -168,7 +168,13 @@ def derender_toc(
             if child.name == "ul":
                 nodes.extend(ul_to_list(child, fix_root, page_name))
             else:
-                raise NotImplemented("Not sure what to do here, expecting only ul")
+                # TODO: this can be hit if the TOC has a caption, in which
+                #   case you encounter a <p>.  Need to return caption
+                #   separately
+                logger = logging.getLogger(__name__)
+                logger.warning("caption is ignored for now, sorry")
+                continue
+
         return nodes
     except Exception as exc:
         logger = logging.getLogger(__name__)
