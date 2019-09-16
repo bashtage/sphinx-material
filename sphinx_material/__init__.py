@@ -156,24 +156,35 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool, page_name: str) -> List[di
     return out
 
 
+class CaptionList(list):
+    _caption = ""
+
+    def __init__(self):
+        super().__init__()
+        self._caption = ""
+
+    @property
+    def caption(self):
+        return self._caption
+
+    @caption.setter
+    def caption(self, value):
+        self._caption = value
+
+
 def derender_toc(
     toc_text, fix_root=True, page_name: str = "md-page-root--link"
 ) -> List[dict]:
     try:
         toc = BeautifulSoup(toc_text, features="html.parser")
-        nodes = []
+        nodes = CaptionList()
         for child in toc.children:
             if callable(child.isspace) and child.isspace():
                 continue
             if child.name == "ul":
                 nodes.extend(ul_to_list(child, fix_root, page_name))
             else:
-                # TODO: this can be hit if the TOC has a caption, in which
-                #   case you encounter a <p>.  Need to return caption
-                #   separately
-                logger = logging.getLogger(__name__)
-                logger.warning("caption is ignored for now, sorry")
-                continue
+                nodes.caption = "".join(map(str, child.contents))
 
         return nodes
     except Exception as exc:

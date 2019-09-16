@@ -126,9 +126,9 @@ nbsphinx_kernel_name = "python3"
 
 # Enable eval_rst in markdown
 def setup(app):
-    app.add_config_value('recommonmark_config', {
-        'enable_math': True,
-        'enable_inline_math': True,
-        'enable_eval_rst': True,
-    }, True)
+    app.add_config_value(
+        "recommonmark_config",
+        {"enable_math": True, "enable_inline_math": True, "enable_eval_rst": True},
+        True,
+    )
     app.add_transform(AutoStructify)

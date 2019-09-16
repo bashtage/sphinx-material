@@ -308,3 +308,8 @@ div.rendered_html table
 {
     font-size: 0.8rem !important;
 }
+
+.md-nav p.caption {
+    padding-left: 0.6rem;
+    font-weight: 700;
+}
