@@ -46,6 +46,7 @@ devel/_sources/pymethod.rst.txt
 devel/_sources/rst-cheatsheet/rst-cheatsheet.rst.txt
 devel/_sources/specimen.rst.txt
 devel/_sources/subpage/index.rst.txt
+devel/_sources/subpage/second-subsubpage.rst.txt
 devel/_sources/subpage/subsubpage.rst.txt
 devel/_static/basic.css
 devel/_static/doctools.js
@@ -146,4 +147,5 @@ devel/searchindex.js
 devel/sitemap.xml
 devel/specimen.html
 devel/subpage/index.html
+devel/subpage/second-subsubpage.html
 devel/subpage/subsubpage.html

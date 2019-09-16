@@ -205,6 +205,11 @@
            </div>
           </a>
          </div>
+         <p class="caption">
+          <span class="caption-text">
+           Contents Caption
+          </span>
+         </p>
          <ul class="md-nav__list">
           <li class="md-nav__item">
            <a class="md-nav__link" href="customization.html">
@@ -707,7 +712,12 @@ reStructuredText used to create these examples.
           <ul>
            <li class="toctree-l2">
             <a class="reference internal" href="subpage/subsubpage.html">
-             Subsubpage
+             1. Subsubpage
+            </a>
+           </li>
+           <li class="toctree-l2">
+            <a class="reference internal" href="subpage/second-subsubpage.html">
+             2. Second Subsubpage
             </a>
            </li>
           </ul>
@@ -1025,7 +1035,18 @@ reStructuredText used to create these examples.
 228
 229
 230
-231</pre>
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242</pre>
            </div>
           </td>
           <td class="code">
@@ -1188,24 +1209,35 @@ reStructuredText used to create these examples.
     <span class="k">return</span> <span class="n">out</span>
 
 
+<span class="k">class</span> <span class="nc">CaptionList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+    <span class="n">_caption</span> <span class="o">=</span> <span class="s2">""</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="s2">""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">caption</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span>
+
+    <span class="nd">@caption</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">caption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="n">value</span>
+
+
 <span class="k">def</span> <span class="nf">derender_toc</span><span class="p">(</span>
     <span class="n">toc_text</span><span class="p">,</span> <span class="n">fix_root</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"md-page-root--link"</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">toc</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">toc_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
-        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="n">CaptionList</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">toc</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
                 <span class="k">continue</span>
             <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"ul"</span><span class="p">:</span>
                 <span class="n">nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">,</span> <span class="n">page_name</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># TODO: this can be hit if the TOC has a caption, in which</span>
-                <span class="c1">#   case you encounter a &lt;p&gt;.  Need to return caption</span>
-                <span class="c1">#   separately</span>
-                <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"caption is ignored for now, sorry"</span><span class="p">)</span>
-                <span class="k">continue</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">caption</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">contents</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">nodes</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
@@ -2090,7 +2122,7 @@ tables.
         © Copyright 2019, Kevin Sheppard.
        </div>
        Last updated on
-                Sep 13, 2019.
+                Sep 16, 2019.
        <br/>
        Created using
        <a href="http://sphinx-doc.org/">
