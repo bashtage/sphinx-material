@@ -32,7 +32,7 @@ You can see how it works on the
 `statsmodels development branch documentation <https://statsmodels/org/devel>`_.
 
 .. toctree::
-    :caption: Contents
+    :caption: Contents Caption
 
     customization
     specimen
@@ -98,7 +98,7 @@ or ``theme.conf`` for more details.
 
         # Set the color and the accent color
         'color_primary': 'blue',
-        'color_accent': 'light-blue',
+        'color_accent': 'light-blue'
 
         # Set the repo location to get a badge with stats
         'repo_url': 'https://github.com/project/project/',
