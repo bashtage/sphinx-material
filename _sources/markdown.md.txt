@@ -1,131 +1,257 @@
 # Markdown
 
 Sphinx can be configured to use markdown using the [recommonmark](https://github.com/readthedocs/recommonmark)
-extension.
+extension. recommonmark is strict and does not natively support tables or common extensions
+to markdown.
 
 ---
 
-# h1 Heading
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
 
+## Body copy
 
-## Horizontal Rules
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero,
+mollis sed massa vel, *ornare viverra ex*. Mauris a ullamcorper lacus. Nullam
+urna elit, malesuada eget finibus ut, ullamcorper ac tortor. Vestibulum sodales
+pulvinar nisl, pharetra aliquet est. Quisque volutpat erat ac nisi accumsan
+tempor.
 
-Text
+**Sed suscipit**, orci non pretium pretium, quam mi gravida metus, vel
+venenatis justo est condimentum diam. Maecenas non ornare justo. Nam a ipsum
+eros. [Nulla aliquam](#) orci sit amet nisl posuere malesuada. Proin aliquet
+nulla velit, quis ultricies orci feugiat et. `Ut tincidunt sollicitudin`
+tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
-___
+## Headings
 
-Some text
+### The 3rd level
 
----
+#### The 4th level
 
-Some more text
+##### The 5th level
 
-***
+###### The 6th level
 
+## Headings <small>with secondary text</small>
 
-## Emphasis
+### The 3rd level <small>with secondary text</small>
 
-**This is bold text**
+#### The 4th level <small>with secondary text</small>
 
-__This is bold text__
+##### The 5th level <small>with secondary text</small>
 
-*This is italic text*
-
-_This is italic text_
-
-~~Strikethrough~~
-
+###### The 6th level <small>with secondary text</small>
 
 ## Blockquotes
 
+> Morbi eget dapibus felis. Vivamus venenatis porttitor tortor sit amet rutrum.
+  Pellentesque aliquet quam enim, eu volutpat urna rutrum a. Nam vehicula nunc
+  mauris, a ultricies libero efficitur sed. *Class aptent* taciti sociosqu ad
+  litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie
+  imperdiet consectetur.
 
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
+### Blockquote nesting
 
+> **Sed aliquet**, neque at rutrum mollis, neque nisi tincidunt nibh, vitae
+  faucibus lacus nunc at lacus. Nunc scelerisque, quam id cursus sodales, lorem
+  [libero fermentum](#) urna, ut efficitur elit ligula et nunc.
+
+> > Mauris dictum mi lacus, sit amet pellentesque urna vehicula fringilla.
+    Ut sit amet placerat ante. Proin sed elementum nulla. Nunc vitae sem odio.
+    Suspendisse ac eros arcu. Vivamus orci erat, volutpat a tempor et, rutrum.
+    eu odio.
+
+> > > `Suspendisse rutrum facilisis risus`, eu posuere neque commodo a.
+      Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec leo
+      bibendum, sodales mauris ut, tincidunt massa.
+
+### Other content blocks
+
+> Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed eu
+  lectus dapibus, eleifend nulla varius, lobortis turpis. In ac hendrerit nisl,
+  sit amet laoreet nibh.
+  ```
+  var _extends = function(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        target[key] = source[key];
+      }
+    }
+    return target;
+  };
+  ```
+
+  > > Praesent at `:::js return target`, sodales nibh vel, tempor felis. Fusce
+      vel lacinia lacus. Suspendisse rhoncus nunc non nisi iaculis ultrices.
+      Donec consectetur mauris non neque imperdiet, eget volutpat libero.
 
 ## Lists
 
-Unordered
+### Unordered lists
 
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!
+* Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus tellus
+  non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor lobortis orci,
+  at elementum urna sodales vitae. In in vehicula nulla, quis ornare libero.
 
-Ordered
+    * Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis.
+    * Nam vulputate tincidunt fringilla.
+    * Nullam dignissim ultrices urna non auctor.
 
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
+* Aliquam metus eros, pretium sed nulla venenatis, faucibus auctor ex. Proin ut
+  eros sed sapien ullamcorper consequat. Nunc ligula ante, fringilla at aliquam
+  ac, aliquet sed mauris.
 
+* Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
+  accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
+  lacinia sed. Aenean in finibus diam.
 
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
+### Ordered lists
 
-Start numbering with offset:
+1. Integer vehicula feugiat magna, a mollis tellus. Nam mollis ex ante, quis
+  elementum eros tempor rutrum. Aenean efficitur lobortis lacinia. Nulla
+  consectetur feugiat sodales.
 
-57. foo
-1. bar
+2. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+  ridiculus mus. Aliquam ornare feugiat quam et egestas. Nunc id erat et quam
+  pellentesque lacinia eu vel odio.
 
+    1. Vivamus venenatis porttitor tortor sit amet rutrum. Pellentesque aliquet
+      quam enim, eu volutpat urna rutrum a. Nam vehicula nunc mauris, a
+      ultricies libero efficitur sed.
 
-## Code
+        1. Mauris dictum mi lacus
+        2. Ut sit amet placerat ante
+        3. Suspendisse ac eros arcu
 
-Inline `code`
+    2. Morbi eget dapibus felis. Vivamus venenatis porttitor tortor sit amet
+      rutrum. Pellentesque aliquet quam enim, eu volutpat urna rutrum a. Sed
+      aliquet, neque at rutrum mollis, neque nisi tincidunt nibh.
 
-Indented code
+    3. Pellentesque eget `:::js var _extends` ornare tellus, ut gravida mi.
+    ```
+    var _extends = function(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          target[key] = source[key];
+        }
+      }
+      return target;
+    };
+    ```
 
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
+3. Vivamus id mi enim. Integer id turpis sapien. Ut condimentum lobortis
+  sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis venenatis
+  nulla. Vivamus a pharetra leo.
 
+### Definition lists
 
-Block code "fences"
+**Not supported in commonmark, but you can use a rst definition list inside a
+fenced eval_rst block.**
 
+```eval_rst
+Lorem ipsum dolor sit amet
+   Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus
+   tellus non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor
+   lobortis orci, at elementum urna sodales vitae. In in vehicula nulla.
+
+   Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis. Nam
+   vulputate tincidunt fringilla. Nullam dignissim ultrices urna non
+   auctor.
+
+Cras arcu libero
+   Aliquam metus eros, pretium sed nulla venenatis, faucibus auctor ex.
+   Proin ut eros sed sapien ullamcorper consequat. Nunc ligula ante,
+   fringilla at aliquam ac, aliquet sed mauris.
 ```
-Sample text here...
-```
 
-Syntax highlighting
+## Code blocks
 
-``` js
-var foo = function (bar) {
-  return bar++;
-};
+### Inline
 
-console.log(foo(5));
-```
+Morbi eget `dapibus felis`. Vivamus *`venenatis porttitor`* tortor sit amet
+rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+per inceptos himenaeos. [`Pellentesque aliquet quam enim`](#), eu volutpat urna
+rutrum a.
 
-## Tables
+Nam vehicula nunc `:::js return target` mauris, a ultricies libero efficitur
+sed. Sed molestie imperdiet consectetur. Vivamus a pharetra leo. Pellentesque
+eget ornare tellus, ut gravida mi. Fusce vel lacinia lacus.
 
-## Links
+### Listing
 
-[link text](http://dev.nodeca.com)
+    var _extends = function(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          target[key] = source[key];
+        }
+      }
+      return target;
+    };
 
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+## Horizontal rules
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+Aenean in finibus diam. Duis mollis est eget nibh volutpat, fermentum aliquet
+dui mollis. Nam vulputate tincidunt fringilla. Nullam dignissim ultrices urna
+non auctor.
 
+***
 
-## Images
+Integer vehicula feugiat magna, a mollis tellus. Nam mollis ex ante, quis
+elementum eros tempor rutrum. Aenean efficitur lobortis lacinia. Nulla
+consectetur feugiat sodales.
 
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+## Data tables
 
-Like links, Images also have a footnote style syntax
+**Note**: Markdown table syntax requires ``sphinx_markdown_tables``
 
-![Alt text][id]
+| Sollicitudo / Pellentesi | consectetur | adipiscing | elit    | arcu | sed |
+| ------------------------ | ----------- | ---------- | ------- | ---- | --- |
+| Vivamus a pharetra       | yes         | yes        | yes     | yes  | yes |
+| Ornare viverra ex        | yes         | yes        | yes     | yes  | yes |
+| Mauris a ullamcorper     | yes         | yes        | partial | yes  | yes |
+| Nullam urna elit         | yes         | yes        | yes     | yes  | yes |
+| Malesuada eget finibus   | yes         | yes        | yes     | yes  | yes |
+| Ullamcorper              | yes         | yes        | yes     | yes  | yes |
+| Vestibulum sodales       | yes         | -          | yes     | -    | yes |
+| Pulvinar nisl            | yes         | yes        | yes     | -    | -   |
+| Pharetra aliquet est     | yes         | yes        | yes     | yes  | yes |
+| Sed suscipit             | yes         | yes        | yes     | yes  | yes |
+| Orci non pretium         | yes         | partial    | -       | -    | -   |
 
-With a reference later in the document defining the URL location:
+Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus tellus
+non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor lobortis orci,
+at elementum urna sodales vitae. In in vehicula nulla, quis ornare libero.
 
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+| Left       | Center   | Right   |
+| :--------- | :------: | ------: |
+| Lorem      | *dolor*  | `amet`  |
+| [ipsum](#) | **sit**  |         |
 
+Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed eu
+lectus dapibus, eleifend nulla varius, lobortis turpis. In ac hendrerit nisl,
+sit amet laoreet nibh.
+
+<table>
+  <colgroup>
+    <col width="30%">
+    <col width="70%">
+  </colgroup>
+  <thead>
+    <tr class="header">
+      <th>Table</th>
+      <th>with colgroups (Pandoc)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lorem</td>
+      <td>ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+      <td>Sed sagittis</td>
+      <td>eleifend rutrum. Donec vitae suscipit est.</td>
+    </tr>
+  </tbody>
+</table>

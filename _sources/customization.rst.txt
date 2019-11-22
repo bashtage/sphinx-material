@@ -81,6 +81,29 @@ Configuration Options
    - ``'title'``: The title to appear (str)
    - ``'internal'``: Flag indicating to use pathto  to find the page.  Set to False for
      external content. (bool)
+``heroes``
+   A ``dict[str,str]`` where the key is a pagename and the value is the text to display in the
+   page's hero location.
+
+Removing sidebars
+=================
+The search box, the global toc and the local toc all respect the value in ``html_sidebars`` in ``conf.py``. The default setting is
+
+.. code-block:: python
+
+   html_sidebars = {
+       "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
+   }
+
+If this is changed to
+
+.. code-block:: python
+
+   html_sidebars = {
+       "**": ["globaltoc.html"]
+   }
+
+then only the global ToC would appear on all pages (``**`` is a glob pattern).
 
 Customizing the layout
 ======================

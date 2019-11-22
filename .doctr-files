@@ -46,6 +46,7 @@
 ./_sources/rst-cheatsheet/rst-cheatsheet.rst.txt
 ./_sources/specimen.rst.txt
 ./_sources/subpage/index.rst.txt
+./_sources/subpage/second-subsubpage.rst.txt
 ./_sources/subpage/subsubpage.rst.txt
 ./_static/basic.css
 ./_static/doctools.js
@@ -146,4 +147,5 @@
 ./sitemap.xml
 ./specimen.html
 ./subpage/index.html
+./subpage/second-subsubpage.html
 ./subpage/subsubpage.html
