@@ -32,7 +32,7 @@ You can see how it works on the
 `statsmodels development branch documentation <https://statsmodels/org/devel>`_.
 
 .. toctree::
-    :caption: Contents Caption
+    :caption: Contents
 
     customization
     specimen
