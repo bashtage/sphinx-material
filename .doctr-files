@@ -53,7 +53,11 @@
 ./_static/documentation_options.js
 ./_static/favicon.ico
 ./_static/file.png
+./_static/fonts/font-awesome.css
 ./_static/fonts/material-icons.css
+./_static/fonts/specimen/FontAwesome.ttf
+./_static/fonts/specimen/FontAwesome.woff
+./_static/fonts/specimen/FontAwesome.woff2
 ./_static/fonts/specimen/MaterialIcons-Regular.ttf
 ./_static/fonts/specimen/MaterialIcons-Regular.woff
 ./_static/fonts/specimen/MaterialIcons-Regular.woff2
