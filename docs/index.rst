@@ -29,7 +29,7 @@ The other issues are:
 * ensuring that all Sphinx blocks work as intended.
 
 You can see how it works on the
-`statsmodels development branch documentation <https://statsmodels/org/devel>`_.
+`statsmodels development branch documentation <https://www.statsmodels.org/devel>`_.
 
 .. toctree::
     :caption: Contents
