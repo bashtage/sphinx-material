@@ -83,7 +83,7 @@ example shows:
 
         # Set the color and the accent color
         'color_primary': 'blue',
-        'color_accent': 'light-blue'
+        'color_accent': 'light-blue',
 
         # Set the repo location to get a badge with stats
         'repo_url': 'https://github.com/project/project/',
