@@ -72,7 +72,7 @@ example shows:
     html_theme_options = {
 
         # Set the name of the project to appear in the navigation.
-        'nav_name': 'Project Name',
+        'nav_title': 'Project Name',
 
         # Set you GA account ID to enable tracking
         'google_analytics_account': 'UA-XXXXX',
