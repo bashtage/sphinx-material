@@ -11,7 +11,7 @@
    "source": [
     "# Jupyter Notebooks\n",
     "\n",
-    "The [nbsphinx extension](https://https://github.com/spatialaudio/nbsphinx) allow notebooks to be seemlessly integrated into a Sphinx website.  This page demonstrates how notebooks are rendered.  "
+    "The [nbsphinx extension](https://github.com/spatialaudio/nbsphinx) allow notebooks to be seemlessly integrated into a Sphinx website.  This page demonstrates how notebooks are rendered.  "
    ]
   },
   {
