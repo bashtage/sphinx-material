@@ -14,7 +14,7 @@
   <meta content="# matching documents" name="lang:search.result.other"/>
   <meta content="[\s\-]+" name="lang:search.tokenizer"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono:400,500,700&amp;display=fallback" rel="stylesheet"/>
   <style>
    body,
       input {
@@ -356,7 +356,7 @@
 <span class="sd">`numpy.polynomial`</span>
 
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">'polyzero'</span><span class="p">,</span> <span class="s1">'polyone'</span><span class="p">,</span> <span class="s1">'polyx'</span><span class="p">,</span> <span class="s1">'polydomain'</span><span class="p">,</span> <span class="s1">'polyline'</span><span class="p">,</span> <span class="s1">'polyadd'</span><span class="p">,</span>
@@ -368,10 +368,10 @@
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
-<span class="kn">from</span> <span class="nn">numpy.core.multiarray</span> <span class="k">import</span> <span class="n">normalize_axis_index</span>
+<span class="kn">from</span> <span class="nn">numpy.core.multiarray</span> <span class="kn">import</span> <span class="n">normalize_axis_index</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">polyutils</span> <span class="k">as</span> <span class="n">pu</span>
-<span class="kn">from</span> <span class="nn">._polybase</span> <span class="k">import</span> <span class="n">ABCPolyBase</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">polyutils</span> <span class="k">as</span> <span class="n">pu</span>
+<span class="kn">from</span> <span class="nn">._polybase</span> <span class="kn">import</span> <span class="n">ABCPolyBase</span>
 
 <span class="n">polytrim</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">trimcoef</span>
 
@@ -1983,13 +1983,13 @@
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Nov 22, 2019.
+              Dec 10, 2019.
       <br/>
       Created using
       <a href="http://sphinx-doc.org/">
        Sphinx
       </a>
-      2.2.1.
+      2.2.2.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

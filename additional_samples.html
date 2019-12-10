@@ -14,7 +14,7 @@
   <meta content="# matching documents" name="lang:search.result.other"/>
   <meta content="[\s\-]+" name="lang:search.tokenizer"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono:400,500,700&amp;display=fallback" rel="stylesheet"/>
   <style>
    body,
       input {
@@ -1059,15 +1059,15 @@ reStructuredText used to create these examples.
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
-<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Manager</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Manager</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">import</span> <span class="nn">bs4</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
-<span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="k">import</span> <span class="n">logging</span><span class="p">,</span> <span class="n">console</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">logging</span><span class="p">,</span> <span class="n">console</span>
 <span class="kn">import</span> <span class="nn">slugify</span>
 
-<span class="kn">from</span> <span class="nn">._version</span> <span class="k">import</span> <span class="n">get_versions</span>
+<span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">get_versions</span>
 
 <span class="n">__version__</span> <span class="o">=</span> <span class="n">get_versions</span><span class="p">()[</span><span class="s2">"version"</span><span class="p">]</span>
 <span class="k">del</span> <span class="n">get_versions</span>
@@ -1151,7 +1151,7 @@ reStructuredText used to create these examples.
             <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\033</span><span class="s2">[K"</span> <span class="o">+</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">minify</span><span class="p">:</span>
-                <span class="kn">from</span> <span class="nn">css_html_js_minify.html_minifier</span> <span class="k">import</span> <span class="n">html_minify</span>
+                <span class="kn">from</span> <span class="nn">css_html_js_minify.html_minifier</span> <span class="kn">import</span> <span class="n">html_minify</span>
 
                 <span class="n">html</span> <span class="o">=</span> <span class="n">html_minify</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
@@ -1170,7 +1170,7 @@ reStructuredText used to create these examples.
         <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
         <span class="k">return</span>
     <span class="kn">import</span> <span class="nn">glob</span>
-    <span class="kn">from</span> <span class="nn">css_html_js_minify.css_minifier</span> <span class="k">import</span> <span class="n">css_minify</span>
+    <span class="kn">from</span> <span class="nn">css_html_js_minify.css_minifier</span> <span class="kn">import</span> <span class="n">css_minify</span>
 
     <span class="n">css_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="s2">"**"</span><span class="p">,</span> <span class="s2">"*.css"</span><span class="p">),</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Minifying </span><span class="si">{0}</span><span class="s2"> css files"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">css_files</span><span class="p">)))</span>
@@ -1214,7 +1214,7 @@ reStructuredText used to create these examples.
 <span class="k">class</span> <span class="nc">CaptionList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
     <span class="n">_caption</span> <span class="o">=</span> <span class="s2">""</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="s2">""</span>
 
@@ -2125,13 +2125,13 @@ tables.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Nov 22, 2019.
+              Dec 10, 2019.
       <br/>
       Created using
       <a href="http://sphinx-doc.org/">
        Sphinx
       </a>
-      2.2.1.
+      2.2.2.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
