@@ -92,6 +92,7 @@ html_theme_options = {
     "html_prettify": True,
     "css_minify": True,
     "logo_icon": "&#xe869",
+    "repo_type": "github",
     "globaltoc_depth": 2,
     "color_primary": "blue",
     "color_accent": "cyan",
