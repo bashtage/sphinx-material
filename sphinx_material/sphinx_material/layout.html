@@ -187,7 +187,9 @@
   </footer>
   {%- block footer_scripts %}
   <script src="{{ pathto('_static/javascripts/application.js', 1) }}"></script>
-  <script src="{{ pathto('_static/javascripts/dropdown.js', 1) }}"></script>
+  {% if theme_version_dropdown %}
+    <script src="{{ pathto('_static/javascripts/dropdown.js', 1) }}"></script>
+  {% endif %}
   <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
   {%- endblock %}
 {%- endblock %}
