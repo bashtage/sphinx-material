@@ -4,13 +4,11 @@ function add_version_dropdown(json_loc, target_loc, text) {
     dropdown.className = "md-flex__cell md-flex__cell--shrink dropdown";
     var button = document.createElement("button");
     button.className = "dropdownbutton";
-    button.innerHTML = text;
     var content = document.createElement("div");
     content.className = "dropdown-content";
     dropdown.appendChild(button);
     dropdown.appendChild(content);
-
-    $.getJSON(json_loc).done(function(versions) {
+    $.getJSON(json_loc, function(versions) {
         for (var i = 0; i < versions.length; i++) {
             if (versions[i].substring(0, 1) == "v") {
                 versions[i] = [versions[i], versions[i].substring(1)];
@@ -25,8 +23,11 @@ function add_version_dropdown(json_loc, target_loc, text) {
             a.title = versions[i][1];
             content.appendChild(a);
         };
+    }).done(function() {
+        button.innerHTML = text;
     }).fail(function() {
         button.innerHTML = "Other Versions Not Found";
+    }).always(function() {
+        $(".navheader").append(dropdown);
     });
-    $(".navheader").append(dropdown);
 };
