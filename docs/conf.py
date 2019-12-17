@@ -111,6 +111,8 @@ html_theme_options = {
         "index": "A responsive Material Design theme for Sphinx sites.",
         "customization": "Configuration options to personalize your site.",
     },
+    "version_dropdown": True,
+    "version_json": "_static/versions.json"
 }
 
 language = "en"

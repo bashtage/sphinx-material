@@ -14,7 +14,7 @@
     display: none;
     position: absolute;
     z-index: 1;
-    background-color: #3f51b5;
+    background-color: inherit;
 }
 
 .dropdown-content a {
