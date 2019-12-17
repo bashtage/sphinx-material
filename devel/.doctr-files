@@ -109,6 +109,7 @@ devel/_static/stylesheets/application-palette.css
 devel/_static/stylesheets/application.css
 devel/_static/underscore-1.3.1.js
 devel/_static/underscore.js
+devel/_static/versions.json
 devel/additional_samples.html
 devel/change-log.html
 devel/customization.html

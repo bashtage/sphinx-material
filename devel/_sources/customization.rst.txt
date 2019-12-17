@@ -84,6 +84,15 @@ Configuration Options
 ``heroes``
    A ``dict[str,str]`` where the key is a pagename and the value is the text to display in the
    page's hero location.
+``version_dropdown``
+   A flag indicating whether the version drop down should be included. You must supply a JSON file
+   to use this feature.
+``version_dropdown_text``
+   The text in the version dropdown button
+``version_json``
+   The location of the JSON file that contains the version information. The defaulta ssumes there
+   is a file versions.json located in the root of the site.
+
 
 Removing sidebars
 =================
@@ -151,3 +160,19 @@ customization:
    Block that contains the icon font. Use this to add additional icon fonts
    (e.g., `FontAwesome <https://fontawesome.com/>`_). You should probably call ``{{ super() }}`` at
    the end of the block to include the default icon font as well.
+
+Older Versions
+--------------
+.. note::
+
+   This feature is experimental and the implementation may change.
+
+A dropdown memu an be used to switch to older version. The data used is read via javascript from
+a file.  The basic structure of the file is a dictionary of the form [label, path].
+
+.. code-block::javascript
+
+   {"release": "", "development": "devel"}
+
+This dictionary tells the dropdown that the release version is in the root of the site and the
+development version is located in /devel.
