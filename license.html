@@ -72,6 +72,14 @@
   <link href="search.html" rel="search" title="Search"/>
   <link href="change-log.html" rel="prev" title="Change Log"/>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
+  <script src="_static/javascripts/version_dropdown.js">
+  </script>
+  <script>
+   var json_loc = "_static/versions.json",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
   <svg class="md-svg">
@@ -91,7 +99,7 @@
   </a>
   <header class="md-header" data-md-component="header">
    <nav class="md-header-nav md-grid">
-    <div class="md-flex">
+    <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
       <a class="md-header-nav__button md-logo" href="index.html" title="Material for Sphinx">
        <i class="md-icon">
@@ -431,13 +439,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Dec 10, 2019.
+              Dec 17, 2019.
       <br/>
       Created using
       <a href="http://sphinx-doc.org/">
        Sphinx
       </a>
-      2.2.2.
+      2.3.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

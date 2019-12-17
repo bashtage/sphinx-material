@@ -94,6 +94,7 @@
 ./_static/javascripts/lunr/tinyseg.js
 ./_static/javascripts/lunr/wordcut.js
 ./_static/javascripts/modernizr.js
+./_static/javascripts/version_dropdown.js
 ./_static/jquery-3.4.1.js
 ./_static/jquery.js
 ./_static/jquery.min.map
@@ -108,6 +109,7 @@
 ./_static/stylesheets/application.css
 ./_static/underscore-1.3.1.js
 ./_static/underscore.js
+./_static/versions.json
 ./additional_samples.html
 ./change-log.html
 ./customization.html
