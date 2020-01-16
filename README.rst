@@ -27,7 +27,7 @@ Install via pip:
 
 .. code-block:: bash
 
-    $ pip install git+https://github.com/bashtage/sphinx-material
+    $ pip install sphinx-material
 
 or if you have the code checked out locally:
 
