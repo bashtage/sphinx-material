@@ -22,9 +22,8 @@
   <meta name="lang:search.tokenizer" content="[\s\-]+">
 
   {% block font %}
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono:400,500,700&display=fallback">
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
 
     <style>
       body,
@@ -179,7 +178,7 @@
           {%- endif %}
           {%- if show_sphinx %}
             {% trans sphinx_version=sphinx_version|e %}Created using
-            <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.
             {% endtrans %} and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

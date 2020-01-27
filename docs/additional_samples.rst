@@ -164,7 +164,7 @@ The material icon font provides hundreds to choose from. You can use the ``<i>``
 Tables
 ======
 Here are some examples of Sphinx
-`tables <http://sphinx-doc.org/rest.html#rst-tables>`_. The Sphinx Bootstrap
+`tables <http://www.sphinx-doc.org/rest.html#rst-tables>`_. The Sphinx Bootstrap
 Theme removes all Sphinx ``docutils`` classes and replaces them with the
 default Bootstrap ``table`` class.  You can add additional table classes
 using the Sphinx ``cssclass::`` directive, as demonstrated in the following
