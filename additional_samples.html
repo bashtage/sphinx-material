@@ -1056,13 +1056,53 @@ reStructuredText used to create these examples.
 239
 240
 241
-242</pre>
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281</pre>
            </div>
           </td>
           <td class="code">
            <div class="highlight">
             <pre><span></span><span class="sd">"""Sphinx Material theme."""</span>
 
+<span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1076,6 +1116,7 @@ reStructuredText used to create these examples.
 <span class="kn">import</span> <span class="nn">slugify</span>
 
 <span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">get_versions</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
 
 <span class="n">__version__</span> <span class="o">=</span> <span class="n">get_versions</span><span class="p">()[</span><span class="s2">"version"</span><span class="p">]</span>
 <span class="k">del</span> <span class="n">get_versions</span>
@@ -1301,8 +1342,45 @@ reStructuredText used to create these examples.
         <span class="k">return</span> <span class="n">body_text</span>
 
 
+<span class="c1"># These final lines exist to give sphinx a stable str representation of</span>
+<span class="c1"># these two functions accross runs, and to ensure that the str changes</span>
+<span class="c1"># if the source does.</span>
+<span class="c1">#</span>
+<span class="c1"># Note that this would be better down with a metaclass factory</span>
+<span class="n">table_fix_src</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">table_fix</span><span class="p">)</span>
+<span class="n">table_fix_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">table_fix_src</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="n">derender_toc_src</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">derender_toc</span><span class="p">)</span>
+<span class="n">derender_toc_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">derender_toc_src</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">TableFixMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"table_fix, hash: </span><span class="si">{table_fix_hash}</span><span class="s2">"</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"table_fix, hash: </span><span class="si">{table_fix_hash}</span><span class="s2">"</span>
+
+
+<span class="k">class</span> <span class="nc">TableFix</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">TableFixMeta</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">table_fix</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DerenderTocMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"derender_toc, hash: </span><span class="si">{derender_toc_hash}</span><span class="s2">"</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"derender_toc, hash: </span><span class="si">{derender_toc_hash}</span><span class="s2">"</span>
+
+
+<span class="k">class</span> <span class="nc">DerenderToc</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">DerenderTocMeta</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">derender_toc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">get_html_context</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">"table_fix"</span><span class="p">:</span> <span class="n">table_fix</span><span class="p">,</span> <span class="s2">"derender_toc"</span><span class="p">:</span> <span class="n">derender_toc</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"table_fix"</span><span class="p">:</span> <span class="n">TableFix</span><span class="p">,</span> <span class="s2">"derender_toc"</span><span class="p">:</span> <span class="n">DerenderToc</span><span class="p">}</span>
 </pre>
            </div>
           </td>
@@ -2133,7 +2211,7 @@ tables.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jan 27, 2020.
+              Feb 03, 2020.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
