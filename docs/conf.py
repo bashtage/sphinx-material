@@ -112,7 +112,7 @@ html_theme_options = {
         "customization": "Configuration options to personalize your site.",
     },
     "version_dropdown": True,
-    "version_json": "_static/versions.json"
+    "version_json": "_static/versions.json",
 }
 
 language = "en"
@@ -126,6 +126,7 @@ html_domain_indices = True
 
 nbsphinx_execute = "always"
 nbsphinx_kernel_name = "python3"
+
 
 # Enable eval_rst in markdown
 def setup(app):

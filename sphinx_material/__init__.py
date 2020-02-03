@@ -1,5 +1,6 @@
 """Sphinx Material theme."""
 
+import inspect
 import os
 import re
 import sys
@@ -13,6 +14,7 @@ from sphinx.util import logging, console
 import slugify
 
 from ._version import get_versions
+import hashlib
 
 __version__ = get_versions()["version"]
 del get_versions
@@ -238,5 +240,42 @@ def table_fix(body_text, page_name="md-page-root--link"):
         return body_text
 
 
+# These final lines exist to give sphinx a stable str representation of
+# these two functions accross runs, and to ensure that the str changes
+# if the source does.
+#
+# Note that this would be better down with a metaclass factory
+table_fix_src = inspect.getsource(table_fix)
+table_fix_hash = hashlib.sha512(table_fix_src.encode()).hexdigest()
+derender_toc_src = inspect.getsource(derender_toc)
+derender_toc_hash = hashlib.sha512(derender_toc_src.encode()).hexdigest()
+
+
+class TableFixMeta(type):
+    def __repr__(self):
+        return f"table_fix, hash: {table_fix_hash}"
+
+    def __str__(self):
+        return f"table_fix, hash: {table_fix_hash}"
+
+
+class TableFix(object, metaclass=TableFixMeta):
+    def __new__(cls, *args, **kwargs):
+        return table_fix(*args, **kwargs)
+
+
+class DerenderTocMeta(type):
+    def __repr__(self):
+        return f"derender_toc, hash: {derender_toc_hash}"
+
+    def __str__(self):
+        return f"derender_toc, hash: {derender_toc_hash}"
+
+
+class DerenderToc(object, metaclass=DerenderTocMeta):
+    def __new__(cls, *args, **kwargs):
+        return derender_toc(*args, **kwargs)
+
+
 def get_html_context():
-    return {"table_fix": table_fix, "derender_toc": derender_toc}
+    return {"table_fix": TableFix, "derender_toc": DerenderToc}
