@@ -46,6 +46,7 @@ extensions = [
     "nbsphinx",
     "recommonmark",
     "sphinx_markdown_tables",
+    "sphinx_copybutton",
 ]
 
 autosummary_generate = True

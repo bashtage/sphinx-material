@@ -10,3 +10,4 @@ nbconvert
 ipykernel
 recommonmark
 sphinx_markdown_tables
+sphinx-copybutton
