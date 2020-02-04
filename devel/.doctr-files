@@ -49,6 +49,11 @@ devel/_sources/subpage/index.rst.txt
 devel/_sources/subpage/second-subsubpage.rst.txt
 devel/_sources/subpage/subsubpage.rst.txt
 devel/_static/basic.css
+devel/_static/clipboard.min.js
+devel/_static/copy-button.svg
+devel/_static/copy-overrides.css
+devel/_static/copybutton.css
+devel/_static/copybutton.js
 devel/_static/doctools.js
 devel/_static/documentation_options.js
 devel/_static/favicon.ico
@@ -61,7 +66,6 @@ devel/_static/fonts/specimen/FontAwesome.woff2
 devel/_static/fonts/specimen/MaterialIcons-Regular.ttf
 devel/_static/fonts/specimen/MaterialIcons-Regular.woff
 devel/_static/fonts/specimen/MaterialIcons-Regular.woff2
-devel/_static/guzzle.css
 devel/_static/images/apple-icon-152x152.png
 devel/_static/images/favicon.png
 devel/_static/images/icons/bitbucket.1b09e088.svg
