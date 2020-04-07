@@ -127,7 +127,7 @@
       <nav class="md-footer-nav__inner md-grid">
         {%- block footerrel %}
           {% if prev %}
-            <a href="{{ prev.link|e }}" title="Material"
+            <a href="{{ prev.link|e }}" title="{{ prev.title }}"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -141,7 +141,7 @@
             </a>
           {% endif %}
           {% if next %}
-            <a href="{{ next.link|e }}" title="Admonition"
+            <a href="{{ next.link|e }}" title="{{ next.title }}"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
