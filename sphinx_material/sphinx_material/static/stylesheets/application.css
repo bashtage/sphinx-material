@@ -190,7 +190,6 @@ code,kbd,pre{
     margin:0 .29412em;
     padding:.07353em 0;
     border-radius:.1rem;
-    box-shadow:.29412em 0 0 hsla(0,0%,92.5%,.5),-.29412em 0 0 hsla(0,0%,92.5%,.5);
     word-break:break-word;
     -webkit-box-decoration-break:clone;
     box-decoration-break:clone
