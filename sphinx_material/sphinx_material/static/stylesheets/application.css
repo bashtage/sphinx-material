@@ -399,7 +399,7 @@ body,html{
 }
 body{
     position:relative;
-    font-size:.85rem
+    font-size:.5rem
 }
 hr{
     display:block;
@@ -1086,6 +1086,12 @@ html .md-nav__link[for=__toc],html .md-nav__link[for=__toc]+.md-nav__link:after,
 .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover{
     background-color:#536dfe
 }
+
+.rst-versions {
+    /* Read the Docs' versions menu */
+    font-size: .85rem;
+}
+
 @-webkit-keyframes md-source__facts--done{
     0%{
         height:0
