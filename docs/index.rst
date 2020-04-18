@@ -110,6 +110,7 @@ or ``theme.conf`` for more details.
     notebook.ipynb
     markdown.md
     rst-cheatsheet/rst-cheatsheet
+    basics
     change-log
     license
 
