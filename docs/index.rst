@@ -31,20 +31,6 @@ The other issues are:
 You can see how it works on the
 `statsmodels development branch documentation <https://www.statsmodels.org/devel>`_.
 
-.. toctree::
-    :caption: Contents
-
-    customization
-    specimen
-    additional_samples
-    pymethod
-    numpydoc
-    notebook.ipynb
-    markdown.md
-    rst-cheatsheet/rst-cheatsheet
-    change-log
-    license
-
 Getting Started
 ---------------
 Install from git
@@ -111,6 +97,22 @@ or ``theme.conf`` for more details.
         # If True, show hidden TOC entries
         'globaltoc_includehidden': False,
     }
+
+.. toctree::
+    :caption: Contents
+    :maxdepth: 1
+
+    customization
+    specimen
+    additional_samples
+    pymethod
+    numpydoc
+    notebook.ipynb
+    markdown.md
+    rst-cheatsheet/rst-cheatsheet
+    change-log
+    license
+
 
 
 Index

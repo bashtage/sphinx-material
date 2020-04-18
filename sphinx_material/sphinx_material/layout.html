@@ -127,7 +127,7 @@
       <nav class="md-footer-nav__inner md-grid">
         {%- block footerrel %}
           {% if prev %}
-            <a href="{{ prev.link|e }}" title="{{ prev.title }}"
+            <a href="{{ prev.link|e }}" title="{{ prev.title|striptags|e }}"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -136,17 +136,17 @@
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> {{ prev.title }} </span>
+                      class="md-footer-nav__direction"> Previous </span> {{ prev.title|striptags }} </span>
               </div>
             </a>
           {% endif %}
           {% if next %}
-            <a href="{{ next.link|e }}" title="{{ next.title }}"
+            <a href="{{ next.link|e }}" title="{{ next.title|striptags|e }}"
                class="md-flex md-footer-nav__link md-footer-nav__link--next"
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> {{ next.title }} </span>
+                class="md-footer-nav__direction"> Next </span> {{ next.title|striptags }} </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>

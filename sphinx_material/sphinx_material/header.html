@@ -2,13 +2,13 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="{{ pathto(master_doc) }}" title="{{ docstitle }}"
+        <a href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}"
            class="md-header-nav__button md-logo">
           {% if theme_logo_icon|e %}
             <i class="md-icon">{{ theme_logo_icon }}</i>
           {% elif logo %}
               <img src="{{ pathto('_static/' ~ logo, 1) }}" height="26"
-                   alt="{{ shorttitle }} logo">
+                   alt="{{ shorttitle|e }} logo">
           {% else %}
             &nbsp;
           {% endif %}
@@ -19,7 +19,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">{{ theme_nav_title or shorttitle }}</span>
+          <span class="md-header-nav__topic">{{ theme_nav_title|e or shorttitle|e }}</span>
           <span class="md-header-nav__topic"> {{ title|striptags|e }} </span>
         </div>
       </div>
