@@ -9,6 +9,7 @@ devel/_modules/index.html
 devel/_modules/numpy/polynomial/_polybase.html
 devel/_modules/numpy/polynomial/polynomial.html
 devel/_sources/additional_samples.rst.txt
+devel/_sources/basics.rst.txt
 devel/_sources/change-log.rst.txt
 devel/_sources/customization.rst.txt
 devel/_sources/generated/generated/numpy.polynomial.Polynomial.basis.rst.txt
@@ -115,6 +116,7 @@ devel/_static/underscore-1.3.1.js
 devel/_static/underscore.js
 devel/_static/versions.json
 devel/additional_samples.html
+devel/basics.html
 devel/change-log.html
 devel/customization.html
 devel/generated/generated/numpy.polynomial.Polynomial.basis.html

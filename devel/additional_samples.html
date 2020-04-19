@@ -413,6 +413,21 @@
                   Code Documentation
                  </a>
                 </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#glossaries">
+                  Glossaries
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#math">
+                  Math
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#production-lists">
+                  Production Lists
+                 </a>
+                </li>
                </ul>
               </nav>
              </li>
@@ -464,6 +479,21 @@
               Code Documentation
              </a>
             </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#glossaries">
+              Glossaries
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#math">
+              Math
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#production-lists">
+              Production Lists
+             </a>
+            </li>
            </ul>
           </li>
           <li class="md-nav__item">
@@ -489,6 +519,11 @@
           <li class="md-nav__item">
            <a class="md-nav__link" href="rst-cheatsheet/rst-cheatsheet.html">
             rst Cheatsheet
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="basics.html">
+            reStructuredText Primer
            </a>
           </li>
           <li class="md-nav__item">
@@ -658,6 +693,21 @@
              <li class="md-nav__item">
               <a class="md-nav__link" href="#code-documentation">
                Code Documentation
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#glossaries">
+               Glossaries
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#math">
+               Math
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#production-lists">
+               Production Lists
               </a>
              </li>
             </ul>
@@ -1700,9 +1750,9 @@ This also references the second item
        <p>
         The following template HTML:
        </p>
-       <div class="highlight-html notranslate">
+       <div class="highlight-default notranslate">
         <div class="highlight">
-         <pre><span></span>&lt;span style="font-size: 2rem;" class="md-icon"&gt;&amp;#xe869&lt;/span&gt;
+         <pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-size: 2rem;"</span> <span class="n">class</span><span class="o">=</span><span class="s2">"md-icon"</span><span class="o">&gt;&amp;</span><span class="c1">#xe869&lt;/span&gt;</span>
 </pre>
         </div>
        </div>
@@ -2163,6 +2213,76 @@ tables.
          </dl>
         </dd>
        </dl>
+       <h2 id="glossaries">
+        Glossaries
+        <a class="headerlink" href="#glossaries" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <dl class="glossary simple">
+        <dt id="term-environment">
+         environment
+        </dt>
+        <dd>
+         <p>
+          A structure where information about all documents under the root is
+saved, and used for cross-referencing.  The environment is pickled
+after the parsing stage, so that successive runs only need to read
+and parse new and changed documents.
+         </p>
+        </dd>
+        <dt id="term-source-directory">
+         source directory
+        </dt>
+        <dd>
+         <p>
+          The directory which, including its subdirectories, contains all
+source files for one Sphinx project.
+         </p>
+        </dd>
+       </dl>
+       <h2 id="math">
+        Math
+        <a class="headerlink" href="#math" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <div class="math notranslate nohighlight">
+        \[ \begin{align}\begin{aligned}(a + b)^2 = a^2 + 2ab + b^2\\(a - b)^2 = a^2 - 2ab + b^2\end{aligned}\end{align} \]
+       </div>
+       <div class="math notranslate nohighlight">
+        \[\begin{split}(a + b)^2  &amp;=  (a + b)(a + b) \\
+           &amp;=  a^2 + 2ab + b^2\end{split}\]
+       </div>
+       <div class="math notranslate nohighlight">
+        \begin{eqnarray}
+   y    &amp; = &amp; ax^2 + bx + c \\
+   f(x) &amp; = &amp; x^2 + 2xy + y^2
+\end{eqnarray}
+       </div>
+       <h2 id="production-lists">
+        Production Lists
+        <a class="headerlink" href="#production-lists" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         Warning
+        </p>
+        <p>
+         Production lists are not working correctly.
+        </p>
+       </div>
+       <pre>
+<strong id="grammar-token-try_stmt"><span id="grammar-token-try-stmt"></span>try_stmt </strong> ::=  try1_stmt | try2_stmt
+<strong id="grammar-token-try1_stmt"><span id="grammar-token-try1-stmt"></span>try1_stmt</strong> ::=  "try" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>
+               ("except" [<code class="xref docutils literal notranslate"><span class="pre">expression</span></code> ["," <code class="xref docutils literal notranslate"><span class="pre">target</span></code>]] ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>)+
+               ["else" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>]
+               ["finally" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>]
+<strong id="grammar-token-try2_stmt"><span id="grammar-token-try2-stmt"></span>try2_stmt</strong> ::=  "try" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>
+               "finally" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>
+</pre>
       </article>
      </div>
     </div>
@@ -2185,16 +2305,7 @@ tables.
        </span>
       </div>
      </a>
-     <a docutils="" href="subpage/index.html" literal="" notranslate="" title="&lt;code class=">
-      <span class="pre">
-       Level
-      </span>
-      <span class="pre">
-       1
-      </span>
-      page"
-               class="md-flex md-footer-nav__link md-footer-nav__link--next"
-               rel="next"&gt;
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="subpage/index.html" rel="next" title="Level 1 page">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
@@ -2225,13 +2336,13 @@ tables.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Apr 18, 2020.
+              Apr 19, 2020.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.0.1.
+      3.0.2.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
