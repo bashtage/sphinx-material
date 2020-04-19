@@ -134,7 +134,7 @@ Icons
 =====
 The following template HTML:
 
-.. code-block:: html
+::
 
     <span style="font-size: 2rem;" class="md-icon">&#xe869</span>
 
@@ -221,3 +221,58 @@ An example JavaScript function.
 
    :param string name: The name of the animal
    :param number age: an optional age for the animal
+
+Glossaries
+==========
+
+.. glossary::
+
+   environment
+      A structure where information about all documents under the root is
+      saved, and used for cross-referencing.  The environment is pickled
+      after the parsing stage, so that successive runs only need to read
+      and parse new and changed documents.
+
+   source directory
+      The directory which, including its subdirectories, contains all
+      source files for one Sphinx project.
+
+Math
+====
+
+.. math::
+
+   (a + b)^2 = a^2 + 2ab + b^2
+
+   (a - b)^2 = a^2 - 2ab + b^2
+
+.. math::
+
+   (a + b)^2  &=  (a + b)(a + b) \\
+              &=  a^2 + 2ab + b^2
+
+
+.. math::
+   :nowrap:
+
+   \begin{eqnarray}
+      y    & = & ax^2 + bx + c \\
+      f(x) & = & x^2 + 2xy + y^2
+   \end{eqnarray}
+
+Production Lists
+================
+
+.. warning::
+
+   Production lists are not working correctly.
+
+.. productionlist::
+   try_stmt: try1_stmt | try2_stmt
+   try1_stmt: "try" ":" `suite`
+            : ("except" [`expression` ["," `target`]] ":" `suite`)+
+            : ["else" ":" `suite`]
+            : ["finally" ":" `suite`]
+   try2_stmt: "try" ":" `suite`
+            : "finally" ":" `suite`
+

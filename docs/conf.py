@@ -14,9 +14,13 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 from distutils.version import LooseVersion
+import os
 
 import sphinx_material
 from recommonmark.transform import AutoStructify
+
+FORCE_CLASSIC = os.environ.get("SPHINX_MATERIAL_FORCE_CLASSIC", False)
+FORCE_CLASSIC = FORCE_CLASSIC in ("1", "true")
 
 # -- Project information -----------------------------------------------------
 
@@ -116,6 +120,14 @@ html_theme_options = {
     "version_json": "_static/versions.json",
 }
 
+if FORCE_CLASSIC:
+    print("!!!!!!!!! Forcing classic !!!!!!!!!!!")
+    html_theme = 'classic'
+    html_theme_options = {}
+    html_sidebars = {
+        "**": ["globaltoc.html", "localtoc.html", "searchbox.html"]
+    }
+
 language = "en"
 html_last_updated_fmt = ""
 
@@ -128,6 +140,14 @@ html_domain_indices = True
 nbsphinx_execute = "always"
 nbsphinx_kernel_name = "python3"
 
+extlinks = {
+    "duref": (
+        "http://docutils.sourceforge.net/docs/ref/rst/" "restructuredtext.html#%s",
+        "",
+    ),
+    "durole": ("http://docutils.sourceforge.net/docs/ref/rst/" "roles.html#%s", ""),
+    "dudir": ("http://docutils.sourceforge.net/docs/ref/rst/" "directives.html#%s", ""),
+}
 
 # Enable eval_rst in markdown
 def setup(app):
@@ -137,3 +157,9 @@ def setup(app):
         True,
     )
     app.add_transform(AutoStructify)
+    app.add_object_type(
+        "confval",
+        "confval",
+        objname="configuration value",
+        indextemplate="pair: %s; configuration value",
+    )
