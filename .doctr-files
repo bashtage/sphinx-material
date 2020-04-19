@@ -9,7 +9,6 @@
 ./_modules/numpy/polynomial/_polybase.html
 ./_modules/numpy/polynomial/polynomial.html
 ./_sources/additional_samples.rst.txt
-./_sources/basics.rst.txt
 ./_sources/change-log.rst.txt
 ./_sources/customization.rst.txt
 ./_sources/generated/generated/numpy.polynomial.Polynomial.basis.rst.txt
@@ -50,11 +49,6 @@
 ./_sources/subpage/second-subsubpage.rst.txt
 ./_sources/subpage/subsubpage.rst.txt
 ./_static/basic.css
-./_static/clipboard.min.js
-./_static/copy-button.svg
-./_static/copy-overrides.css
-./_static/copybutton.css
-./_static/copybutton.js
 ./_static/doctools.js
 ./_static/documentation_options.js
 ./_static/favicon.ico
@@ -67,6 +61,7 @@
 ./_static/fonts/specimen/MaterialIcons-Regular.ttf
 ./_static/fonts/specimen/MaterialIcons-Regular.woff
 ./_static/fonts/specimen/MaterialIcons-Regular.woff2
+./_static/guzzle.css
 ./_static/images/apple-icon-152x152.png
 ./_static/images/favicon.png
 ./_static/images/icons/bitbucket.1b09e088.svg
@@ -116,7 +111,6 @@
 ./_static/underscore.js
 ./_static/versions.json
 ./additional_samples.html
-./basics.html
 ./change-log.html
 ./customization.html
 ./generated/generated/numpy.polynomial.Polynomial.basis.html
