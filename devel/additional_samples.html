@@ -13,8 +13,8 @@
   <meta content="1 matching document" name="lang:search.result.one"/>
   <meta content="# matching documents" name="lang:search.result.other"/>
   <meta content="[\s\-]+" name="lang:search.tokenizer"/>
-  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono:400,500,700&amp;display=fallback" rel="stylesheet"/>
   <style>
    body,
       input {
@@ -50,7 +50,6 @@
   </title>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
-  <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
   </script>
   <script src="_static/jquery.js">
@@ -60,10 +59,6 @@
   <script src="_static/doctools.js">
   </script>
   <script src="_static/language_data.js">
-  </script>
-  <script src="_static/clipboard.min.js">
-  </script>
-  <script src="_static/copybutton.js">
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
   </script>
@@ -413,21 +408,6 @@
                   Code Documentation
                  </a>
                 </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#glossaries">
-                  Glossaries
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#math">
-                  Math
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#production-lists">
-                  Production Lists
-                 </a>
-                </li>
                </ul>
               </nav>
              </li>
@@ -479,21 +459,6 @@
               Code Documentation
              </a>
             </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="#glossaries">
-              Glossaries
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="#math">
-              Math
-             </a>
-            </li>
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="#production-lists">
-              Production Lists
-             </a>
-            </li>
            </ul>
           </li>
           <li class="md-nav__item">
@@ -519,11 +484,6 @@
           <li class="md-nav__item">
            <a class="md-nav__link" href="rst-cheatsheet/rst-cheatsheet.html">
             rst Cheatsheet
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="basics.html">
-            reStructuredText Primer
            </a>
           </li>
           <li class="md-nav__item">
@@ -693,21 +653,6 @@
              <li class="md-nav__item">
               <a class="md-nav__link" href="#code-documentation">
                Code Documentation
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#glossaries">
-               Glossaries
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#math">
-               Math
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#production-lists">
-               Production Lists
               </a>
              </li>
             </ul>
@@ -1111,53 +1056,13 @@ reStructuredText used to create these examples.
 239
 240
 241
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
-280
-281</pre>
+242</pre>
            </div>
           </td>
           <td class="code">
            <div class="highlight">
             <pre><span></span><span class="sd">"""Sphinx Material theme."""</span>
 
-<span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1171,7 +1076,6 @@ reStructuredText used to create these examples.
 <span class="kn">import</span> <span class="nn">slugify</span>
 
 <span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">get_versions</span>
-<span class="kn">import</span> <span class="nn">hashlib</span>
 
 <span class="n">__version__</span> <span class="o">=</span> <span class="n">get_versions</span><span class="p">()[</span><span class="s2">"version"</span><span class="p">]</span>
 <span class="k">del</span> <span class="n">get_versions</span>
@@ -1397,45 +1301,8 @@ reStructuredText used to create these examples.
         <span class="k">return</span> <span class="n">body_text</span>
 
 
-<span class="c1"># These final lines exist to give sphinx a stable str representation of</span>
-<span class="c1"># these two functions accross runs, and to ensure that the str changes</span>
-<span class="c1"># if the source does.</span>
-<span class="c1">#</span>
-<span class="c1"># Note that this would be better down with a metaclass factory</span>
-<span class="n">table_fix_src</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">table_fix</span><span class="p">)</span>
-<span class="n">table_fix_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">table_fix_src</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-<span class="n">derender_toc_src</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">derender_toc</span><span class="p">)</span>
-<span class="n">derender_toc_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">derender_toc_src</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-
-
-<span class="k">class</span> <span class="nc">TableFixMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"table_fix, hash: </span><span class="si">{</span><span class="n">table_fix_hash</span><span class="si">}</span><span class="s2">"</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"table_fix, hash: </span><span class="si">{</span><span class="n">table_fix_hash</span><span class="si">}</span><span class="s2">"</span>
-
-
-<span class="k">class</span> <span class="nc">TableFix</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">TableFixMeta</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">table_fix</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">DerenderTocMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"derender_toc, hash: </span><span class="si">{</span><span class="n">derender_toc_hash</span><span class="si">}</span><span class="s2">"</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"derender_toc, hash: </span><span class="si">{</span><span class="n">derender_toc_hash</span><span class="si">}</span><span class="s2">"</span>
-
-
-<span class="k">class</span> <span class="nc">DerenderToc</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">DerenderTocMeta</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">derender_toc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-
 <span class="k">def</span> <span class="nf">get_html_context</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">"table_fix"</span><span class="p">:</span> <span class="n">TableFix</span><span class="p">,</span> <span class="s2">"derender_toc"</span><span class="p">:</span> <span class="n">DerenderToc</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"table_fix"</span><span class="p">:</span> <span class="n">table_fix</span><span class="p">,</span> <span class="s2">"derender_toc"</span><span class="p">:</span> <span class="n">derender_toc</span><span class="p">}</span>
 </pre>
            </div>
           </td>
@@ -1750,9 +1617,9 @@ This also references the second item
        <p>
         The following template HTML:
        </p>
-       <div class="highlight-default notranslate">
+       <div class="highlight-html notranslate">
         <div class="highlight">
-         <pre><span></span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"font-size: 2rem;"</span> <span class="n">class</span><span class="o">=</span><span class="s2">"md-icon"</span><span class="o">&gt;&amp;</span><span class="c1">#xe869&lt;/span&gt;</span>
+         <pre><span></span>&lt;span style="font-size: 2rem;" class="md-icon"&gt;&amp;#xe869&lt;/span&gt;
 </pre>
         </div>
        </div>
@@ -1815,7 +1682,7 @@ This also references the second item
        </h2>
        <p>
         Here are some examples of Sphinx
-        <a class="reference external" href="http://www.sphinx-doc.org/rest.html#rst-tables">
+        <a class="reference external" href="http://sphinx-doc.org/rest.html#rst-tables">
          tables
         </a>
         . The Sphinx Bootstrap
@@ -2213,76 +2080,6 @@ tables.
          </dl>
         </dd>
        </dl>
-       <h2 id="glossaries">
-        Glossaries
-        <a class="headerlink" href="#glossaries" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <dl class="glossary simple">
-        <dt id="term-environment">
-         environment
-        </dt>
-        <dd>
-         <p>
-          A structure where information about all documents under the root is
-saved, and used for cross-referencing.  The environment is pickled
-after the parsing stage, so that successive runs only need to read
-and parse new and changed documents.
-         </p>
-        </dd>
-        <dt id="term-source-directory">
-         source directory
-        </dt>
-        <dd>
-         <p>
-          The directory which, including its subdirectories, contains all
-source files for one Sphinx project.
-         </p>
-        </dd>
-       </dl>
-       <h2 id="math">
-        Math
-        <a class="headerlink" href="#math" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <div class="math notranslate nohighlight">
-        \[ \begin{align}\begin{aligned}(a + b)^2 = a^2 + 2ab + b^2\\(a - b)^2 = a^2 - 2ab + b^2\end{aligned}\end{align} \]
-       </div>
-       <div class="math notranslate nohighlight">
-        \[\begin{split}(a + b)^2  &amp;=  (a + b)(a + b) \\
-           &amp;=  a^2 + 2ab + b^2\end{split}\]
-       </div>
-       <div class="math notranslate nohighlight">
-        \begin{eqnarray}
-   y    &amp; = &amp; ax^2 + bx + c \\
-   f(x) &amp; = &amp; x^2 + 2xy + y^2
-\end{eqnarray}
-       </div>
-       <h2 id="production-lists">
-        Production Lists
-        <a class="headerlink" href="#production-lists" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <div class="admonition warning">
-        <p class="admonition-title">
-         Warning
-        </p>
-        <p>
-         Production lists are not working correctly.
-        </p>
-       </div>
-       <pre>
-<strong id="grammar-token-try_stmt"><span id="grammar-token-try-stmt"></span>try_stmt </strong> ::=  try1_stmt | try2_stmt
-<strong id="grammar-token-try1_stmt"><span id="grammar-token-try1-stmt"></span>try1_stmt</strong> ::=  "try" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>
-               ("except" [<code class="xref docutils literal notranslate"><span class="pre">expression</span></code> ["," <code class="xref docutils literal notranslate"><span class="pre">target</span></code>]] ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>)+
-               ["else" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>]
-               ["finally" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>]
-<strong id="grammar-token-try2_stmt"><span id="grammar-token-try2-stmt"></span>try2_stmt</strong> ::=  "try" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>
-               "finally" ":" <code class="xref docutils literal notranslate"><span class="pre">suite</span></code>
-</pre>
       </article>
      </div>
     </div>
@@ -2291,7 +2088,7 @@ source files for one Sphinx project.
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="specimen.html" rel="prev" title="Specimen">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="specimen.html" rel="prev" title="Material">
       <div class="md-flex__cell md-flex__cell--shrink">
        <i class="md-icon md-icon--arrow-back md-footer-nav__button">
        </i>
@@ -2305,7 +2102,7 @@ source files for one Sphinx project.
        </span>
       </div>
      </a>
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="subpage/index.html" rel="next" title="Level 1 page">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="subpage/index.html" rel="next" title="Admonition">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
@@ -2339,7 +2136,7 @@ source files for one Sphinx project.
               Apr 19, 2020.
       <br/>
       Created using
-      <a href="http://www.sphinx-doc.org/">
+      <a href="http://sphinx-doc.org/">
        Sphinx
       </a>
       3.0.2.
