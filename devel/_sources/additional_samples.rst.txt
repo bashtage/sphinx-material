@@ -134,31 +134,31 @@ Icons
 =====
 The following template HTML:
 
-.. code-block:: html
+::
 
-    <span style="font-size: 2rem;" class="md-icon">&#xe869;</span>
+    <span style="font-size: 2rem;" class="md-icon">&#xe869</span>
 
 translates to a the site's icon:
 
 .. raw:: html
 
-    <span style="font-size: 2rem;" class="md-icon">&#xe869;</span>
+    <span style="font-size: 2rem;" class="md-icon">&#xe869</span>
 
 The material icon font provides hundreds to choose from. You can use the ``<i>`` tag or the
 ``<span>`` tag.
 
 .. raw:: html
 
-    <i style="font-size: 1rem;" class="md-icon">&#xe158;</i>
-    <i style="font-size: 1.2rem;" class="md-icon">&#xe155;</i>
-    <i style="font-size: 1.4rem;" class="md-icon">&#xe195;</i>
-    <i style="font-size: 1.6rem;" class="md-icon">&#xe255;</i>
-    <i style="font-size: 1.8rem;" class="md-icon">&#xe3c9;</i>
-    <i style="font-size: 2.0rem;" class="md-icon">&#xe811;</i>
-    <i style="font-size: 2.2rem;" class="md-icon">&#xe812;</i>
-    <i style="font-size: 2.4rem;" class="md-icon">&#xe813;</i>
-    <i style="font-size: 2.6rem;" class="md-icon">&#xe814;</i>
-    <i style="font-size: 2.8rem;" class="md-icon">&#xe815;</i>
+    <i style="font-size: 1rem;" class="md-icon">&#xe158</i>
+    <i style="font-size: 1.2rem;" class="md-icon">&#xe155</i>
+    <i style="font-size: 1.4rem;" class="md-icon">&#xe195</i>
+    <i style="font-size: 1.6rem;" class="md-icon">&#xe255</i>
+    <i style="font-size: 1.8rem;" class="md-icon">&#xe3c9</i>
+    <i style="font-size: 2.0rem;" class="md-icon">&#xe811</i>
+    <i style="font-size: 2.2rem;" class="md-icon">&#xe812</i>
+    <i style="font-size: 2.4rem;" class="md-icon">&#xe813</i>
+    <i style="font-size: 2.6rem;" class="md-icon">&#xe814</i>
+    <i style="font-size: 2.8rem;" class="md-icon">&#xe815</i>
 
 
 Tables
