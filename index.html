@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
@@ -50,19 +50,24 @@
   </title>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
-  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript">
+  <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
   </script>
-  <script src="_static/jquery.js" type="text/javascript">
+  <script src="_static/jquery.js">
   </script>
-  <script src="_static/underscore.js" type="text/javascript">
+  <script src="_static/underscore.js">
   </script>
-  <script src="_static/doctools.js" type="text/javascript">
+  <script src="_static/doctools.js">
   </script>
-  <script src="_static/language_data.js" type="text/javascript">
+  <script src="_static/language_data.js">
   </script>
-  <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" type="text/javascript">
+  <script src="_static/clipboard.min.js">
   </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  <script src="_static/copybutton.js">
+  </script>
+  <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
+  </script>
+  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
   <script type="text/x-mathjax-config">
    MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
@@ -277,6 +282,11 @@
            </a>
           </li>
           <li class="md-nav__item">
+           <a class="md-nav__link" href="basics.html">
+            reStructuredText Primer
+           </a>
+          </li>
+          <li class="md-nav__item">
            <a class="md-nav__link" href="change-log.html">
             Change Log
            </a>
@@ -417,751 +427,6 @@ modify Sphinx output, which is not ideal.
         </a>
         .
        </p>
-       <div class="toctree-wrapper compound">
-        <p class="caption">
-         <span class="caption-text">
-          Contents
-         </span>
-        </p>
-        <ul>
-         <li class="toctree-l1">
-          <a class="reference internal" href="customization.html">
-           Customization
-          </a>
-          <ul>
-           <li class="toctree-l2">
-            <a class="reference internal" href="customization.html#configuration-options">
-             Configuration Options
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="customization.html#removing-sidebars">
-             Removing sidebars
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="customization.html#customizing-the-layout">
-             Customizing the layout
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="customization.html#new-blocks">
-               New Blocks
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="customization.html#older-versions">
-               Older Versions
-              </a>
-             </li>
-            </ul>
-           </li>
-          </ul>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="specimen.html">
-           Specimen
-          </a>
-          <ul>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#body-copy">
-             Body copy
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#headings">
-             Headings
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#the-3rd-level">
-               The 3rd level
-              </a>
-              <ul>
-               <li class="toctree-l4">
-                <a class="reference internal" href="specimen.html#the-4th-level">
-                 The 4th level
-                </a>
-                <ul>
-                 <li class="toctree-l5">
-                  <a class="reference internal" href="specimen.html#the-5th-level">
-                   The 5th level
-                  </a>
-                 </li>
-                </ul>
-               </li>
-              </ul>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#headings-with-secondary-text">
-             Headings with secondary text
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#the-3rd-level-with-secondary-text">
-               The 3rd level with secondary text
-              </a>
-              <ul>
-               <li class="toctree-l4">
-                <a class="reference internal" href="specimen.html#the-4th-level-with-secondary-text">
-                 The 4th level with secondary text
-                </a>
-                <ul>
-                 <li class="toctree-l5">
-                  <a class="reference internal" href="specimen.html#the-5th-level-with-secondary-text">
-                   The 5th level with secondary text
-                  </a>
-                 </li>
-                </ul>
-               </li>
-              </ul>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#blockquotes">
-             Blockquotes
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#blockquote-nesting">
-               Blockquote nesting
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#other-content-blocks">
-               Other content blocks
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#lists">
-             Lists
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#unordered-lists">
-               Unordered lists
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#ordered-lists">
-               Ordered lists
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#definition-lists">
-               Definition lists
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#code-blocks">
-             Code blocks
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#inline">
-               Inline
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#listing">
-               Listing
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#horizontal-rules">
-             Horizontal rules
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#data-tables">
-             Data tables
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#section-ii">
-             Section II
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="specimen.html#sub-section">
-               Sub section
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="specimen.html#section-iii">
-             Section III
-            </a>
-           </li>
-          </ul>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="additional_samples.html">
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             Additional
-            </span>
-           </code>
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             Samples
-            </span>
-           </code>
-          </a>
-          <ul>
-           <li class="toctree-l2">
-            <a class="reference internal" href="additional_samples.html#subpages">
-             Subpages
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="subpage/index.html">
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 Level
-                </span>
-                <span class="pre">
-                 1
-                </span>
-               </code>
-               page
-              </a>
-              <ul>
-               <li class="toctree-l4">
-                <a class="reference internal" href="subpage/subsubpage.html">
-                 1. Subsubpage
-                </a>
-               </li>
-               <li class="toctree-l4">
-                <a class="reference internal" href="subpage/second-subsubpage.html">
-                 2. Second Subsubpage
-                </a>
-               </li>
-              </ul>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="additional_samples.html#headings">
-             Headings
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#sub-heading">
-               Sub-Heading
-              </a>
-              <ul>
-               <li class="toctree-l4">
-                <a class="reference internal" href="additional_samples.html#sub-sub-heading">
-                 Sub-Sub-Heading
-                </a>
-               </li>
-              </ul>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="additional_samples.html#code">
-             Code
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="additional_samples.html#admonitions">
-             Admonitions
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#note">
-               Note
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#todo">
-               Todo
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#warning">
-               Warning
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#danger">
-               Danger
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#attention">
-               Attention
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#caution">
-               Caution
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#error">
-               Error
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#hint">
-               Hint
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#important">
-               Important
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#tip">
-               Tip
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#custom-admonitions">
-               Custom Admonitions
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="additional_samples.html#footnotes">
-             Footnotes
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="additional_samples.html#icons">
-             Icons
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="additional_samples.html#tables">
-             Tables
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#grid">
-               Grid
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="additional_samples.html#simple">
-               Simple
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="additional_samples.html#code-documentation">
-             Code Documentation
-            </a>
-           </li>
-          </ul>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="pymethod.html">
-           Python Methods
-          </a>
-          <ul>
-           <li class="toctree-l2">
-            <a class="reference internal" href="pymethod.html#client">
-             Client
-            </a>
-           </li>
-          </ul>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="numpydoc.html">
-           NumPy Docstrings
-          </a>
-          <ul>
-           <li class="toctree-l2">
-            <a class="reference internal" href="generated/numpy.polynomial.Polynomial.html">
-             numpy.polynomial.Polynomial
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.basis.html">
-               numpy.polynomial.Polynomial.basis
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.cast.html">
-               numpy.polynomial.Polynomial.cast
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.convert.html">
-               numpy.polynomial.Polynomial.convert
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.copy.html">
-               numpy.polynomial.Polynomial.copy
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.cutdeg.html">
-               numpy.polynomial.Polynomial.cutdeg
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.degree.html">
-               numpy.polynomial.Polynomial.degree
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.deriv.html">
-               numpy.polynomial.Polynomial.deriv
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.fit.html">
-               numpy.polynomial.Polynomial.fit
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.fromroots.html">
-               numpy.polynomial.Polynomial.fromroots
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.has_samecoef.html">
-               numpy.polynomial.Polynomial.has_samecoef
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.has_samedomain.html">
-               numpy.polynomial.Polynomial.has_samedomain
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.has_sametype.html">
-               numpy.polynomial.Polynomial.has_sametype
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.has_samewindow.html">
-               numpy.polynomial.Polynomial.has_samewindow
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.identity.html">
-               numpy.polynomial.Polynomial.identity
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.integ.html">
-               numpy.polynomial.Polynomial.integ
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.linspace.html">
-               numpy.polynomial.Polynomial.linspace
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.mapparms.html">
-               numpy.polynomial.Polynomial.mapparms
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.roots.html">
-               numpy.polynomial.Polynomial.roots
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.trim.html">
-               numpy.polynomial.Polynomial.trim
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.truncate.html">
-               numpy.polynomial.Polynomial.truncate
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.basis_name.html">
-               numpy.polynomial.Polynomial.basis_name
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.domain.html">
-               numpy.polynomial.Polynomial.domain
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.maxpower.html">
-               numpy.polynomial.Polynomial.maxpower
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.nickname.html">
-               numpy.polynomial.Polynomial.nickname
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="generated/generated/numpy.polynomial.Polynomial.window.html">
-               numpy.polynomial.Polynomial.window
-              </a>
-             </li>
-            </ul>
-           </li>
-          </ul>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="notebook.html">
-           Jupyter Notebooks
-          </a>
-          <ul>
-           <li class="toctree-l2">
-            <a class="reference internal" href="notebook.html#Mathematics">
-             Mathematics
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="notebook.html#DataFrames">
-             DataFrames
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="notebook.html#Plots-and-Figures">
-             Plots and Figures
-            </a>
-           </li>
-          </ul>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="markdown.html">
-           Markdown
-          </a>
-          <ul>
-           <li class="toctree-l2">
-            <a class="reference internal" href="markdown.html#body-copy">
-             Body copy
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="markdown.html#headings">
-             Headings
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#the-3rd-level">
-               The 3rd level
-              </a>
-              <ul>
-               <li class="toctree-l4">
-                <a class="reference internal" href="markdown.html#the-4th-level">
-                 The 4th level
-                </a>
-                <ul>
-                 <li class="toctree-l5">
-                  <a class="reference internal" href="markdown.html#the-5th-level">
-                   The 5th level
-                  </a>
-                  <ul>
-                   <li class="toctree-l6">
-                    <a class="reference internal" href="markdown.html#the-6th-level">
-                     The 6th level
-                    </a>
-                   </li>
-                  </ul>
-                 </li>
-                </ul>
-               </li>
-              </ul>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="markdown.html#headings-small-with-secondary-text-small">
-             Headings
-             <small>
-              with secondary text
-             </small>
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#the-3rd-level-small-with-secondary-text-small">
-               The 3rd level
-               <small>
-                with secondary text
-               </small>
-              </a>
-              <ul>
-               <li class="toctree-l4">
-                <a class="reference internal" href="markdown.html#the-4th-level-small-with-secondary-text-small">
-                 The 4th level
-                 <small>
-                  with secondary text
-                 </small>
-                </a>
-                <ul>
-                 <li class="toctree-l5">
-                  <a class="reference internal" href="markdown.html#the-5th-level-small-with-secondary-text-small">
-                   The 5th level
-                   <small>
-                    with secondary text
-                   </small>
-                  </a>
-                  <ul>
-                   <li class="toctree-l6">
-                    <a class="reference internal" href="markdown.html#the-6th-level-small-with-secondary-text-small">
-                     The 6th level
-                     <small>
-                      with secondary text
-                     </small>
-                    </a>
-                   </li>
-                  </ul>
-                 </li>
-                </ul>
-               </li>
-              </ul>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="markdown.html#blockquotes">
-             Blockquotes
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#blockquote-nesting">
-               Blockquote nesting
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#other-content-blocks">
-               Other content blocks
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="markdown.html#lists">
-             Lists
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#unordered-lists">
-               Unordered lists
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#ordered-lists">
-               Ordered lists
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#definition-lists">
-               Definition lists
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="markdown.html#code-blocks">
-             Code blocks
-            </a>
-            <ul>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#inline">
-               Inline
-              </a>
-             </li>
-             <li class="toctree-l3">
-              <a class="reference internal" href="markdown.html#listing">
-               Listing
-              </a>
-             </li>
-            </ul>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="markdown.html#horizontal-rules">
-             Horizontal rules
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="markdown.html#data-tables">
-             Data tables
-            </a>
-           </li>
-          </ul>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html">
-           rst Cheatsheet
-          </a>
-          <ul>
-           <li class="toctree-l2">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html#inline-markup">
-             Inline Markup
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html#escaping-with-backslashes">
-             Escaping with Backslashes
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html#lists">
-             Lists
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html#section-structure">
-             Section Structure
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html#blocks">
-             Blocks
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html#tables">
-             Tables
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html#explicit-markup">
-             Explicit Markup
-            </a>
-           </li>
-           <li class="toctree-l2">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html#credits">
-             Credits
-            </a>
-           </li>
-          </ul>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="change-log.html">
-           Change Log
-          </a>
-         </li>
-         <li class="toctree-l1">
-          <a class="reference internal" href="license.html">
-           License
-          </a>
-         </li>
-        </ul>
-       </div>
        <h2 id="getting-started">
         Getting Started
         <a class="headerlink" href="#getting-started" title="Permalink to this headline">
@@ -1258,6 +523,79 @@ modify Sphinx output, which is not ideal.
 </pre>
         </div>
        </div>
+       <div class="toctree-wrapper compound">
+        <p class="caption">
+         <span class="caption-text">
+          Contents
+         </span>
+        </p>
+        <ul>
+         <li class="toctree-l1">
+          <a class="reference internal" href="customization.html">
+           Customization
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="specimen.html">
+           Specimen
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="additional_samples.html">
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             Additional
+            </span>
+           </code>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             Samples
+            </span>
+           </code>
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="pymethod.html">
+           Python Methods
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="numpydoc.html">
+           NumPy Docstrings
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="notebook.html">
+           Jupyter Notebooks
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="markdown.html">
+           Markdown
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html">
+           rst Cheatsheet
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="basics.html">
+           reStructuredText Primer
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="change-log.html">
+           Change Log
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="license.html">
+           License
+          </a>
+         </li>
+        </ul>
+       </div>
        <h3 id="index">
         Index
         <a class="headerlink" href="#index" title="Permalink to this headline">
@@ -1279,7 +617,7 @@ modify Sphinx output, which is not ideal.
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="customization.html" rel="next" title="Admonition">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="customization.html" rel="next" title="Customization">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
@@ -1302,13 +640,13 @@ modify Sphinx output, which is not ideal.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Feb 03, 2020.
+              Apr 19, 2020.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      2.3.1.
+      3.0.2.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
