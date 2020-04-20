@@ -27,7 +27,13 @@ before_install:
   - pip install -r requirements-dev.txt -q
 
 install:
-  - pip install -e .
+  - python setup.py sdist bdist_wheel
+  # Test dev install
+  - pip install ".[dev]"
+  - pip uninstall sphinx-material -y
+  - pip install $(ls dist/*.tar.gz)
+  - pip uninstall sphinx-material -y
+  - pip install $(ls dist/*.whl)
 
 script:
   - cd docs
