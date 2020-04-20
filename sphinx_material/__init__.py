@@ -36,8 +36,8 @@ def setup(app):
     app.sitemap_links = sitemap_links
     app.site_pages = site_pages
     app.add_html_theme(
-        'sphinx_material',
-        os.path.join(html_theme_path()[0], 'sphinx_material'))
+        "sphinx_material", os.path.join(html_theme_path()[0], "sphinx_material")
+    )
     return {
         "version": __version__,
         "parallel_read_safe": True,

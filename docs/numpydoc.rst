@@ -2,7 +2,7 @@
 NumPy Docstrings
 ================
 
-This page shows how ``autosummary`` works wiht ``numpydoc`` and a
+This page shows how ``autosummary`` works with ``numpydoc`` and a
 NumPy-style docstring.
 
 .. autosummary::
