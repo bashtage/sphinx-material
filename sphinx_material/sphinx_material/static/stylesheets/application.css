@@ -223,7 +223,10 @@ code,kbd,pre{
     -webkit-overflow-scrolling:touch
 }
 .md-typeset pre>code{
+    /*
+    See GH #32
     display:block;
+    */
     margin:0;
     padding:.525rem .6rem;
     background-color:transparent;
