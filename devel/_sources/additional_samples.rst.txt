@@ -263,10 +263,6 @@ Math
 Production Lists
 ================
 
-.. warning::
-
-   Production lists are not working correctly.
-
 .. productionlist::
    try_stmt: try1_stmt | try2_stmt
    try1_stmt: "try" ":" `suite`
@@ -275,4 +271,3 @@ Production Lists
             : ["finally" ":" `suite`]
    try2_stmt: "try" ":" `suite`
             : "finally" ":" `suite`
-
