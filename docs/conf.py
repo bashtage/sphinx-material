@@ -122,11 +122,9 @@ html_theme_options = {
 
 if FORCE_CLASSIC:
     print("!!!!!!!!! Forcing classic !!!!!!!!!!!")
-    html_theme = 'classic'
+    html_theme = "classic"
     html_theme_options = {}
-    html_sidebars = {
-        "**": ["globaltoc.html", "localtoc.html", "searchbox.html"]
-    }
+    html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
 
 language = "en"
 html_last_updated_fmt = ""

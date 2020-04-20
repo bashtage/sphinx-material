@@ -2,17 +2,11 @@ from setuptools import setup
 
 import versioneer
 
-REQUIREMENTS = [
-    'sphinx>=2.0',
-    'beautifulsoup4',
-    'python-slugify[unidecode]',
-    'css_html_js_minify',
-    'lxml',
-]
+with open("requirements.txt") as reqs:
+    REQUIREMENTS = [reqs.readlines()]
 
-REQUIREMENTS_DEV = [
-    'black==19.10b0',
-]
+with open("requirements-dev.txt") as dev_reqs:
+    REQUIREMENTS_DEV = [dev_reqs.readlines()]
 
 setup(
     name="sphinx_material",
@@ -27,9 +21,7 @@ setup(
     include_package_data=True,
     python_requires=">=3.6",
     install_requires=REQUIREMENTS,
-    extras_require={
-        'dev': REQUIREMENTS_DEV,
-    },
+    extras_require={"dev": REQUIREMENTS_DEV},
     license="MIT",
     classifiers=[
         "Development Status :: 3 - Alpha",
