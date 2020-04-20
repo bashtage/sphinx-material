@@ -43,4 +43,9 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
+    entry_points={
+        'sphinx.html_themes': [
+            'sphinx_material = sphinx_material',
+        ]
+    },
 )

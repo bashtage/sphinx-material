@@ -28,12 +28,16 @@ def setup(app):
     app.connect("build-finished", create_sitemap)
     app.connect("build-finished", reformat_pages)
     app.connect("build-finished", minify_css)
+    app.connect("builder-inited", update_html_context)
     manager = Manager()
     site_pages = manager.list()
     sitemap_links = manager.list()
     app.multiprocess_manager = manager
     app.sitemap_links = sitemap_links
     app.site_pages = site_pages
+    app.add_html_theme(
+        'sphinx_material',
+        os.path.join(html_theme_path()[0], 'sphinx_material'))
     return {
         "version": __version__,
         "parallel_read_safe": True,
@@ -131,6 +135,11 @@ def minify_css(app, exception):
             content.write(css)
     print()
     app.multiprocess_manager.shutdown()
+
+
+def update_html_context(app):
+    config = app.config
+    config.html_context = {**get_html_context(), **config.html_context}
 
 
 def html_theme_path():
