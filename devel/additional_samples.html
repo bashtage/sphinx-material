@@ -1150,7 +1150,16 @@ reStructuredText used to create these examples.
 278
 279
 280
-281</pre>
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290</pre>
            </div>
           </td>
           <td class="code">
@@ -1185,12 +1194,16 @@ reStructuredText used to create these examples.
     <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">create_sitemap</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">reformat_pages</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">minify_css</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"builder-inited"</span><span class="p">,</span> <span class="n">update_html_context</span><span class="p">)</span>
     <span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span>
     <span class="n">site_pages</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
     <span class="n">sitemap_links</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span> <span class="o">=</span> <span class="n">manager</span>
     <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span> <span class="o">=</span> <span class="n">sitemap_links</span>
     <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span> <span class="o">=</span> <span class="n">site_pages</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_html_theme</span><span class="p">(</span>
+        <span class="s1">'sphinx_material'</span><span class="p">,</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_theme_path</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'sphinx_material'</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s2">"version"</span><span class="p">:</span> <span class="n">__version__</span><span class="p">,</span>
         <span class="s2">"parallel_read_safe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
@@ -1288,6 +1301,11 @@ reStructuredText used to create these examples.
             <span class="n">content</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">css</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">update_html_context</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">html_context</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">get_html_context</span><span class="p">(),</span> <span class="o">**</span><span class="n">config</span><span class="o">.</span><span class="n">html_context</span><span class="p">}</span>
 
 
 <span class="k">def</span> <span class="nf">html_theme_path</span><span class="p">():</span>

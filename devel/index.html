@@ -453,17 +453,7 @@ modify Sphinx output, which is not ideal.
        </p>
        <div class="highlight-python notranslate">
         <div class="highlight">
-         <pre><span></span><span class="kn">import</span> <span class="nn">sphinx_material</span>
-
- <span class="c1"># Register the theme as an extension to generate a sitemap.xml</span>
-<span class="n">extensions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'sphinx_material'</span><span class="p">)</span>
-
-<span class="c1"># Choose the material theme</span>
-<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
-<span class="c1"># Get the them path</span>
-<span class="n">html_theme_path</span> <span class="o">=</span> <span class="n">sphinx_material</span><span class="o">.</span><span class="n">html_theme_path</span><span class="p">()</span>
-<span class="c1"># Register the required helpers for the html context</span>
-<span class="n">html_context</span> <span class="o">=</span> <span class="n">sphinx_material</span><span class="o">.</span><span class="n">get_html_context</span><span class="p">()</span>
+         <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
 </pre>
         </div>
        </div>
@@ -484,13 +474,7 @@ modify Sphinx output, which is not ideal.
        </p>
        <div class="highlight-python notranslate">
         <div class="highlight">
-         <pre><span></span><span class="kn">import</span> <span class="nn">sphinx_material</span>
-
-<span class="c1"># # Required theme setup</span>
-<span class="n">extensions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'sphinx_material'</span><span class="p">)</span>
-<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
-<span class="n">html_theme_path</span> <span class="o">=</span> <span class="n">sphinx_material</span><span class="o">.</span><span class="n">html_theme_path</span><span class="p">()</span>
-<span class="n">html_context</span> <span class="o">=</span> <span class="n">sphinx_material</span><span class="o">.</span><span class="n">get_html_context</span><span class="p">()</span>
+         <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
 
 <span class="c1"># Material theme options (see theme.conf for more information)</span>
 <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>

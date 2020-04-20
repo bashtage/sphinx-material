@@ -43,17 +43,7 @@ Update your ``conf.py`` with the required changes:
 
 .. code-block:: python
 
-    import sphinx_material
-
-     # Register the theme as an extension to generate a sitemap.xml
-    extensions.append('sphinx_material')
-
-    # Choose the material theme
     html_theme = 'sphinx_material'
-    # Get the them path
-    html_theme_path = sphinx_material.html_theme_path()
-    # Register the required helpers for the html context
-    html_context = sphinx_material.get_html_context()
 
 
 There are a lot more ways to customize this theme. See :ref:`Customization`
@@ -61,13 +51,7 @@ or ``theme.conf`` for more details.
 
 .. code-block:: python
 
-    import sphinx_material
-
-    # # Required theme setup
-    extensions.append('sphinx_material')
     html_theme = 'sphinx_material'
-    html_theme_path = sphinx_material.html_theme_path()
-    html_context = sphinx_material.get_html_context()
 
     # Material theme options (see theme.conf for more information)
     html_theme_options = {
