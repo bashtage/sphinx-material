@@ -78,14 +78,6 @@
   <link href="subpage/index.html" rel="next" title="Level 1 page"/>
   <link href="specimen.html" rel="prev" title="Specimen"/>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
-  <script src="_static/javascripts/version_dropdown.js">
-  </script>
-  <script>
-   var json_loc = "_static/versions.json",
-        target_loc = "../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
   <svg class="md-svg">
@@ -168,6 +160,25 @@
         <div class="md-source__repository">
          Material for Sphinx
         </div>
+       </a>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink dropdown">
+      <button class="dropdownbutton">
+       Versions
+      </button>
+      <div class="dropdown-content md-hero">
+       <a href="https://bashtage.github.io/sphinx-material/" title="Release">
+        Release
+       </a>
+       <a href="https://bashtage.github.io/sphinx-material/devel/" title="Development">
+        Development
+       </a>
+       <a href="/" title="Release (rel)">
+        Release (rel)
+       </a>
+       <a href="/devel/" title="Development (rel)">
+        Development (rel)
        </a>
       </div>
      </div>
@@ -1202,8 +1213,8 @@ reStructuredText used to create these examples.
     <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span> <span class="o">=</span> <span class="n">sitemap_links</span>
     <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span> <span class="o">=</span> <span class="n">site_pages</span>
     <span class="n">app</span><span class="o">.</span><span class="n">add_html_theme</span><span class="p">(</span>
-        <span class="s1">'sphinx_material'</span><span class="p">,</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_theme_path</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'sphinx_material'</span><span class="p">))</span>
+        <span class="s2">"sphinx_material"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_theme_path</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"sphinx_material"</span><span class="p">)</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s2">"version"</span><span class="p">:</span> <span class="n">__version__</span><span class="p">,</span>
         <span class="s2">"parallel_read_safe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
@@ -2346,7 +2357,7 @@ source files for one Sphinx project.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Apr 20, 2020.
+              Apr 21, 2020.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">

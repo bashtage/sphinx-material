@@ -78,14 +78,6 @@
   <link href="specimen.html" rel="next" title="Specimen"/>
   <link href="index.html" rel="prev" title="Material for Sphinx"/>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
-  <script src="_static/javascripts/version_dropdown.js">
-  </script>
-  <script>
-   var json_loc = "_static/versions.json",
-        target_loc = "../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
   <svg class="md-svg">
@@ -168,6 +160,25 @@
         <div class="md-source__repository">
          Material for Sphinx
         </div>
+       </a>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink dropdown">
+      <button class="dropdownbutton">
+       Versions
+      </button>
+      <div class="dropdown-content md-hero">
+       <a href="https://bashtage.github.io/sphinx-material/" title="Release">
+        Release
+       </a>
+       <a href="https://bashtage.github.io/sphinx-material/devel/" title="Development">
+        Development
+       </a>
+       <a href="/" title="Release (rel)">
+        Release (rel)
+       </a>
+       <a href="/devel/" title="Development (rel)">
+        Development (rel)
        </a>
       </div>
      </div>
@@ -258,24 +269,39 @@
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="#removing-sidebars">
-                  Removing sidebars
+                 <a class="md-nav__link" href="#sidebars">
+                  Sidebars
                  </a>
                 </li>
                 <li class="md-nav__item">
                  <a class="md-nav__link" href="#customizing-the-layout">
                   Customizing the layout
                  </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#new-blocks">
+                  New Blocks
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#version-dropdown">
+                  Version Dropdown
+                 </a>
                  <nav class="md-nav">
                   <ul class="md-nav__list">
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#new-blocks">
-                     New Blocks
+                    <a class="md-nav__link" href="#using-a-javascript-file">
+                     Using a Javascript File
                     </a>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#older-versions">
-                     Older Versions
+                    <a class="md-nav__link" href="#using-conf-py">
+                     Using
+                     <code class="docutils literal notranslate">
+                      <span class="pre">
+                       conf.py
+                      </span>
+                     </code>
                     </a>
                    </li>
                   </ul>
@@ -298,13 +324,23 @@
              </a>
             </li>
             <li class="md-nav__item">
-             <a class="md-nav__link" href="#removing-sidebars">
-              Removing sidebars
+             <a class="md-nav__link" href="#sidebars">
+              Sidebars
              </a>
             </li>
             <li class="md-nav__item">
              <a class="md-nav__link" href="#customizing-the-layout">
               Customizing the layout
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#new-blocks">
+              New Blocks
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#version-dropdown">
+              Version Dropdown
              </a>
             </li>
            </ul>
@@ -393,24 +429,39 @@
               </a>
              </li>
              <li class="md-nav__item">
-              <a class="md-nav__link" href="#removing-sidebars">
-               Removing sidebars
+              <a class="md-nav__link" href="#sidebars">
+               Sidebars
               </a>
              </li>
              <li class="md-nav__item">
               <a class="md-nav__link" href="#customizing-the-layout">
                Customizing the layout
               </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#new-blocks">
+               New Blocks
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#version-dropdown">
+               Version Dropdown
+              </a>
               <nav class="md-nav">
                <ul class="md-nav__list">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="#new-blocks">
-                  New Blocks
+                 <a class="md-nav__link" href="#using-a-javascript-file">
+                  Using a Javascript File
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="#older-versions">
-                  Older Versions
+                 <a class="md-nav__link" href="#using-conf-py">
+                  Using
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    conf.py
+                   </span>
+                  </code>
                  </a>
                 </li>
                </ul>
@@ -738,7 +789,7 @@ case the content of the overridden block will appear
            <p>
             <code class="docutils literal notranslate">
              <span class="pre">
-              'href'
+              href
              </span>
             </code>
             : The URL or pagename (str)
@@ -748,7 +799,7 @@ case the content of the overridden block will appear
            <p>
             <code class="docutils literal notranslate">
              <span class="pre">
-              'title'
+              title
              </span>
             </code>
             : The title to appear (str)
@@ -758,10 +809,10 @@ case the content of the overridden block will appear
            <p>
             <code class="docutils literal notranslate">
              <span class="pre">
-              'internal'
+              internal
              </span>
             </code>
-            : Flag indicating to use pathto  to find the page.  Set to False for
+            : Flag indicating to use pathto to find the page.  Set to False for
 external content. (bool)
            </p>
           </li>
@@ -820,31 +871,39 @@ to use this feature.
         </dt>
         <dd>
          <p>
-          The location of the JSON file that contains the version information. The defaulta ssumes there
+          The location of the JSON file that contains the version information. The default assumes there
 is a file versions.json located in the root of the site.
          </p>
         </dd>
+        <dt>
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           version_info
+          </span>
+         </code>
+        </dt>
+        <dd>
+         <p>
+          A dictionary used to populate the version dropdown.  If this variable is provided, the static
+dropdown is used and any JavaScript information is ignored.
+         </p>
+        </dd>
        </dl>
-       <h2 id="removing-sidebars">
-        Removing sidebars
-        <a class="headerlink" href="#removing-sidebars" title="Permalink to this headline">
+       <h2 id="sidebars">
+        Sidebars
+        <a class="headerlink" href="#sidebars" title="Permalink to this headline">
          ¶
         </a>
        </h2>
        <p>
-        The search box, the global toc and the local toc all respect the value in
+        You must set
         <code class="docutils literal notranslate">
          <span class="pre">
           html_sidebars
          </span>
         </code>
-        in
-        <code class="docutils literal notranslate">
-         <span class="pre">
-          conf.py
-         </span>
-        </code>
-        . The default setting is
+        in order for the side bar to appear. There are
+four in the complete set.
        </p>
        <div class="highlight-python notranslate">
         <div class="highlight">
@@ -855,7 +914,7 @@ is a file versions.json located in the root of the site.
         </div>
        </div>
        <p>
-        If this is changed to
+        You can exclude any to hide a specific sidebar. For example, if this is changed to
        </p>
        <div class="highlight-python notranslate">
         <div class="highlight">
@@ -925,12 +984,12 @@ touch source/_templates/layout.html
 </pre>
         </div>
        </div>
-       <h3 id="new-blocks">
+       <h2 id="new-blocks">
         New Blocks
         <a class="headerlink" href="#new-blocks" title="Permalink to this headline">
          ¶
         </a>
-       </h3>
+       </h2>
        <p>
         The theme has a small number of new blocks to simplify some types of
 customization:
@@ -992,28 +1051,132 @@ the end of the block to include the default icon font as well.
          </p>
         </dd>
        </dl>
-       <h3 id="older-versions">
-        Older Versions
-        <a class="headerlink" href="#older-versions" title="Permalink to this headline">
+       <h2 id="version-dropdown">
+        Version Dropdown
+        <a class="headerlink" href="#version-dropdown" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        A version dropdown is available that lets you store multiple versions in a single site.
+The standard structure of the site, relative to the base is usually:
+       </p>
+       <div class="highlight-default notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="o">/</span>
+<span class="o">/</span><span class="n">devel</span>
+<span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">0.0</span>
+<span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">1.0</span>
+<span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">1.1</span>
+<span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.0</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        To use the version dropdown, you must set
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          version_dropdown
+         </span>
+        </code>
+        to
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          True
+         </span>
+        </code>
+        in
+the sites configuration.
+       </p>
+       <p>
+        There are two approaches, one which stores the version information in a JavaScript file
+and one which uses a dictionary in the configuration.
+       </p>
+       <h3 id="using-a-javascript-file">
+        Using a Javascript File
+        <a class="headerlink" href="#using-a-javascript-file" title="Permalink to this headline">
          ¶
         </a>
        </h3>
+       <p>
+        The data used is read via javascript from a file. The basic structure of the file is a dictionary of the form [label, path].
+       </p>
+       <p>
+        This dictionary tells the dropdown that the release version is in the root of the site, the
+other versions are archived under their version number, and the development version is
+located in /devel.
+       </p>
        <div class="admonition note">
         <p class="admonition-title">
          Note
         </p>
         <p>
-         This feature is experimental and the implementation may change.
+         The advantage of this approach is that you can separate version information
+from the rendered documentation.  This makes is easy to change the version
+dropdown in _older_ versions of the documentation to reflect additional versions
+that are released later. Changing the Javascript file changes the version dropdown
+content in all versions.  This approach is used in
+         <cite>
+          statsmodels &lt;https://www.statsmodels.org/&gt;
+         </cite>
+         .
+        </p>
+       </div>
+       <h3 id="using-conf-py">
+        Using
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          conf.py
+         </span>
+        </code>
+        <a class="headerlink" href="#using-conf-py" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         Warning
+        </p>
+        <p>
+         This method has precedence over the JavaScript approach. If
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           version_info
+          </span>
+         </code>
+         is
+not empty in a site’s
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           html_theme_options
+          </span>
+         </code>
+         , then the static approach is used.
         </p>
        </div>
        <p>
-        A dropdown memu an be used to switch to older version. The data used is read via javascript from
-a file.  The basic structure of the file is a dictionary of the form [label, path].
+        The alternative uses a dictionary where the key is the title and the value is the target.
+The dictionary is part of the size configuration’s
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          html_theme_options
+         </span>
+        </code>
+        .
        </p>
        <p>
-        This dictionary tells the dropdown that the release version is in the root of the site and the
-development version is located in /devel.
+        The dictionary structure is nearly identical.  Here you can use relative paths
+like in the JavaScript version. You can also use absolute paths.
        </p>
+       <div class="admonition note">
+        <p class="admonition-title">
+         Note
+        </p>
+        <p>
+         This approach is easier if you only want to have a fixed set of documentation,
+e.g., stable and devel.
+        </p>
+       </div>
       </article>
      </div>
     </div>
@@ -1059,7 +1222,7 @@ development version is located in /devel.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Apr 20, 2020.
+              Apr 21, 2020.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
