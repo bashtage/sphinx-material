@@ -1,3 +1,9 @@
+"""
+Run in PyCharm with two additional argument
+
+/path/to/docs /path/to/docs/_build
+
+"""
 # -*- coding: utf-8 -*-
 import re
 import sys

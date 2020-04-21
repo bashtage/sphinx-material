@@ -21,6 +21,8 @@ del get_versions
 
 ROOT_SUFFIX = "--page-root"
 
+USER_TABLE_CLASSES = []
+
 
 def setup(app):
     """Setup connects events to the sitemap builder"""
@@ -29,6 +31,7 @@ def setup(app):
     app.connect("build-finished", reformat_pages)
     app.connect("build-finished", minify_css)
     app.connect("builder-inited", update_html_context)
+    app.connect("config-inited", update_table_classes)
     manager = Manager()
     site_pages = manager.list()
     sitemap_links = manager.list()
@@ -142,6 +145,12 @@ def update_html_context(app):
     config.html_context = {**get_html_context(), **config.html_context}
 
 
+def update_table_classes(app, config):
+    table_classes = config.html_theme_options.get("table_classes")
+    if table_classes:
+        USER_TABLE_CLASSES.extend(table_classes)
+
+
 def html_theme_path():
     return [os.path.dirname(os.path.abspath(__file__))]
 
@@ -225,7 +234,11 @@ def table_fix(body_text, page_name="md-page-root--link"):
             classes = set(table.get("class", tuple()))
             if classes.intersection(ignore_table_classes):
                 continue
-            del table["class"]
+            classes = [tc for tc in classes if tc in USER_TABLE_CLASSES]
+            if classes:
+                table["class"] = classes
+            else:
+                del table["class"]
         first_h1 = body.find("h1")
         headers = body.find_all(re.compile("^h[1-6]$"))
         for i, header in enumerate(headers):
@@ -250,7 +263,7 @@ def table_fix(body_text, page_name="md-page-root--link"):
 
 
 # These final lines exist to give sphinx a stable str representation of
-# these two functions accross runs, and to ensure that the str changes
+# these two functions across runs, and to ensure that the str changes
 # if the source does.
 #
 # Note that this would be better down with a metaclass factory

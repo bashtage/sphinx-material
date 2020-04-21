@@ -124,6 +124,7 @@ html_theme_options = {
         "Release (rel)": "/",
         "Development (rel)": "/devel/",
     },
+    "table_classes": ["plain"],
 }
 
 if FORCE_CLASSIC:
