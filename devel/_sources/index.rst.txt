@@ -28,8 +28,7 @@ The other issues are:
 * improving the search box; and
 * ensuring that all Sphinx blocks work as intended.
 
-You can see how it works on the
-`statsmodels development branch documentation <https://www.statsmodels.org/devel>`_.
+You can see how it works on `statsmodels <https://www.statsmodels.org/>`_.
 
 Getting Started
 ---------------
