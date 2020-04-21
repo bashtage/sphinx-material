@@ -118,6 +118,12 @@ html_theme_options = {
     },
     "version_dropdown": True,
     "version_json": "_static/versions.json",
+    "version_info": {
+        "Release": "https://bashtage.github.io/sphinx-material/",
+        "Development": "https://bashtage.github.io/sphinx-material/devel/",
+        "Release (rel)": "/",
+        "Development (rel)": "/devel/",
+    },
 }
 
 if FORCE_CLASSIC:
