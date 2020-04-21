@@ -77,14 +77,6 @@
   <link href="search.html" rel="search" title="Search"/>
   <link href="customization.html" rel="next" title="Customization"/>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
-  <script src="_static/javascripts/version_dropdown.js">
-  </script>
-  <script>
-   var json_loc = "_static/versions.json",
-        target_loc = "../",
-        text = "Versions";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
   <svg class="md-svg">
@@ -167,6 +159,25 @@
         <div class="md-source__repository">
          Material for Sphinx
         </div>
+       </a>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink dropdown">
+      <button class="dropdownbutton">
+       Versions
+      </button>
+      <div class="dropdown-content md-hero">
+       <a href="https://bashtage.github.io/sphinx-material/" title="Release">
+        Release
+       </a>
+       <a href="https://bashtage.github.io/sphinx-material/devel/" title="Development">
+        Development
+       </a>
+       <a href="/sphinx-material/" title="Release (rel)">
+        Release (rel)
+       </a>
+       <a href="/sphinx-material/devel/" title="Development (rel)">
+        Development (rel)
        </a>
       </div>
      </div>
@@ -421,9 +432,9 @@ modify Sphinx output, which is not ideal.
         </li>
        </ul>
        <p>
-        You can see how it works on the
-        <a class="reference external" href="https://www.statsmodels.org/devel">
-         statsmodels development branch documentation
+        You can see how it works on
+        <a class="reference external" href="https://www.statsmodels.org/">
+         statsmodels
         </a>
         .
        </p>
@@ -453,17 +464,7 @@ modify Sphinx output, which is not ideal.
        </p>
        <div class="highlight-python notranslate">
         <div class="highlight">
-         <pre><span></span><span class="kn">import</span> <span class="nn">sphinx_material</span>
-
- <span class="c1"># Register the theme as an extension to generate a sitemap.xml</span>
-<span class="n">extensions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'sphinx_material'</span><span class="p">)</span>
-
-<span class="c1"># Choose the material theme</span>
-<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
-<span class="c1"># Get the them path</span>
-<span class="n">html_theme_path</span> <span class="o">=</span> <span class="n">sphinx_material</span><span class="o">.</span><span class="n">html_theme_path</span><span class="p">()</span>
-<span class="c1"># Register the required helpers for the html context</span>
-<span class="n">html_context</span> <span class="o">=</span> <span class="n">sphinx_material</span><span class="o">.</span><span class="n">get_html_context</span><span class="p">()</span>
+         <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
 </pre>
         </div>
        </div>
@@ -484,13 +485,7 @@ modify Sphinx output, which is not ideal.
        </p>
        <div class="highlight-python notranslate">
         <div class="highlight">
-         <pre><span></span><span class="kn">import</span> <span class="nn">sphinx_material</span>
-
-<span class="c1"># # Required theme setup</span>
-<span class="n">extensions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'sphinx_material'</span><span class="p">)</span>
-<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
-<span class="n">html_theme_path</span> <span class="o">=</span> <span class="n">sphinx_material</span><span class="o">.</span><span class="n">html_theme_path</span><span class="p">()</span>
-<span class="n">html_context</span> <span class="o">=</span> <span class="n">sphinx_material</span><span class="o">.</span><span class="n">get_html_context</span><span class="p">()</span>
+         <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
 
 <span class="c1"># Material theme options (see theme.conf for more information)</span>
 <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
@@ -640,7 +635,7 @@ modify Sphinx output, which is not ideal.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Apr 20, 2020.
+              Apr 21, 2020.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
