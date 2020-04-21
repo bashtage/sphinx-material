@@ -95,6 +95,9 @@ Configuration Options
 ``version_info``
    A dictionary used to populate the version dropdown.  If this variable is provided, the static
    dropdown is used and any JavaScript information is ignored.
+``table_classes``
+   A list of classes to **not strip** from tables. All other classes are stripped, and the default
+   table has no class attribute. Custom table classes need to provide the full style for the table.
 
 Sidebars
 ========
