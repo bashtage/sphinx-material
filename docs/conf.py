@@ -121,8 +121,8 @@ html_theme_options = {
     "version_info": {
         "Release": "https://bashtage.github.io/sphinx-material/",
         "Development": "https://bashtage.github.io/sphinx-material/devel/",
-        "Release (rel)": "/",
-        "Development (rel)": "/devel/",
+        "Release (rel)": "",
+        "Development (rel)": "devel/",
     },
     "table_classes": ["plain"],
 }

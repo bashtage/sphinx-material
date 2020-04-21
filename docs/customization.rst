@@ -230,12 +230,12 @@ The dictionary is part of the size configuration's ``html_theme_options``.
 .. code-block::python
 
    "version_info": {
-        "release": "/",
-        "development": "/devel/",
-        "v1.0.0": "/v1.0.0/",
-        "v1.1.0": "/v1.1.0/",
-        "v1.1.1": "/v1.1.0/",
-        "v1.2.0": "/v1.2.0/",
+        "release": "",  # empty is the master doc
+        "development": "devel/",
+        "v1.0.0": "v1.0.0/",
+        "v1.1.0": "v1.1.0/",
+        "v1.1.1": "v1.1.0/",
+        "v1.2.0": "v1.2.0/",
         "Read The Docs": "https://rtd.readthedocs.io/",
    }
 

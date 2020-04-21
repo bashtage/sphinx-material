@@ -4,7 +4,8 @@
     <button class="dropdownbutton">{{ theme_version_dropdown_text }}</button>
     <div class="dropdown-content md-hero">
       {%- for title, href in theme_version_info.items() %}
-          <a title="{{ title|striptags|e }}" href="{{ href|e }}">{{ title }}</a>
+          {%  set url = pathto(master_doc) if href == "" else href %}
+          <a title="{{ title|striptags|e }}" href="{{ url|e }}">{{ title }}</a>
       {% endfor %}
     </div>
   </div>
