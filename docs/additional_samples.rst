@@ -164,16 +164,15 @@ The material icon font provides hundreds to choose from. You can use the ``<i>``
 Tables
 ======
 Here are some examples of Sphinx
-`tables <http://www.sphinx-doc.org/rest.html#rst-tables>`_. The Sphinx Bootstrap
-Theme removes all Sphinx ``docutils`` classes and replaces them with the
-default Bootstrap ``table`` class.  You can add additional table classes
-using the Sphinx ``cssclass::`` directive, as demonstrated in the following
-tables.
+`tables <http://www.sphinx-doc.org/rest.html#rst-tables>`_. The Sphinx Material
+all classes and only applies the default style to classless tables. If you want
+to use a custom table class, you will need to do two thing. First, apply it
+using ``.. cssclass:: custom-class`` and then add it to your configuration's
+``table_classes`` variable.
 
 Grid
 ----
 A grid table:
-
 
 +------------------------+------------+----------+----------+
 | Header1                | Header2    | Header3  | Header4  |
@@ -197,6 +196,28 @@ cell1  cell2  cell3
 ...    ...    ...
 ...    ...    ...
 =====  =====  =======
+
+User-styled Table
+-----------------
+
+.. note::
+
+   `table_classes` is set to `["plain"]` in the site's configuration. Only plain
+   remains as the class of the table. Other standard classes applied by Sphinx are
+   removed.
+
+   This is feature demonstration. There is no css for the plain class, and so
+   this is completely unstyled.
+
+.. cssclass:: plain
+
+=====  ======  =======
+User   Styled  Table
+=====  ======  =======
+cell1  cell2   cell3
+...    ...     ...
+...    ...     ...
+=====  ======  =======
 
 
 Code Documentation
