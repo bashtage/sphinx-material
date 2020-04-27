@@ -1,6 +1,7 @@
 {% set toctree = toctree(maxdepth=theme_globaltoc_depth|toint, collapse=theme_globaltoc_collapse|tobool, includehidden=theme_globaltoc_includehidden|tobool) %}
 {% if toctree and sidebars and 'globaltoc.html' in sidebars %}
-  {% set toctree_nodes = derender_toc(toctree, False) %}
+  {% set toctree_node_list = derender_toc(toctree, False) %}
+  {% for toctree_nodes in toctree_node_list %}
   {% if toctree_nodes.caption %}
     <p class="caption">{{ toctree_nodes.caption }}</p>
   {% endif %}
@@ -22,5 +23,6 @@
     </li>
   {%- endfor %}
   </ul>
+  {%- endfor %}
   {# TODO: Fallback to toc? #}
 {% endif %}
