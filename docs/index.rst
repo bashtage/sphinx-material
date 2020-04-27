@@ -82,18 +82,29 @@ or ``theme.conf`` for more details.
     }
 
 .. toctree::
-    :caption: Contents
+    :caption: Basic Use
     :maxdepth: 1
 
     customization
     specimen
     additional_samples
+
+
+.. toctree::
+    :caption: Other Examples and Uses
+    :maxdepth: 1
+
     pymethod
     numpydoc
     notebook.ipynb
     markdown.md
     rst-cheatsheet/rst-cheatsheet
     basics
+
+.. toctree::
+    :caption: Changes and License
+    :maxdepth: 1
+
     change-log
     license
 

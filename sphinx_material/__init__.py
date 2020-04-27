@@ -1,5 +1,6 @@
 """Sphinx Material theme."""
 
+import hashlib
 import inspect
 import os
 import re
@@ -9,12 +10,11 @@ from multiprocessing import Manager
 from typing import List
 
 import bs4
-from bs4 import BeautifulSoup
-from sphinx.util import logging, console
 import slugify
+from bs4 import BeautifulSoup
+from sphinx.util import console, logging
 
 from ._version import get_versions
-import hashlib
 
 __version__ = get_versions()["version"]
 del get_versions
@@ -179,9 +179,9 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool, page_name: str) -> List[di
 class CaptionList(list):
     _caption = ""
 
-    def __init__(self):
+    def __init__(self, caption=""):
         super().__init__()
-        self._caption = ""
+        self._caption = caption
 
     @property
     def caption(self):
@@ -194,19 +194,27 @@ class CaptionList(list):
 
 def derender_toc(
     toc_text, fix_root=True, page_name: str = "md-page-root--link"
-) -> List[dict]:
+) -> List[CaptionList]:
     try:
         toc = BeautifulSoup(toc_text, features="html.parser")
-        nodes = CaptionList()
+        node_lists = []
+        current = None
         for child in toc.children:
             if callable(child.isspace) and child.isspace():
                 continue
-            if child.name == "ul":
-                nodes.extend(ul_to_list(child, fix_root, page_name))
+            if child.name == "p":
+                # New CaptionList
+                current = CaptionList(caption="".join(map(str, child.contents)))
+                node_lists.append(current)
+            elif current is None:
+                current = CaptionList()
+                node_lists.append(current)
+            elif child.name == "ul":
+                current.extend(ul_to_list(child, fix_root, page_name))
             else:
-                nodes.caption = "".join(map(str, child.contents))
+                raise NotImplementedError
 
-        return nodes
+        return node_lists
     except Exception as exc:
         logger = logging.getLogger(__name__)
         logger.warning(
