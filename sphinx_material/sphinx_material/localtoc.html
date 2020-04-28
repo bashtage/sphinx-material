@@ -1,4 +1,5 @@
-{% set toc_nodes = derender_toc(toc, True, pagename) if display_toc else [] %}
+{% set toc_node_list = derender_toc(toc, True, pagename) if display_toc else [] %}
+{% set toc_nodes = toc_node_list[0] if toc_node_list else [] %}
 <nav class="md-nav md-nav--secondary">
   {%- if display_toc and toc_nodes and sidebars and 'localtoc.html' in sidebars %}
     <label class="md-nav__title" for="__toc">Contents</label>

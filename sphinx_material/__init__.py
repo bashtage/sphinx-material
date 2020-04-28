@@ -206,10 +206,10 @@ def derender_toc(
                 # New CaptionList
                 current = CaptionList(caption="".join(map(str, child.contents)))
                 node_lists.append(current)
-            elif current is None:
-                current = CaptionList()
-                node_lists.append(current)
             elif child.name == "ul":
+                if current is None:
+                    current = CaptionList()
+                    node_lists.append(current)
                 current.extend(ul_to_list(child, fix_root, page_name))
             else:
                 raise NotImplementedError
