@@ -5,9 +5,9 @@ import inspect
 import os
 import re
 import sys
-import xml.etree.ElementTree as ET
 from multiprocessing import Manager
-from typing import List
+from typing import List, Optional
+from xml.etree import ElementTree
 
 import bs4
 import slugify
@@ -76,15 +76,15 @@ def create_sitemap(app, exception):
         "{1}".format(len(app.sitemap_links), console.colorize("blue", filename))
     )
 
-    root = ET.Element("urlset")
+    root = ElementTree.Element("urlset")
     root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
 
     for link in app.sitemap_links:
-        url = ET.SubElement(root, "url")
-        ET.SubElement(url, "loc").text = link
+        url = ElementTree.SubElement(root, "url")
+        ElementTree.SubElement(url, "loc").text = link
     app.sitemap_links[:] = []
 
-    ET.ElementTree(root).write(filename)
+    ElementTree.ElementTree(root).write(filename)
 
 
 def reformat_pages(app, exception):
@@ -194,33 +194,26 @@ class CaptionList(list):
 
 def derender_toc(
     toc_text, fix_root=True, page_name: str = "md-page-root--link"
-) -> List[CaptionList]:
+) -> List[dict]:
+    nodes = []
     try:
         toc = BeautifulSoup(toc_text, features="html.parser")
-        node_lists = []
-        current = None
         for child in toc.children:
             if callable(child.isspace) and child.isspace():
                 continue
             if child.name == "p":
-                # New CaptionList
-                current = CaptionList(caption="".join(map(str, child.contents)))
-                node_lists.append(current)
+                nodes.append({"caption": "".join(map(str, child.contents))})
             elif child.name == "ul":
-                if current is None:
-                    current = CaptionList()
-                    node_lists.append(current)
-                current.extend(ul_to_list(child, fix_root, page_name))
+                nodes.extend(ul_to_list(child, fix_root, page_name))
             else:
                 raise NotImplementedError
-
-        return node_lists
     except Exception as exc:
         logger = logging.getLogger(__name__)
         logger.warning(
             "Failed to process toctree_text\n" + str(exc) + "\n" + str(toc_text)
         )
-        return toc_text
+
+    return nodes
 
 
 def walk_contents(tags):
@@ -247,13 +240,13 @@ def table_fix(body_text, page_name="md-page-root--link"):
                 table["class"] = classes
             else:
                 del table["class"]
-        first_h1 = body.find("h1")
+        first_h1: Optional[bs4.element.Tag] = body.find("h1")
         headers = body.find_all(re.compile("^h[1-6]$"))
         for i, header in enumerate(headers):
             for a in header.select("a"):
                 if "headerlink" in a.get("class", ""):
                     header["id"] = a["href"][1:]
-        if first_h1:
+        if first_h1 is not None:
             slug = slugify.slugify(page_name) + ROOT_SUFFIX
             first_h1["id"] = slug
             for a in first_h1.select("a"):
