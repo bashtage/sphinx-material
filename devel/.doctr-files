@@ -150,6 +150,7 @@ devel/index.html
 devel/license.html
 devel/markdown.html
 devel/notebook.html
+devel/notebook.ipynb
 devel/numpydoc.html
 devel/objects.inv
 devel/pymethod.html
