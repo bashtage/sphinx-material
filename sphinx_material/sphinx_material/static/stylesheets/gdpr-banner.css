@@ -1,0 +1,96 @@
+/*
+GDPR banner base css
+https://github.com/solodev/gdpr-banner/blob/master/gdpr-banner.css
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+.privacy-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 0.5rem;
+  background: #fff;
+  z-index: 1030;
+  color: #000;
+  font-size: 14px;
+  margin: 0;
+  display: none;
+}
+
+.banner-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.privacy-banner p {
+  margin: 0;
+  color: #000;
+  text-align: center;
+}
+
+.privacy-banner .banner-wrapper p {
+  padding-right: 3rem;
+}
+
+.privacy-banner a {
+  text-decoration: none;
+  margin: 20px auto 0 auto;
+  display: block;
+  max-width: 150px;
+}
+
+.privacy-banner a:hover {
+  text-decoration: underline;
+}
+
+.privacy-banner button {
+  position: absolute;
+  right: 5px;
+  top: calc(50% - 12.5px);
+  color: #fff;
+  outline: 0;
+  height: 25px;
+  width: 25px;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  font-weight: 700;
+  border-radius: 50%;
+  text-align: center;
+  padding: 0;
+  line-height: 1;
+  background: #000;
+  cursor: pointer;
+}
+
+.banner-learn {
+  color: #000;
+}
+
+.banner-accept {
+  padding: 7px 15px;
+  color: #fff;
+  border-radius: 5px;
+  background: #000;
+}
+
+@media (min-width: 768px) {
+  .privacy-banner {
+    padding: 1.5rem 0.5rem;
+  }
+  .privacy-banner a {
+    display: inline-block;
+    margin: 0 10px;
+  }
+}

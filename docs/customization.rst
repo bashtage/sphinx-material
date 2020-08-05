@@ -35,6 +35,11 @@ Configuration Options
    Path to a touch icon, should be 152x152 or larger.
 ``google_analytics_account``
    Set to enable google analytics.
+``gdpr_banner_link``
+   Add a link to either an internal or external Privacy Policy page. If absent,
+   no banner is added. If present, minimal banner is added to footer of page.
+   If the 'x' (close) button on the banner is clicked, it remains closed for the
+   remained of the session.
 ``repo_url``
    Set the repo url for the link to appear.
 ``repo_name``

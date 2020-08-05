@@ -1,0 +1,20 @@
+<div
+  class="privacy-banner"
+  style="border-top: 2px solid #ff910e; display: none;"
+>
+  <div class="banner-wrapper">
+    <p>
+      We use cookies to provide and improve our services. By using our site, you
+      consent to how we use cookies.
+      <a href="{{ theme_gdpr_banner }}" style="color: blue;">
+        <strong>Learn more</strong>
+      </a>
+    </p>
+    <button aria-label="Close" style="background: #ff910e;" type="button">
+      <span aria-hidden="true">x</span>
+    </button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="{{ pathto('_static/javascripts/gdpr-banner.js', 1) }}"></script>

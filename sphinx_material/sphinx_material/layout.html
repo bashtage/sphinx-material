@@ -42,6 +42,11 @@
   <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application.css', 1) }}"/>
   <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application-palette.css', 1) }}"/>
   <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application-fixes.css', 1) }}"/>
+
+  {% if theme_gdpr_banner_link %}
+    <link rel="stylesheet" href="{{ pathto('_static/stylesheets/gdpr-banner.css', 1) }}"/>
+  {% endif %}
+
   {% block fonticon %}
   <link rel="stylesheet" href="{{ pathto('_static/fonts/material-icons.css', 1) }}"/>
   {% endblock %}
@@ -191,5 +196,10 @@
   {%- block footer_scripts %}
   <script src="{{ pathto('_static/javascripts/application.js', 1) }}"></script>
   <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+
+  {% if theme_gdpr_banner_link %}
+    {% include "gdpr-banner.html" %}
+  {% endif %}
+
   {%- endblock %}
 {%- endblock %}
