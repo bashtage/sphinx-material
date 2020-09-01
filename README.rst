@@ -53,6 +53,9 @@ example shows:
     # Required theme setup
     html_theme = 'sphinx_material'
 
+    # Set link name generated in the top bar.
+    html_title = 'Project Title'
+
     # Material theme options (see theme.conf for more information)
     html_theme_options = {
 
