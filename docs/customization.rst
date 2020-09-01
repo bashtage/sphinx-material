@@ -53,7 +53,7 @@ Configuration Options
 ``theme_color``
     The theme color for mobile browsers. Hex Color without the leading #.
 ``color_primary``
-    Primary colo. Options are
+    Primary color. Options are
     red, pink, purple, deep-purple, indigo, blue, light-blue, cyan,
     teal, green, light-green, lime, yellow, amber, orange, deep-orange,
     brown, grey, blue-grey, and white.
