@@ -385,7 +385,7 @@ code,kbd,pre{
     word-break:normal
 }
 .md-typeset__scrollwrap{
-    margin:1em -.8rem;
+    margin:inherit;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch
 }
