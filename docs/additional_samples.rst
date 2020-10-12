@@ -219,6 +219,50 @@ cell1  cell2   cell3
 ...    ...     ...
 =====  ======  =======
 
+List Tables
+-----------
+
+.. list-table:: A List Table
+   :header-rows: 1
+
+   * - Column 1
+     - Column 2
+   * - Item 1
+     - Item 2
+
+Alignment
+~~~~~~~~~
+
+.. warning:: Alignment is not currently working as expected.
+
+.. list-table:: Center Aligned
+   :header-rows: 1
+   :align: center
+
+   * - Column 1
+     - Column 2
+   * - Item 1
+     - Item 2
+
+
+.. list-table:: Right Aligned
+   :widths: 15 10 30
+   :header-rows: 1
+   :align: right
+
+   * - Treat
+     - Quantity
+     - Description
+   * - Albatross
+     - 2.99
+     - On a stick!
+   * - Crunchy Frog
+     - 1.49
+     - If we took the bones out, it wouldn't be
+       crunchy, now would it?
+   * - Gannet Ripple
+     - 1.99
+     - On a stick!
 
 Code Documentation
 ==================
