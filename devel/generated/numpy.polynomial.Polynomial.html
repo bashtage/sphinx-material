@@ -2,6 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -67,7 +68,7 @@
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
   </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML">
+  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
   <script type="text/x-mathjax-config">
    MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
@@ -548,7 +549,437 @@ The default value is [-1, 1].
             </dd>
            </dl>
           </dd>
+          <dt class="field-even">
+           Attributes
+          </dt>
+          <dd class="field-even">
+           <dl class="simple">
+            <dt>
+             <strong>
+              basis_name
+             </strong>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+          </dd>
          </dl>
+         <p class="rubric">
+          Methods
+         </p>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <code class="xref py py-obj docutils literal notranslate">
+               <span class="pre">
+                __call__
+               </span>
+              </code>
+              (arg)
+             </p>
+            </td>
+            <td>
+             <p>
+              Call self as a function.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.basis.html#numpy.polynomial.Polynomial.basis" title="numpy.polynomial.Polynomial.basis">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 basis
+                </span>
+               </code>
+              </a>
+              (deg[, domain, window])
+             </p>
+            </td>
+            <td>
+             <p>
+              Series basis polynomial of degree
+              <cite>
+               deg
+              </cite>
+              .
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.cast.html#numpy.polynomial.Polynomial.cast" title="numpy.polynomial.Polynomial.cast">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 cast
+                </span>
+               </code>
+              </a>
+              (series[, domain, window])
+             </p>
+            </td>
+            <td>
+             <p>
+              Convert series to series of this class.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.convert.html#numpy.polynomial.Polynomial.convert" title="numpy.polynomial.Polynomial.convert">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 convert
+                </span>
+               </code>
+              </a>
+              ([domain, kind, window])
+             </p>
+            </td>
+            <td>
+             <p>
+              Convert series to a different kind and/or domain and/or window.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.copy.html#numpy.polynomial.Polynomial.copy" title="numpy.polynomial.Polynomial.copy">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 copy
+                </span>
+               </code>
+              </a>
+              ()
+             </p>
+            </td>
+            <td>
+             <p>
+              Return a copy.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.cutdeg.html#numpy.polynomial.Polynomial.cutdeg" title="numpy.polynomial.Polynomial.cutdeg">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 cutdeg
+                </span>
+               </code>
+              </a>
+              (deg)
+             </p>
+            </td>
+            <td>
+             <p>
+              Truncate series to the given degree.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.degree.html#numpy.polynomial.Polynomial.degree" title="numpy.polynomial.Polynomial.degree">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 degree
+                </span>
+               </code>
+              </a>
+              ()
+             </p>
+            </td>
+            <td>
+             <p>
+              The degree of the series.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.deriv.html#numpy.polynomial.Polynomial.deriv" title="numpy.polynomial.Polynomial.deriv">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 deriv
+                </span>
+               </code>
+              </a>
+              ([m])
+             </p>
+            </td>
+            <td>
+             <p>
+              Differentiate.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.fit.html#numpy.polynomial.Polynomial.fit" title="numpy.polynomial.Polynomial.fit">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 fit
+                </span>
+               </code>
+              </a>
+              (x, y, deg[, domain, rcond, full, w, window])
+             </p>
+            </td>
+            <td>
+             <p>
+              Least squares fit to data.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.fromroots.html#numpy.polynomial.Polynomial.fromroots" title="numpy.polynomial.Polynomial.fromroots">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 fromroots
+                </span>
+               </code>
+              </a>
+              (roots[, domain, window])
+             </p>
+            </td>
+            <td>
+             <p>
+              Return series instance that has the specified roots.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.has_samecoef.html#numpy.polynomial.Polynomial.has_samecoef" title="numpy.polynomial.Polynomial.has_samecoef">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 has_samecoef
+                </span>
+               </code>
+              </a>
+              (other)
+             </p>
+            </td>
+            <td>
+             <p>
+              Check if coefficients match.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.has_samedomain.html#numpy.polynomial.Polynomial.has_samedomain" title="numpy.polynomial.Polynomial.has_samedomain">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 has_samedomain
+                </span>
+               </code>
+              </a>
+              (other)
+             </p>
+            </td>
+            <td>
+             <p>
+              Check if domains match.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.has_sametype.html#numpy.polynomial.Polynomial.has_sametype" title="numpy.polynomial.Polynomial.has_sametype">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 has_sametype
+                </span>
+               </code>
+              </a>
+              (other)
+             </p>
+            </td>
+            <td>
+             <p>
+              Check if types match.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.has_samewindow.html#numpy.polynomial.Polynomial.has_samewindow" title="numpy.polynomial.Polynomial.has_samewindow">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 has_samewindow
+                </span>
+               </code>
+              </a>
+              (other)
+             </p>
+            </td>
+            <td>
+             <p>
+              Check if windows match.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.identity.html#numpy.polynomial.Polynomial.identity" title="numpy.polynomial.Polynomial.identity">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 identity
+                </span>
+               </code>
+              </a>
+              ([domain, window])
+             </p>
+            </td>
+            <td>
+             <p>
+              Identity function.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.integ.html#numpy.polynomial.Polynomial.integ" title="numpy.polynomial.Polynomial.integ">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 integ
+                </span>
+               </code>
+              </a>
+              ([m, k, lbnd])
+             </p>
+            </td>
+            <td>
+             <p>
+              Integrate.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.linspace.html#numpy.polynomial.Polynomial.linspace" title="numpy.polynomial.Polynomial.linspace">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 linspace
+                </span>
+               </code>
+              </a>
+              ([n, domain])
+             </p>
+            </td>
+            <td>
+             <p>
+              Return x, y values at equally spaced points in domain.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.mapparms.html#numpy.polynomial.Polynomial.mapparms" title="numpy.polynomial.Polynomial.mapparms">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 mapparms
+                </span>
+               </code>
+              </a>
+              ()
+             </p>
+            </td>
+            <td>
+             <p>
+              Return the mapping parameters.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.roots.html#numpy.polynomial.Polynomial.roots" title="numpy.polynomial.Polynomial.roots">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 roots
+                </span>
+               </code>
+              </a>
+              ()
+             </p>
+            </td>
+            <td>
+             <p>
+              Return the roots of the series polynomial.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.trim.html#numpy.polynomial.Polynomial.trim" title="numpy.polynomial.Polynomial.trim">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 trim
+                </span>
+               </code>
+              </a>
+              ([tol])
+             </p>
+            </td>
+            <td>
+             <p>
+              Remove trailing coefficients
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/numpy.polynomial.Polynomial.truncate.html#numpy.polynomial.Polynomial.truncate" title="numpy.polynomial.Polynomial.truncate">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 truncate
+                </span>
+               </code>
+              </a>
+              (size)
+             </p>
+            </td>
+            <td>
+             <p>
+              Truncate series to length
+              <cite>
+               size
+              </cite>
+              .
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
          <p class="rubric">
           Methods
          </p>
@@ -610,7 +1041,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self[, domain, kind, window])
+              ([domain, kind, window])
              </p>
             </td>
             <td>
@@ -629,7 +1060,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self)
+              ()
              </p>
             </td>
             <td>
@@ -648,7 +1079,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self, deg)
+              (deg)
              </p>
             </td>
             <td>
@@ -667,7 +1098,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self)
+              ()
              </p>
             </td>
             <td>
@@ -686,7 +1117,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self[, m])
+              ([m])
              </p>
             </td>
             <td>
@@ -743,7 +1174,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self, other)
+              (other)
              </p>
             </td>
             <td>
@@ -762,7 +1193,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self, other)
+              (other)
              </p>
             </td>
             <td>
@@ -781,7 +1212,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self, other)
+              (other)
              </p>
             </td>
             <td>
@@ -800,7 +1231,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self, other)
+              (other)
              </p>
             </td>
             <td>
@@ -838,7 +1269,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self[, m, k, lbnd])
+              ([m, k, lbnd])
              </p>
             </td>
             <td>
@@ -857,7 +1288,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self[, n, domain])
+              ([n, domain])
              </p>
             </td>
             <td>
@@ -876,7 +1307,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self)
+              ()
              </p>
             </td>
             <td>
@@ -895,7 +1326,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self)
+              ()
              </p>
             </td>
             <td>
@@ -914,7 +1345,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self[, tol])
+              ([tol])
              </p>
             </td>
             <td>
@@ -933,7 +1364,7 @@ The default value is [-1, 1].
                 </span>
                </code>
               </a>
-              (self, size)
+              (size)
              </p>
             </td>
             <td>
@@ -1091,13 +1522,13 @@ The default value is [-1, 1].
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              May 08, 2020.
+              Oct 14, 2020.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.0.3.
+      3.2.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

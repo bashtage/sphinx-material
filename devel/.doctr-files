@@ -1,5 +1,6 @@
 devel/_images/attrib.png
 devel/_images/biohazard.png
+devel/_images/desert-flower.jpg
 devel/_images/magnetic-balls.jpg
 devel/_images/noncomm.png
 devel/_images/notebook_5_0.png
@@ -55,6 +56,7 @@ devel/_static/copy-button.svg
 devel/_static/copy-overrides.css
 devel/_static/copybutton.css
 devel/_static/copybutton.js
+devel/_static/copybutton_funcs.js
 devel/_static/doctools.js
 devel/_static/documentation_options.js
 devel/_static/favicon.ico
@@ -100,7 +102,7 @@ devel/_static/javascripts/lunr/tinyseg.js
 devel/_static/javascripts/lunr/wordcut.js
 devel/_static/javascripts/modernizr.js
 devel/_static/javascripts/version_dropdown.js
-devel/_static/jquery-3.4.1.js
+devel/_static/jquery-3.5.1.js
 devel/_static/jquery.js
 devel/_static/jquery.min.map
 devel/_static/language_data.js

@@ -367,3 +367,26 @@ Vestibulum lectus arcu, varius ut ligula quis, viverra gravida sem.
 .. warning::
 
     Pellentesque in enim leo.
+
+Images
+------
+
+Default Alignment
+~~~~~~~~~~~~~~~~~
+
+.. image:: desert-flower.jpg
+    :alt: Default image
+
+Center Alignment
+~~~~~~~~~~~~~~~~
+.. image:: desert-flower.jpg
+    :alt: Centered Image, 80% scale
+    :scale: 80%
+    :align: center
+
+Right Alignment
+~~~~~~~~~~~~~~~
+.. image:: desert-flower.jpg
+    :alt: Right Image, 60% scale
+    :scale: 60%
+    :align: right

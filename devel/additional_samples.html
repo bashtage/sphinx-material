@@ -2,6 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -67,7 +68,7 @@
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
   </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML">
+  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
   <script type="text/x-mathjax-config">
    MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
@@ -423,6 +424,20 @@
                      User-styled Table
                     </a>
                    </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#list-tables">
+                     List Tables
+                    </a>
+                    <nav class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#alignment">
+                        Alignment
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
                   </ul>
                  </nav>
                 </li>
@@ -723,6 +738,20 @@
                  <a class="md-nav__link" href="#user-styled-table">
                   User-styled Table
                  </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#list-tables">
+                  List Tables
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#alignment">
+                     Alignment
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
                 </li>
                </ul>
               </nav>
@@ -2221,6 +2250,198 @@ this is completely unstyled.
          </tr>
         </tbody>
        </table>
+       <h3 id="list-tables">
+        List Tables
+        <a class="headerlink" href="#list-tables" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <table id="id6">
+        <caption>
+         <span class="caption-text">
+          A List Table
+         </span>
+         <a class="headerlink" href="#id6" title="Permalink to this table">
+          ¶
+         </a>
+        </caption>
+        <colgroup>
+         <col style="width: 50%"/>
+         <col style="width: 50%"/>
+        </colgroup>
+        <thead>
+         <tr class="row-odd">
+          <th class="head">
+           <p>
+            Column 1
+           </p>
+          </th>
+          <th class="head">
+           <p>
+            Column 2
+           </p>
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr class="row-even">
+          <td>
+           <p>
+            Item 1
+           </p>
+          </td>
+          <td>
+           <p>
+            Item 2
+           </p>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <h4 id="alignment">
+        Alignment
+        <a class="headerlink" href="#alignment" title="Permalink to this headline">
+         ¶
+        </a>
+       </h4>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         Warning
+        </p>
+        <p>
+         Alignment is not currently working as expected.
+        </p>
+       </div>
+       <table id="id7">
+        <caption>
+         <span class="caption-text">
+          Center Aligned
+         </span>
+         <a class="headerlink" href="#id7" title="Permalink to this table">
+          ¶
+         </a>
+        </caption>
+        <colgroup>
+         <col style="width: 50%"/>
+         <col style="width: 50%"/>
+        </colgroup>
+        <thead>
+         <tr class="row-odd">
+          <th class="head">
+           <p>
+            Column 1
+           </p>
+          </th>
+          <th class="head">
+           <p>
+            Column 2
+           </p>
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr class="row-even">
+          <td>
+           <p>
+            Item 1
+           </p>
+          </td>
+          <td>
+           <p>
+            Item 2
+           </p>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <table id="id8">
+        <caption>
+         <span class="caption-text">
+          Right Aligned
+         </span>
+         <a class="headerlink" href="#id8" title="Permalink to this table">
+          ¶
+         </a>
+        </caption>
+        <colgroup>
+         <col style="width: 27%"/>
+         <col style="width: 18%"/>
+         <col style="width: 55%"/>
+        </colgroup>
+        <thead>
+         <tr class="row-odd">
+          <th class="head">
+           <p>
+            Treat
+           </p>
+          </th>
+          <th class="head">
+           <p>
+            Quantity
+           </p>
+          </th>
+          <th class="head">
+           <p>
+            Description
+           </p>
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr class="row-even">
+          <td>
+           <p>
+            Albatross
+           </p>
+          </td>
+          <td>
+           <p>
+            2.99
+           </p>
+          </td>
+          <td>
+           <p>
+            On a stick!
+           </p>
+          </td>
+         </tr>
+         <tr class="row-odd">
+          <td>
+           <p>
+            Crunchy Frog
+           </p>
+          </td>
+          <td>
+           <p>
+            1.49
+           </p>
+          </td>
+          <td>
+           <p>
+            If we took the bones out, it wouldn’t be
+crunchy, now would it?
+           </p>
+          </td>
+         </tr>
+         <tr class="row-even">
+          <td>
+           <p>
+            Gannet Ripple
+           </p>
+          </td>
+          <td>
+           <p>
+            1.99
+           </p>
+          </td>
+          <td>
+           <p>
+            On a stick!
+           </p>
+          </td>
+         </tr>
+        </tbody>
+       </table>
        <h2 id="code-documentation">
         Code Documentation
         <a class="headerlink" href="#code-documentation" title="Permalink to this headline">
@@ -2516,13 +2737,13 @@ source files for one Sphinx project.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              May 08, 2020.
+              Oct 14, 2020.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.0.3.
+      3.2.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
