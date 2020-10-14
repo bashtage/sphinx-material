@@ -117,8 +117,8 @@ Finally, edit your override file 'source/_templates/layout.html':
     {{ super() }}
     {%- endblock %}
 
-.. |Travis Build Status| image:: https://travis-ci.org/bashtage/sphinx-material.svg?branch=master
-   :target: https://travis-ci.org/bashtage/sphinx-material
+.. |Travis Build Status| image:: https://travis-ci.com/bashtage/sphinx-material.svg?branch=master
+   :target: https://travis-ci.com/bashtage/sphinx-material
 
 .. |PyPI Status| image:: https://badge.fury.io/py/sphinx-material.svg
     :target: https://badge.fury.io/py/sphinx-material
