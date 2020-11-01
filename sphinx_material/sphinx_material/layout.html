@@ -51,7 +51,14 @@
   {% if theme_touch_icon %}
     <link rel="apple-touch-icon" href="{{ pathto('_static/' ~ theme_touch_icon, 1) }}"/>
   {% endif %}
-  {{ super() }}
+  <title>
+    {% if "no title" in title or not title.strip() %}
+    {% set ts = unescape(titlesuffix).strip()[1:].strip() %}
+      {{ ts|e }}
+    {% else %}
+      {{ title|striptags|e }}{{ titlesuffix }}
+    {% endif %}
+  </title>
 {%- endblock %}
 
 {%- block extrahead %}
