@@ -11,9 +11,11 @@
             {% set localhref=pathto( item.href ) if item.internal else item.href|e %}
             <li class="md-tabs__item"><a href="{{ localhref|e }}" class="md-tabs__link">{{ item.title }}</a></li>
         {%- endfor %}
-        {%- for parent in parents %}
-          <li class="md-tabs__item"><a href="{{ parent.link|e }}" class="md-tabs__link">{{ parent.title }}</a></li>
-        {%- endfor %}
+        {%- if theme_nav_bar_display_parents %}
+          {%- for parent in parents %}
+            <li class="md-tabs__item"><a href="{{ parent.link|e }}" class="md-tabs__link">{{ parent.title }}</a></li>
+          {%- endfor %}
+        {%- endif %}
       </ul>
     </div>
   </nav>
