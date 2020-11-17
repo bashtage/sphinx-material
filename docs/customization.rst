@@ -214,7 +214,7 @@ located in /devel.
    dropdown in _older_ versions of the documentation to reflect additional versions
    that are released later. Changing the Javascript file changes the version dropdown
    content in all versions.  This approach is used in
-   `statsmodels <https://www.statsmodels.org/>`.
+   `statsmodels <https://www.statsmodels.org/>`_.
 
 Using ``conf.py``
 -----------------
