@@ -50,6 +50,8 @@ Configuration Options
    If true, TOC entries that are not ancestors of the current page are collapsed.
 ``globaltoc_includehidden``
    If true, the global TOC tree will also contain hidden entries.
+``globaltoc_includeinternal``
+   If false, the global TOC tree will not contain internal section headings
 ``theme_color``
     The theme color for mobile browsers. Hex Color without the leading #.
 ``color_primary``
