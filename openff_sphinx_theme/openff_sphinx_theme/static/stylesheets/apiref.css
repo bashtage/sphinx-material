@@ -1,7 +1,3 @@
-code {
-    font-family: "Roboto Mono", "Courier New", Courier, monospace;
-}
-
 .md-content dl.module dt,
 .md-content dl.class dt,
 .md-content dl.exception dt,
@@ -214,7 +210,7 @@ background and border theming can't happen */
 .md-content dl.method .sig-param .n,
 .md-content dl.attribute .sig-param .n {
     color: #015480;
-    font-family: "Roboto Mono", "Courier New", Courier, monospace;
+    font-family: Cousine, monospace;
 }
 
 .md-content dl.module .sig-param .default_value,
@@ -244,7 +240,7 @@ background and border theming can't happen */
 }
 
 .md-content dl.simple dt strong {
-    font-family: "Roboto Mono", "Courier New", Courier, monospace;
+    font-family: Cousine, monospace;
 }
 
 /* Save the user from having to carefully avoid selecting the prompt (>>>) */

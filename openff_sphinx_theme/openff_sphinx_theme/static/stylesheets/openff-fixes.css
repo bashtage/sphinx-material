@@ -146,9 +146,10 @@ dt:target {
 }
 
 /* Unset the colours for code spans so the pygments
-style actually shows up, and so that links can be recognised */
+style actually shows up, and so that links can be recognised
+Also change the background colour to provide more contrast */
 .md-typeset code, .md-typeset pre {
-    background-color: unset;
+    background-color: #f8f8f8;
     color: unset;
 }
 /* Set the background colour for `code spans`. Consider

@@ -28,6 +28,9 @@
  font-weight:600
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
 html{
     box-sizing:border-box
 }
@@ -146,7 +149,7 @@ code,kbd,pre{
     color:rgba(0,0,0,.87);
     -webkit-font-feature-settings:"kern";
     font-feature-settings:"kern";
-    font-family:"PT Mono", monospace;
+    font-family: Cousine, monospace;
 }
 .md-typeset{
     font-size:.8rem;
