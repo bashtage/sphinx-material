@@ -47,8 +47,20 @@ extensions = [
     "myst_parser",
 ]
 
+# Autodoc settings
 autosummary_generate = True
-autoclass_content = "class"
+
+autodoc_default_options = {
+    "members": True,
+    "inherited-members": True,
+    "member-order": "bysource",
+}
+
+# Disable NumPy style attributes/methods expecting every method to have its own docs page
+numpydoc_class_members_toctree = False
+# Disable numpydoc rendering methods twice
+# https://stackoverflow.com/questions/34216659/sphinx-autosummary-produces-two-summaries-for-each-class
+numpydoc_show_class_members = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -62,7 +74,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
+html_theme = "openff_sphinx_theme"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -75,11 +87,6 @@ html_show_sourcelink = True
 html_sidebars = {
     "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
 }
-
-extensions.append("openff_sphinx_theme")
-html_theme_path = openff_sphinx_theme.html_theme_path()
-html_context = openff_sphinx_theme.get_html_context()
-html_theme = "openff_sphinx_theme"
 
 # material theme options (see theme.conf for more information)
 html_theme_options = {
