@@ -39,7 +39,7 @@ def setup(app):
     app.sitemap_links = sitemap_links
     app.site_pages = site_pages
     app.add_html_theme(
-        "sphinx_material", os.path.join(html_theme_path()[0], "sphinx_material")
+        "openff_sphinx_theme", os.path.join(html_theme_path()[0], "openff_sphinx_theme")
     )
     return {
         "version": __version__,

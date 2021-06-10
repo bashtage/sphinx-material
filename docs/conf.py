@@ -16,11 +16,6 @@
 from distutils.version import LooseVersion
 import os
 
-import openff_sphinx_theme
-
-html_theme_path = openff_sphinx_theme.html_theme_path()
-html_context = openff_sphinx_theme.get_html_context()
-
 # -- Project information -----------------------------------------------------
 
 project = "OpenFF Sphinx theme"
@@ -48,6 +43,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "nbsphinx",
     "myst_parser",
+    "openff_sphinx_theme",
 ]
 
 # Autodoc settings
