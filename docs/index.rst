@@ -19,9 +19,13 @@ Install from git
 Or, add to your ReadTheDocs environment.yml
 
 .. code-block:: yml
+
     dependencies:
         - pip
-        # --- Snip --- #
+        - <conda dependency>
+        - <conda dependency>
+        - <conda dependency>
+        # --- snip --- #
         - pip:
             - git+https://github.com/openforcefield/openff-sphinx-theme.git@master
 
@@ -37,11 +41,12 @@ There are a lot more ways to customize this theme. See :ref:`Customization`
 or ``theme.conf`` for more details.
 
 .. code-block:: python
+
+    # Enable the theme itself
     extensions.append("openff_sphinx_theme")
     html_theme = "openff_sphinx_theme"
 
-    # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
-    # Path should be relative to the ``_static`` files directory.
+    # (Optional) Logo.
     # If not provided, will default to the generic OpenFF logo
     html_logo = "_static/images/logos/openff_toolkit_v1_white-on-darkblue.svg"
 
