@@ -1,16 +1,12 @@
 Material Sphinx Theme
 =====================
 
-**Continuous Integration**
-
-|Travis Build Status|
-
 **License**
 
 |MIT License|
 
 A Material Design theme for Sphinx documentation.
-Based on `Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_, and `Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
+Based on `Material for Sphinx <https://bashtage.github.io/sphinx-material/>`_.
 
 See the theme's `demonstration site <https://openforcefield.github.io/openff-sphinx-theme/>`_ for examples of rendered rst.
 
@@ -21,7 +17,7 @@ Add the following to your conf.py:
 
 .. code-block:: python
 
-    html_theme = 'openff_sphinx_theme'
+    html_theme = 'openff-sphinx-theme'
 
 
 There are a lot more ways to customize this theme, as this more comprehensive
@@ -30,7 +26,7 @@ example shows:
 .. code-block:: python
 
     # Required theme setup
-    html_theme = 'openff_sphinx_theme'
+    html_theme = 'openff-sphinx-theme'
 
     # Set link name generated in the top bar.
     html_title = 'Project Title'
@@ -95,9 +91,6 @@ Finally, edit your override file 'source/_templates/layout.html':
     {# Call the parent block #}
     {{ super() }}
     {%- endblock %}
-
-.. |Travis Build Status| image:: https://travis-ci.org/openforcefield/openff-sphinx-theme.svg?branch=master
-   :target: https://travis-ci.org/openforcefield/openff-sphinx-theme
 
 .. |MIT License| image:: https://img.shields.io/badge/License-MIT-blue.svg
    :target: https://opensource.org/licenses/MIT-Clause
