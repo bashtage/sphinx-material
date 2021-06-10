@@ -16,22 +16,19 @@
 from distutils.version import LooseVersion
 import os
 
-import sphinx_material
+import openff_sphinx_theme
 from recommonmark.transform import AutoStructify
-
-FORCE_CLASSIC = os.environ.get("SPHINX_MATERIAL_FORCE_CLASSIC", False)
-FORCE_CLASSIC = FORCE_CLASSIC in ("1", "true")
 
 # -- Project information -----------------------------------------------------
 
-project = "Material for Sphinx"
-html_title = "Material for Sphinx"
+project = "OpenFF Sphinx theme"
+html_title = "OpenFF Sphinx theme"
 
-copyright = "2019, Kevin Sheppard"
-author = "Kevin Sheppard"
+copyright = "2021, Open Force Field Initiative"
+author = "Open Force Field Initiative"
 
 # The full version, including alpha/beta/rc tags
-release = LooseVersion(sphinx_material.__version__).vstring
+release = LooseVersion(openff_sphinx_theme.__version__).vstring
 
 # -- General configuration ---------------------------------------------------
 
@@ -48,9 +45,7 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "nbsphinx",
-    "recommonmark",
-    "sphinx_markdown_tables",
-    "sphinx_copybutton",
+    "myst_parser",
 ]
 
 autosummary_generate = True
@@ -82,62 +77,44 @@ html_sidebars = {
     "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
 }
 
-extensions.append("sphinx_material")
-html_theme_path = sphinx_material.html_theme_path()
-html_context = sphinx_material.get_html_context()
-html_theme = "sphinx_material"
+extensions.append("openff_sphinx_theme")
+html_theme_path = openff_sphinx_theme.html_theme_path()
+html_context = openff_sphinx_theme.get_html_context()
+html_theme = "openff_sphinx_theme"
 
 # material theme options (see theme.conf for more information)
 html_theme_options = {
-    "base_url": "http://bashtage.github.io/sphinx-material/",
-    "repo_url": "https://github.com/bashtage/sphinx-material/",
-    "repo_name": "Material for Sphinx",
-    "google_analytics_account": "UA-XXXXX",
+    "base_url": "http://openforcefield.github.io/openff-sphinx-theme/",
+    "repo_url": "https://github.com/openforcefield/openff-sphinx-theme/",
+    "repo_name": "openff-sphinx-theme",
     "html_minify": False,
-    "html_prettify": True,
-    "css_minify": True,
-    "logo_icon": "&#xe869",
-    "repo_type": "github",
+    "html_prettify": False,
+    "css_minify": False,
     "globaltoc_depth": 2,
-    "color_primary": "blue",
-    "color_accent": "cyan",
-    "touch_icon": "images/apple-icon-152x152.png",
-    "theme_color": "#2196f3",
-    "master_doc": False,
+    "color_accent": "purple",
     "nav_links": [
-        {"href": "index", "internal": True, "title": "Material"},
         {
             "href": "https://squidfunk.github.io/mkdocs-material/",
             "internal": False,
             "title": "Material for MkDocs",
+        },
+        {
+            "href": "https://bashtage.github.io/sphinx-material/",
+            "internal": False,
+            "title": "Material for Sphinx",
         },
     ],
     "heroes": {
         "index": "A responsive Material Design theme for Sphinx sites.",
         "customization": "Configuration options to personalize your site.",
     },
-    "version_dropdown": True,
-    "version_json": "_static/versions.json",
-    "version_info": {
-        "Release": "https://bashtage.github.io/sphinx-material/",
-        "Development": "https://bashtage.github.io/sphinx-material/devel/",
-        "Release (rel)": "/sphinx-material/",
-        "Development (rel)": "/sphinx-material/devel/",
-    },
     "table_classes": ["plain"],
 }
-
-if FORCE_CLASSIC:
-    print("!!!!!!!!! Forcing classic !!!!!!!!!!!")
-    html_theme = "classic"
-    html_theme_options = {}
-    html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
 
 language = "en"
 html_last_updated_fmt = ""
 
 todo_include_todos = True
-html_favicon = "images/favicon.ico"
 
 html_use_index = True
 html_domain_indices = True
@@ -154,17 +131,11 @@ extlinks = {
     "dudir": ("http://docutils.sourceforge.net/docs/ref/rst/" "directives.html#%s", ""),
 }
 
-# Enable eval_rst in markdown
-def setup(app):
-    app.add_config_value(
-        "recommonmark_config",
-        {"enable_math": True, "enable_inline_math": True, "enable_eval_rst": True},
-        True,
-    )
-    app.add_transform(AutoStructify)
-    app.add_object_type(
-        "confval",
-        "confval",
-        objname="configuration value",
-        indextemplate="pair: %s; configuration value",
-    )
+# Extensions for the myst parser
+myst_enable_extensions = [
+    "dollarmath",
+    "colon_fence",
+    "smartquotes",
+    "replacements",
+    "deflist",
+]
