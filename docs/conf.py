@@ -18,6 +18,9 @@ import os
 
 import openff_sphinx_theme
 
+html_theme_path = openff_sphinx_theme.html_theme_path()
+html_context = openff_sphinx_theme.get_html_context()
+
 # -- Project information -----------------------------------------------------
 
 project = "OpenFF Sphinx theme"
@@ -74,7 +77,6 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme_path = openff_sphinx_theme.html_theme_path()
 html_theme = "openff_sphinx_theme"
 
 # Add any paths that contain custom static files (such as style sheets) here,
