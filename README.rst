@@ -13,12 +13,10 @@ Material Sphinx Theme
 
 |MIT License|
 
-A Material Design theme for Sphinx documentation. Based on
-`Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_,
-and `Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
+A Material Design theme for Sphinx documentation.
+Based on `Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_, and `Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
 
-See the theme's `demonstration site <https://bashtage.github.io/sphinx-material/>`_
-for examples of rendered rst.
+See the theme's `demonstration site <https://openff.github.io/openff-sphinx-theme/>`_ for examples of rendered rst.
 
 Installation
 ------------

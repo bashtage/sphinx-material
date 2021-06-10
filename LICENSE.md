@@ -1,8 +1,9 @@
-Copyright (c) 2019 Kevin Sheppard <kevin.k.sheppard@gmail.com>
+Copyright (c) 2021 Open Force Field Initiative
 
 Derived from:
  * Material for Mkdocs: Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
  * Guzzle Sphinx Theme: Copyright (c) 2013 Michael Dowling <mtdowling@gmail.com>
+ * Material for Sphinx: Copyright (c) 2019 Kevin Sheppard <kevin.k.sheppard@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

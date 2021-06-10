@@ -30,9 +30,9 @@ install:
   - python setup.py sdist bdist_wheel
   # Test dev install
   - pip install ".[dev]"
-  - pip uninstall sphinx-material -y
+  - pip uninstall openff-sphinx-theme -y
   - pip install $(ls dist/*.tar.gz)
-  - pip uninstall sphinx-material -y
+  - pip uninstall openff-sphinx-theme -y
   - pip install $(ls dist/*.whl)
 
 script:
