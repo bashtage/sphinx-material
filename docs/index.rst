@@ -29,13 +29,15 @@ Update your ``conf.py`` with the required changes:
 
 .. code-block:: python
 
-    html_theme = 'sphinx_material'
+    extensions.append("openff_sphinx_theme")
+    html_theme = "openff_sphinx_theme"
 
 
 There are a lot more ways to customize this theme. See :ref:`Customization`
 or ``theme.conf`` for more details.
 
 .. code-block:: python
+    extensions.append("openff_sphinx_theme")
     html_theme = "openff_sphinx_theme"
 
     # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).

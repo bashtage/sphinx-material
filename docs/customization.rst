@@ -9,6 +9,7 @@ The first, and simplest, uses the options exposed through ``html_theme_options``
 This site's options are:
 
 .. code-block:: python
+
    html_theme_options = {
        "base_url": "http://openforcefield.github.io/openff-sphinx-theme/",
        "repo_url": "https://github.com/openforcefield/openff-sphinx-theme/",
