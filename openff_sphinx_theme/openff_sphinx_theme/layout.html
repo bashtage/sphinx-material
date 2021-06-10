@@ -2,13 +2,14 @@
 
 {% set sphinx_material_include_searchbox=True %}
 
-{%- block body_tag %}
-  <body dir=ltr
-        data-md-color-primary={{ theme_color_primary }} data-md-color-accent={{ theme_color_accent }}>
-{%- endblock %}
 
 {# Do this so that bootstrap is included before the main css file #}
 {%- block htmltitle %}
+
+  {% if not favicon and not favicon_url %}
+  <link rel="icon" type="image/svg" href="{{ pathto('_static/images/favicon.svg', 1) }}" />
+  {% endif %}
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -29,7 +30,7 @@
   {% block fonticon %}
   <link rel="stylesheet" href="{{ pathto('_static/fonts/material-icons.css', 1) }}"/>
   {% endblock %}
-  <meta name="theme-color" content="{{ theme_theme_color }}">
+  <meta name="theme-color" content="#015480;">
   <script src="{{ pathto('_static/javascripts/modernizr.js', 1) }}"></script>
   {% include "google_analytics.html" %}
   {% if theme_touch_icon %}
@@ -44,6 +45,11 @@
   {% endif %}
   {{ super() }}
 {% endblock %}
+
+{%- block body_tag %}
+  <body dir=ltr
+        data-md-color-accent={{ theme_color_accent }}>
+{%- endblock %}
 
 {%- block header %}
   {% if theme_repo_type %}
