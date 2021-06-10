@@ -24,9 +24,6 @@ html_title = "OpenFF Sphinx theme"
 copyright = "2021, Open Force Field Initiative"
 author = "Open Force Field Initiative"
 
-# The full version, including alpha/beta/rc tags
-release = LooseVersion(openff_sphinx_theme.__version__).vstring
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
