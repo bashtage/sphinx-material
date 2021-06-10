@@ -146,7 +146,6 @@ body,input{
     font-family: DefaultFont, sans-serif;
 }
 code,kbd,pre{
-    color:rgba(0,0,0,.87);
     -webkit-font-feature-settings:"kern";
     font-feature-settings:"kern";
     font-family: Cousine, monospace;
