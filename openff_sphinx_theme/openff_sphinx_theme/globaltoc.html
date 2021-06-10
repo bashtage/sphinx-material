@@ -18,7 +18,13 @@
       {% endif %}
       {%- set sphinx_material_include_searchbox=True %}
       {%- if item.children -%}
+        {% if 'localtoc.html' in sidebars %}
+          <div class="redundant_navigation">
+        {% endif %}
         <ul class="md-nav__list"> {{ loop(item.children) }}</ul>
+        {% if 'localtoc.html' in sidebars %}
+          </div>
+        {% endif %}
       {%- endif %}
     {% endif %}
     </li>

@@ -4,13 +4,14 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}"
            class="md-header-nav__button md-logo">
-          {% if theme_logo_icon|e %}
-            <i class="md-icon">{{ theme_logo_icon }}</i>
-          {% elif logo %}
-              <img src="{{ pathto('_static/' ~ logo, 1) }}" height="26"
+          {% if logo %}
+              <img src="{{ pathto('_static/' ~ logo, 1) }}"
                    alt="{{ shorttitle|striptags|e }} logo">
+          {% elif theme_logo_icon|e %}
+            <i class="md-icon">{{ theme_logo_icon }}</i>
           {% else %}
-            &nbsp;
+              <img src="{{ pathto('_static/images/logos/openforcefield_v1_white-on-blue.svg', 1) }}"
+                   alt="{{ shorttitle|striptags|e }} logo">
           {% endif %}
         </a>
       </div>
@@ -19,7 +20,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">{{ theme_nav_title or shorttitle }}</span>
+          <span class="md-header-nav__topic">{{ theme_nav_title or docstitle or shorttitle }}</span>
           <span class="md-header-nav__topic"> {{ title|striptags|e }} </span>
         </div>
       </div>
@@ -35,6 +36,14 @@
         </div>
       {% endif %}
       {% include "version_dropdown.html" %}
+
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://openforcefield.org/"
+           class="md-header-nav__button md-logo">
+              <img src="{{ pathto('_static/images/logos/openforcefield_v2_white-on-blue.svg', 1) }}"
+                   alt="Open Force Field Initiative logo">
+        </a>
+      </div>
     </div>
   </nav>
 </header>

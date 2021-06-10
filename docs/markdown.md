@@ -1,11 +1,8 @@
 # Markdown
 
-Sphinx can be configured to use markdown using the [recommonmark](https://github.com/readthedocs/recommonmark)
-extension. recommonmark is strict and does not natively support tables or common extensions
-to markdown.
+Sphinx can be configured to use markdown using the [MyST](https://myst-parser.readthedocs.io) extension.
 
----
-
+----
 
 ## Body copy
 
@@ -146,24 +143,19 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
 ### Definition lists
 
-**Not supported in commonmark, but you can use a rst definition list inside a
-fenced eval_rst block.**
-
-```eval_rst
 Lorem ipsum dolor sit amet
-   Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus
-   tellus non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor
-   lobortis orci, at elementum urna sodales vitae. In in vehicula nulla.
+: Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus
+  tellus non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor
+  lobortis orci, at elementum urna sodales vitae. In in vehicula nulla.
 
-   Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis. Nam
-   vulputate tincidunt fringilla. Nullam dignissim ultrices urna non
-   auctor.
+  Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis. Nam
+  vulputate tincidunt fringilla. Nullam dignissim ultrices urna non
+  auctor.
 
 Cras arcu libero
-   Aliquam metus eros, pretium sed nulla venenatis, faucibus auctor ex.
-   Proin ut eros sed sapien ullamcorper consequat. Nunc ligula ante,
-   fringilla at aliquam ac, aliquet sed mauris.
-```
+: Aliquam metus eros, pretium sed nulla venenatis, faucibus auctor ex.
+  Proin ut eros sed sapien ullamcorper consequat. Nunc ligula ante,
+  fringilla at aliquam ac, aliquet sed mauris.
 
 ## Code blocks
 

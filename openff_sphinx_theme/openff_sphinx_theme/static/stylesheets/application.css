@@ -1,4 +1,33 @@
 @charset "UTF-8";
+
+/* Add the OpenFF fonts */
+@charset "UTF-8";
+@font-face {
+ font-family:DefaultFont;
+ src:url(https://openforcefield.org/fonts/Montserrat/Montserrat-Light.ttf)
+ font-weight:100
+}
+@font-face {
+ font-family:DefaultFont;
+ src:url(https://openforcefield.org/fonts/Montserrat/Montserrat-Regular.ttf)
+ font-weight:200
+}
+@font-face {
+ font-family:DefaultFont;
+ src:url(https://openforcefield.org/fonts/Montserrat/Montserrat-Medium.ttf);
+ font-weight:400
+}
+@font-face {
+ font-family:DefaultFont;
+ src:url(https://openforcefield.org/fonts/Montserrat/Montserrat-SemiBold.ttf)
+ font-weight:500
+}
+@font-face {
+ font-family:DefaultFont;
+ src:url(https://openforcefield.org/fonts/Montserrat/Montserrat-Bold.ttf);
+ font-weight:600
+}
+
 html{
     box-sizing:border-box
 }
@@ -104,19 +133,20 @@ input{
 }
 body{
     -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering: optimizeLegibility;
 }
 body,input{
     color:rgba(0,0,0,.87);
     -webkit-font-feature-settings:"kern","liga";
     font-feature-settings:"kern","liga";
-    font-family:"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: DefaultFont, sans-serif;
 }
 code,kbd,pre{
     color:rgba(0,0,0,.87);
     -webkit-font-feature-settings:"kern";
     font-feature-settings:"kern";
-    font-family:"Roboto Mono", "Courier New", Courier, monospace;
+    font-family:"Roboto Mono", monospace;
 }
 .md-typeset{
     font-size:.8rem;
@@ -171,7 +201,7 @@ code,kbd,pre{
     border-bottom:.05rem dotted rgba(0,0,0,.26)
 }
 .md-typeset a{
-    color:#3f51b5;
+    color:#015480;
     word-break:break-word
 }
 .md-typeset a,.md-typeset a:before{
@@ -604,7 +634,7 @@ hr{
     left:0;
     height:2.4rem;
     transition:background-color .25s,color .25s;
-    background-color:#3f51b5;
+    background-color:#015480;
     color:#fff;
     box-shadow:none;
     z-index:2;
@@ -700,7 +730,7 @@ hr{
 }
 .md-hero{
     transition:background .25s;
-    background-color:#3f51b5;
+    background-color:#015480;
     color:#fff;
     font-size:1rem;
     overflow:hidden
@@ -875,7 +905,7 @@ html .md-nav__link[for=__toc],html .md-nav__link[for=__toc]+.md-nav__link:after,
     color:rgba(0,0,0,.54)
 }
 .md-nav__link--active,.md-nav__link:active{
-    color:#3f51b5
+    color:#015480
 }
 .md-nav__item--nested>.md-nav__link{
     color:inherit
@@ -1270,7 +1300,7 @@ html body .md-typeset .md-source-file{
 .md-tabs{
     width:100%;
     transition:background .25s;
-    background-color:#3f51b5;
+    background-color:#015480;
     color:#fff;
     overflow:auto
 }
@@ -2234,7 +2264,7 @@ html .md-typeset .superfences-tabs>label:hover{
     .md-nav__source{
         display:block;
         padding:0 .2rem;
-        background-color:rgba(50,64,144,.9675);
+        background-color:rgba(1, 84, 128,.9675);
         color:#fff
     }
     .md-search__overlay{
@@ -2383,7 +2413,7 @@ html .md-typeset .superfences-tabs>label:hover{
     }
     html .md-nav--primary .md-nav__title--site{
         position:relative;
-        background-color:#3f51b5;
+        background-color:#015480;
         color:#fff
     }
     html .md-nav--primary .md-nav__title--site .md-nav__button{
@@ -2821,6 +2851,10 @@ html .md-typeset .superfences-tabs>label:hover{
     }
     .md-tabs--active~.md-main .md-nav[data-md-level="1"] .md-nav .md-nav__title{
         display:none
+    }
+
+    [data-md-color-primary=openff-blue] .md-tabs {
+        background-color: #015480
     }
 }
 @media only screen and (min-width:45em){

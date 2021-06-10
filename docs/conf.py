@@ -17,7 +17,6 @@ from distutils.version import LooseVersion
 import os
 
 import openff_sphinx_theme
-from recommonmark.transform import AutoStructify
 
 # -- Project information -----------------------------------------------------
 
@@ -91,7 +90,7 @@ html_theme_options = {
     "html_prettify": False,
     "css_minify": False,
     "globaltoc_depth": 2,
-    "color_accent": "purple",
+    "color_accent": "deep-purple",
     "nav_links": [
         {
             "href": "https://squidfunk.github.io/mkdocs-material/",
@@ -139,3 +138,4 @@ myst_enable_extensions = [
     "replacements",
     "deflist",
 ]
+myst_update_mathjax = False

@@ -1,0 +1,158 @@
+/* Let the logo itself govern its padding and margins */
+a.md-logo {
+    margin: 0;
+    padding: 0;
+}
+
+/* Fix the sizes of the logos
+   These seven heights/padding-tops/margin-tops must be equal
+   Relies on changes to header.html and sidebar.html */
+@media only screen and (min-width:76.1875em){
+    .md-header {
+        height: 60px;
+    }
+    .md-container {
+        padding-top: 60px;
+    }
+}
+a.md-logo img {
+    height: 60px;
+    width: auto;
+}
+.md-typeset h1[id]::before,
+.md-typeset h2[id]::before,
+.md-typeset h3[id]::before,
+.md-typeset h4[id]::before,
+.md-typeset h5[id]::before,
+.md-typeset h6[id]::before {
+    display: block;
+    margin-top: -60px;
+    padding-top: 60px;
+    content: "";
+    visibility: hidden;
+    pointer-events: none;
+}
+dt:target {
+    margin-top: -60px;
+    padding-top: 70px;
+}
+
+/* Hide the link in the pull out draw to the localtoc*/
+.md-nav--primary .md-nav__link::after {
+    display: none;
+}
+
+/* Place logos for this project and the Initiative
+   in the pull-out draw on small screens and the nav
+   bar on large screens*/
+@media only screen and (min-width:76.1875em){
+    .md-sidebar__nav__buttons {
+        display: none;
+    }
+}
+@media only screen and (max-width:76.1875em){
+    .md-sidebar__nav__buttons {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding: 0.2rem;
+    }
+}
+
+
+/* Format captions in text the same way we format <h2> */
+.md-main .md-content .caption-text {
+    font-weight:300;
+    letter-spacing:-.01em
+    margin:2rem 0 .8rem;
+    font-size:1.25rem;
+    line-height:1.4;
+}
+
+/* Display captions and link hierarchy clearly and
+   distinctly in the globaltoc */
+.md-sidebar--primary .md-nav__link .caption-text {
+    font-size:0.85rem;
+    line-height:1.4;
+}
+
+@media only screen and (max-width:76.1875em){
+    .md-sidebar--primary .md-nav__item ul.md-nav__list {
+        margin-left: 1.2rem;
+        font-size: 0.6rem;
+    }
+}
+
+.md-sidebar--primary .md-nav__link:not(.caption) {
+    margin-left: 1.3rem;
+    font-size: 0.7rem;
+}
+
+.md-sidebar--primary .md-nav__item .caption {
+    line-height:1.0;
+    padding: 0.2rem 0.8rem
+}
+
+/* Match the footer background to openforcefield.org */
+.md-footer-meta {
+    background-color: #100928;
+}
+.md-footer-nav {
+    background-color: #100928;
+}
+
+/* Make the pull-out drawer a fraction of screen width on smaller screens */
+@media only screen and (max-width:76.1875em){
+    .md-sidebar--primary{
+        left: -40vw;
+        width: 40vw;
+    }
+    [dir=rtl] .md-sidebar--primary{
+        right: -40vw;
+    }
+    [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+        -webkit-transform:translateX(40vw);
+        transform:translateX(40vw);
+    }
+    [dir=rtl] [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+        -webkit-transform:translateX(-40vw);
+        transform:translateX(-40vw);
+    }
+}
+
+@media only screen and (max-width:40em){
+    .md-sidebar--primary{
+        left: -90vw;
+        width: 90vw;
+    }
+    [dir=rtl] .md-sidebar--primary{
+        right: -90vw;
+    }
+    [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+        -webkit-transform:translateX(90vw);
+        transform:translateX(90vw);
+    }
+    [dir=rtl] [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+        -webkit-transform:translateX(-90vw);
+        transform:translateX(-90vw);
+    }
+}
+
+/* Show the sections of the current page in the global TOC only when the local TOC is absent */
+@media only screen and (min-width:60em){
+    .redundant_navigation {
+        display: None;
+    }
+}
+
+/* Unset the colours for code spans so the pygments
+style actually shows up, and so that links can be recognised */
+.md-typeset code, .md-typeset pre {
+    background-color: unset;
+    color: unset;
+}
+/* Set the background colour for `code spans`. Consider
+changing this to match the Pygments style */
+.md-typeset code.docutils.literal {
+    background-color: #f8f8f8;
+}
