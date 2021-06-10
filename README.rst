@@ -5,10 +5,6 @@ Material Sphinx Theme
 
 |Travis Build Status|
 
-**Release**
-
-|PyPI Status|
-
 **License**
 
 |MIT License|
