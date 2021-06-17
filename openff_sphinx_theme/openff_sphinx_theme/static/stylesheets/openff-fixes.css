@@ -1,5 +1,5 @@
 /* Let the logo itself govern its padding and margins */
-a.md-logo {
+a.openff-logo {
     margin: 0;
     padding: 0;
 }
@@ -15,7 +15,7 @@ a.md-logo {
         padding-top: 60px;
     }
 }
-a.md-logo img {
+a.openff-logo img {
     height: 60px;
     width: auto;
 }
@@ -194,4 +194,15 @@ body{
     .md-sidebar__scrollwrap {
         max-height: 80vh;
     }
+}
+
+header .navbar {
+    background-color: #015480;
+}
+
+a.openff-logo img {
+    min-height: 3.2rem;
+    width: auto;
+    margin: 0px;
+    padding: 0px;
 }
