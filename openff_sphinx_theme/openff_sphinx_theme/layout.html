@@ -3,7 +3,6 @@
 {% set sphinx_material_include_searchbox=True %}
 
 
-{# Do this so that bootstrap is included before the main css file #}
 {%- block htmltitle %}
 
   {% if not favicon and not favicon_url %}
@@ -23,14 +22,11 @@
   <meta name="lang:search.tokenizer" content="[\s\-]+">
 
   <link rel="stylesheet" href="{{ pathto('_static/stylesheets/site.css', 1) }}"/>
-  <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application.css', 1) }}"/>
-  <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application-palette.css', 1) }}"/>
-  <link rel="stylesheet" href="{{ pathto('_static/stylesheets/application-fixes.css', 1) }}"/>
-  <link rel="stylesheet" href="{{ pathto('_static/stylesheets/openff-fixes.css', 1) }}"/>
 
   <link rel="stylesheet" href="{{ pathto('_static/stylesheets/apiref.css', 1) }}"/>
   {% block fonticon %}
-  <link rel="stylesheet" href="{{ pathto('_static/fonts/material-icons.css', 1) }}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   {% endblock %}
   <meta name="theme-color" content="#015480;">
   {% include "google_analytics.html" %}
@@ -49,27 +45,11 @@
 
 {%- block body_tag %}
   <body dir=ltr
-        data-md-color-accent={{ theme_color_accent }}>
+        data-md-color-accent={{ theme_color_accent }}
+        class="has-navbar-fixed-top">
 {%- endblock %}
 
 {%- block header %}
-  {% if theme_repo_type %}
-  <svg class="md-svg">
-    <defs data-children-count="0">
-      {% if theme_repo_type == "github" %}
-      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
-      {% elif theme_repo_type == "bitbucket" %}
-      <svg xmlns="http://www.w3.org/2000/svg" width="352" height="448" viewBox="0 0 352 448" id="__bitbucket"><path fill="currentColor" d="M203.75 214.75q2 15.75-12.625 25.25t-27.875 1.5q-9.75-4.25-13.375-14.5t-.125-20.5 13-14.5q9-4.5 18.125-3t16 8.875 6.875 16.875zm27.75-5.25q-3.5-26.75-28.25-41T154 165.25q-15.75 7-25.125 22.125t-8.625 32.375q1 22.75 19.375 38.75t41.375 14q22.75-2 38-21t12.5-42zM291.25 74q-5-6.75-14-11.125t-14.5-5.5T245 54.25q-72.75-11.75-141.5.5-10.75 1.75-16.5 3t-13.75 5.5T60.75 74q7.5 7 19 11.375t18.375 5.5T120 93.75Q177 101 232 94q15.75-2 22.375-3t18.125-5.375T291.25 74zm14.25 258.75q-2 6.5-3.875 19.125t-3.5 21-7.125 17.5-14.5 14.125q-21.5 12-47.375 17.875t-50.5 5.5-50.375-4.625q-11.5-2-20.375-4.5T88.75 412 70.5 401.125t-13-15.375q-6.25-24-14.25-73l1.5-4 4.5-2.25q55.75 37 126.625 37t126.875-37q5.25 1.5 6 5.75t-1.25 11.25-2 9.25zM350.75 92.5q-6.5 41.75-27.75 163.75-1.25 7.5-6.75 14t-10.875 10T291.75 288q-63 31.5-152.5 22-62-6.75-98.5-34.75-3.75-3-6.375-6.625t-4.25-8.75-2.25-8.5-1.5-9.875T25 232.75q-2.25-12.5-6.625-37.5t-7-40.375T5.5 118 0 78.5Q.75 72 4.375 66.375T12.25 57t11.25-7.5T35 43.875t12-4.625q31.25-11.5 78.25-16 94.75-9.25 169 12.5Q333 47.25 348 66.25q4 5 4.125 12.75t-1.375 13.5z"/></svg>
-      {% else %}
-      <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" id="__gitlab"><path fill="currentColor" d="M93.667 473.347l90.684-279.097H2.983l90.684 279.097z" transform="translate(156.198 1.16)"/><path fill="currentColor" d="M221.333 473.345L130.649 194.25H3.557l217.776 279.095z" transform="translate(28.531 1.16)" opacity=".7"/><path fill="currentColor" d="M32 195.155L4.441 279.97a18.773 18.773 0 0 0 6.821 20.99l238.514 173.29L32 195.155z" transform="translate(.089 .256)" opacity=".5"/><path fill="currentColor" d="M2.667-84.844h127.092L75.14-252.942c-2.811-8.649-15.047-8.649-17.856 0L2.667-84.844z" transform="translate(29.422 280.256)"/><path fill="currentColor" d="M2.667 473.345L93.351 194.25h127.092L2.667 473.345z" transform="translate(247.198 1.16)" opacity=".7"/><path fill="currentColor" d="M221.334 195.155l27.559 84.815a18.772 18.772 0 0 1-6.821 20.99L3.557 474.25l217.777-279.095z" transform="translate(246.307 .256)" opacity=".5"/><path fill="currentColor" d="M130.667-84.844H3.575l54.618-168.098c2.811-8.649 15.047-8.649 17.856 0l54.618 168.098z" transform="translate(336.974 280.256)"/></svg>
-      {% endif %}
-    </defs>
-  </svg>
-  {% endif %}
-  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
-  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
-  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-  <a href="#{{ pagename }}" tabindex="1" class="md-skip"> Skip to content </a>
   {% include "header.html" %}
 {% endblock %}
 
@@ -79,10 +59,6 @@
 {%- block content %}
   {% set nav_bar_tabs = parents or theme_master_doc or theme_nav_links %}
   <div class="md-container">
-    {%- block hero %}
-    {% include "hero.html" %}
-    {% endblock %}
-    {% include "relbar.html" %}
     <main class="md-main">
       <div class="md-main__inner md-grid" data-md-component="container">
         {% block site_nav %}

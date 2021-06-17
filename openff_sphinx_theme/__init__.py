@@ -57,7 +57,7 @@ def compile_css(app, exception):
         return
 
     theme_path = Path(html_theme_path()[0]) / "openff_sphinx_theme"
-    src = theme_path / "sass/site.sass"
+    src = theme_path / "sass/site.scss"
     dest = Path(app.outdir) / "_static/stylesheets/site.css"
 
     css = sass.compile(

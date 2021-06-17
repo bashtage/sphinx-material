@@ -1,14 +1,14 @@
 <header data-md-component="header">
-  <nav class="navbar is-primary is-fixed-top is-size-6 is-flex-touch" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-primary is-fixed-top is-flex-touch has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item openff-logo" href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
-          {% if logo %}
-            <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ shorttitle|striptags|e }} logo">
-          {% elif theme_logo_icon|e %}
-            <i class="md-icon">{{ theme_logo_icon }}</i>
-          {% else %}
-            <img src="{{ pathto('_static/images/logos/openforcefield_v1_white-on-blue.svg', 1) }}" alt="{{ shorttitle|striptags|e }} logo">
-          {% endif %}
+      <a class="navbar-item" href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
+        {% if logo %}
+          <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ shorttitle|striptags|e }} logo">
+        {% elif theme_logo_icon|e %}
+          <i class="md-icon">{{ theme_logo_icon }}</i>
+        {% else %}
+          <img src="{{ pathto('_static/images/logos/openforcefield_v1_white.png', 1) }}" alt="{{ shorttitle|striptags|e }} logo">
+        {% endif %}
       </a>
       <span class="navbar-item is-flex-grow-1">
         {{ theme_nav_title or docstitle or shorttitle }}
@@ -28,17 +28,18 @@
           {% include "searchbox.html" %}
         </span>
         {% if theme_repo_url %}
-        <span class="navbar-item">
           {% include "repo.html" %}
-        </span>
         {% endif %}
-        <a href="https://openforcefield.org/" class="navbar-item openff-logo">
+        <a href="https://openforcefield.org/" class="navbar-item">
           <img
-            src="{{ pathto('_static/images/logos/openforcefield_v2_white-on-blue.svg', 1) }}"
+            src="{{ pathto('_static/images/logos/openforcefield_v2_white.png', 1) }}"
             alt="Open Force Field Initiative logo"
           >
         </a>
       </div>
     </div>
   </nav>
+
+  {% include "hero.html" %}
+  {% include "relbar.html" %}
 </header>
