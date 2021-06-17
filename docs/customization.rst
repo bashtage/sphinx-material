@@ -36,7 +36,7 @@ This site's options are:
    }
 
 The complete list of options with detailed explanations appears in
-`theme.conf <https://github.com/openforcefield/openff-sphinx-theme/blob/master/openff_sphinx_theme/openff_sphinx_theme/theme.conf>`_.
+`theme.conf <https://github.com/openforcefield/openff-sphinx-theme/blob/main/openff_sphinx_theme/openff_sphinx_theme/theme.conf>`_.
 
 Configuration Options
 =====================

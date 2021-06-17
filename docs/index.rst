@@ -14,7 +14,7 @@ Install from git
 
 .. code-block:: bash
 
-   pip install git+https://github.com/openforcefield/openff-sphinx-theme.git@master
+   pip install git+https://github.com/openforcefield/openff-sphinx-theme.git@main
 
 Or, add to your ReadTheDocs environment.yml
 
@@ -27,7 +27,7 @@ Or, add to your ReadTheDocs environment.yml
         - <conda dependency>
         # --- snip --- #
         - pip:
-            - git+https://github.com/openforcefield/openff-sphinx-theme.git@master
+            - git+https://github.com/openforcefield/openff-sphinx-theme.git@main
 
 Update your ``conf.py`` with the required changes:
 
