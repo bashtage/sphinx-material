@@ -5,6 +5,7 @@ import inspect
 import os
 import re
 import sys
+from pathlib import Path
 from multiprocessing import Manager
 from typing import List, Optional
 from xml.etree import ElementTree
@@ -13,6 +14,7 @@ import bs4
 import slugify
 from bs4 import BeautifulSoup
 from sphinx.util import console, logging
+import sass
 
 from ._version import get_versions
 
@@ -29,6 +31,7 @@ def setup(app):
     app.connect("html-page-context", add_html_link)
     app.connect("build-finished", create_sitemap)
     app.connect("build-finished", reformat_pages)
+    app.connect("build-finished", compile_css)
     app.connect("build-finished", minify_css)
     app.connect("builder-inited", update_html_context)
     app.connect("config-inited", update_table_classes)
@@ -46,6 +49,26 @@ def setup(app):
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
+
+
+def compile_css(app, exception):
+    """Compile Bulma SASS into CSS"""
+    if exception is not None:
+        return
+
+    theme_path = Path(html_theme_path()[0]) / "openff_sphinx_theme"
+    src = theme_path / "sass/site.sass"
+    dest = Path(app.outdir) / "_static/stylesheets/site.css"
+
+    css = sass.compile(
+        filename=str(src),
+        output_style="compressed",
+    )
+
+    print(f"Writing compiled SASS to {dest}")
+
+    with open(dest, "w") as f:
+        print(css, file=f)
 
 
 def add_html_link(app, pagename, templatename, context, doctree):
