@@ -36,6 +36,10 @@ dt:target {
     margin-top: -60px;
     padding-top: 70px;
 }
+.md-sidebars {
+    position: sticky;
+    top: 60px;
+}
 
 /* Hide the link in the pull out draw to the localtoc*/
 .md-nav--primary .md-nav__link::after {
@@ -110,11 +114,11 @@ dt:target {
     [dir=rtl] .md-sidebar--primary{
         right: -40vw;
     }
-    [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+    .md-container [data-md-toggle=drawer]:checked~ .md-sidebar--primary{
         -webkit-transform:translateX(40vw);
         transform:translateX(40vw);
     }
-    [dir=rtl] [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+    [dir=rtl] .md-container [data-md-toggle=drawer]:checked~ .md-sidebar--primary{
         -webkit-transform:translateX(-40vw);
         transform:translateX(-40vw);
     }
@@ -128,11 +132,11 @@ dt:target {
     [dir=rtl] .md-sidebar--primary{
         right: -90vw;
     }
-    [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+    .md-container [data-md-toggle=drawer]:checked~ .md-sidebar--primary{
         -webkit-transform:translateX(90vw);
         transform:translateX(90vw);
     }
-    [dir=rtl] [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+    [dir=rtl] .md-container [data-md-toggle=drawer]:checked~ .md-sidebar--primary{
         -webkit-transform:translateX(-90vw);
         transform:translateX(-90vw);
     }
@@ -156,4 +160,36 @@ Also change the background colour to provide more contrast */
 changing this to match the Pygments style */
 .md-typeset code.docutils.literal {
     background-color: #f8f8f8;
+}
+
+/* Get all the side bars to scroll nicely without JS */
+.md-sidebars {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.md-container {
+    flex-grow: 1;
+}
+
+.md-content {
+    margin-top: -100vh;
+}
+
+@media only screen and (max-width:76.1875em){
+    .md-sidebars {
+        z-index: 3;
+    }
+}
+
+@media only screen and (min-width:76.1875em){
+    .md-sidebar__scrollwrap {
+        max-height: 80vh;
+    }
 }

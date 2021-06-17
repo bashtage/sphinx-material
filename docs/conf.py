@@ -81,7 +81,8 @@ html_static_path = ["_static"]
 
 html_show_sourcelink = True
 html_sidebars = {
-    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"],
+    "customization": ["logo-text.html", "globaltoc.html", "searchbox.html"],
 }
 
 # material theme options (see theme.conf for more information)

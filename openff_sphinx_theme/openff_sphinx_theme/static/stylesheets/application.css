@@ -2561,16 +2561,16 @@ html .md-typeset .superfences-tabs>label:hover{
     .no-csstransforms3d .md-sidebar--primary{
         display:none
     }
-    [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+    .md-container [data-md-toggle=drawer]:checked~ .md-sidebar--primary{
         box-shadow:0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12),0 5px 5px -3px rgba(0,0,0,.4);
         -webkit-transform:translateX(12.1rem);
         transform:translateX(12.1rem)
     }
-    [dir=rtl] [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+    [dir=rtl] .md-container [data-md-toggle=drawer]:checked~ .md-sidebar--primary{
         -webkit-transform:translateX(-12.1rem);
         transform:translateX(-12.1rem)
     }
-    .no-csstransforms3d [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary{
+    .no-csstransforms3d .md-container [data-md-toggle=drawer]:checked~ .md-sidebar--primary{
         display:block
     }
     .md-sidebar--primary .md-sidebar__scrollwrap{
