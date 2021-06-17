@@ -206,3 +206,17 @@ a.openff-logo img {
     margin: 0px;
     padding: 0px;
 }
+
+
+@media screen and (max-width: 1023px) {
+    /* show mavbar-menu on screen less than 1024px */
+    #menu-toggle:checked ~ #paliNavbarMenu { display: block; }
+
+    /* make navbar-burger become cross on screen less than 1024px */
+    #menu-toggle:checked + .navbar-burger span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+    #menu-toggle:checked + .navbar-burger span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked + .navbar-burger span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+    /* you can also replace + with ~ in above three rules and get the same result */
+
+    #paliNavbarMenu { left:0; right:0; top:100%; position: absolute; }
+}

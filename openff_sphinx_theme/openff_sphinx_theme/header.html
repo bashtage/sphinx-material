@@ -1,5 +1,5 @@
 <header data-md-component="header">
-  <nav class="navbar is-primary is-fixed-top is-size-6" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-primary is-fixed-top is-size-6 is-flex-touch" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item openff-logo" href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
           {% if logo %}
@@ -13,16 +13,16 @@
       <span class="navbar-item is-flex-grow-1">
         {{ theme_nav_title or docstitle or shorttitle }}
       </span>
-
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <input type="checkbox" id="menu-toggle" class="is-hidden">
+    <label for="menu-toggle" role="button" class="navbar-burger burger">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </label>
+
+    <div id="paliNavbarMenu" class="navbar-menu">
       <div class="navbar-end">
         <span class="navbar-item">
           {% include "searchbox.html" %}
