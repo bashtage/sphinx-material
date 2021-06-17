@@ -18,7 +18,7 @@ Install from git
 
 Or, add to your ReadTheDocs environment.yml
 
-.. code-block:: yml
+.. code-block:: yaml
 
     dependencies:
         - pip

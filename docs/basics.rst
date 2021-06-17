@@ -192,7 +192,7 @@ rendered as "The next paragraph is a code sample:".
 
 Code highlighting can be enabled for these literal blocks on a document-wide
 basis using the :rst:dir:`highlight` directive and on a project-wide basis
-using the :confval:`highlight_language` configuration option. The
+using the ``highlight_language`` configuration option. The
 :rst:dir:`code-block` directive can be used to set highlighting on a
 block-by-block basis. These directives are discussed later.
 
@@ -492,7 +492,7 @@ Docutils supports the following directives:
   - :dudir:`role` (create a new role)
 
   Since these are only per-file, better use Sphinx's facilities for setting the
-  :confval:`default_role`.
+  ``default_role``.
 
 .. warning::
 
@@ -622,7 +622,7 @@ for details.
 .. index:: ! pair: global; substitutions
 
 If you want to use some substitutions for all documents, put them into
-:confval:`rst_prolog` or :confval:`rst_epilog` or put them into a separate file
+``rst_prolog`` or ``rst_epilog`` or put them into a separate file
 and include it into all documents you want to use them in, using the
 :rst:dir:`include` directive.  (Be sure to give the include file a file name
 extension differing from that of other source files, to avoid Sphinx finding it
@@ -694,7 +694,7 @@ Source encoding
 Since the easiest way to include special characters like em dashes or copyright
 signs in reST is to directly write them as Unicode characters, one has to
 specify an encoding.  Sphinx assumes source files to be encoded in UTF-8 by
-default; you can change this with the :confval:`source_encoding` config value.
+default; you can change this with the ``source_encoding`` config value.
 
 
 Gotchas

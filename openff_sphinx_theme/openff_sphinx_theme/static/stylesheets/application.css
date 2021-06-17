@@ -2360,7 +2360,10 @@ html .md-typeset .superfences-tabs>label:hover{
         width:100%;
         height:100%;
         transition:width 0s,height 0s,opacity .25s;
-        opacity:1
+        opacity:1;
+        position:absolute;
+        top: 0px;
+        left: 0px;
     }
     .md-header-nav__button.md-icon--home,.md-header-nav__button.md-logo{
         display:none
