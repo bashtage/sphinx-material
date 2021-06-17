@@ -36,7 +36,7 @@ dt:target {
     margin-top: -60px;
     padding-top: 70px;
 }
-.md-sidebars {
+.md-sidebar.md-sidebar--primary, .md-sidebar.md-sidebar--secondary {
     position: sticky;
     top: 60px;
 }
@@ -163,10 +163,8 @@ changing this to match the Pygments style */
 }
 
 /* Get all the side bars to scroll nicely without JS */
-.md-sidebars {
+.md-sidebar.md-sidebar--primary, .md-sidebar.md-sidebar--secondary {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 body{
@@ -182,8 +180,12 @@ body{
     margin-top: -100vh;
 }
 
+.md-sidebar.md-sidebar--secondary {
+    margin-top: -100vh;
+}
+
 @media only screen and (max-width:76.1875em){
-    .md-sidebars {
+    .md-sidebar.md-sidebar--primary, .md-sidebar.md-sidebar--secondary  {
         z-index: 3;
     }
 }
