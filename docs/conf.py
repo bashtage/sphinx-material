@@ -94,7 +94,7 @@ html_theme_options = {
     "html_prettify": False,
     "css_minify": False,
     "globaltoc_depth": 2,
-    "color_accent": "deep-purple",
+    "color_accent": "lilac",
     "nav_links": [
         {
             "href": "https://squidfunk.github.io/mkdocs-material/",

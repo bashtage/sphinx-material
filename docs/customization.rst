@@ -64,8 +64,9 @@ Configuration Options
    If true, the global TOC tree will also contain hidden entries.
 ``color_accent``
     Accent color. Options are
-    red, pink, purple, deep-purple, indigo, blue, light-blue, cyan,
-    teal, green, light-green, lime, yellow, amber, orange, and deep-orange.
+    openff-blue, openff-toolkit-blue, openff-yellow, openff-orange
+    aquamarine, lilac, amaranth, grape, violet, pink, pale-green,
+    green, crimson, eggplant, turquoise, or any valid CSS color.
 ``html_minify``
    Minify pages after creation using htmlmin.
 ``html_prettify``

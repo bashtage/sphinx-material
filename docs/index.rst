@@ -64,9 +64,9 @@ or ``theme.conf`` for more details.
         # Must be one of github, gitlab or bitbucket
         "repo_type": "github",
         # Colour for sidebar captions and other accents. One of
-        # openff-toolkit-blue, openff-dataset-yellow, openff-evaluator-orange,
-        # red, pink, purple, deep-purple, indigo, blue, light-blue, cyan,
-        # teal, green, light-green, lime, yellow, amber, orange, deep-orange
+        # openff-blue, openff-toolkit-blue, openff-yellow, openff-orange
+        # aquamarine, lilac, amaranth, grape, violet, pink, pale-green,
+        # green, crimson, eggplant, turquoise, or any valid CSS color.
         "color_accent": "openff-toolkit-blue",
         # Content Minification for deployment, prettification for debugging
         "html_minify": True,
