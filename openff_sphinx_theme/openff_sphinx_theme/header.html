@@ -1,7 +1,7 @@
 <header data-md-component="header">
   <nav class="navbar is-primary is-fixed-top is-flex-touch has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
+      <a class="navbar-item is-hidden-mobile" href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
         {% if logo %}
           <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ shorttitle|striptags|e }} logo">
         {% elif theme_logo_icon|e %}

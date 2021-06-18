@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+@font-face
+    font-family: Montserrat
+    src: url(https://openforcefield.org/fonts/Montserrat/Montserrat-Light.ttf)
+    font-weight: 100
+
+@font-face
+    font-family: Montserrat;
+    src: url(https://openforcefield.org/fonts/Montserrat/Montserrat-Regular.ttf)
+    font-weight: 200
+
+@font-face
+    font-family: Montserrat
+    src: url(https://openforcefield.org/fonts/Montserrat/Montserrat-Medium.ttf)
+    font-weight: 400
+
+@font-face
+    font-family: Montserrat
+    src: url(https://openforcefield.org/fonts/Montserrat/Montserrat-SemiBold.ttf)
+    font-weight: 500
+
+@font-face
+    font-family: Montserrat
+    src: url(https://openforcefield.org/fonts/Montserrat/Montserrat-Bold.ttf)
+    font-weight: 600
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap')
+
+$primary: #015480
+$accent: #2F9ED2
+$text: rgba(0,0,0,.87)
+
+$link: $primary
+$link-hover: $accent
+$link-active: $accent
+$link-focus: $accent
+$link-visited: $accent
+$code: $text
+$code-background: #f8f8f8
+$pre-background: $code-background
+$pre: $code
+
+$family-sans-serif: Montserrat, sans-serif
+$family-monospace: Cousine, monospace
+
+$navbar-height: 4rem
+
+@import "bulma/bulma.sass"
+
+$breadcrumb-item-color-light: findColorInvert($breadcrumb-item-color)
+$breadcrumb-item-hover-color-light: $link-hover
+$breadcrumb-item-active-color-light: $accent
+$breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separator-color)
+
+.navbar.is-primary.has-shadow
+    box-shadow: 0 2px 3px 0 $primary
+
+.navbar.is-fixed-bottom, .navbar.is-fixed-top
+    height: $navbar-height
+
+.navbar.is-fixed-bottom, .navbar.is-fixed-top
+    .navbar-item img
+        max-height: $navbar-height - 1rem
+
+@media screen and (max-width: 1023px)
+    #menu-toggle:checked
+        /* show navbar-menu on screen less than 1024px */
+        ~ #paliNavbarMenu
+            display: block
+        /* make navbar-burger become cross on screen less than 1024px */
+        + .navbar-burger
+            span:nth-child(1)
+                transform: translateY(5px) rotate(45deg)
+            span:nth-child(2)
+                opacity: 0
+            span:nth-child(3)
+                transform: translateY(-5px) rotate(-45deg)
+    #paliNavbarMenu
+        left: 0
+        right: 0
+        top: 100%
+        position: absolute
+
+.has-text-light .breadcrumb
+  a
+    color: $breadcrumb-item-color-light
+    &:hover
+      color: $breadcrumb-item-hover-color-light
+  li
+    &.is-active
+      a
+        color: $breadcrumb-item-active-color-light
+    & + li::before
+      color: $breadcrumb-item-separator-color-light

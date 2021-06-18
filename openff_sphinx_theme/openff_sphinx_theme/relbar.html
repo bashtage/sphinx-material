@@ -1,4 +1,4 @@
-<nav class="columns has-text-light has-background-primary">
+<nav class="columns has-text-light has-background-primary is-hidden-mobile">
   <div class="column breadcrumb">
     <ul>
       {%- block rootrellink %}
@@ -12,7 +12,7 @@
         <li class="is-active"><a href="#">{{ title }}</a></li>
     </ul>
   </div>
-  <div class="column tabs is-narrow">
+  <div class="column tabs is-narrow is-hidden-touch">
     <ul>
     {%- for item in theme_nav_links %}
         {% set localhref=pathto( item.href ) if item.internal else item.href|e %}
