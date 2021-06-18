@@ -41,11 +41,13 @@ $code: $text
 $code-background: #f8f8f8
 $pre-background: $code-background
 $pre: $code
+$menu-item-active-background-color: $accent
 
 $family-sans-serif: Montserrat, sans-serif
 $family-monospace: Cousine, monospace
 
 $navbar-height: 4rem
+$below-navbar-spacing: 0.5rem
 
 @import "bulma/bulma.sass"
 
@@ -53,6 +55,9 @@ $breadcrumb-item-color-light: findColorInvert($breadcrumb-item-color)
 $breadcrumb-item-hover-color-light: $link-hover
 $breadcrumb-item-active-color-light: $accent
 $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separator-color)
+
+.content
+    @import "sphinx-content.sass"
 
 .navbar.is-primary.has-shadow
     box-shadow: 0 2px 3px 0 $primary
@@ -64,10 +69,10 @@ $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separat
     .navbar-item img
         max-height: $navbar-height - 1rem
 
-@media screen and (max-width: 1023px)
+@media screen and (max-width: $desktop - 1px)
     #menu-toggle:checked
-        /* show navbar-menu on screen less than 1024px */
-        ~ #paliNavbarMenu
+        /* show navbar-menu on phones and tablets */
+        ~ #drawer
             display: block
         /* make navbar-burger become cross on screen less than 1024px */
         + .navbar-burger
@@ -77,7 +82,7 @@ $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separat
                 opacity: 0
             span:nth-child(3)
                 transform: translateY(-5px) rotate(-45deg)
-    #paliNavbarMenu
+    #drawer
         left: 0
         right: 0
         top: 100%
@@ -94,3 +99,53 @@ $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separat
         color: $breadcrumb-item-active-color-light
     & + li::before
       color: $breadcrumb-item-separator-color-light
+
+.ff-localtoc, .ff-globaltoc
+    position: sticky
+    top: 0
+    padding: $below-navbar-spacing
+    padding-top: $navbar-height + $below-navbar-spacing
+    margin-top: -$navbar-height
+    overflow: auto
+    max-height: 100vh
+
+dt:target
+    margin-top: -($navbar-height + $below-navbar-spacing)
+    padding-top: ($navbar-height + $below-navbar-spacing)
+    pointer-events: none
+    *
+        pointer-events: auto
+
+*:target::before
+    margin-top: -($navbar-height + $below-navbar-spacing)
+    padding-top: ($navbar-height + $below-navbar-spacing)
+    display: block
+    content: ""
+    visibility: hidden
+    pointer-events: none
+
+body
+    min-height: 100vh
+    display: flex
+    flex-direction: column
+footer
+    margin-top: auto
+header
+    z-index: 1
+    background-color: $primary
+
+    .nav-title
+        padding-left: 0.5rem
+        align-items: center
+        display: inline-flex
+
+    .nav-tabs
+        a
+            color: white
+            padding-top: 0.5rem
+            padding-bottom: 0.5rem
+        a:hover
+            color: $accent
+
+    .is-hidden-tablet.nav-title
+        max-width: 90vw

@@ -21,9 +21,7 @@
   <meta name="lang:search.result.other" content="# matching documents">
   <meta name="lang:search.tokenizer" content="[\s\-]+">
 
-  <link rel="stylesheet" href="{{ pathto('_static/stylesheets/site.css', 1) }}"/>
-
-  <link rel="stylesheet" href="{{ pathto('_static/stylesheets/apiref.css', 1) }}"/>
+  <link rel="stylesheet" href="{{ pathto('_static/site.css', 1) }}"/>
   {% block fonticon %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -58,37 +56,30 @@
 
 {%- block content %}
   {% set nav_bar_tabs = parents or theme_master_doc or theme_nav_links %}
-  <div class="md-container">
-    <main class="md-main">
-      <div class="md-main__inner md-grid" data-md-component="container">
-        {% block site_nav %}
-          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-            <div class="md-sidebar__scrollwrap">
-              <div class="md-sidebar__inner">
-                {% include "sidebar.html" %}
-              </div>
-            </div>
-          </div>
-          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-            <div class="md-sidebar__scrollwrap">
-              <div class="md-sidebar__inner">
-                {% include "localtoc.html" %}
-              </div>
-            </div>
-          </div>
-        {% endblock %}
-        <div class="md-content">
-          <article class="md-content__inner md-typeset" role="main">
+  <main class="section">
+    <div class="container">
+      <div class="columns is-mobile">
+        <aside class="column is-narrow">
+          {% include "globaltoc.html" %}
+        </aside>
+
+
+        <div class="column is-half is-offset-1">
+          <article class="content">
             {% block body %} {% endblock %}
           </article>
         </div>
+
+        <aside class="column is-hidden-mobile is-offset-1">
+          {% include "localtoc.html" %}
+        </aside>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
 {%- endblock %}
 
 {%- block footer %}
-  <footer class="md-footer">
+  <footer class="footer">
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         {%- block footerrel %}

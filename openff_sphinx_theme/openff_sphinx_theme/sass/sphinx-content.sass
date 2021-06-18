@@ -1,0 +1,158 @@
+// Style rules for Sphinx-rendered content
+
+.headerlink
+    padding-left: 1em
+    font-size: 0.8em
+
+dl
+    &.module,
+    &.class,
+    &.exception,
+    &.function,
+    &.decorator,
+    &.data,
+    &.method,
+    &.attribute
+        dt
+            font-weight: bold
+        &:not(.docutils)
+            dt
+                display: table
+                font-size: 90%
+                line-height: normal
+                color: #2980B9
+                position: relative
+                min-width: 80%
+
+                // We hack dt:target's margins and padding so that it appears
+                // in the right place, so we can't do background and border
+                // theming there
+                &:not(:target)
+                    background: #e7f2fa
+                    border-top: solid 0.2rem #6ab0de
+                    padding: 0.2rem
+                    padding-top: 0.6rem
+                    margin: 0.4rem 0
+                    margin-top: 0.4rem
+                &:target
+                    width: 100%
+                    // Border for the contents of the targeted block
+                    + dd
+                        border: none
+                        border-left: solid 0.15rem #2980B9
+                        margin-left: 0px
+                        padding-left: 1.875em
+                        margin-bottom: 0px
+                        padding-bottom: 1rem
+                        margin-top: 0.5rem
+
+            dl dt
+                color: #555
+                min-width: 50%
+
+                // We hack dt:target's margins and padding so that it appears
+                // in the right place, so we can't do background and border
+                // theming there
+                &:not(:target)
+                    margin-bottom: 0.4rem
+                    border: none
+                    border-left: solid 0.2rem #ccc
+                    background: #f0f0f0
+                    padding: 0.3rem
+                // Border for the contents of the targeted block
+                &:target + dd
+                    border-color: #555
+
+            .property
+                display: inline-block
+                padding-right: 0.5rem
+
+            code.descclassname, code.descname
+                background-color: transparent
+                border: none
+                padding: 0
+                font-size: 100% !important
+
+            code.descname
+                font-weight: bold
+
+        .viewcode-link, .headerlink
+            display: inline-block
+            float: right
+            margin: 0.1rem
+            font-size: 0.7rem
+        .viewcode-link
+            color: #27AE60
+        .headerlink
+            color: #e83e8c !important
+            transform: none
+            opacity: 1
+
+        .sig-param
+            .o
+                color: #F03A21
+                padding-left: 0.25rem
+                padding-right: 0.25rem
+            .n
+                color: #015480
+                font-family: $family-monospace
+            .default_value
+                color: #2F9ED2
+
+    .classifier
+        font-style: italic
+        font-weight: 200
+
+    &.simple dt strong
+        font-family: $family-monospace
+
+em.sig-param
+    &::before
+        content: "\A        "
+        white-space: pre
+    + .sig-paren::before
+        content: "\A"
+        white-space: pre
+span.optional + .sig-paren::before
+    content: "\A"
+    white-space: pre
+
+
+pre.gp
+    +unselectable
+
+p:not(.admonition-title, .admonition p)
+    max-width: 35rem
+
+.viewcode-block .viewcode-back
+    float: right
+
+table.longtable.docutils tr
+    border-collapse: unset
+    border: none
+    font-size: 0.7rem
+    &.row-odd
+        background-color: hsla(0,0%,92.5%,.5)
+
+span:empty
+    display: none
+    &:first-child + h1
+        margin-top: 0px
+
+p, dl, ol, ul, blockquote, pre, table
+    margin-bottom: 1em
+
+.highlight
+    background-color: unset
+
+.highlight-default
+    overflow-x: auto
+    table.highlighttable
+        td.linenos
+            padding: 0
+            div.linenodiv
+                +unselectable
+            ~ td.code
+                padding: 0
+                pre
+                    padding-left: 0

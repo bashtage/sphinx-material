@@ -106,6 +106,16 @@ html_theme_options = {
             "internal": False,
             "title": "Material for Sphinx",
         },
+        {
+            "href": "https://openforcefield.org",
+            "internal": False,
+            "title": "The Open Force Field Initiative",
+        },
+        {
+            "href": "https://github.com/openforcefield/openff-sphinx-theme/",
+            "internal": False,
+            "title": "openff-sphinx-theme on GitHub",
+        },
     ],
     "heroes": {
         "index": "A responsive Material Design theme for Sphinx sites.",

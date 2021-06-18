@@ -58,14 +58,19 @@ def compile_css(app, exception):
 
     theme_path = Path(html_theme_path()[0]) / "openff_sphinx_theme"
     src = theme_path / "sass/site.sass"
-    dest = Path(app.outdir) / "_static/stylesheets/site.css"
+    dest = Path(app.outdir) / "_static/site.css"
+
+    if app.config["html_theme_options"].get("css_minify", False):
+        output_style = "compressed"
+    else:
+        output_style = "expanded"
 
     css = sass.compile(
         filename=str(src),
-        output_style="compressed",
+        output_style=output_style,
     )
 
-    print(f"Writing compiled SASS to {dest}")
+    print(f"Writing compiled SASS to {console.colorize('blue', str(dest))}")
 
     with open(dest, "w") as f:
         print(css, file=f)

@@ -10,9 +10,15 @@
           <img src="{{ pathto('_static/images/logos/openforcefield_v1_white.png', 1) }}" alt="{{ shorttitle|striptags|e }} logo">
         {% endif %}
       </a>
-      <span class="navbar-item is-flex-grow-1">
-        {{ theme_nav_title or docstitle or shorttitle }}
-      </span>
+    </div>
+
+
+    <div class="has-text-light is-hidden-mobile nav-title">
+      {% include "relbar.html" %}
+    </div>
+    <div class="has-text-light is-hidden-tablet nav-title">
+      <!-- <span>{{ theme_nav_title or docstitle or shorttitle }}</span> -->
+      <span> {{ title|striptags|e }} </span>
     </div>
 
     <input type="checkbox" id="menu-toggle" class="is-hidden">
@@ -22,7 +28,7 @@
       <span aria-hidden="true"></span>
     </label>
 
-    <div id="paliNavbarMenu" class="navbar-menu">
+    <div id="drawer" class="navbar-menu">
       <div class="navbar-end">
         <span class="navbar-item">
           {% include "searchbox.html" %}
@@ -41,5 +47,12 @@
   </nav>
 
   {% include "hero.html" %}
-  {% include "relbar.html" %}
+
+  <div class="level is-hidden-touch is-hidden-desktop-only nav-tabs">
+    {%- for item in theme_nav_links %}
+      {% set localhref=pathto( item.href ) if item.internal else item.href|e %}
+      <div class="level-item has-text-centered"><a href="{{ localhref|e }}">{{ item.title }}</a></div>
+    {%- endfor %}
+  </div>
+
 </header>
