@@ -57,6 +57,12 @@ $breadcrumb-item-hover-color-light: $link-hover
 $breadcrumb-item-active-color-light: $accent
 $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separator-color)
 
+=hide-scrollbar
+    -ms-overflow-style: none  /* IE and Edge */
+    scrollbar-width: none  /* Firefox */
+    &::-webkit-scrollbar
+        display: none
+
 .content
     @import "sphinx-content.sass"
 
@@ -112,7 +118,7 @@ $drawer-transition-time: 0.5s
             span:nth-child(4)
                 opacity: 50%
                 pointer-events: auto
-                
+
     #drawer
         left: -$drawer-width
         transition: transform $drawer-transition-time
@@ -123,6 +129,17 @@ $drawer-transition-time: 0.5s
         position: fixed
         display: block
         z-index: 12
+
+    .section
+        padding-left: 0.5rem
+        padding-right: 0.5rem
+
+    // Allow scrolling just main on small screens
+    main
+        overflow-x: auto
+    header
+        word-break: break-word
+
 
 .has-text-light .breadcrumb
   a
@@ -144,6 +161,7 @@ $drawer-transition-time: 0.5s
     margin-top: -$navbar-height
     overflow: auto
     max-height: 100vh
+    +hide-scrollbar
 
 dt:target
     margin-top: -($navbar-height + $below-navbar-spacing)
@@ -166,6 +184,7 @@ body
     flex-direction: column
 footer
     margin-top: auto
+    word-break: break-word
 header
     z-index: 1
     background-color: $primary
@@ -192,3 +211,15 @@ header
         ul
             padding-left: 1rem
             font-size: 0.9em
+
+
+h1, h2, h3, h4, h5, h6
+    word-break: break-word
+
+@media screen and (min-width: $fullhd - 1px)
+    main
+        width: $fullhd
+        margin-left: auto
+        margin-right: auto
+
+

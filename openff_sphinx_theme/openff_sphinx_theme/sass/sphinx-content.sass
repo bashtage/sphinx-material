@@ -22,7 +22,6 @@ dl
                 line-height: normal
                 color: #2980B9
                 position: relative
-                min-width: 80%
 
                 // We hack dt:target's margins and padding so that it appears
                 // in the right place, so we can't do background and border
@@ -34,8 +33,8 @@ dl
                     padding-top: 0.6rem
                     margin: 0.4rem 0
                     margin-top: 0.4rem
-                &:target
                     width: 100%
+                &:target
                     // Border for the contents of the targeted block
                     + dd
                         border: none
