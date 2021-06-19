@@ -156,3 +156,73 @@ p, dl, ol, ul, blockquote, pre, table
                 padding: 0
                 pre
                     padding-left: 0
+
+@mixin admonition-colors($name)
+    $components: map-get($message-colors, $name)
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    $color-light: null
+    $color-dark: null
+
+    @if length($components) >= 3
+        $color-light: nth($components, 3)
+        @if length($components) >= 4
+            $color-dark: nth($components, 4)
+        @else
+            $color-luminance: colorLuminance($color)
+            $darken-percentage: $color-luminance * 70%
+            $desaturate-percentage: $color-luminance * 30%
+            $color-dark: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
+    @else
+        $color-lightning: max((100% - lightness($color)) - 2%, 0%)
+        $color-light: lighten($color, $color-lightning)
+
+
+    background-color: $color-light
+    .admonition-title
+        background-color: $color
+        color: $color-invert
+        + *
+            border-color: $color
+            color: $color-dark
+
+.admonition
+    @extend .message
+
+    .admonition-title
+        @extend .message-header
+        ~ *
+            @extend .message-body
+            border-width: 0
+            border-top-left-radius: 0
+            border-top-right-radius: 0
+
+    > *:not(.admonition-title)
+        @extend .message-body
+
+    &.warning
+        @include admonition-colors("warning")
+
+    &.attention
+        @include admonition-colors("info")
+
+    &.caution
+        @include admonition-colors("warning")
+
+    &.danger
+        @include admonition-colors("danger")
+
+    &.error
+        @include admonition-colors("danger")
+
+    &.hint
+        @include admonition-colors("primary")
+
+    &.important
+        @include admonition-colors("info")
+
+    &.note
+        @include admonition-colors("success")
+
+    &.tip
+        @include admonition-colors("success")

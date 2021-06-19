@@ -1,9 +1,8 @@
-"""Sphinx Material theme."""
+"""OpenFF Sphinx theme."""
 
 import hashlib
 import inspect
 import os
-import re
 import sys
 from pathlib import Path
 from multiprocessing import Manager
@@ -23,8 +22,6 @@ del get_versions
 
 ROOT_SUFFIX = "--page-root"
 
-USER_TABLE_CLASSES = []
-
 
 def setup(app):
     """Setup connects events to the sitemap builder"""
@@ -33,8 +30,7 @@ def setup(app):
     app.connect("build-finished", reformat_pages)
     app.connect("build-finished", compile_css)
     app.connect("build-finished", minify_css)
-    app.connect("builder-inited", update_html_context)
-    app.connect("config-inited", update_table_classes)
+    app.connect("builder-inited", register_template_functions)
     manager = Manager()
     site_pages = manager.list()
     sitemap_links = manager.list()
@@ -60,6 +56,27 @@ def compile_css(app, exception):
     src = theme_path / "sass/site.sass"
     dest = Path(app.outdir) / "_static/site.css"
 
+    accent_color = app.config["html_theme_options"].get(
+        "color_accent", "openff-toolkit-blue"
+    )
+    accent_color = {
+        "openff-blue": "#015480",
+        "openff-toolkit-blue": "#2F9ED2",
+        "openff-yellow": "#F08521",
+        "openff-orange": "#F03A21",
+        "aquamarine": "#2CDA9D",
+        "lilac": "#E4B7E5",
+        "amaranth": "#A40E4C",
+        "grape": "#AB92BF",
+        "violet": "#8D6B94",
+        "pink": "#EE4266",
+        "pale-green": "#EE4266",
+        "green": "#04E762",
+        "crimson": "#D62839",
+        "eggplant": "#754F5B",
+        "turquoise": "#2DE1C2",
+    }.get(accent_color, accent_color)
+
     if app.config["html_theme_options"].get("css_minify", False):
         output_style = "compressed"
     else:
@@ -68,6 +85,7 @@ def compile_css(app, exception):
     css = sass.compile(
         filename=str(src),
         output_style=output_style,
+        custom_functions={"accent_color": lambda: accent_color},
     )
 
     print(f"Writing compiled SASS to {console.colorize('blue', str(dest))}")
@@ -168,15 +186,9 @@ def minify_css(app, exception):
     app.multiprocess_manager.shutdown()
 
 
-def update_html_context(app):
+def register_template_functions(app):
     config = app.config
     config.html_context = {**get_html_context(), **config.html_context}
-
-
-def update_table_classes(app, config):
-    table_classes = config.html_theme_options.get("table_classes")
-    if table_classes:
-        USER_TABLE_CLASSES.extend(table_classes)
 
 
 def html_theme_path():
@@ -244,75 +256,11 @@ def derender_toc(
     return nodes
 
 
-def walk_contents(tags):
-    out = []
-    for tag in tags.contents:
-        if hasattr(tag, "contents"):
-            out.append(walk_contents(tag))
-        else:
-            out.append(str(tag))
-    return "".join(out)
-
-
-def table_fix(body_text, page_name="md-page-root--link"):
-    # This is a hack to skip certain classes of tables
-    ignore_table_classes = {"highlighttable", "longtable", "dataframe"}
-    try:
-        body = BeautifulSoup(body_text, features="html.parser")
-        for table in body.select("table"):
-            classes = set(table.get("class", tuple()))
-            if classes.intersection(ignore_table_classes):
-                continue
-            classes = [tc for tc in classes if tc in USER_TABLE_CLASSES]
-            if classes:
-                table["class"] = classes
-            else:
-                del table["class"]
-        first_h1: Optional[bs4.element.Tag] = body.find("h1")
-        headers = body.find_all(re.compile("^h[1-6]$"))
-        for i, header in enumerate(headers):
-            for a in header.select("a"):
-                if "headerlink" in a.get("class", ""):
-                    header["id"] = a["href"][1:]
-        if first_h1 is not None:
-            slug = slugify.slugify(page_name) + ROOT_SUFFIX
-            first_h1["id"] = slug
-            for a in first_h1.select("a"):
-                a["href"] = "#" + slug
-
-        divs = body.find_all("div", {"class": "section"})
-        for div in divs:
-            div.unwrap()
-
-        return str(body)
-    except Exception as exc:
-        logger = logging.getLogger(__name__)
-        logger.warning("Failed to process body_text\n" + str(exc))
-        return body_text
-
-
 # These final lines exist to give sphinx a stable str representation of
-# these two functions across runs, and to ensure that the str changes
+# this function across runs, and to ensure that the str changes
 # if the source does.
-#
-# Note that this would be better down with a metaclass factory
-table_fix_src = inspect.getsource(table_fix)
-table_fix_hash = hashlib.sha512(table_fix_src.encode()).hexdigest()
 derender_toc_src = inspect.getsource(derender_toc)
 derender_toc_hash = hashlib.sha512(derender_toc_src.encode()).hexdigest()
-
-
-class TableFixMeta(type):
-    def __repr__(self):
-        return f"table_fix, hash: {table_fix_hash}"
-
-    def __str__(self):
-        return f"table_fix, hash: {table_fix_hash}"
-
-
-class TableFix(object, metaclass=TableFixMeta):
-    def __new__(cls, *args, **kwargs):
-        return table_fix(*args, **kwargs)
 
 
 class DerenderTocMeta(type):
@@ -329,4 +277,4 @@ class DerenderToc(object, metaclass=DerenderTocMeta):
 
 
 def get_html_context():
-    return {"table_fix": TableFix, "derender_toc": DerenderToc}
+    return {"derender_toc": DerenderToc}

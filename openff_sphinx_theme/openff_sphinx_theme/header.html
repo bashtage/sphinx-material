@@ -17,18 +17,10 @@
       {% include "relbar.html" %}
     </div>
     <div class="has-text-light is-hidden-tablet nav-title">
-      <!-- <span>{{ theme_nav_title or docstitle or shorttitle }}</span> -->
       <span> {{ title|striptags|e }} </span>
     </div>
 
-    <input type="checkbox" id="menu-toggle" class="is-hidden">
-    <label for="menu-toggle" role="button" class="navbar-burger burger">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </label>
-
-    <div id="drawer" class="navbar-menu">
+    <div class="navbar-menu">
       <div class="navbar-end">
         <span class="navbar-item">
           {% include "searchbox.html" %}

@@ -1,17 +1,6 @@
-{% set toc_nodes = derender_toc(toc, True, pagename) if display_toc else [] %}
 {%- if display_toc and sidebars and 'localtoc.html' in sidebars %}
-<nav class="menu ff-localtoc">
-  {%- if toc_nodes %}
-    <p class="menu-label">Contents</p>
-    <ul class="menu-list">
-        {%- for item in toc_nodes recursive %}
-          <li><a href="{{ item.href|e }}">{{ item.contents }}</a>
-            {%- if item.children -%}
-              <ul class="menu-list">{{ loop(item.children) }}</ul>
-            {%- endif %}
-          </li>
-        {%- endfor %}
-    </ul>
-  {%- endif %}
+<nav class="ff-localtoc menu">
+  <p class="menu-label">Contents</p>
+  {{ toc }}
 </nav>
 {%- endif %}

@@ -29,7 +29,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
 $primary: #015480
-$accent: #2F9ED2
+$accent: accent_color()
 $text: rgba(0,0,0,.87)
 
 $link: $primary
@@ -42,6 +42,7 @@ $code-background: #f8f8f8
 $pre-background: $code-background
 $pre: $code
 $menu-item-active-background-color: $accent
+$menu-item-active-color: findDarkColor($accent)
 
 $family-sans-serif: Montserrat, sans-serif
 $family-monospace: Cousine, monospace
@@ -69,24 +70,59 @@ $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separat
     .navbar-item img
         max-height: $navbar-height - 1rem
 
+
+.burger.is-light
+    color: $light
+
+
+$drawer-width: 20rem
+$drawer-transition-time: 0.5s
+
 @media screen and (max-width: $desktop - 1px)
-    #menu-toggle:checked
+    .burger
+        position: fixed
+        top: 0
+        right: 0
+        z-index: 10
+
+        span:nth-child(4)
+            opacity: 0%
+            transition: opacity $drawer-transition-time
+            background-color: black
+            position: fixed
+            left: 0
+            top: 0
+            width: 100vw
+            height: 100vh
+            z-index: 11
+            pointer-events: none
+
+    #drawer-toggle:checked
         /* show navbar-menu on phones and tablets */
         ~ #drawer
-            display: block
+            transform: translate($drawer-width, 0)
         /* make navbar-burger become cross on screen less than 1024px */
-        + .navbar-burger
+        + .burger
             span:nth-child(1)
                 transform: translateY(5px) rotate(45deg)
             span:nth-child(2)
                 opacity: 0
             span:nth-child(3)
                 transform: translateY(-5px) rotate(-45deg)
+            span:nth-child(4)
+                opacity: 50%
+                pointer-events: auto
+                
     #drawer
-        left: 0
-        right: 0
-        top: 100%
-        position: absolute
+        left: -$drawer-width
+        transition: transform $drawer-transition-time
+        width: $drawer-width
+        top: 0
+        height: 100vh
+        background-color: $background
+        position: fixed
+        display: block
+        z-index: 12
 
 .has-text-light .breadcrumb
   a
@@ -149,3 +185,10 @@ header
 
     .is-hidden-tablet.nav-title
         max-width: 90vw
+
+.ff-localtoc
+    > ul
+        padding-left: 0.5rem
+        ul
+            padding-left: 1rem
+            font-size: 0.9em

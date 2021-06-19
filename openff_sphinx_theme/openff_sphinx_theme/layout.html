@@ -57,24 +57,30 @@
 {%- block content %}
   {% set nav_bar_tabs = parents or theme_master_doc or theme_nav_links %}
   <main class="section">
-    <div class="container">
-      <div class="columns is-mobile">
-        <aside class="column is-narrow">
+      <div class="columns">
+        <input type="checkbox" id="drawer-toggle" class="is-hidden">
+        <label for="drawer-toggle" role="button" class="navbar-burger burger is-light">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </label>
+
+        <aside class="column is-2" id="drawer">
           {% include "globaltoc.html" %}
         </aside>
 
 
-        <div class="column is-half is-offset-1">
+        <div class="column is-8-desktop is-9-tablet">
           <article class="content">
             {% block body %} {% endblock %}
           </article>
         </div>
 
-        <aside class="column is-hidden-mobile is-offset-1">
+        <aside class="column is-hidden-mobile is-2-desktop is-3-tablet">
           {% include "localtoc.html" %}
         </aside>
       </div>
-    </div>
   </main>
 {%- endblock %}
 
