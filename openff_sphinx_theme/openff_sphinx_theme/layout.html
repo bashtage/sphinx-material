@@ -85,44 +85,46 @@
 
 {%- block footer %}
   <footer class="footer">
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        {%- block footerrel %}
-          {% if prev %}
-            <a href="{{ prev.link|e }}" title="{{ prev.title|striptags|e }}"
-               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
-               rel="prev">
-              <div class="md-flex__cell md-flex__cell--shrink">
-                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+    <div class="footer-content">
+      {%- block footerrel %}
+        <nav class="level">
+          <div class="level-left">
+            {% if prev %}
+              <div class="level-item">
+                <a href="{{ prev.link|e }}" title="{{ prev.title|striptags|e }}"
+                   class="icon-text"
+                   rel="prev">
+
+                    <span class="icon">
+                      <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span class="is-size-5">{{ prev.title }}</span>
+                </a>
               </div>
-              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-                <span class="md-flex__ellipsis">
-                  <span
-                      class="md-footer-nav__direction"> Previous </span> {{ prev.title }} </span>
+            {% endif %}
+          </div>
+          <div class="level-right">
+            {% if next %}
+              <div class="level-item">
+                <a href="{{ next.link|e }}" title="{{ next.title|striptags|e }}"
+                   class="icon-text"
+                   rel="next">
+
+                    <span class="is-size-5">{{ next.title }}</span>
+                    <span class="icon">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
               </div>
-            </a>
-          {% endif %}
-          {% if next %}
-            <a href="{{ next.link|e }}" title="{{ next.title|striptags|e }}"
-               class="md-flex md-footer-nav__link md-footer-nav__link--next"
-               rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
-                class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> {{ next.title }} </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink"><i
-                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          {% endif %}
-        </a>
-        {% endblock %}
-      </nav>
-    </div>
-    <div class="md-footer-meta md-typeset">
-      <div class="md-footer-meta__inner md-grid">
-        <div class="md-footer-copyright">
-          {%- if show_copyright %}
-          <div class="md-footer-copyright__highlight">
+            {% endif %}
+          </div>
+        </nav>
+      {% endblock %}
+      {%- block extrafooter %}
+      {%- endblock %}
+      <div class="fineprint">
+        {%- if show_copyright %}
+          <div class="copyright">
             {%- if hasdoc('copyright') %}
               {% trans path=pathto('copyright'), copyright=copyright|e %}&#169;
                 <a href="{{ path }}">Copyright</a> {{ copyright }}.
@@ -132,22 +134,18 @@
               {% endtrans %}
             {%- endif %}
           </div>
-          {%- endif %}
-          {%- if last_updated %}
-            {% trans last_updated=last_updated|e %}Last updated on
-              {{ last_updated }}.
-            {% endtrans %}<br/>
-          {%- endif %}
-          {%- if show_sphinx %}
-            {% trans sphinx_version=sphinx_version|e %}Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.
-            {% endtrans %} and
-            <a href="https://github.com/bashtage/sphinx-material/">Material for
-              Sphinx</a>
-          {%- endif %}
-        </div>
-        {%- block extrafooter %}
-        {%- endblock %}
+        {%- endif %}
+        {%- if last_updated %}
+          {% trans last_updated=last_updated|e %}Last updated on
+            {{ last_updated }}.
+          {% endtrans %}<br/>
+        {%- endif %}
+        {%- if show_sphinx %}
+          {% trans sphinx_version=sphinx_version|e %}Created using
+          <a href="http://www.sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.
+          {% endtrans %} and
+          <a href="https://github.com/openforcefield/openff-sphinx-theme/">the Open Force Field Sphinx theme</a>
+        {%- endif %}
       </div>
     </div>
   </footer>

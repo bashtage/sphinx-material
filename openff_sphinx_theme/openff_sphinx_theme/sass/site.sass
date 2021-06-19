@@ -28,6 +28,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
+@import bulma/sass/utilities/functions.sass
+
 $primary: #015480
 $accent: accent_color()
 $text: rgba(0,0,0,.87)
@@ -41,14 +43,20 @@ $code: $text
 $code-background: #f8f8f8
 $pre-background: $code-background
 $pre: $code
+$code-link-background-hover: findColorInvert($link-hover)
 $menu-item-active-background-color: $accent
-$menu-item-active-color: findDarkColor($accent)
+$menu-item-active-color: findColorInvert($accent)
+
+$footer-background-color: $primary
+$footer-color: findColorInvert($footer-background-color)
 
 $family-sans-serif: Montserrat, sans-serif
 $family-monospace: Cousine, monospace
 
 $navbar-height: 4rem
 $below-navbar-spacing: 0.5rem
+
+$use-material-headings: true
 
 @import "bulma/bulma.sass"
 
@@ -182,9 +190,6 @@ body
     min-height: 100vh
     display: flex
     flex-direction: column
-footer
-    margin-top: auto
-    word-break: break-word
 header
     z-index: 1
     background-color: $primary
@@ -204,6 +209,26 @@ header
 
     .is-hidden-tablet.nav-title
         max-width: 90vw
+main.section
+    padding-top: 1rem
+footer
+    margin-top: auto
+    word-break: break-word
+    .fineprint
+        font-size: 0.8em
+        font-weight: 100
+        a
+            color: $footer-color
+            font-weight: 500
+        a:hover
+            color: $link-hover
+        .copyright
+            font-weight: 400
+            margin-bottom: 1rem
+    .footer-content
+        max-width: $fullhd
+        margin-left: auto
+        margin-right: auto
 
 .ff-localtoc
     > ul
@@ -222,4 +247,7 @@ h1, h2, h3, h4, h5, h6
         margin-left: auto
         margin-right: auto
 
-
+a:hover
+    code, pre
+        color: $link-hover
+        background-color: $code-link-background-hover
