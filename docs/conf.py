@@ -83,12 +83,14 @@ html_theme = "openff_sphinx_theme"
 # so a file named 'default.css' will overwrite the builtin 'default.css'.
 html_static_path = ["_static"]
 
+# If HTML theme settings isn't lines 90-160, remember to change customization.rst
+
 # -- HTML theme settings ------------------------------------------------
 
 html_show_sourcelink = True
 html_sidebars = {
     "**": ["globaltoc.html", "localtoc.html", "searchbox.html"],
-    "customization": ["globaltoc.html"],
+    "customization": ["globaltoc.html", "searchbox.html"],
 }
 
 # material theme options (see theme.conf for more information)
@@ -127,6 +129,7 @@ html_theme_options = {
         "index": "A responsive Material Design theme for Sphinx sites.",
         "customization": "Configuration options to personalize your site.",
     },
+    "clear_openff_socials": True,
     "socials": [
         {
             "href": "https://zenodo.org/communities/openforcefield/",
@@ -155,6 +158,8 @@ html_theme_options = {
         },
     ],
 }
+
+# If HTML theme settings isn't lines 90-160, remember to change customization.rst
 
 language = "en"
 html_last_updated_fmt = ""

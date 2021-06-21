@@ -1,11 +1,11 @@
-===================
-Material for Sphinx
-===================
+.. _quickstart:
 
-This theme provides a responsive Material Design theme for Sphinx
-documentation. It is inspired by
-`Material for Sphinx <https://squidfunk.github.io/mkdocs-material/>`_ and
-`Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_, but has been rewritten from scratch with the `Bulma <https://bulma.io>`_ CSS framework.
+==============================
+OpenFF Sphinx theme Quickstart
+==============================
+
+This theme provides a responsive theme for Sphinx documentation by the Open Force Field Initiative.
+It is inspired by `Material for Sphinx <https://squidfunk.github.io/mkdocs-material/>`_ and `Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_, but has been rewritten with the `Bulma <https://bulma.io>`_ CSS framework to remove any JavaScript dependencies.
 
 Getting Started
 ---------------
@@ -45,11 +45,12 @@ or ``theme.conf`` for more details.
     extensions.append("openff_sphinx_theme")
     html_theme = "openff_sphinx_theme"
 
-    # (Optional) Logo.
-    # If not provided, will default to the generic OpenFF logo
-    html_logo = "_static/images/logos/openff_toolkit_v1_white-on-darkblue.svg"
+    # (Optional) Logo in PNG format.
+    # If not provided, will default to the generic OpenFF logo with text
+    html_logo = "_static/images/logos/openforcefield_v1_white.png"
 
-    # Specify a favicon. The OpenFF logo is provided by the theme in the following file, so you can use it without providing a favicon.
+    # (Optional) favicon.
+    # If not provided, will default to the generic OpenFF logo
     html_favicon = "_static/images/favicon.svg"
 
     # Theme options are theme-specific and customize the look and feel of a
@@ -63,66 +64,23 @@ or ``theme.conf`` for more details.
         # Must be one of github, gitlab or bitbucket
         "repo_type": "github",
         # Colour for sidebar captions and other accents. One of
-        # openff-blue, openff-toolkit-blue, openff-yellow, openff-orange
-        # aquamarine, lilac, amaranth, grape, violet, pink, pale-green,
-        # green, crimson, eggplant, turquoise, or any valid CSS color.
+        # openff-blue, openff-toolkit-blue, openff-dataset-yellow,
+        # openff-evaluator-orange, aquamarine, lilac, amaranth, grape,
+        # violet, pink, pale-green, green, crimson, eggplant, turquoise,
+        # or a tuple of three ints in the range [0, 255] corresponding to
+        # a position in RGB space.
         "color_accent": "openff-toolkit-blue",
         # Content Minification for deployment, prettification for debugging
         "html_minify": True,
         "html_prettify": False,
         "css_minify": True,
-        # Social media links for the footer
-        # Must be a list of dicts with three keys: "href", "icon_classes",
-        # and optionally "title". Icon classes should be from Academicons or
-        # Font Awesome
-        "socials": [
-            {
-                "href": "https://zenodo.org/communities/openforcefield/",
-                "title": "OpenFF on Zenodo",
-                "icon_classes": "ai ai-zenodo",
-            },
-            {
-                "href": "https://www.youtube.com/channel/UCh0aJSUm_sYr7nuTzhW806g",
-                "title": "OpenFF on YouTube",
-                "icon_classes": "fab fa-youtube",
-            },
-            {
-                "href": "https://github.com/openforcefield",
-                "title": "OpenFF on GitHub",
-                "icon_classes": "fab fa-github",
-            },
-            {
-                "href": "https://twitter.com/openforcefield",
-                "title": "OpenFF on Twitter",
-                "icon_classes": "fab fa-twitter",
-            },
-            {
-                "href": "https://www.linkedin.com/company/openforcefield/",
-                "title": "OpenFF on LinkedIn",
-                "icon_classes": "fab fa-linkedin",
-            },
-        ],
     }
 
     # Custom sidebar templates, must be a dictionary that maps document names
     # to template names.
     html_sidebars = {
-        # By default, don't show the local table of contents
-        "**": ["logo-text.html", "globaltoc.html", "searchbox.html"],
-        # On long pages, show the local TOC instead of expanding the global TOC
-        # for the current page
-        "developing": [
-            "logo-text.html",
-            "globaltoc.html",
-            "searchbox.html",
-            "localtoc.html",
-        ],
-        "faq": [
-            "logo-text.html",
-            "globaltoc.html",
-            "searchbox.html",
-            "localtoc.html",
-        ],
+        # By default, show everything
+        "**": ["globaltoc.html", "localtoc.html", "searchbox.html"]
     }
 
 .. toctree::

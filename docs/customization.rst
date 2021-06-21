@@ -8,35 +8,13 @@ There are two methods to alter the theme.
 The first, and simplest, uses the options exposed through ``html_theme_options`` in ``conf.py``.
 This site's options are:
 
-.. code-block:: python
+.. literalinclude:: conf.py
+   :language: python
+   :lines: 90-160
+   :lineno-start: 90
+   :linenos:
 
-   html_theme_options = {
-       "base_url": "http://openforcefield.github.io/openff-sphinx-theme/",
-       "repo_url": "https://github.com/openforcefield/openff-sphinx-theme/",
-       "repo_name": "openff-sphinx-theme",
-       "globaltoc_depth": 2,
-       "color_accent": "deep-purple",
-       "nav_links": [
-           {
-               "href": "https://squidfunk.github.io/mkdocs-material/",
-               "internal": False,
-               "title": "Material for MkDocs",
-           },
-           {
-               "href": "https://bashtage.github.io/sphinx-material/",
-               "internal": False,
-               "title": "Material for Sphinx",
-           },
-       ],
-       "heroes": {
-           "index": "A responsive Material Design theme for Sphinx sites.",
-           "customization": "Configuration options to personalize your site.",
-       },
-       "table_classes": ["plain"],
-   }
-
-The complete list of options with detailed explanations appears in
-`theme.conf <https://github.com/openforcefield/openff-sphinx-theme/blob/main/openff_sphinx_theme/openff_sphinx_theme/theme.conf>`_.
+Many of these settings are provided in this site as examples; for a minimalistic example, see :ref:`quickstart`.
 
 Configuration Options
 =====================
@@ -50,9 +28,6 @@ Configuration Options
    It must be set if repo_url is set.
 ``repo_type``
    Must be one of github, gitlab or bitbucket.
-``base_url``
-   Specify a base_url used to generate sitemap.xml links.
-   If not specified, then no sitemap will be built.
 ``globaltoc_depth``
    The maximum depth of the global TOC; set it to -1 to allow unlimited depth.
 ``globaltoc_collapse``
@@ -80,6 +55,12 @@ Configuration Options
    - ``internal``: Flag indicating to use pathto to find the page.  Set to False for external content. (bool)
 ``heroes``
    A ``dict[str,str]`` where the key is a pagename and the value is the text to display in the page's hero location.
+``socials``
+   ``list[dict[str, str]]`` of social media links. Dicts have three keys:
+   ``"href"``, ``"icon_classes"``, and optionally ``"title"``. Icon classes
+   should be from `Academicons <https://jpswalsh.github.io/academicons/>`_ or `Font Awesome 5 <https://fontawesome.com/>`_.
+``clear_openff_socials``
+   ``True`` to remove default social media links from the footer. ``False`` (default) to keep them, to save everyone copying around the same links.
 
 Sidebars
 ========
