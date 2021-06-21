@@ -100,7 +100,7 @@ html_theme_options = {
     "html_prettify": False,
     "css_minify": False,
     "globaltoc_depth": 2,
-    "color_accent": "lilac",
+    "color_accent": "openff-dataset-yellow",
     "nav_links": [
         {
             "href": "https://squidfunk.github.io/mkdocs-material/",

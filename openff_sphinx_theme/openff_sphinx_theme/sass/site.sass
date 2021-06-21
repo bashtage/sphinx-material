@@ -49,6 +49,7 @@ $code-background: #f8f8f8
 $pre-background: $code-background
 $pre: $code
 $code-link-background-hover: findColorInvert($link-hover)
+$code-padding: 0.25em
 $menu-item-active-background-color: $accent
 $menu-item-active-color: findColorInvert($accent)
 $viewcode-link: #44AF69
@@ -233,6 +234,13 @@ header
 
     .is-hidden-tablet.nav-title
         max-width: 90vw
+
+    .control.has-icons-right .input.is-primary
+        background-color: darken($primary, 10)
+        transition: background-color 0.2s
+    .control.has-icons-right .input.is-primary:focus
+        background-color: $white
+
 main.section
     padding-top: 1rem
 footer
@@ -295,3 +303,11 @@ h1, h2, h3, h4, h5, h6
 a:hover:not(.is-active)
     code, pre
         color: $link-hover
+
+.control.has-icons-right .input.is-primary:focus ~ .icon
+    color: $primary
+    transition: color 0.2s
+
+
+
+

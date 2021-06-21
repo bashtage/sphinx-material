@@ -48,10 +48,13 @@ span:empty
             padding: 0
             div.linenodiv
                 +unselectable
+                pre
+                    padding-left: 0.5rem
+                    border-right: solid 1px rgba($code, 0.5)
+                    padding-right: 0.2rem
+                    background-color: $code-background
             ~ td.code
                 padding: 0
-                pre
-                    padding-left: 0
 
 .align-center
     display: block
@@ -122,3 +125,36 @@ section
 a:not(.is-active)
     code
         padding: 0
+
+a.reference code
+    color: $link
+
+
+blockquote
+    padding-top: 0
+    padding-bottom: 0
+    p:first-child
+        padding-top: 1.25em
+    p:last-child
+        padding-bottom: 1.25em
+
+
+li
+    > p
+        + ul, + ol
+            margin-top: -0.75em
+
+dl
+    &.simple, &:not([class]), &[class=""]
+        > dt
+            font-weight: 300
+
+table.docutils.align-default td
+    vertical-align: middle
+
+// Fix clash between docutils and bulma container classes
+.docutils.container
+    max-width: unset
+    position: unset
+    width: unset
+    flex-grow: unset
