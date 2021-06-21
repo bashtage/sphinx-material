@@ -20,15 +20,15 @@ Suppages get bread crumbs when they are not at the top level.
 
 Headings
 ========
-This is a first level heading (``h1``).
+This is a second level heading (``h2``).
 
 Sub-Heading
 -----------
-This is a second level heading (``h2``).
+This is a third level heading (``h3``).
 
 Sub-Sub-Heading
 ~~~~~~~~~~~~~~~
-This is a third level heading (``h3``).
+This is a fourth level heading (``h4``).
 
 
 Code
@@ -70,26 +70,11 @@ It also works with existing Sphinx highlighting:
 
 Admonitions
 ===========
-The theme uses the ``admonition`` classes for Sphinx admonitions.
-
-Note
-----
-.. note:: This is a **note**.
-
-Todo
-----
-
-.. todo::
-
-   It is essential to complete **todo** items.
+The theme uses the ``admonition`` classes for the standard Sphinx admonitions.
 
 Warning
 -------
 .. warning:: This is a **warning**.
-
-Danger
-------
-.. danger:: This is **danger**-ous.
 
 Attention
 ---------
@@ -98,6 +83,10 @@ Attention
 Caution
 -------
 .. caution:: Use **caution**!
+
+Danger
+------
+.. danger:: This is **danger**-ous.
 
 Error
 -----
@@ -111,15 +100,36 @@ Important
 ---------
 .. important:: It is **important** to correctly use admonitions.
 
+Note
+----
+.. note:: This is a **note**.
+
 Tip
 ---
 .. tip:: Please **tip** your waiter.
 
+
 Custom Admonitions
 ------------------
-.. admonition:: Custom
+.. admonition:: An admonition of my own making
 
-   You can create your own admonitions with the default style.
+   You can create your own admonitions with the accent color.
+
+.. admonition:: Example
+
+    But lots of custom admonition styles are also defined.
+
+.. admonition:: Quote
+
+    The needs of the many outweigh the needs of the few
+
+.. admonition:: Bug
+
+    Bugs weren't always a metaphor
+
+.. admonition:: Success
+
+    Woohoo!
 
 Footnotes
 =========
@@ -132,33 +142,28 @@ This also references the second item [#f2]_.
 
 Icons
 =====
-The following template HTML:
+`Font Awesome <https://fontawesome.com>`_ and `Academicons <https://jpswalsh.github.io/academicons/>`_ are both available:
 
 .. code-block:: html
 
-    <span style="font-size: 2rem;" class="md-icon">&#xe869;</span>
+    <i class="fa fa-camera-retro fa-lg"></i>
+    <i class="fa fa-camera-retro fa-2x"></i>
+    <i class="fa fa-camera-retro fa-3x"></i>
+    <i class="fa fa-camera-retro fa-4x"></i>
+    <i class="fa fa-camera-retro fa-5x"></i>
+    <i class="ai ai-google-scholar-square ai-3x"></i>
+    <i class="ai ai-zenodo ai-3x" style="color: red"></i>
 
-translates to a the site's icon:
-
-.. raw:: html
-
-    <span style="font-size: 2rem;" class="md-icon">&#xe869;</span>
-
-The material icon font provides hundreds to choose from. You can use the ``<i>`` tag or the
-``<span>`` tag.
 
 .. raw:: html
 
-    <i style="font-size: 1rem;" class="md-icon">&#xe158;</i>
-    <i style="font-size: 1.2rem;" class="md-icon">&#xe155;</i>
-    <i style="font-size: 1.4rem;" class="md-icon">&#xe195;</i>
-    <i style="font-size: 1.6rem;" class="md-icon">&#xe255;</i>
-    <i style="font-size: 1.8rem;" class="md-icon">&#xe3c9;</i>
-    <i style="font-size: 2.0rem;" class="md-icon">&#xe811;</i>
-    <i style="font-size: 2.2rem;" class="md-icon">&#xe812;</i>
-    <i style="font-size: 2.4rem;" class="md-icon">&#xe813;</i>
-    <i style="font-size: 2.6rem;" class="md-icon">&#xe814;</i>
-    <i style="font-size: 2.8rem;" class="md-icon">&#xe815;</i>
+    <i class="fa fa-camera-retro fa-lg"></i>
+    <i class="fa fa-camera-retro fa-2x"></i>
+    <i class="fa fa-camera-retro fa-3x"></i>
+    <i class="fa fa-camera-retro fa-4x"></i>
+    <i class="fa fa-camera-retro fa-5x"></i>
+    <i class="ai ai-google-scholar-square ai-3x"></i>
+    <i class="ai ai-zenodo ai-3x" style="color: red"></i>
 
 
 Tables

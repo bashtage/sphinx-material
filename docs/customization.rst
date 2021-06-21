@@ -41,9 +41,6 @@ The complete list of options with detailed explanations appears in
 Configuration Options
 =====================
 
-``nav_title``
-   Set the name to appear in the left sidebar/header.
-   If not provided, uses html_short_title if defined, or html_title.
 ``google_analytics_account``
    Set to enable google analytics.
 ``repo_url``
@@ -73,12 +70,8 @@ Configuration Options
    Prettify pages, usually only for debugging.
 ``css_minify``
    Minify css files found in the output directory.
-``logo_icon``
-   Set the logo icon.
-   Should be a pre-escaped html string that indicates a unicode codepoint, e.g., ``'&#xe869'``.
 ``master_doc``
    Include the master document at the top of the page in the breadcrumb bar.
-   You must also set this to true (the default) if you want to override the rootrellink block, in which case the content of the overridden block will appear
 ``nav_links``
    A list of dictionaries where each has three keys:
 
@@ -87,22 +80,6 @@ Configuration Options
    - ``internal``: Flag indicating to use pathto to find the page.  Set to False for external content. (bool)
 ``heroes``
    A ``dict[str,str]`` where the key is a pagename and the value is the text to display in the page's hero location.
-``version_dropdown``
-   A flag indicating whether the version drop down should be included.
-   You must supply a JSON file
-   to use this feature.
-``version_dropdown_text``
-   The text in the version dropdown button
-``version_json``
-   The location of the JSON file that contains the version information.
-   The default assumes there is a file versions.json located in the root of the site.
-``version_info``
-   A dictionary used to populate the version dropdown.
-   If this variable is provided, the static dropdown is used and any JavaScript information is ignored.
-``table_classes``
-   A list of classes to **not strip** from tables.
-   All other classes are stripped, and the default table has no class attribute.
-   Custom table classes need to provide the full style for the table.
 
 Sidebars
 ========
@@ -112,7 +89,7 @@ There are four in the complete set.
 .. code-block:: python
 
    html_sidebars = {
-       "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
+       "**": ["globaltoc.html", "localtoc.html", "searchbox.html"]
    }
 
 
@@ -166,87 +143,6 @@ customization:
 
 ``footerrel``
    Previous and next in the footer.
-``font``
-   The default font inline CSS and the class to the google API. Use this
-   block when changing the font.
 ``fonticon``
-   Block that contains the icon font. Use this to add additional icon fonts
-   (e.g., `FontAwesome <https://fontawesome.com/>`_). You should probably call ``{{ super() }}`` at
-   the end of the block to include the default icon font as well.
+   Block that contains the icon font. You should probably call ``{{ super() }}`` at the end of the block to include the default icon fonts as well. (Font Awesome and Academicons)
 
-Version Dropdown
-================
-
-A version dropdown is available that lets you store multiple versions in a single site.
-The standard structure of the site, relative to the base is usually::
-
-   /
-   /devel
-   /v1.0.0
-   /v1.1.0
-   /v1.1.1
-   /v1.2.0
-
-
-To use the version dropdown, you must set ``version_dropdown`` to ``True`` in
-the sites configuration.
-
-There are two approaches, one which stores the version information in a JavaScript file
-and one which uses a dictionary in the configuration.
-
-Using a Javascript File
------------------------
-The data used is read via javascript from a file. The basic structure of the file is a dictionary of the form [label, path].
-
-.. code-block::javascript
-
-   {
-      "release": "",
-      "development": "devel",
-      "v1.0.0": "v1.0.0",
-      "v1.1.0": "v1.1.0",
-      "v1.1.1": "v1.1.0",
-      "v1.2.0": "v1.2.0",
-   }
-
-This dictionary tells the dropdown that the release version is in the root of the site, the other versions are archived under their version number, and the development version is located in /devel.
-
-.. note::
-
-   The advantage of this approach is that you can separate version information
-   from the rendered documentation.  This makes is easy to change the version
-   dropdown in _older_ versions of the documentation to reflect additional versions
-   that are released later. Changing the Javascript file changes the version dropdown
-   content in all versions.  This approach is used in
-   `statsmodels <https://www.statsmodels.org/>`_.
-
-Using ``conf.py``
------------------
-
-.. warning::
-
-   This method has precedence over the JavaScript approach.
-   If ``version_info`` is not empty in a site's ``html_theme_options``, then the static approach is used.
-
-The alternative uses a dictionary where the key is the title and the value is the target.
-The dictionary is part of the size configuration's ``html_theme_options``.
-
-.. code-block::python
-
-   "version_info": {
-        "release": "",  # empty is the master doc
-        "development": "devel/",
-        "v1.0.0": "v1.0.0/",
-        "v1.1.0": "v1.1.0/",
-        "v1.1.1": "v1.1.0/",
-        "v1.2.0": "v1.2.0/",
-        "Read The Docs": "https://rtd.readthedocs.io/",
-   }
-
-The dictionary structure is nearly identical.
-Here you can use relative paths like in the JavaScript version.
-You can also use absolute paths.
-
-.. note::
-
-   This approach is easier if you only want to have a fixed set of documentation, e.g., stable and devel.

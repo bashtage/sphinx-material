@@ -4,14 +4,11 @@
       <a class="navbar-item is-hidden-mobile" href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
         {% if logo %}
           <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ shorttitle|striptags|e }} logo">
-        {% elif theme_logo_icon|e %}
-          <i class="md-icon">{{ theme_logo_icon }}</i>
         {% else %}
           <img src="{{ pathto('_static/images/logos/openforcefield_v1_white.png', 1) }}" alt="{{ shorttitle|striptags|e }} logo">
         {% endif %}
       </a>
     </div>
-
 
     <div class="has-text-light is-hidden-mobile nav-title">
       {% include "relbar.html" %}
@@ -40,7 +37,7 @@
 
   {% include "hero.html" %}
 
-  <div class="level is-hidden-touch is-hidden-desktop-only nav-tabs">
+  <div class="level is-hidden-mobile nav-tabs">
     {%- for item in theme_nav_links %}
       {% set localhref=pathto( item.href ) if item.internal else item.href|e %}
       <div class="level-item has-text-centered"><a href="{{ localhref|e }}">{{ item.title }}</a></div>

@@ -30,7 +30,12 @@
 
 @import bulma/sass/utilities/functions.sass
 
-$primary: #015480
+$openff-blue: rgb(1, 84, 128)
+$openff-toolkit-blue: rgb(47, 158, 210)
+$openff-dataset-yellow: rgb(240, 133, 33)
+$openff-evaluator-orange: rgb(240, 58, 33)
+
+$primary: $openff-blue
 $accent: accent_color()
 $text: rgba(0,0,0,.87)
 
@@ -46,6 +51,7 @@ $pre: $code
 $code-link-background-hover: findColorInvert($link-hover)
 $menu-item-active-background-color: $accent
 $menu-item-active-color: findColorInvert($accent)
+$viewcode-link: #44AF69
 
 $footer-background-color: $primary
 $footer-color: findColorInvert($footer-background-color)
@@ -57,6 +63,7 @@ $navbar-height: 4rem
 $below-navbar-spacing: 0.5rem
 
 $use-material-headings: true
+$bulma-admonitions: false
 
 @import "bulma/bulma.sass"
 
@@ -73,6 +80,7 @@ $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separat
 
 .content
     @import "sphinx-content.sass"
+    @import "admonitions.sass"
 
 .navbar.is-primary.has-shadow
     box-shadow: 0 2px 3px 0 $primary
@@ -137,6 +145,8 @@ $drawer-transition-time: 0.5s
         position: fixed
         display: block
         z-index: 12
+        .ff-globaltoc
+            position: unset
 
     .section
         padding-left: 0.5rem
@@ -148,28 +158,37 @@ $drawer-transition-time: 0.5s
     header
         word-break: break-word
 
-
 .has-text-light .breadcrumb
-  a
-    color: $breadcrumb-item-color-light
-    &:hover
-      color: $breadcrumb-item-hover-color-light
-  li
-    &.is-active
-      a
-        color: $breadcrumb-item-active-color-light
-    & + li::before
-      color: $breadcrumb-item-separator-color-light
+    a
+        code
+            color: $breadcrumb-item-color-light
+        color: $breadcrumb-item-color-light
+        &:hover
+            color: $breadcrumb-item-hover-color-light
+    li
+        &.is-active
+            a
+                color: $breadcrumb-item-active-color-light
+        & + li::before
+            color: $breadcrumb-item-separator-color-light
 
 .ff-localtoc, .ff-globaltoc
     position: sticky
-    top: 0
     padding: $below-navbar-spacing
-    padding-top: $navbar-height + $below-navbar-spacing
-    margin-top: -$navbar-height
     overflow: auto
-    max-height: 100vh
-    +hide-scrollbar
+    // We can put visible scrollbars on the sidebars, at the
+    // cost of some unusual behaviour on wierd screen sizes
+    // where the navbar is not 10vh
+    $sidebar-scrollbars: false
+    @if $sidebar-scrollbars
+        top: $navbar-height + $below-navbar-spacing
+        max-height: 90vh
+    @else
+        top: 0
+        padding-top: $navbar-height + $below-navbar-spacing
+        margin-top: -$navbar-height
+        max-height: 100vh
+        +hide-scrollbar
 
 dt:target
     margin-top: -($navbar-height + $below-navbar-spacing)
@@ -185,6 +204,11 @@ dt:target
     content: ""
     visibility: hidden
     pointer-events: none
+
+// Disable highlighting of targets from basic.css
+dt:target
+    background-color: unset
+    border-bottom: solid 1px #fbe54e
 
 body
     min-height: 100vh
@@ -214,6 +238,8 @@ main.section
 footer
     margin-top: auto
     word-break: break-word
+    nav
+        margin-bottom: 3rem !important
     .fineprint
         font-size: 0.8em
         font-weight: 100
@@ -229,13 +255,29 @@ footer
         max-width: $fullhd
         margin-left: auto
         margin-right: auto
-
+    .socials
+        margin-top: auto
+        text-align: right
+        .icon
+            border: solid 1px
+            border-radius: 50%
 .ff-localtoc
+    a
+        color: $menu-item-color
+        display: block
+        &:hover
+            color: $link-hover
+
     > ul
         padding-left: 0.5rem
         ul
+            padding-top: 0.2rem
             padding-left: 1rem
             font-size: 0.9em
+        li
+            padding-bottom: 0.2rem
+            &:last-child
+                padding-bottom: 0
 
 
 h1, h2, h3, h4, h5, h6
@@ -246,8 +288,10 @@ h1, h2, h3, h4, h5, h6
         width: $fullhd
         margin-left: auto
         margin-right: auto
+@media screen and (max-width: $fullhd)
+    .menu-list li ul
+        padding-left: 0
 
-a:hover
+a:hover:not(.is-active)
     code, pre
         color: $link-hover
-        background-color: $code-link-background-hover

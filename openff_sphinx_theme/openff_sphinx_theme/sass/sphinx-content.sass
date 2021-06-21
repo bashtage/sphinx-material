@@ -1,4 +1,5 @@
 // Style rules for Sphinx-rendered content
+@import api_docs.sass
 
 .headerlink
     margin-left: 1em
@@ -19,132 +20,16 @@ h1, h2, h3, h4, h5, h6
         transform: translate(0)
         opacity: 1
 
-dl
-    &.module,
-    &.class,
-    &.exception,
-    &.function,
-    &.decorator,
-    &.data,
-    &.method,
-    &.attribute
-        dt
-            font-weight: bold
-        &:not(.docutils)
-            dt
-                display: table
-                font-size: 90%
-                line-height: normal
-                color: #2980B9
-                position: relative
-
-                // We hack dt:target's margins and padding so that it appears
-                // in the right place, so we can't do background and border
-                // theming there
-                &:not(:target)
-                    background: #e7f2fa
-                    border-top: solid 0.2rem #6ab0de
-                    padding: 0.2rem
-                    padding-top: 0.6rem
-                    margin: 0.4rem 0
-                    margin-top: 0.4rem
-                    width: 100%
-                &:target
-                    // Border for the contents of the targeted block
-                    + dd
-                        border: none
-                        border-left: solid 0.15rem #2980B9
-                        margin-left: 0px
-                        padding-left: 1.875em
-                        margin-bottom: 0px
-                        padding-bottom: 1rem
-                        margin-top: 0.5rem
-
-            dl dt
-                color: #555
-                min-width: 50%
-
-                // We hack dt:target's margins and padding so that it appears
-                // in the right place, so we can't do background and border
-                // theming there
-                &:not(:target)
-                    margin-bottom: 0.4rem
-                    border: none
-                    border-left: solid 0.2rem #ccc
-                    background: #f0f0f0
-                    padding: 0.3rem
-                // Border for the contents of the targeted block
-                &:target + dd
-                    border-color: #555
-
-            .property
-                display: inline-block
-                padding-right: 0.5rem
-
-            code.descclassname, code.descname
-                background-color: transparent
-                border: none
-                padding: 0
-                font-size: 100% !important
-
-            code.descname
-                font-weight: bold
-
-        .viewcode-link, .headerlink
-            display: inline-block
-            float: right
-            margin: 0.1rem
-            font-size: 0.7rem
-        .viewcode-link
-            color: #27AE60
-        .headerlink
-            color: #e83e8c
-            transform: none
-            opacity: 1
-
-        .sig-param
-            .o
-                color: #F03A21
-                padding-left: 0.25rem
-                padding-right: 0.25rem
-            .n
-                color: #015480
-                font-family: $family-monospace
-            .default_value
-                color: #2F9ED2
-
-    .classifier
-        font-style: italic
-        font-weight: 200
-
-    &.simple dt strong
-        font-family: $family-monospace
-
-em.sig-param
-    &::before
-        content: "\A        "
-        white-space: pre
-    + .sig-paren::before
-        content: "\A"
-        white-space: pre
-span.optional + .sig-paren::before
-    content: "\A"
-    white-space: pre
-
-
 pre.gp
     +unselectable
 
 p:not(.admonition-title, .admonition p)
     max-width: 35rem
 
-.viewcode-block .viewcode-back
-    float: right
-
 table.longtable.docutils tr
     border-collapse: unset
     border: none
-    font-size: 0.7rem
+    font-size: 0.8rem
     &.row-odd
         background-color: hsla(0,0%,92.5%,.5)
 
@@ -168,77 +53,6 @@ span:empty
                 pre
                     padding-left: 0
 
-@mixin admonition-colors($name)
-    $components: map-get($message-colors, $name)
-    $color: nth($components, 1)
-    $color-invert: nth($components, 2)
-    $color-light: null
-    $color-dark: null
-
-    @if length($components) >= 3
-        $color-light: nth($components, 3)
-        @if length($components) >= 4
-            $color-dark: nth($components, 4)
-        @else
-            $color-luminance: colorLuminance($color)
-            $darken-percentage: $color-luminance * 70%
-            $desaturate-percentage: $color-luminance * 30%
-            $color-dark: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
-    @else
-        $color-lightning: max((100% - lightness($color)) - 2%, 0%)
-        $color-light: lighten($color, $color-lightning)
-
-
-    background-color: $color-light
-    .admonition-title
-        background-color: $color
-        color: $color-invert
-        + *
-            border-color: $color
-            color: $color-dark
-
-.admonition
-    @extend .message
-
-    .admonition-title
-        margin-bottom: 0
-        @extend .message-header
-        ~ *
-            @extend .message-body
-            border-width: 0
-            border-top-left-radius: 0
-            border-top-right-radius: 0
-
-    > *:not(.admonition-title)
-        @extend .message-body
-
-    &.warning
-        @include admonition-colors("warning")
-
-    &.attention
-        @include admonition-colors("info")
-
-    &.caution
-        @include admonition-colors("warning")
-
-    &.danger
-        @include admonition-colors("danger")
-
-    &.error
-        @include admonition-colors("danger")
-
-    &.hint
-        @include admonition-colors("primary")
-
-    &.important
-        @include admonition-colors("info")
-
-    &.note
-        @include admonition-colors("success")
-
-    &.tip
-        @include admonition-colors("success")
-
 .align-center
     display: block
     margin-left: auto
@@ -252,9 +66,9 @@ span:empty
 
 @if $use-material-headings
     h1
-        margin: 0 0 2rem
+        margin: 0 0 2em
         color: rgba(0,0,0,.54)
-        font-size: 1.5625rem
+        font-size: 1.9625em
         line-height: 1.3
 
     h1,h2
@@ -262,30 +76,49 @@ span:empty
         letter-spacing: -.01em
 
     h2
-        margin: 2rem 0 .8rem
-        font-size: 1.25rem
+        margin: 2em 0 .8em
+        font-size: 1.65em
         line-height: 1.4
         + h3
-            margin-top: .8rem
+            margin-top: .8em
 
     h3
-        margin: 1.6rem 0 .8rem
-        font-size: 1rem
+        margin: 1.6em 0 .8em
+        font-size: 1.4em
         font-weight: 500
         letter-spacing: -.01em
         line-height: 1.5
 
     h4
-        font-size: .8rem
+        font-size: 1.2em
 
     h4,h5,h6
-        margin: .8rem 0
+        margin: .8em 0
         font-weight: 700
         letter-spacing: -.01em
 
     h5,h6
         color: rgba(0,0,0,.54)
-        font-size: .64rem
+        font-size: 1.04em
 
     h5
         text-transform: uppercase
+
+.toctree-wrapper
+    margin-top: 1.6rem
+    .caption-text
+        @extend h2
+    li
+        list-style: none
+        padding: 0
+        margin: 0 0 0.1rem 0.2rem
+
+.align-default
+    text-align: left
+
+section
+    &:not([class]), &[class=""]
+
+a:not(.is-active)
+    code
+        padding: 0

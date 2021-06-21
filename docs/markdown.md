@@ -28,16 +28,6 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
 ###### The 6th level
 
-## Headings <small>with secondary text</small>
-
-### The 3rd level <small>with secondary text</small>
-
-#### The 4th level <small>with secondary text</small>
-
-##### The 5th level <small>with secondary text</small>
-
-###### The 6th level <small>with secondary text</small>
-
 ## Blockquotes
 
 > Morbi eget dapibus felis. Vivamus venenatis porttitor tortor sit amet rutrum.

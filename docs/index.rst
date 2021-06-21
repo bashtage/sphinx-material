@@ -3,10 +3,9 @@ Material for Sphinx
 ===================
 
 This theme provides a responsive Material Design theme for Sphinx
-documentation. It derives heavily from
-`Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_,
-and also uses code from
-`Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
+documentation. It is inspired by
+`Material for Sphinx <https://squidfunk.github.io/mkdocs-material/>`_ and
+`Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_, but has been rewritten from scratch with the `Bulma <https://bulma.io>`_ CSS framework.
 
 Getting Started
 ---------------
@@ -71,7 +70,38 @@ or ``theme.conf`` for more details.
         # Content Minification for deployment, prettification for debugging
         "html_minify": True,
         "html_prettify": False,
-        "css_minify": True
+        "css_minify": True,
+        # Social media links for the footer
+        # Must be a list of dicts with three keys: "href", "icon_classes",
+        # and optionally "title". Icon classes should be from Academicons or
+        # Font Awesome
+        "socials": [
+            {
+                "href": "https://zenodo.org/communities/openforcefield/",
+                "title": "OpenFF on Zenodo",
+                "icon_classes": "ai ai-zenodo",
+            },
+            {
+                "href": "https://www.youtube.com/channel/UCh0aJSUm_sYr7nuTzhW806g",
+                "title": "OpenFF on YouTube",
+                "icon_classes": "fab fa-youtube",
+            },
+            {
+                "href": "https://github.com/openforcefield",
+                "title": "OpenFF on GitHub",
+                "icon_classes": "fab fa-github",
+            },
+            {
+                "href": "https://twitter.com/openforcefield",
+                "title": "OpenFF on Twitter",
+                "icon_classes": "fab fa-twitter",
+            },
+            {
+                "href": "https://www.linkedin.com/company/openforcefield/",
+                "title": "OpenFF on LinkedIn",
+                "icon_classes": "fab fa-linkedin",
+            },
+        ],
     }
 
     # Custom sidebar templates, must be a dictionary that maps document names
@@ -113,7 +143,7 @@ or ``theme.conf`` for more details.
     notebook.ipynb
     markdown.md
     rst-cheatsheet/rst-cheatsheet
-    basics
+    primer
 
 .. toctree::
     :caption: Changes and License

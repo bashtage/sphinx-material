@@ -2,7 +2,7 @@
 {% if toctree and sidebars and 'globaltoc.html' in sidebars %}
 <nav class="menu ff-globaltoc">
   {% set toctree_nodes = derender_toc(toctree, False) %}
-  {%- for item in toctree_nodes recursive %}
+  {%- for item in toctree_nodes %}
     {% if "caption" in item %}
       {% if not loop.first %}
         </ul>
@@ -13,13 +13,34 @@
       {% if loop.first %}
         <ul class="menu-list">
       {% endif %}
-    <li>
-      <a href="{{ item.href|e }}" class="{% if item.current %}is-active{% endif %}">{{ item.contents }}</a>
-      {%- if item.children and 'localtoc.html' not in sidebars -%}
-        <ul class="menu-list"> {{ loop(item.children) }}</ul>
-      {%- endif %}
+      <li>
+        <a href="{{ item.href|e }}" class="{% if item.current %}is-active{% endif %}">{{ item.contents }}</a>
+        {%- if item.children and 'localtoc.html' not in sidebars -%}
+          <ul>
+            {% for child in item.children recursive -%}
+              <li>
+                {% if child.caption %}
+                  <p class="menu-label">{{ child.caption }}</p>
+                {% endif %}
+                {% if child.href and child.contents %}
+                  <a href="{{ child.href|e }}">{{ child.contents }}</a>
+                {% elif child.contents %}
+                  <p>{{ child.contents }}</p>
+                {% endif %}
+                {%- if child.children -%}
+                <ul>
+                  {{ loop(child.children) }}
+                </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {%- endif %}
+      </li>
+      {% if loop.last %}
+        </ul>
+      {% endif %}
     {% endif %}
-    </li>
   {%- endfor %}
   </ul>
 </nav>

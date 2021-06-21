@@ -14,6 +14,7 @@ import slugify
 from bs4 import BeautifulSoup
 from sphinx.util import console, logging
 import sass
+from sass import SassColor
 
 from ._version import get_versions
 
@@ -60,21 +61,21 @@ def compile_css(app, exception):
         "color_accent", "openff-toolkit-blue"
     )
     accent_color = {
-        "openff-blue": "#015480",
-        "openff-toolkit-blue": "#2F9ED2",
-        "openff-yellow": "#F08521",
-        "openff-orange": "#F03A21",
-        "aquamarine": "#2CDA9D",
-        "lilac": "#E4B7E5",
-        "amaranth": "#A40E4C",
-        "grape": "#AB92BF",
-        "violet": "#8D6B94",
-        "pink": "#EE4266",
-        "pale-green": "#EE4266",
-        "green": "#04E762",
-        "crimson": "#D62839",
-        "eggplant": "#754F5B",
-        "turquoise": "#2DE1C2",
+        "openff-blue": (1, 84, 128),
+        "openff-toolkit-blue": (47, 158, 210),
+        "openff-dataset-yellow": (240, 133, 33),
+        "openff-evaluator-orange": (240, 58, 33),
+        "aquamarine": (44, 218, 157),
+        "lilac": (228, 183, 229),
+        "amaranth": (164, 14, 76),
+        "grape": (171, 146, 191),
+        "violet": (141, 107, 148),
+        "pink": (238, 66, 102),
+        "pale-green": (238, 66, 102),
+        "green": (4, 231, 98),
+        "crimson": (214, 40, 57),
+        "eggplant": (117, 79, 91),
+        "turquoise": (45, 225, 194),
     }.get(accent_color, accent_color)
 
     if app.config["html_theme_options"].get("css_minify", False):
@@ -85,7 +86,7 @@ def compile_css(app, exception):
     css = sass.compile(
         filename=str(src),
         output_style=output_style,
-        custom_functions={"accent_color": lambda: accent_color},
+        custom_functions={"accent_color": lambda: SassColor(*accent_color, 1)},
     )
 
     print(f"Writing compiled SASS to {console.colorize('blue', str(dest))}")

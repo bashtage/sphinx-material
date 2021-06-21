@@ -7,6 +7,7 @@
 
   {% if not favicon and not favicon_url %}
   <link rel="icon" type="image/svg" href="{{ pathto('_static/images/favicon.svg', 1) }}" />
+  <link rel="apple-touch-icon" type="image/svg" href="{{ pathto('_static/images/favicon.svg', 1) }}" />
   {% endif %}
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,24 +22,18 @@
   <meta name="lang:search.result.other" content="# matching documents">
   <meta name="lang:search.tokenizer" content="[\s\-]+">
 
-  <link rel="stylesheet" href="{{ pathto('_static/site.css', 1) }}"/>
   {% block fonticon %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   {% endblock %}
   <meta name="theme-color" content="#015480;">
   {% include "google_analytics.html" %}
-  {% if theme_touch_icon %}
-    <link rel="apple-touch-icon" href="{{ pathto('_static/' ~ theme_touch_icon, 1) }}"/>
-  {% endif %}
   {{ super() }}
 {%- endblock %}
 
 {%- block extrahead %}
-  {% if theme_touch_icon %}
-    <link rel="apple-touch-icon" href="{{ pathto('_static/' ~ theme_touch_icon, 1) }}"/>
-  {% endif %}
   {{ super() }}
+  <link rel="stylesheet" href="{{ pathto('_static/site.css', 1) }}"/>
 {% endblock %}
 
 {%- block body_tag %}
@@ -84,70 +79,5 @@
 {%- endblock %}
 
 {%- block footer %}
-  <footer class="footer">
-    <div class="footer-content">
-      {%- block footerrel %}
-        <nav class="level">
-          <div class="level-left">
-            {% if prev %}
-              <div class="level-item">
-                <a href="{{ prev.link|e }}" title="{{ prev.title|striptags|e }}"
-                   class="icon-text"
-                   rel="prev">
-
-                    <span class="icon">
-                      <i class="fas fa-arrow-left"></i>
-                    </span>
-                    <span class="is-size-5">{{ prev.title }}</span>
-                </a>
-              </div>
-            {% endif %}
-          </div>
-          <div class="level-right">
-            {% if next %}
-              <div class="level-item">
-                <a href="{{ next.link|e }}" title="{{ next.title|striptags|e }}"
-                   class="icon-text"
-                   rel="next">
-
-                    <span class="is-size-5">{{ next.title }}</span>
-                    <span class="icon">
-                      <i class="fas fa-arrow-right"></i>
-                    </span>
-                </a>
-              </div>
-            {% endif %}
-          </div>
-        </nav>
-      {% endblock %}
-      {%- block extrafooter %}
-      {%- endblock %}
-      <div class="fineprint">
-        {%- if show_copyright %}
-          <div class="copyright">
-            {%- if hasdoc('copyright') %}
-              {% trans path=pathto('copyright'), copyright=copyright|e %}&#169;
-                <a href="{{ path }}">Copyright</a> {{ copyright }}.
-              {% endtrans %}
-            {%- else %}
-              {% trans copyright=copyright|e %}&#169; Copyright {{ copyright }}.
-              {% endtrans %}
-            {%- endif %}
-          </div>
-        {%- endif %}
-        {%- if last_updated %}
-          {% trans last_updated=last_updated|e %}Last updated on
-            {{ last_updated }}.
-          {% endtrans %}<br/>
-        {%- endif %}
-        {%- if show_sphinx %}
-          {% trans sphinx_version=sphinx_version|e %}Created using
-          <a href="http://www.sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.
-          {% endtrans %} and
-          <a href="https://github.com/openforcefield/openff-sphinx-theme/">the Open Force Field Sphinx theme</a>
-        {%- endif %}
-      </div>
-    </div>
-  </footer>
-
+  {% include "footer.html" %}
 {%- endblock %}

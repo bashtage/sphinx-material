@@ -38,6 +38,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
+    "sphinx.ext.intersphinx",
     "nbsphinx",
     "myst_parser",
     "openff_sphinx_theme",
@@ -57,6 +58,11 @@ numpydoc_class_members_toctree = False
 # Disable numpydoc rendering methods twice
 # https://stackoverflow.com/questions/34216659/sphinx-autosummary-produces-two-summaries-for-each-class
 numpydoc_show_class_members = False
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -81,8 +87,8 @@ html_static_path = ["_static"]
 
 html_show_sourcelink = True
 html_sidebars = {
-    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"],
-    "customization": ["logo-text.html", "globaltoc.html", "searchbox.html"],
+    "**": ["globaltoc.html", "localtoc.html", "searchbox.html"],
+    "customization": ["globaltoc.html"],
 }
 
 # material theme options (see theme.conf for more information)
@@ -109,7 +115,7 @@ html_theme_options = {
         {
             "href": "https://openforcefield.org",
             "internal": False,
-            "title": "The Open Force Field Initiative",
+            "title": "The OpenFF Initiative",
         },
         {
             "href": "https://github.com/openforcefield/openff-sphinx-theme/",
@@ -121,7 +127,33 @@ html_theme_options = {
         "index": "A responsive Material Design theme for Sphinx sites.",
         "customization": "Configuration options to personalize your site.",
     },
-    "table_classes": ["plain"],
+    "socials": [
+        {
+            "href": "https://zenodo.org/communities/openforcefield/",
+            "title": "OpenFF on Zenodo",
+            "icon_classes": "ai ai-zenodo",
+        },
+        {
+            "href": "https://www.youtube.com/channel/UCh0aJSUm_sYr7nuTzhW806g",
+            "title": "OpenFF on YouTube",
+            "icon_classes": "fab fa-youtube",
+        },
+        {
+            "href": "https://github.com/openforcefield",
+            "title": "OpenFF on GitHub",
+            "icon_classes": "fab fa-github",
+        },
+        {
+            "href": "https://twitter.com/openforcefield",
+            "title": "OpenFF on Twitter",
+            "icon_classes": "fab fa-twitter",
+        },
+        {
+            "href": "https://www.linkedin.com/company/openforcefield/",
+            "title": "OpenFF on LinkedIn",
+            "icon_classes": "fab fa-linkedin",
+        },
+    ],
 }
 
 language = "en"
