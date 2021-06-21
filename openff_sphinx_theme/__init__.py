@@ -26,18 +26,11 @@ ROOT_SUFFIX = "--page-root"
 
 def setup(app):
     """Setup connects events to the sitemap builder"""
-    app.connect("html-page-context", add_html_link)
-    app.connect("build-finished", create_sitemap)
-    app.connect("build-finished", reformat_pages)
+    app.connect("html-page-context", register_document)
+    app.connect("build-finished", prettify_minify_html)
     app.connect("build-finished", compile_css)
-    app.connect("build-finished", minify_css)
     app.connect("builder-inited", register_template_functions)
-    manager = Manager()
-    site_pages = manager.list()
-    sitemap_links = manager.list()
-    app.multiprocess_manager = manager
-    app.sitemap_links = sitemap_links
-    app.site_pages = site_pages
+    app.site_pages = []
     app.add_html_theme(
         "openff_sphinx_theme", os.path.join(html_theme_path()[0], "openff_sphinx_theme")
     )
@@ -80,8 +73,10 @@ def compile_css(app, exception):
 
     if app.config["html_theme_options"].get("css_minify", False):
         output_style = "compressed"
+        source_comments = False
     else:
         output_style = "expanded"
+        source_comments = True
 
     css = sass.compile(
         filename=str(src),
@@ -95,11 +90,8 @@ def compile_css(app, exception):
         print(css, file=f)
 
 
-def add_html_link(app, pagename, templatename, context, doctree):
+def register_document(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
-    base_url = app.config["html_theme_options"].get("base_url", "")
-    if base_url:
-        app.sitemap_links.append(base_url + pagename + ".html")
     minify = app.config["html_theme_options"].get("html_minify", False)
     prettify = app.config["html_theme_options"].get("html_prettify", False)
     if minify and prettify:
@@ -108,33 +100,7 @@ def add_html_link(app, pagename, templatename, context, doctree):
         app.site_pages.append(os.path.join(app.outdir, pagename + ".html"))
 
 
-def create_sitemap(app, exception):
-    """Generates the sitemap.xml from the collected HTML page links"""
-    if (
-        not app.config["html_theme_options"].get("base_url", "")
-        or exception is not None
-        or not app.sitemap_links
-    ):
-        return
-
-    filename = app.outdir + "/sitemap.xml"
-    print(
-        "Generating sitemap for {0} pages in "
-        "{1}".format(len(app.sitemap_links), console.colorize("blue", filename))
-    )
-
-    root = ElementTree.Element("urlset")
-    root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
-
-    for link in app.sitemap_links:
-        url = ElementTree.SubElement(root, "url")
-        ElementTree.SubElement(url, "loc").text = link
-    app.sitemap_links[:] = []
-
-    ElementTree.ElementTree(root).write(filename)
-
-
-def reformat_pages(app, exception):
+def prettify_minify_html(app, exception):
     if exception is not None or not app.site_pages:
         return
     minify = app.config["html_theme_options"].get("html_minify", False)
@@ -145,7 +111,7 @@ def reformat_pages(app, exception):
     transform = transform.lower()
     # TODO: Consider using parallel execution
     for i, page in enumerate(app.site_pages):
-        if int(100 * (i / npages)) - last >= 1:
+        if int(100 * (i / npages)) - last >= 10:
             last = int(100 * (i / npages))
             color_page = console.colorize("blue", page)
             msg = "{0} files... [{1}%] {2}".format(transform, last, color_page)
@@ -162,29 +128,6 @@ def reformat_pages(app, exception):
             content.write(html)
     app.site_pages[:] = []
     print()
-
-
-def minify_css(app, exception):
-    if exception is not None or not app.config["html_theme_options"].get(
-        "css_minify", False
-    ):
-        app.multiprocess_manager.shutdown()
-        return
-    import glob
-    from css_html_js_minify.css_minifier import css_minify
-
-    css_files = glob.glob(os.path.join(app.outdir, "**", "*.css"), recursive=True)
-    print("Minifying {0} css files".format(len(css_files)))
-    for css_file in css_files:
-        colorized = console.colorize("blue", css_file)
-        msg = "minifying css file {0}".format(colorized)
-        sys.stdout.write("\033[K" + msg + "\r")
-        with open(css_file, "r", encoding="utf-8") as content:
-            css = css_minify(content.read())
-        with open(css_file, "w", encoding="utf-8") as content:
-            content.write(css)
-    print()
-    app.multiprocess_manager.shutdown()
 
 
 def register_template_functions(app):
@@ -215,22 +158,6 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool, page_name: str) -> List[di
             formatted["children"] = []
         out.append(formatted)
     return out
-
-
-class CaptionList(list):
-    _caption = ""
-
-    def __init__(self, caption=""):
-        super().__init__()
-        self._caption = caption
-
-    @property
-    def caption(self):
-        return self._caption
-
-    @caption.setter
-    def caption(self, value):
-        self._caption = value
 
 
 def derender_toc(
