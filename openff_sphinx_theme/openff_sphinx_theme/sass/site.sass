@@ -54,7 +54,7 @@ $menu-item-active-background-color: $accent
 $menu-item-active-color: findColorInvert($accent)
 $viewcode-link: #44AF69
 
-$footer-background-color: $primary
+$footer-background-color: darken($primary, 12)
 $footer-color: findColorInvert($footer-background-color)
 
 $family-sans-serif: Montserrat, sans-serif
@@ -236,7 +236,7 @@ header
         max-width: 90vw
 
     .control.has-icons-right .input.is-primary
-        background-color: darken($primary, 10)
+        background-color: darken($primary, 8)
         transition: background-color 0.2s
     .control.has-icons-right .input.is-primary:focus
         background-color: $white
