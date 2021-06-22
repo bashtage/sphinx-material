@@ -172,6 +172,15 @@ eget ornare tellus, ut gravida mi. Fusce vel lacinia lacus.
       return target;
     };
 
+### Fenced and with prompt
+
+```shell-session
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ bash ./Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
+$ source ~/miniconda3/etc/profile.d/conda.sh
+$ conda activate base
+```
+
 ## Horizontal rules
 
 Aenean in finibus diam. Duis mollis est eget nibh volutpat, fermentum aliquet

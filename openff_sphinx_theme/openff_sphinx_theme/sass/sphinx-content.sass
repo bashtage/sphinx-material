@@ -20,8 +20,10 @@ h1, h2, h3, h4, h5, h6
         transform: translate(0)
         opacity: 1
 
-pre.gp
-    +unselectable
+.highlight
+    pre, code
+        &.gp, .gp
+            +unselectable
 
 p:not(.admonition-title, .admonition p)
     max-width: 35rem
