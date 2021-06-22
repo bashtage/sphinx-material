@@ -55,6 +55,11 @@ $menu-item-active-color: findColorInvert($accent)
 $viewcode-link: #44AF69
 
 $footer-background-color: darken($primary, 12)
+
+$accent-invert: findColorInvert($accent)
+$accent-light: lighten($accent, 30)
+$accent-dark: findDarkColor($accent)
+
 $footer-color: findColorInvert($footer-background-color)
 
 $family-sans-serif: Montserrat, sans-serif
@@ -70,7 +75,7 @@ $bulma-admonitions: false
 
 $breadcrumb-item-color-light: findColorInvert($breadcrumb-item-color)
 $breadcrumb-item-hover-color-light: $link-hover
-$breadcrumb-item-active-color-light: $accent
+$breadcrumb-item-active-color-light: $accent-light
 $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separator-color)
 
 =hide-scrollbar
