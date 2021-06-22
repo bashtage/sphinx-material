@@ -8,42 +8,17 @@ There are two methods to alter the theme.
 The first, and simplest, uses the options exposed through ``html_theme_options`` in ``conf.py``.
 This site's options are:
 
-.. code-block:: python
+.. literalinclude:: conf.py
+   :language: python
+   :lines: 90-160
+   :lineno-start: 90
+   :linenos:
 
-   html_theme_options = {
-       "base_url": "http://openforcefield.github.io/openff-sphinx-theme/",
-       "repo_url": "https://github.com/openforcefield/openff-sphinx-theme/",
-       "repo_name": "openff-sphinx-theme",
-       "globaltoc_depth": 2,
-       "color_accent": "deep-purple",
-       "nav_links": [
-           {
-               "href": "https://squidfunk.github.io/mkdocs-material/",
-               "internal": False,
-               "title": "Material for MkDocs",
-           },
-           {
-               "href": "https://bashtage.github.io/sphinx-material/",
-               "internal": False,
-               "title": "Material for Sphinx",
-           },
-       ],
-       "heroes": {
-           "index": "A responsive Material Design theme for Sphinx sites.",
-           "customization": "Configuration options to personalize your site.",
-       },
-       "table_classes": ["plain"],
-   }
-
-The complete list of options with detailed explanations appears in
-`theme.conf <https://github.com/openforcefield/openff-sphinx-theme/blob/main/openff_sphinx_theme/openff_sphinx_theme/theme.conf>`_.
+Many of these settings are provided in this site as examples; for a minimalistic example, see :ref:`quickstart`.
 
 Configuration Options
 =====================
 
-``nav_title``
-   Set the name to appear in the left sidebar/header.
-   If not provided, uses html_short_title if defined, or html_title.
 ``google_analytics_account``
    Set to enable google analytics.
 ``repo_url``
@@ -53,9 +28,6 @@ Configuration Options
    It must be set if repo_url is set.
 ``repo_type``
    Must be one of github, gitlab or bitbucket.
-``base_url``
-   Specify a base_url used to generate sitemap.xml links.
-   If not specified, then no sitemap will be built.
 ``globaltoc_depth``
    The maximum depth of the global TOC; set it to -1 to allow unlimited depth.
 ``globaltoc_collapse``
@@ -64,20 +36,17 @@ Configuration Options
    If true, the global TOC tree will also contain hidden entries.
 ``color_accent``
     Accent color. Options are
-    red, pink, purple, deep-purple, indigo, blue, light-blue, cyan,
-    teal, green, light-green, lime, yellow, amber, orange, and deep-orange.
+    openff-blue, openff-toolkit-blue, openff-yellow, openff-orange
+    aquamarine, lilac, amaranth, grape, violet, pink, pale-green,
+    green, crimson, eggplant, turquoise, or any valid CSS color.
 ``html_minify``
    Minify pages after creation using htmlmin.
 ``html_prettify``
    Prettify pages, usually only for debugging.
 ``css_minify``
    Minify css files found in the output directory.
-``logo_icon``
-   Set the logo icon.
-   Should be a pre-escaped html string that indicates a unicode codepoint, e.g., ``'&#xe869'``.
 ``master_doc``
    Include the master document at the top of the page in the breadcrumb bar.
-   You must also set this to true (the default) if you want to override the rootrellink block, in which case the content of the overridden block will appear
 ``nav_links``
    A list of dictionaries where each has three keys:
 
@@ -86,22 +55,12 @@ Configuration Options
    - ``internal``: Flag indicating to use pathto to find the page.  Set to False for external content. (bool)
 ``heroes``
    A ``dict[str,str]`` where the key is a pagename and the value is the text to display in the page's hero location.
-``version_dropdown``
-   A flag indicating whether the version drop down should be included.
-   You must supply a JSON file
-   to use this feature.
-``version_dropdown_text``
-   The text in the version dropdown button
-``version_json``
-   The location of the JSON file that contains the version information.
-   The default assumes there is a file versions.json located in the root of the site.
-``version_info``
-   A dictionary used to populate the version dropdown.
-   If this variable is provided, the static dropdown is used and any JavaScript information is ignored.
-``table_classes``
-   A list of classes to **not strip** from tables.
-   All other classes are stripped, and the default table has no class attribute.
-   Custom table classes need to provide the full style for the table.
+``socials``
+   ``list[dict[str, str]]`` of social media links. Dicts have three keys:
+   ``"href"``, ``"icon_classes"``, and optionally ``"title"``. Icon classes
+   should be from `Academicons <https://jpswalsh.github.io/academicons/>`_ or `Font Awesome 5 <https://fontawesome.com/>`_.
+``clear_openff_socials``
+   ``True`` to remove default social media links from the footer. ``False`` (default) to keep them, to save everyone copying around the same links.
 
 Sidebars
 ========
@@ -111,7 +70,7 @@ There are four in the complete set.
 .. code-block:: python
 
    html_sidebars = {
-       "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
+       "**": ["globaltoc.html", "localtoc.html", "searchbox.html"]
    }
 
 
@@ -165,87 +124,6 @@ customization:
 
 ``footerrel``
    Previous and next in the footer.
-``font``
-   The default font inline CSS and the class to the google API. Use this
-   block when changing the font.
 ``fonticon``
-   Block that contains the icon font. Use this to add additional icon fonts
-   (e.g., `FontAwesome <https://fontawesome.com/>`_). You should probably call ``{{ super() }}`` at
-   the end of the block to include the default icon font as well.
+   Block that contains the icon font. You should probably call ``{{ super() }}`` at the end of the block to include the default icon fonts as well. (Font Awesome and Academicons)
 
-Version Dropdown
-================
-
-A version dropdown is available that lets you store multiple versions in a single site.
-The standard structure of the site, relative to the base is usually::
-
-   /
-   /devel
-   /v1.0.0
-   /v1.1.0
-   /v1.1.1
-   /v1.2.0
-
-
-To use the version dropdown, you must set ``version_dropdown`` to ``True`` in
-the sites configuration.
-
-There are two approaches, one which stores the version information in a JavaScript file
-and one which uses a dictionary in the configuration.
-
-Using a Javascript File
------------------------
-The data used is read via javascript from a file. The basic structure of the file is a dictionary of the form [label, path].
-
-.. code-block::javascript
-
-   {
-      "release": "",
-      "development": "devel",
-      "v1.0.0": "v1.0.0",
-      "v1.1.0": "v1.1.0",
-      "v1.1.1": "v1.1.0",
-      "v1.2.0": "v1.2.0",
-   }
-
-This dictionary tells the dropdown that the release version is in the root of the site, the other versions are archived under their version number, and the development version is located in /devel.
-
-.. note::
-
-   The advantage of this approach is that you can separate version information
-   from the rendered documentation.  This makes is easy to change the version
-   dropdown in _older_ versions of the documentation to reflect additional versions
-   that are released later. Changing the Javascript file changes the version dropdown
-   content in all versions.  This approach is used in
-   `statsmodels <https://www.statsmodels.org/>`_.
-
-Using ``conf.py``
------------------
-
-.. warning::
-
-   This method has precedence over the JavaScript approach.
-   If ``version_info`` is not empty in a site's ``html_theme_options``, then the static approach is used.
-
-The alternative uses a dictionary where the key is the title and the value is the target.
-The dictionary is part of the size configuration's ``html_theme_options``.
-
-.. code-block::python
-
-   "version_info": {
-        "release": "",  # empty is the master doc
-        "development": "devel/",
-        "v1.0.0": "v1.0.0/",
-        "v1.1.0": "v1.1.0/",
-        "v1.1.1": "v1.1.0/",
-        "v1.2.0": "v1.2.0/",
-        "Read The Docs": "https://rtd.readthedocs.io/",
-   }
-
-The dictionary structure is nearly identical.
-Here you can use relative paths like in the JavaScript version.
-You can also use absolute paths.
-
-.. note::
-
-   This approach is easier if you only want to have a fixed set of documentation, e.g., stable and devel.

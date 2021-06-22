@@ -1,0 +1,99 @@
+<footer class="footer">
+  <div class="footer-content">
+    {%- if prev or next -%}
+      {%- block footerrel %}
+        <nav class="level">
+          <div class="level-left">
+            {% if prev %}
+              <div class="level-item">
+                <a href="{{ prev.link|e }}" title="{{ prev.title|striptags|e }}"
+                   class="icon-text"
+                   rel="prev">
+
+                    <span class="icon">
+                      <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span class="is-size-5">{{ prev.title }}</span>
+                </a>
+              </div>
+            {% endif %}
+          </div>
+          <div class="level-right">
+            {% if next %}
+              <div class="level-item">
+                <a href="{{ next.link|e }}" title="{{ next.title|striptags|e }}"
+                   class="icon-text"
+                   rel="next">
+
+                    <span class="is-size-5">{{ next.title }}</span>
+                    <span class="icon">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+              </div>
+            {% endif %}
+          </div>
+        </nav>
+      {% endblock %}
+    {%- endif -%}
+    {%- block extrafooter %}
+    {%- endblock %}
+    <div class="columns">
+      <div class="fineprint column">
+        {%- if show_copyright %}
+          <div class="copyright">
+            {%- if hasdoc('copyright') %}
+              {% trans path=pathto('copyright'), copyright=copyright|e %}&#169;
+                <a href="{{ path }}">Copyright</a> {{ copyright }}.
+              {% endtrans %}
+            {%- else %}
+              {% trans copyright=copyright|e %}&#169; Copyright {{ copyright }}.
+              {% endtrans %}
+            {%- endif %}
+          </div>
+        {%- endif %}
+        {%- if last_updated %}
+          {% trans last_updated=last_updated|e %}Last updated on
+            {{ last_updated }}.
+          {% endtrans %}<br/>
+        {%- endif %}
+        {%- if show_sphinx %}
+          {% trans sphinx_version=sphinx_version|e %}Created using
+          <a href="http://www.sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.
+          {% endtrans %} and
+          <a href="https://github.com/openforcefield/openff-sphinx-theme/">the Open Force Field Sphinx theme</a>
+        {%- endif %}
+      </div>
+      <div class="socials column">
+        <p class="pb-3">An <a href="https://openforcefield.org/" class="has-text-white">Open Force Field</a> project.</p>
+        <div>
+          {% if not theme_clear_openff_socials %}
+              <a href="https://zenodo.org/communities/openforcefield/" class="icon has-text-light is-medium" title="OpenFF on Zenodo">
+                <i class="fa-lg ai-lg ai ai-zenodo"></i>
+              </a>
+              <a href="https://www.youtube.com/channel/UCh0aJSUm_sYr7nuTzhW806g" class="icon has-text-light is-medium" title="OpenFF on YouTube">
+                <i class="fa-lg fab fa-youtube"></i>
+              </a>
+              <a href="https://github.com/openforcefield" class="icon has-text-light is-medium" title="OpenFF on GitHub">
+                <i class="fa-lg fab fa-github"></i>
+              </a>
+              <a href="https://twitter.com/openforcefield" class="icon has-text-light is-medium" title="OpenFF on Twitter">
+                <i class="fa-lg fab fa-twitter"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/openforcefield/" class="icon has-text-light is-medium" title="OpenFF on LinkedIn">
+                <i class="fa-lg fab fa-linkedin"></i>
+              </a>
+          {% endif %}
+          {% for link in theme_socials %}
+            {% if link.href and link.icon_classes %}
+              <a href="{{link.href}}" class="icon has-text-light is-medium" title="{{link.title}}">
+                <i class="fa-lg ai-lg {{ link.icon_classes }}"></i>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>

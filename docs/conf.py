@@ -38,6 +38,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
+    "sphinx.ext.intersphinx",
     "nbsphinx",
     "myst_parser",
     "openff_sphinx_theme",
@@ -58,6 +59,11 @@ numpydoc_class_members_toctree = False
 # https://stackoverflow.com/questions/34216659/sphinx-autosummary-produces-two-summaries-for-each-class
 numpydoc_show_class_members = False
 
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+}
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
@@ -77,11 +83,14 @@ html_theme = "openff_sphinx_theme"
 # so a file named 'default.css' will overwrite the builtin 'default.css'.
 html_static_path = ["_static"]
 
+# If HTML theme settings isn't lines 90-160, remember to change customization.rst
+
 # -- HTML theme settings ------------------------------------------------
 
 html_show_sourcelink = True
 html_sidebars = {
-    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
+    "**": ["globaltoc.html", "localtoc.html", "searchbox.html"],
+    "customization": ["globaltoc.html", "searchbox.html"],
 }
 
 # material theme options (see theme.conf for more information)
@@ -93,7 +102,7 @@ html_theme_options = {
     "html_prettify": False,
     "css_minify": False,
     "globaltoc_depth": 2,
-    "color_accent": "deep-purple",
+    "color_accent": "openff-dataset-yellow",
     "nav_links": [
         {
             "href": "https://squidfunk.github.io/mkdocs-material/",
@@ -105,13 +114,52 @@ html_theme_options = {
             "internal": False,
             "title": "Material for Sphinx",
         },
+        {
+            "href": "https://openforcefield.org",
+            "internal": False,
+            "title": "The OpenFF Initiative",
+        },
+        {
+            "href": "https://github.com/openforcefield/openff-sphinx-theme/",
+            "internal": False,
+            "title": "openff-sphinx-theme on GitHub",
+        },
     ],
     "heroes": {
         "index": "A responsive Material Design theme for Sphinx sites.",
         "customization": "Configuration options to personalize your site.",
     },
-    "table_classes": ["plain"],
+    "clear_openff_socials": True,
+    "socials": [
+        {
+            "href": "https://zenodo.org/communities/openforcefield/",
+            "title": "OpenFF on Zenodo",
+            "icon_classes": "ai ai-zenodo",
+        },
+        {
+            "href": "https://www.youtube.com/channel/UCh0aJSUm_sYr7nuTzhW806g",
+            "title": "OpenFF on YouTube",
+            "icon_classes": "fab fa-youtube",
+        },
+        {
+            "href": "https://github.com/openforcefield",
+            "title": "OpenFF on GitHub",
+            "icon_classes": "fab fa-github",
+        },
+        {
+            "href": "https://twitter.com/openforcefield",
+            "title": "OpenFF on Twitter",
+            "icon_classes": "fab fa-twitter",
+        },
+        {
+            "href": "https://www.linkedin.com/company/openforcefield/",
+            "title": "OpenFF on LinkedIn",
+            "icon_classes": "fab fa-linkedin",
+        },
+    ],
 }
+
+# If HTML theme settings isn't lines 90-160, remember to change customization.rst
 
 language = "en"
 html_last_updated_fmt = ""

@@ -1,0 +1,237 @@
+// Set the variables color, color-invert, color-light and color-dark for an admonition type
+@function admonition-colors($name)
+    $components: map-get($message-colors, $name)
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    $color-light: null
+    $color-dark: null
+
+    @if length($components) >= 3
+        $color-light: nth($components, 3)
+        @if length($components) >= 4
+            $color-dark: nth($components, 4)
+        @else
+            $color-luminance: colorLuminance($color)
+            $darken-percentage: $color-luminance * 70%
+            $desaturate-percentage: $color-luminance * 30%
+            $color-dark: desaturate(darken($color, $darken-percentage), $desaturate-percentage)
+    @else
+        $color-lightning: max((100% - lightness($color)) - 2%, 0%)
+        $color-light: lighten($color, $color-lightning)
+
+    @return ($color, $color-invert, $color-light, $color-dark)
+
+// Apply the admonition colors to a bulma admonition
+@mixin bulma-admonition-colors($name)
+    $components: admonition-colors($name)
+    $color: nth($components, 1)
+    $color-invert: nth($components, 2)
+    $color-light: nth($components, 3)
+    $color-dark: nth($components, 4)
+
+    background-color: $color-light
+    .admonition-title
+        background-color: $color
+        color: $color-invert
+        + *
+            border-color: $color
+            color: $color-dark
+
+@mixin material_admonitions($color, $font, $unicode)
+    border-left-color: $color
+    [dir="rtl"] &
+        border-right-color: $color
+    .admonition-title
+      background-color: rgba($color, 0.1)
+      border-left-color: $color
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] &
+        border-right-color: $color
+
+      // Admonition icon
+      &::before
+        color: $color
+        font-family: $font
+        content: $unicode
+
+@if $bulma-admonitions
+    .admonition
+        // Clear adjustments made by basic.css
+        clear: unset
+        margin-top: unset
+        margin-bottom: unset
+        padding: unset
+        &::after
+            display: unset
+            content: unset
+            clear: unset
+
+
+        @extend .message
+
+        .admonition-title
+            // Clear adjustments made by basic.css
+            margin: unset
+
+            margin-bottom: 0
+            @extend .message-header
+            ~ *
+                @extend .message-body
+                border-width: 0
+                border-top-left-radius: 0
+                border-top-right-radius: 0
+
+        > *:not(.admonition-title)
+            @extend .message-body
+
+        &.warning
+            @include bulma-admonition-colors("warning")
+
+        &.attention
+            @include bulma-admonition-colors("info")
+
+        &.caution
+            @include bulma-admonition-colors("warning")
+
+        &.danger
+            @include bulma-admonition-colors("danger")
+
+        &.error
+            @include bulma-admonition-colors("danger")
+
+        &.hint
+            @include bulma-admonition-colors("primary")
+
+        &.important
+            @include bulma-admonition-colors("info")
+
+        &.note
+            @include bulma-admonition-colors("success")
+
+        &.tip
+            @include bulma-admonition-colors("success")
+
+@else
+    // ----------------------------------------------------------------------------
+    // Rules: layout
+    // ----------------------------------------------------------------------------
+    // Admonition
+    .admonition
+      margin: 1.25rem 0
+      padding: 0 0.75rem
+      overflow: hidden
+      color: $text
+      page-break-inside: avoid
+      border-left: 0.25rem solid $accent
+      border-radius: 0.125rem
+      box-shadow: 0 0.25rem 0.625rem hsla(0, 0%, 0%, 0.05), 0 0.5px 1px hsla(0, 0%, 0%, 0.05)
+
+      // [print]: Omit shadow as it may lead to rendering errors
+      @media print
+        box-shadow: none
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] &
+        border-right: 0.25rem solid $accent
+        border-left: none
+
+      // Adjust vertical spacing for nested admonitions
+      .admonition
+        margin-top: 1em
+        margin-bottom: 1em
+
+      // Adjust spacing for contained table wrappers
+      .md-typeset__scrollwrap
+        margin: 1em -0.75rem
+
+      // Adjust spacing for contained tables
+      .md-typeset__table
+        padding: 0 0.75rem
+
+      // Adjust spacing for single-child tabbed block container
+      > .tabbed-set:only-child
+        margin-top: 0
+
+      // Adjust spacing on last child
+      html & > :last-child
+        margin-bottom: 0.75rem
+
+
+      &.note, &.admonition-note
+          @include material_admonitions($grey, "Font Awesome 5 Free", "\f303")
+      &.seealso, &.admonition-seealso
+          @include material_admonitions($grey, "Font Awesome 5 Free", "\f06e")
+      &.admonition-abstract, &.admonition-summary, &.admonition-tldr
+          @include material_admonitions($cyan, "Font Awesome 5 Free", "\f543")
+      &.admonition-info
+          @include material_admonitions($blue, "Font Awesome 5 Free", "\f129")
+      &.admonition-todo
+          @include material_admonitions($yellow, "Font Awesome 5 Free", "\f249")
+      &.tip, &.hint, &.admonition-tip, &.admonition-hint
+          @include material_admonitions($turquoise, "Font Awesome 5 Free", "\f06d")
+      &.important, &.admonition-important
+          @include material_admonitions($green, "Font Awesome 5 Free", "\f06a")
+      &.admonition-success, &.admonition-check, &.admonition-done
+          @include material_admonitions($green, "Font Awesome 5 Free", "\f058")
+      &.admonition-question, &.admonition-help, &.admonition-faq
+          @include material_admonitions($cyan, "Font Awesome 5 Free", "\f059")
+      &.warning, &.caution, &.attention, &.admonition-warning, &.admonition-caution, &.admonition-attention
+          @include material_admonitions($orange, "Font Awesome 5 Free", "\f071")
+      &.warning, &.admonition-warning
+          @include material_admonitions($red, "Font Awesome 5 Free", "\f071")
+      &.attention, &.admonition-attention
+          @include material_admonitions($yellow, "Font Awesome 5 Free", "\f071")
+      &.error, &.admonition-failure, &.admonition-fail, &.admonition-missing, &.admonition-error
+          @include material_admonitions($red, "Font Awesome 5 Free", "\f057")
+      &.danger, &.admonition-danger
+          @include material_admonitions($red, "Font Awesome 5 Free", "\f7b9")
+      &.admonition-bug
+          @include material_admonitions($purple, "Font Awesome 5 Free", "\f188")
+      &.admonition-example
+          @include material_admonitions($blue, "Font Awesome 5 Free", "\f0c5")
+      &.admonition-quote, &.admonition-cite
+          @include material_admonitions($grey, "Font Awesome 5 Free", "\f10e")
+
+    // Admonition title
+    .admonition-title
+      position: relative
+      margin: 0 -0.75rem 0 -1rem
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem
+      font-weight: 700
+      background-color: rgba($accent, 0.1)
+      border-left: 0.25rem solid $accent
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] &
+        margin: 0 -1rem 0 -0.75rem
+        padding: 0.5rem 2.5rem 0.5rem 0.75rem
+        border-right: 0.25rem solid $accent
+        border-left: none
+
+      // Adjust spacing for title-only admonitions
+      html &:last-child
+        margin-bottom: 0
+
+      // Admonition icon
+      &::before
+        position: absolute
+        left: 0.75rem
+        width: 1.25rem
+        height: 1.25rem
+        color: $accent
+        font-family: "Font Awesome 5 Free"
+        content: "\f12a"
+
+        // Adjust for right-to-left languages
+        [dir="rtl"] &
+          right: 0.75rem
+          left: initial
+
+      // Adjust spacing on last tabbed block container child - if the tabbed
+      // block container is the sole child, it looks better to omit the margin
+      + .tabbed-set:last-child
+        margin-top: 0
+
+
+

@@ -1,49 +1,47 @@
-<header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex navheader">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}"
-           class="md-header-nav__button md-logo">
-          {% if logo %}
-              <img src="{{ pathto('_static/' ~ logo, 1) }}"
-                   alt="{{ shorttitle|striptags|e }} logo">
-          {% elif theme_logo_icon|e %}
-            <i class="md-icon">{{ theme_logo_icon }}</i>
-          {% else %}
-              <img src="{{ pathto('_static/images/logos/openforcefield_v1_white-on-blue.svg', 1) }}"
-                   alt="{{ shorttitle|striptags|e }} logo">
-          {% endif %}
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">{{ theme_nav_title or docstitle or shorttitle }}</span>
-          <span class="md-header-nav__topic"> {{ title|striptags|e }} </span>
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-        {% include "searchbox.html" %}
-      </div>
-      {% if theme_repo_url %}
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            {% include "repo.html" %}
-          </div>
-        </div>
-      {% endif %}
-      {% include "version_dropdown.html" %}
+<header data-md-component="header">
+  <nav class="navbar is-primary is-fixed-top is-flex-touch has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item is-hidden-mobile" href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
+        {% if logo %}
+          <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ shorttitle|striptags|e }} logo">
+        {% else %}
+          <img src="{{ pathto('_static/images/logos/openforcefield_v1_white.png', 1) }}" alt="{{ shorttitle|striptags|e }} logo">
+        {% endif %}
+      </a>
+    </div>
 
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://openforcefield.org/"
-           class="md-header-nav__button md-logo">
-              <img src="{{ pathto('_static/images/logos/openforcefield_v2_white-on-blue.svg', 1) }}"
-                   alt="Open Force Field Initiative logo">
+    <div class="has-text-light is-hidden-mobile nav-title">
+      {% include "relbar.html" %}
+    </div>
+    <div class="has-text-light is-hidden-tablet nav-title">
+      <span> {{ title|striptags|e }} </span>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <span class="navbar-item">
+          {% include "searchbox.html" %}
+        </span>
+        {% if theme_repo_url %}
+          {% include "repo.html" %}
+        {% endif %}
+        <a href="https://openforcefield.org/" class="navbar-item">
+          <img
+            src="{{ pathto('_static/images/logos/openforcefield_v2_white.png', 1) }}"
+            alt="Open Force Field Initiative logo"
+          >
         </a>
       </div>
     </div>
   </nav>
+
+  {% include "hero.html" %}
+
+  <div class="level is-hidden-mobile nav-tabs">
+    {%- for item in theme_nav_links %}
+      {% set localhref=pathto( item.href ) if item.internal else item.href|e %}
+      <div class="level-item has-text-centered"><a href="{{ localhref|e }}">{{ item.title }}</a></div>
+    {%- endfor %}
+  </div>
+
 </header>

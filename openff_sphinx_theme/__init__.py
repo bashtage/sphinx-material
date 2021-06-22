@@ -1,10 +1,10 @@
-"""Sphinx Material theme."""
+"""OpenFF Sphinx theme."""
 
 import hashlib
 import inspect
 import os
-import re
 import sys
+from pathlib import Path
 from multiprocessing import Manager
 from typing import List, Optional
 from xml.etree import ElementTree
@@ -13,6 +13,8 @@ import bs4
 import slugify
 from bs4 import BeautifulSoup
 from sphinx.util import console, logging
+import sass
+from sass import SassColor
 
 from ._version import get_versions
 
@@ -21,23 +23,14 @@ del get_versions
 
 ROOT_SUFFIX = "--page-root"
 
-USER_TABLE_CLASSES = []
-
 
 def setup(app):
     """Setup connects events to the sitemap builder"""
-    app.connect("html-page-context", add_html_link)
-    app.connect("build-finished", create_sitemap)
-    app.connect("build-finished", reformat_pages)
-    app.connect("build-finished", minify_css)
-    app.connect("builder-inited", update_html_context)
-    app.connect("config-inited", update_table_classes)
-    manager = Manager()
-    site_pages = manager.list()
-    sitemap_links = manager.list()
-    app.multiprocess_manager = manager
-    app.sitemap_links = sitemap_links
-    app.site_pages = site_pages
+    app.connect("html-page-context", register_document)
+    app.connect("build-finished", prettify_minify_html)
+    app.connect("build-finished", compile_css)
+    app.connect("builder-inited", register_template_functions)
+    app.site_pages = []
     app.add_html_theme(
         "openff_sphinx_theme", os.path.join(html_theme_path()[0], "openff_sphinx_theme")
     )
@@ -48,11 +41,57 @@ def setup(app):
     }
 
 
-def add_html_link(app, pagename, templatename, context, doctree):
+def compile_css(app, exception):
+    """Compile Bulma SASS into CSS"""
+    if exception is not None:
+        return
+
+    theme_path = Path(html_theme_path()[0]) / "openff_sphinx_theme"
+    src = theme_path / "sass/site.sass"
+    dest = Path(app.outdir) / "_static/site.css"
+
+    accent_color = app.config["html_theme_options"].get(
+        "color_accent", "openff-toolkit-blue"
+    )
+    accent_color = {
+        "openff-blue": (1, 84, 128),
+        "openff-toolkit-blue": (47, 158, 210),
+        "openff-dataset-yellow": (240, 133, 33),
+        "openff-evaluator-orange": (240, 58, 33),
+        "aquamarine": (44, 218, 157),
+        "lilac": (228, 183, 229),
+        "amaranth": (164, 14, 76),
+        "grape": (171, 146, 191),
+        "violet": (141, 107, 148),
+        "pink": (238, 66, 102),
+        "pale-green": (238, 66, 102),
+        "green": (4, 231, 98),
+        "crimson": (214, 40, 57),
+        "eggplant": (117, 79, 91),
+        "turquoise": (45, 225, 194),
+    }.get(accent_color, accent_color)
+
+    if app.config["html_theme_options"].get("css_minify", False):
+        output_style = "compressed"
+        source_comments = False
+    else:
+        output_style = "expanded"
+        source_comments = True
+
+    css = sass.compile(
+        filename=str(src),
+        output_style=output_style,
+        custom_functions={"accent_color": lambda: SassColor(*accent_color, 1)},
+    )
+
+    print(f"Writing compiled SASS to {console.colorize('blue', str(dest))}")
+
+    with open(dest, "w") as f:
+        print(css, file=f)
+
+
+def register_document(app, pagename, templatename, context, doctree):
     """As each page is built, collect page names for the sitemap"""
-    base_url = app.config["html_theme_options"].get("base_url", "")
-    if base_url:
-        app.sitemap_links.append(base_url + pagename + ".html")
     minify = app.config["html_theme_options"].get("html_minify", False)
     prettify = app.config["html_theme_options"].get("html_prettify", False)
     if minify and prettify:
@@ -61,33 +100,7 @@ def add_html_link(app, pagename, templatename, context, doctree):
         app.site_pages.append(os.path.join(app.outdir, pagename + ".html"))
 
 
-def create_sitemap(app, exception):
-    """Generates the sitemap.xml from the collected HTML page links"""
-    if (
-        not app.config["html_theme_options"].get("base_url", "")
-        or exception is not None
-        or not app.sitemap_links
-    ):
-        return
-
-    filename = app.outdir + "/sitemap.xml"
-    print(
-        "Generating sitemap for {0} pages in "
-        "{1}".format(len(app.sitemap_links), console.colorize("blue", filename))
-    )
-
-    root = ElementTree.Element("urlset")
-    root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
-
-    for link in app.sitemap_links:
-        url = ElementTree.SubElement(root, "url")
-        ElementTree.SubElement(url, "loc").text = link
-    app.sitemap_links[:] = []
-
-    ElementTree.ElementTree(root).write(filename)
-
-
-def reformat_pages(app, exception):
+def prettify_minify_html(app, exception):
     if exception is not None or not app.site_pages:
         return
     minify = app.config["html_theme_options"].get("html_minify", False)
@@ -98,7 +111,7 @@ def reformat_pages(app, exception):
     transform = transform.lower()
     # TODO: Consider using parallel execution
     for i, page in enumerate(app.site_pages):
-        if int(100 * (i / npages)) - last >= 1:
+        if int(100 * (i / npages)) - last >= 10:
             last = int(100 * (i / npages))
             color_page = console.colorize("blue", page)
             msg = "{0} files... [{1}%] {2}".format(transform, last, color_page)
@@ -117,38 +130,9 @@ def reformat_pages(app, exception):
     print()
 
 
-def minify_css(app, exception):
-    if exception is not None or not app.config["html_theme_options"].get(
-        "css_minify", False
-    ):
-        app.multiprocess_manager.shutdown()
-        return
-    import glob
-    from css_html_js_minify.css_minifier import css_minify
-
-    css_files = glob.glob(os.path.join(app.outdir, "**", "*.css"), recursive=True)
-    print("Minifying {0} css files".format(len(css_files)))
-    for css_file in css_files:
-        colorized = console.colorize("blue", css_file)
-        msg = "minifying css file {0}".format(colorized)
-        sys.stdout.write("\033[K" + msg + "\r")
-        with open(css_file, "r", encoding="utf-8") as content:
-            css = css_minify(content.read())
-        with open(css_file, "w", encoding="utf-8") as content:
-            content.write(css)
-    print()
-    app.multiprocess_manager.shutdown()
-
-
-def update_html_context(app):
+def register_template_functions(app):
     config = app.config
     config.html_context = {**get_html_context(), **config.html_context}
-
-
-def update_table_classes(app, config):
-    table_classes = config.html_theme_options.get("table_classes")
-    if table_classes:
-        USER_TABLE_CLASSES.extend(table_classes)
 
 
 def html_theme_path():
@@ -176,22 +160,6 @@ def ul_to_list(node: bs4.element.Tag, fix_root: bool, page_name: str) -> List[di
     return out
 
 
-class CaptionList(list):
-    _caption = ""
-
-    def __init__(self, caption=""):
-        super().__init__()
-        self._caption = caption
-
-    @property
-    def caption(self):
-        return self._caption
-
-    @caption.setter
-    def caption(self, value):
-        self._caption = value
-
-
 def derender_toc(
     toc_text, fix_root=True, page_name: str = "md-page-root--link"
 ) -> List[dict]:
@@ -216,75 +184,11 @@ def derender_toc(
     return nodes
 
 
-def walk_contents(tags):
-    out = []
-    for tag in tags.contents:
-        if hasattr(tag, "contents"):
-            out.append(walk_contents(tag))
-        else:
-            out.append(str(tag))
-    return "".join(out)
-
-
-def table_fix(body_text, page_name="md-page-root--link"):
-    # This is a hack to skip certain classes of tables
-    ignore_table_classes = {"highlighttable", "longtable", "dataframe"}
-    try:
-        body = BeautifulSoup(body_text, features="html.parser")
-        for table in body.select("table"):
-            classes = set(table.get("class", tuple()))
-            if classes.intersection(ignore_table_classes):
-                continue
-            classes = [tc for tc in classes if tc in USER_TABLE_CLASSES]
-            if classes:
-                table["class"] = classes
-            else:
-                del table["class"]
-        first_h1: Optional[bs4.element.Tag] = body.find("h1")
-        headers = body.find_all(re.compile("^h[1-6]$"))
-        for i, header in enumerate(headers):
-            for a in header.select("a"):
-                if "headerlink" in a.get("class", ""):
-                    header["id"] = a["href"][1:]
-        if first_h1 is not None:
-            slug = slugify.slugify(page_name) + ROOT_SUFFIX
-            first_h1["id"] = slug
-            for a in first_h1.select("a"):
-                a["href"] = "#" + slug
-
-        divs = body.find_all("div", {"class": "section"})
-        for div in divs:
-            div.unwrap()
-
-        return str(body)
-    except Exception as exc:
-        logger = logging.getLogger(__name__)
-        logger.warning("Failed to process body_text\n" + str(exc))
-        return body_text
-
-
 # These final lines exist to give sphinx a stable str representation of
-# these two functions across runs, and to ensure that the str changes
+# this function across runs, and to ensure that the str changes
 # if the source does.
-#
-# Note that this would be better down with a metaclass factory
-table_fix_src = inspect.getsource(table_fix)
-table_fix_hash = hashlib.sha512(table_fix_src.encode()).hexdigest()
 derender_toc_src = inspect.getsource(derender_toc)
 derender_toc_hash = hashlib.sha512(derender_toc_src.encode()).hexdigest()
-
-
-class TableFixMeta(type):
-    def __repr__(self):
-        return f"table_fix, hash: {table_fix_hash}"
-
-    def __str__(self):
-        return f"table_fix, hash: {table_fix_hash}"
-
-
-class TableFix(object, metaclass=TableFixMeta):
-    def __new__(cls, *args, **kwargs):
-        return table_fix(*args, **kwargs)
 
 
 class DerenderTocMeta(type):
@@ -301,4 +205,4 @@ class DerenderToc(object, metaclass=DerenderTocMeta):
 
 
 def get_html_context():
-    return {"table_fix": TableFix, "derender_toc": DerenderToc}
+    return {"derender_toc": DerenderToc}

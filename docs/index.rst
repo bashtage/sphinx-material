@@ -1,12 +1,11 @@
-===================
-Material for Sphinx
-===================
+.. _quickstart:
 
-This theme provides a responsive Material Design theme for Sphinx
-documentation. It derives heavily from
-`Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_,
-and also uses code from
-`Guzzle Sphinx Theme <https://github.com/guzzle/guzzle_sphinx_theme>`_.
+==============================
+OpenFF Sphinx theme Quickstart
+==============================
+
+This theme provides a responsive theme for Sphinx documentation by the Open Force Field Initiative.
+It is inspired by `Material for Sphinx <https://squidfunk.github.io/mkdocs-material/>`_ and `Material for MkDocs <https://squidfunk.github.io/mkdocs-material/>`_, but has been rewritten with the `Bulma <https://bulma.io>`_ CSS framework to remove any JavaScript dependencies.
 
 Getting Started
 ---------------
@@ -18,7 +17,7 @@ Install from git
 
 Or, add to your ReadTheDocs environment.yml
 
-.. code-block:: yml
+.. code-block:: yaml
 
     dependencies:
         - pip
@@ -46,11 +45,12 @@ or ``theme.conf`` for more details.
     extensions.append("openff_sphinx_theme")
     html_theme = "openff_sphinx_theme"
 
-    # (Optional) Logo.
-    # If not provided, will default to the generic OpenFF logo
-    html_logo = "_static/images/logos/openff_toolkit_v1_white-on-darkblue.svg"
+    # (Optional) Logo in PNG format.
+    # If not provided, will default to the generic OpenFF logo with text
+    html_logo = "_static/images/logos/openforcefield_v1_white.png"
 
-    # Specify a favicon. The OpenFF logo is provided by the theme in the following file, so you can use it without providing a favicon.
+    # (Optional) favicon.
+    # If not provided, will default to the generic OpenFF logo
     html_favicon = "_static/images/favicon.svg"
 
     # Theme options are theme-specific and customize the look and feel of a
@@ -64,35 +64,23 @@ or ``theme.conf`` for more details.
         # Must be one of github, gitlab or bitbucket
         "repo_type": "github",
         # Colour for sidebar captions and other accents. One of
-        # openff-toolkit-blue, openff-dataset-yellow, openff-evaluator-orange,
-        # red, pink, purple, deep-purple, indigo, blue, light-blue, cyan,
-        # teal, green, light-green, lime, yellow, amber, orange, deep-orange
+        # openff-blue, openff-toolkit-blue, openff-dataset-yellow,
+        # openff-evaluator-orange, aquamarine, lilac, amaranth, grape,
+        # violet, pink, pale-green, green, crimson, eggplant, turquoise,
+        # or a tuple of three ints in the range [0, 255] corresponding to
+        # a position in RGB space.
         "color_accent": "openff-toolkit-blue",
         # Content Minification for deployment, prettification for debugging
         "html_minify": True,
         "html_prettify": False,
-        "css_minify": True
+        "css_minify": True,
     }
 
     # Custom sidebar templates, must be a dictionary that maps document names
     # to template names.
     html_sidebars = {
-        # By default, don't show the local table of contents
-        "**": ["logo-text.html", "globaltoc.html", "searchbox.html"],
-        # On long pages, show the local TOC instead of expanding the global TOC
-        # for the current page
-        "developing": [
-            "logo-text.html",
-            "globaltoc.html",
-            "searchbox.html",
-            "localtoc.html",
-        ],
-        "faq": [
-            "logo-text.html",
-            "globaltoc.html",
-            "searchbox.html",
-            "localtoc.html",
-        ],
+        # By default, show everything
+        "**": ["globaltoc.html", "localtoc.html", "searchbox.html"]
     }
 
 .. toctree::
@@ -113,7 +101,7 @@ or ``theme.conf`` for more details.
     notebook.ipynb
     markdown.md
     rst-cheatsheet/rst-cheatsheet
-    basics
+    primer
 
 .. toctree::
     :caption: Changes and License
