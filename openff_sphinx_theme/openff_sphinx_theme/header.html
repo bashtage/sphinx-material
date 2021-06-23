@@ -1,9 +1,13 @@
 <header data-md-component="header">
   <nav class="navbar is-primary is-fixed-top is-flex-touch has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <span class="navbar-item is-hidden-mobile">
-        {% include "logo.html" %}
-      </span>
+      <a href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}" class="navbar-item is-hidden-mobile">
+        {% if logo %}
+          <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ shorttitle|striptags|e }} logo">
+        {% else %}
+          <img src="{{ pathto('_static/images/logos/openforcefield_v1_white.png', 1) }}" alt="{{ shorttitle|striptags|e }} logo">
+        {% endif %}
+      </a>
     </div>
 
     <div class="has-text-light is-hidden-mobile nav-title">

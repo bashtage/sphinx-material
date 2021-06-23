@@ -22,8 +22,9 @@ dl
             em.property
                 color: rgba($color, 1)
 
-        &.module
+        &.module,
         &.class,
+        &.pydantic_model
             @include api-colors($openff-blue)
 
         &.exception
@@ -31,11 +32,13 @@ dl
 
         &.function,
         &.decorator,
-        &.method
+        &.method,
+        &.pydantic_settings
             @include api-colors($openff-toolkit-blue)
 
         &.attribute,
-        &.data
+        &.data,
+        &.pydantic_field
             @include api-colors($openff-dataset-yellow)
 
         &.field-list
@@ -69,7 +72,10 @@ dl
     &.decorator,
     &.data,
     &.method,
-    &.attribute
+    &.attribute,
+    &.pydantic_model,
+    &.pydantic_field,
+    &.pydantic_settings
         dt
             font-weight: bold
         &:not(.docutils)

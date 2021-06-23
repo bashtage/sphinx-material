@@ -1,4 +1,4 @@
-{%- if display_toc and sidebars and 'localtoc.html' in sidebars %}
+{%- if display_toc and (sidebars is not defined or 'localtoc.html' in sidebars) %}
 <nav class="ff-localtoc menu">
   <p class="menu-label">Contents</p>
   {{ toc }}

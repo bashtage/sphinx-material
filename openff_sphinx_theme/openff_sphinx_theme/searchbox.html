@@ -1,4 +1,4 @@
-{% if sidebars and 'searchbox.html' in sidebars %}
+{% if sidebars is not defined or 'searchbox.html' in sidebars %}
 <form action="{{ pathto('search') }}" method="GET" name="search">
   <div class="control has-icons-right">
     <span class="icon is-small is-right">

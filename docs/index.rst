@@ -34,6 +34,7 @@ Update your ``conf.py`` with the required changes:
 
     extensions.append("openff_sphinx_theme")
     html_theme = "openff_sphinx_theme"
+    html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
 
 
 There are a lot more ways to customize this theme. See :ref:`Customization`
