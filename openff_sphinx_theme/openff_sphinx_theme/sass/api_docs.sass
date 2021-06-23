@@ -40,10 +40,18 @@ dl
 
         &.field-list
             @include api-colors(#888)
+            @media screen and (max-width: $tablet - 1px)
+                grid-template-columns: 2em auto
             // add a bit more breathing room
             > dt
                 padding: 0.5rem
                 font-weight: 300
+                &::after
+                    content: ""
+                @media screen and (max-width: $tablet - 1px)
+                    writing-mode: vertical-rl
+                    text-orientation: mixed
+
             > dd
                 padding-left: 1rem
                 > dl > dd
