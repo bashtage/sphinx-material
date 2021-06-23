@@ -1,12 +1,11 @@
 {% if sidebars and 'searchbox.html' in sidebars %}
 <form action="{{ pathto('search') }}" method="GET" name="search">
   <div class="control has-icons-right">
-    <input class="input is-primary" type="text"  name="q" placeholder="Search"
-         autocapitalize="off" autocomplete="off" spellcheck="false"
-         data-md-component="query" data-md-state="active">
     <span class="icon is-small is-right">
       <i class="fas fa-search"></i>
     </span>
+    <input class="input is-primary" type="text"  name="q" placeholder="Search"
+         autocapitalize="off" autocomplete="off" spellcheck="false">
   </div>
 </form>
 {% endif %}

@@ -1,0 +1,7 @@
+<a href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
+  {% if logo %}
+    <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ shorttitle|striptags|e }} logo">
+  {% else %}
+    <img src="{{ pathto('_static/images/logos/openforcefield_v1_white.png', 1) }}" alt="{{ shorttitle|striptags|e }} logo">
+  {% endif %}
+</a>

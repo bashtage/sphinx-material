@@ -102,7 +102,7 @@ html_theme_options = {
     "html_prettify": False,
     "css_minify": False,
     "globaltoc_depth": 2,
-    "color_accent": "openff-dataset-yellow",
+    "color_accent": "openff-toolkit-blue",
     "nav_links": [
         {
             "href": "https://squidfunk.github.io/mkdocs-material/",

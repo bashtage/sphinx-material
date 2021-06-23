@@ -1,13 +1,9 @@
 <header data-md-component="header">
   <nav class="navbar is-primary is-fixed-top is-flex-touch has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item is-hidden-mobile" href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
-        {% if logo %}
-          <img src="{{ pathto('_static/' ~ logo, 1) }}" alt="{{ shorttitle|striptags|e }} logo">
-        {% else %}
-          <img src="{{ pathto('_static/images/logos/openforcefield_v1_white.png', 1) }}" alt="{{ shorttitle|striptags|e }} logo">
-        {% endif %}
-      </a>
+      <span class="navbar-item is-hidden-mobile">
+        {% include "logo.html" %}
+      </span>
     </div>
 
     <div class="has-text-light is-hidden-mobile nav-title">
@@ -17,22 +13,34 @@
       <span> {{ title|striptags|e }} </span>
     </div>
 
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <span class="navbar-item">
-          {% include "searchbox.html" %}
-        </span>
-        {% if theme_repo_url %}
-          {% include "repo.html" %}
-        {% endif %}
-        <a href="https://openforcefield.org/" class="navbar-item">
-          <img
-            src="{{ pathto('_static/images/logos/openforcefield_v2_white.png', 1) }}"
-            alt="Open Force Field Initiative logo"
-          >
+    <div class="navbar-end">
+      <span class="navbar-item nav-search is-hidden-mobile">
+        {% include "searchbox.html" %}
+      </span>
+      {% if theme_repo_url %}
+        <a href="{{ theme_repo_url }}" class="is-family-monospace navbar-item is-hidden-touch has-text-light">
+          {% if theme_repo_type %}
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fab fa-{{theme_repo_type | lower() }}"></i>
+            </span>
+            <span>
+          {% endif %}
+            {{ theme_repo_name }}
+          {% if theme_repo_type %}
+            </span>
+          </span>
+          {% endif %}
         </a>
-      </div>
+      {% endif %}
+      <a href="https://openforcefield.org/" class="navbar-item is-hidden-touch">
+        <img
+          src="{{ pathto('_static/images/logos/openforcefield_v2_white.png', 1) }}"
+          alt="Open Force Field Initiative logo"
+        >
+      </a>
     </div>
+    <span class="navbar-burger-spacer is-hidden-desktop"></span>
   </nav>
 
   {% include "hero.html" %}

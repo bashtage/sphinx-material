@@ -56,11 +56,10 @@ Configuration Options
 ``heroes``
    A ``dict[str,str]`` where the key is a pagename and the value is the text to display in the page's hero location.
 ``socials``
-   ``list[dict[str, str]]`` of social media links. Dicts have three keys:
-   ``"href"``, ``"icon_classes"``, and optionally ``"title"``. Icon classes
-   should be from `Academicons <https://jpswalsh.github.io/academicons/>`_ or `Font Awesome 5 <https://fontawesome.com/>`_.
-``clear_openff_socials``
-   ``True`` to remove default social media links from the footer. ``False`` (default) to keep them, to save everyone copying around the same links.
+   ``list[dict[str, str]]`` of social media links.
+   Dicts have three keys: ``"href"``, ``"icon_classes"``, and optionally ``"title"``.
+   Icon classes should be from `Academicons <https://jpswalsh.github.io/academicons/>`_ or `Font Awesome 5 <https://fontawesome.com/>`_.
+   If not specified, defaults to a set of links appropriate for an OpenFF Initiative project.
 
 Sidebars
 ========

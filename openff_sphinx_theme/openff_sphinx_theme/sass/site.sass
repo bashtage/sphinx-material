@@ -145,6 +145,7 @@ $drawer-transition-time: 0.5s
         left: -$drawer-width
         transition: transform $drawer-transition-time
         width: $drawer-width
+        max-width: 90vw
         top: 0
         height: 100vh
         background-color: $background
@@ -182,6 +183,10 @@ $drawer-transition-time: 0.5s
     position: sticky
     padding: $below-navbar-spacing
     overflow: auto
+    // Don't know why this is necessary, probably because of drawer shenanigans?
+    @media screen and (max-width: $desktop)
+        position: fixed
+        top: $navbar-height
     // We can put visible scrollbars on the sidebars, at the
     // cost of some unusual behaviour on wierd screen sizes
     // where the navbar is not 10vh
@@ -195,6 +200,8 @@ $drawer-transition-time: 0.5s
         margin-top: -$navbar-height
         max-height: 100vh
         +hide-scrollbar
+
+
 
 dt:target
     margin-top: -($navbar-height + $below-navbar-spacing)
@@ -240,11 +247,44 @@ header
     .is-hidden-tablet.nav-title
         max-width: 90vw
 
-    .control.has-icons-right .input.is-primary
-        background-color: darken($primary, 8)
-        transition: background-color 0.2s
-    .control.has-icons-right .input.is-primary:focus
-        background-color: $white
+    .navbar > .navbar-end
+        flex: none
+        margin-left: auto
+        margin-top: auto
+        margin-bottom: auto
+
+    .nav-search
+        input
+            transition: width 0.2s, background-color 0.2s
+        $search-animation-cutoff: $widescreen
+        @media screen and (max-width: $search-animation-cutoff - 1px)
+            .control
+                input
+                    background-color: unset
+                    width: $input-height
+                    &:hover, &:focus, &:active
+                        width: 15rem
+                    &:hover
+                        background-color: darken($primary, 10)
+                        &::placeholder
+                            color: $input-icon-color
+                    &:focus, &:active
+                        background-color: $white
+                        &::placeholder
+                            color: $input-placeholder-color
+                &.has-icons-right
+                    padding-right: 0
+                &.has-icons-left
+                    padding-left: 0
+        @media screen and (min-width: $search-animation-cutoff)
+            input
+                background-color: darken($primary, 10)
+                &::placeholder
+                    color: $input-icon-color
+                &:hover, &:focus, &:active
+                    background-color: $white
+                    &::placeholder
+                        color: $input-placeholder-color
 
 main.section
     padding-top: 1rem
@@ -269,8 +309,9 @@ footer
         margin-left: auto
         margin-right: auto
     .socials
-        margin-top: auto
-        text-align: right
+        @media screen and (min-width: $tablet - 1px)
+            margin-top: auto
+            text-align: right
         .icon
             border: solid 1px
             border-radius: 50%
@@ -305,10 +346,6 @@ a:hover:not(.is-active)
     code, pre
         color: $link-hover
 
-.control.has-icons-right .input.is-primary:focus ~ .icon
-    color: $primary
-    transition: color 0.2s
-
-
-
-
+.navbar-burger-spacer
+    width: $navbar-height
+    display: inline-block

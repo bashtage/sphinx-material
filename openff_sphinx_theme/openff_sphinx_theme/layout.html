@@ -62,6 +62,16 @@
         </label>
 
         <aside class="column is-2" id="drawer">
+          <div class="is-hidden-tablet">
+            <a href="{{ pathto(master_doc)|e }}" title="{{ docstitle|e }}">
+              <h1>
+                {{ shorttitle|striptags|e }}
+              </h1>
+            </a>
+            <div class="py-3">
+              {% include "searchbox.html" %}
+            </div>
+          </div>
           {% include "globaltoc.html" %}
         </aside>
 

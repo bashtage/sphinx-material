@@ -65,9 +65,9 @@
         {%- endif %}
       </div>
       <div class="socials column">
-        <p class="pb-3">An <a href="https://openforcefield.org/" class="has-text-white">Open Force Field</a> project.</p>
+        <p class="pb-3">An <a href="https://openforcefield.org/" class="has-text-white">Open Force Field Initiative</a> project.</p>
         <div>
-          {% if not theme_clear_openff_socials %}
+          {% if not theme_socials %}
               <a href="https://zenodo.org/communities/openforcefield/" class="icon has-text-light is-medium" title="OpenFF on Zenodo">
                 <i class="fa-lg ai-lg ai ai-zenodo"></i>
               </a>
@@ -83,14 +83,15 @@
               <a href="https://www.linkedin.com/company/openforcefield/" class="icon has-text-light is-medium" title="OpenFF on LinkedIn">
                 <i class="fa-lg fab fa-linkedin"></i>
               </a>
+          {% else %}
+            {% for link in theme_socials %}
+              {% if link.href and link.icon_classes %}
+                <a href="{{link.href}}" class="icon has-text-light is-medium" title="{{link.title}}">
+                  <i class="fa-lg ai-lg {{ link.icon_classes }}"></i>
+                </a>
+              {% endif %}
+            {% endfor %}
           {% endif %}
-          {% for link in theme_socials %}
-            {% if link.href and link.icon_classes %}
-              <a href="{{link.href}}" class="icon has-text-light is-medium" title="{{link.title}}">
-                <i class="fa-lg ai-lg {{ link.icon_classes }}"></i>
-              </a>
-            {% endif %}
-          {% endfor %}
         </div>
 
       </div>
