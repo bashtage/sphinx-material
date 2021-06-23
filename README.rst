@@ -55,6 +55,7 @@ There are some basic customization options you probably also wanna set:
         # or a tuple of three ints in the range [0, 255] corresponding to
         # a position in RGB space.
         "color_accent": "openff-toolkit-blue",
+    }
 
 More customization options can be found in the `demonstration site <https://openforcefield.github.io/openff-sphinx-theme/>`_.
 
