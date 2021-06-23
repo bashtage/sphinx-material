@@ -33,6 +33,28 @@ Update your ``conf.py`` with the required changes:
     extensions.append("openff_sphinx_theme")
     html_theme = "openff_sphinx_theme"
     html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
+    
+There are some basic customization options you probably also wanna set:
+
+.. code-block:: python
+
+    # Theme options are theme-specific and customize the look and feel of a
+    # theme further.
+    html_theme_options = {
+        # Repository integration
+        # Set the repo url for the link to appear
+        "repo_url": "https://github.com/openforcefield/openff-toolkit",
+        # The name of the repo. If must be set if repo_url is set
+        "repo_name": "openff-toolkit",
+        # Must be one of github, gitlab or bitbucket
+        "repo_type": "github",
+        # Colour for sidebar captions and other accents. One of
+        # openff-blue, openff-toolkit-blue, openff-dataset-yellow,
+        # openff-evaluator-orange, aquamarine, lilac, amaranth, grape,
+        # violet, pink, pale-green, green, crimson, eggplant, turquoise,
+        # or a tuple of three ints in the range [0, 255] corresponding to
+        # a position in RGB space.
+        "color_accent": "openff-toolkit-blue",
 
 More customization options can be found in the `demonstration site <https://openforcefield.github.io/openff-sphinx-theme/>`_.
 
