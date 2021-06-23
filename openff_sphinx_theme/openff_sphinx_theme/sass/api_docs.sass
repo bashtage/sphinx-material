@@ -19,7 +19,7 @@ dl
                 &:target
                     + dd
                         border-color: rgba($color, 1)
-            .property
+            em.property
                 color: rgba($color, 1)
 
         &.module
@@ -107,6 +107,12 @@ dl
                     border-left-style: solid
                     border-left-width: 0.2rem
                     padding: 0.3rem
+                // Workaround newlines in field lists starting new, empty field
+                + dd:empty
+                    display: none
+                    + dt
+                        margin-top: -0.4rem
+                        padding-left: 0.6rem
 
             .property
                 display: inline-block
@@ -133,12 +139,12 @@ dl
             visibility: visible
 
         .sig-param
+            color: $openff-blue
             .o
                 color: $openff-evaluator-orange
                 padding-left: 0.25rem
                 padding-right: 0.25rem
             .n
-                color: $openff-blue
                 font-family: $family-monospace
             .default_value
                 color: $openff-toolkit-blue
