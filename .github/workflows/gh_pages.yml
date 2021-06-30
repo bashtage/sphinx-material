@@ -4,33 +4,54 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2
+      - name: Cache conda
+        uses: actions/cache@v2
         with:
-          python-version: 3.7
+          path: ~/conda_pkgs_dir
+          key: ${{ runner.os }}-conda-${{hashFiles('docs/environment.yml') }}
 
-      - name: Install dependencies
+      - uses: conda-incubator/setup-miniconda@v2
+        name: Install dependencies
+        with:
+          environment-file: docs/environment.yml
+          activate-environment: docs
+          auto-activate-base: false
+          miniforge-version: latest
+          miniforge-variant: Mambaforge
+          use-mamba: true
+
+      - name: Install current theme in dev mode
         run: |
-          sudo apt-get install pandoc
-          python -m pip install --upgrade pip
-          pip install wheel
-          if [ -f docs/requirements.txt ]; then pip install -r docs/requirements.txt; fi
+          pip install -e .
+
+      - name: Describe environment
+        run: |
+          pwd
+          ls
+          conda list
 
       - name: Build Sphinx documentation
         run: |
           cd docs
           make html
 
-      - name: Deploy to GitHub Pages
-        if: success()
+      - name: Deploy main to GitHub Pages
+        if: success() && github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
@@ -38,3 +59,52 @@ jobs:
           jekyll: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout gh-pages
+        if: success() && github.event_name == 'pull_request'
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: 'deploy'
+          clean: false
+
+      - name: Prepare PR subfolder
+        if: success() && github.event_name == 'pull_request'
+        env:
+          PR: ${{ github.event.number }}
+        run: |
+          rm -rf deploy/PR${PR}
+          mv docs/_build/html deploy/PR${PR}
+
+      - name: Deploy PR to GitHub Pages
+        if: success() && github.event_name == 'pull_request'
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: deploy
+          jekyll: false
+          commit_message: "Deploy PR ${{ github.event.number }} to GH Pages"
+          keep_history: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Find Comment
+        if: success() && github.event_name == 'pull_request'
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Example docs for this PR
+
+      - name: Create or update comment
+        if: success() && github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v1
+        env:
+          PR: ${{ github.event.number }}
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Example docs for this PR [rendered here](https://openforcefield.github.io/openff-sphinx-theme/PR${{ github.event.number }})
+          edit-mode: replace

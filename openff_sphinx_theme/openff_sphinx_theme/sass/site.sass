@@ -71,7 +71,24 @@ $below-navbar-spacing: 0.5rem
 $use-material-headings: true
 $bulma-admonitions: false
 
-@import "bulma/bulma.sass"
+// @import "bulma/bulma.sass"
+// Important that we exclude the .section class, as it clashes with Sphinx 4+
+@import "bulma/sass/utilities/_all.sass"
+@import "bulma/sass/base/_all.sass"
+@import "bulma/sass/grid/columns.sass"
+@import "bulma/sass/components/breadcrumb.sass"
+@import "bulma/sass/components/level.sass"
+@import "bulma/sass/components/navbar.sass"
+@import "bulma/sass/components/menu.sass"
+@import "bulma/sass/components/tabs.sass"
+@import "bulma/sass/elements/content.sass"
+@import "bulma/sass/elements/icon.sass"
+@import "bulma/sass/elements/image.sass"
+@import "bulma/sass/form/_all.sass"
+@import "bulma/sass/helpers/_all.sass"
+@import "bulma/sass/layout/footer.sass"
+@import "bulma/sass/layout/hero.sass"
+
 
 $breadcrumb-item-color-light: findColorInvert($breadcrumb-item-color)
 $breadcrumb-item-hover-color-light: $link-hover

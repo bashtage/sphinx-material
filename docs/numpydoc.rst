@@ -5,7 +5,9 @@ NumPy Docstrings
 This page shows how ``autosummary`` works with ``numpydoc`` and a
 NumPy-style docstring.
 
-.. autosummary::
-   :toctree: generated/
+.. currentmodule:: openff.toolkit.topology
 
-    ~numpy.polynomial.Polynomial
+.. autosummary::
+   :toctree: generated
+
+   Molecule
