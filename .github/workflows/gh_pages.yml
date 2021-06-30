@@ -74,7 +74,7 @@ jobs:
           PR: ${{ github.event.number }}
         run: |
           rm -rf deploy/PR${PR}
-          cp -r docs/_build/html/* deploy/PR${PR}/
+          mv docs/_build/html deploy/PR${PR}
 
       - name: Deploy PR to GitHub Pages
         if: success() && github.event_name == 'pull_request'
@@ -87,3 +87,24 @@ jobs:
           keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Find Comment
+        if: success() && github.event_name == 'pull_request'
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Example docs for this PR
+
+      - name: Create or update comment
+        if: success() && github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v1
+        env:
+          PR: ${{ github.event.number }}
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Example docs for this PR [rendered here](https://openforcefield.github.io/openff-sphinx-theme/PR${PR}
+          edit-mode: replace
