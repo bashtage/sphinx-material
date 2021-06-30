@@ -20,22 +20,25 @@ jobs:
         name: Install dependencies
         with:
           python-version: 3.7
-          activate-environment: docs
           environment-file: docs/environment.yml
+          activate-environment: docs
           auto-activate-base: false
 
       - name: Install current theme in dev mode
         run: |
+          conda activate docs
           pip install -e .
 
       - name: Describe environment
         run: |
+          conda activate docs
           pwd
           ls
           conda list
 
       - name: Build Sphinx documentation
         run: |
+          conda activate docs
           cd docs
           make html
 
