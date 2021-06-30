@@ -1,4 +1,4 @@
-name: openff-sphinx-theme-docs
+name: docs
 channels:
   - conda-forge
 dependencies:
