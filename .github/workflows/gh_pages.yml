@@ -83,7 +83,7 @@ jobs:
           target_branch: gh-pages
           build_dir: deploy
           jekyll: false
-          commit_message: "Deploy PR #${{ github.event.number }} to GH Pages"
+          commit_message: "Deploy PR ${{ github.event.number }} to GH Pages"
           keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -106,5 +106,5 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Example docs for this PR [rendered here](https://openforcefield.github.io/openff-sphinx-theme/PR${PR}
+            Example docs for this PR [rendered here](https://openforcefield.github.io/openff-sphinx-theme/PR${{ github.event.number }})
           edit-mode: replace
