@@ -5,7 +5,9 @@ Pydantic API docs
 This page shows how ``autosummary`` works with ``autodoc_pydantic`` and a
 Pydantic object.
 
-.. autosummary::
-   :toctree: _build/generated/api
+.. currentmodule:: openff.qcsubmit.datasets
 
-    ~openff.qcsubmit.datasets.BasicDataset
+.. autosummary::
+   :toctree: generated
+
+    BasicDataset
