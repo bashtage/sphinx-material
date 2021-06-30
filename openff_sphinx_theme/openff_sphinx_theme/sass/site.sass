@@ -28,7 +28,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
-@import bulma/sass/utilities/functions.sass
+@import "bulma/sass/utilities/functions.sass"
+@import "utilities/_convert"
+@import "utilities/_z-depth"
 
 $openff-blue: rgb(1, 84, 128)
 $openff-toolkit-blue: rgb(47, 158, 210)
@@ -68,7 +70,6 @@ $family-monospace: Cousine, monospace
 $navbar-height: 4rem
 $below-navbar-spacing: 0.5rem
 
-$use-material-headings: true
 $bulma-admonitions: false
 
 // @import "bulma/bulma.sass"
@@ -102,10 +103,15 @@ $breadcrumb-item-separator-color-light: findColorInvert($breadcrumb-item-separat
         display: none
 
 .content
-    @import "sphinx-content.sass"
+    @import "material-content.scss"
+    @import "sphinx-content.scss"
     @import "admonitions.sass"
+    @import "sphinx-api.scss"
+    font-size: px2rem(16px)
+    line-height: 1.6
+    color-adjust: exact
 
-.navbar.is-primary.has-shadow
+header, .navbar.is-primary.has-shadow
     box-shadow: 0 2px 3px 0 $primary
 
 .navbar.is-fixed-bottom, .navbar.is-fixed-top
@@ -217,29 +223,6 @@ $drawer-transition-time: 0.5s
         margin-top: -$navbar-height
         max-height: 100vh
         +hide-scrollbar
-
-
-
-dt:target
-    margin-top: -($navbar-height + $below-navbar-spacing)
-    padding-top: ($navbar-height + $below-navbar-spacing)
-    pointer-events: none
-    *
-        pointer-events: auto
-
-*:target::before
-    margin-top: -($navbar-height + $below-navbar-spacing)
-    padding-top: ($navbar-height + $below-navbar-spacing)
-    display: block
-    content: ""
-    visibility: hidden
-    pointer-events: none
-
-// Disable highlighting of targets from basic.css
-dt:target
-    background-color: unset
-    border-bottom: solid 1px #fbe54e
-
 body
     min-height: 100vh
     display: flex

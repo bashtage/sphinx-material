@@ -1,0 +1,260 @@
+// The Numpydoc API layout
+
+$api-name-color: $primary;
+$api-property-color: $green;
+$api-path-color: $grey;
+$api-bg-color: rgba($accent, 0.1);
+$api-param-symbol-color: $openff-evaluator-orange;
+$api-param-name-color: $openff-toolkit-blue;
+$api-param-value-color: $grey-dark;
+$api-type-color: $api-param-value-color;
+
+// Definition of an object. Hopefully.
+// Could also use dl.py, but this would fail
+// if we ever wanted to document something that
+// isn't Python
+// RTD does it like this, but with fewer exceptions, so
+// we should be OK
+dl:not(.docutils):not(.field-list):not(.simple):not(.citation)[class] {
+    // Header and signature
+    > dt {
+        font-family: $family-monospace;
+        font-size: 1.1rem;
+        padding: 1em;
+        background-color: $api-bg-color;
+        border-radius: 4px;
+        @include z-depth(4);
+        &:target {
+            &::before {
+                background-color: $body-background-color;
+            }
+        }
+        // Text specifying class, function, method, pydantic model, etc. Not always present, eg for plain functions
+        > .property .pre {
+            color: $api-property-color;
+            font-size: inherit;
+
+        }
+        // Text providing path to the object
+        > code.sig-prename {
+            padding: 0;
+            background-color: transparent;
+            font-weight: 200;
+            font-size: inherit;
+            color: $api-path-color;
+        }
+        // Text providing the name of the object
+        > code.sig-name {
+            padding: 0;
+            background-color: transparent;
+            color: $api-name-color;
+            font-weight: 600;
+            font-size: inherit;
+            // autodoc_pydantic produces types as properties _after_ the sig name
+            ~ .property .pre {
+                color: $api-type-color;
+                font-style: normal;
+            }
+        }
+        // Opening and closing parenthesis
+        > .sig-paren {
+            font-size: inherit;
+
+        }
+        // Each parameter
+        > .sig-param {
+            font-size: inherit;
+            font-style: normal;
+            // Entire parameter if parsing the parameter has failed. Splits on commas
+            > .pre {
+                color: $api-param-name-color;
+            }
+            // Name of a parameter
+            > .n > .pre {
+                color: $api-param-name-color;
+
+            }
+            // Symbols; equals sign, asterisk, etc
+            > .o > .pre {
+                color: $api-param-symbol-color;
+                padding-left: 0.2em;
+                padding-right: 0.2em;
+            }
+            // Default values of arguments
+            > .default_value > .pre {
+                color: $api-param-value-color;
+            }
+            // After each parameter, newline
+            &::before {
+                content: "\a    ";
+                white-space: pre;
+            }
+        }
+        // Brackets [] denoting optional arguments
+        // This is redundant information and I am displeased to have to support it
+        > .optional {
+            // Put optional [] brackets on their own lines
+            &::before {
+                content: "\a    ";
+                white-space: pre;
+            }
+            // Optional parameters need extra indentation
+            ~ .sig-param::before {
+                content: "\a        ";
+            }
+        }
+        // Closing parenthesis
+        .sig-param, .optional {
+            + .sig-paren {
+                &::before {
+                    content: "\a";
+                    white-space: pre;
+                }
+            }
+        }
+        // Pydantic validator arrow
+        .autodoc_pydantic_validator_arrow {
+            visibility: hidden;
+            // Validators? validated?
+            ~ a .py {
+                &::before {
+                    content: "\a    »  ";
+                    white-space: pre;
+                    color: $api-type-color;
+                    font-style: normal;
+                }
+            }
+            // Comma after validated thing
+            ~ a + .property .pre {
+                visibility: hidden;
+            }
+        }
+        // Link to the source code for the object (not present on inherited objects)
+        .viewcode-link {
+            float: right;
+        }
+        // Permalink to the object (to here)
+        > a.headerlink {
+
+        }
+    }
+    // Content
+    >dd {
+        // Description/docstring
+        >p {
+
+        }
+        // JSON schema for pydantic stuff
+        >.autodoc_pydantic_collapsable_json {
+        }
+        // Parameters, Returns, Other Parameters, Raises sections
+        >.field-list {
+            // Headings
+            >dt {
+                @extend .rubric;
+            }
+            // Content
+            >dd {
+                >dl {
+                    >dt {
+                        font-family: $family-monospace;
+                        // Name of the parameter or return value
+                        >strong {
+                            color: $api-param-name-color;
+                            font-weight: normal;
+                            &::after {
+                                content: ": ";
+                            }
+                        }
+                        // Type of the parameter, or type of a named return value
+                        >.classifier {
+                            color: $api-type-color;
+                        }
+
+                    }
+                    // Description of the parameter, return value, or exception
+                    >dd {
+                        margin-top: 0;
+                        margin-bottom: 0.5em;
+                    }
+                }
+
+            }
+
+        }
+        // Notes, References, Methods, Attributes, and Examples headings
+        >.rubric {
+
+        }
+        // Reference list (bibliography)
+        >dl.citation {
+            width: 100%;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            $label-width: 5%;
+            // Label for the reference/citation. Block element
+            > dt.label {
+                float: left;
+                width: $label-width;
+                /* adjust the width; make sure the total of both is 100% */
+                padding: 0;
+                margin: 0;
+                // span around just the text of the label, so you can add brackets
+                .brackets {
+                    &::before {
+                        content: "[";
+                    }
+                    &::after {
+                        content: "]";
+                    }
+                }
+            }
+            // The text of the reference
+            >dd {
+                float: left;
+                width: 100% - $label-width;
+                padding: 0;
+                margin: 0;
+            }
+
+        }
+        // Doctests - already nicely formatted!
+        >.doctest {
+
+        }
+        // Tables of methods, attributes, classes, etc.
+        // Should probably style this globally so it captures the same tables in autosummary directives
+        >.longtable.docutils {
+            // A row of the table
+            tr {
+                //An odd row
+                *.row-odd {
+
+                }
+                //An even row
+                *.row-even {
+
+                }
+                // An entry on the LHS of the table - link to another object + possibly a signature
+                // Signature is a direct child of this element
+                td:first-child {
+                    // May need to style everything in td:first-child, then re-overwrite things here
+                    a.reference code {
+
+                    }
+                }
+                // An entry on the RHS of the table - description
+                td:last-child {
+
+                }
+
+            }
+
+        }
+        // Child object - recapitulates structure above
+        >dl:not(.docutils) {
+
+        }
+    }
+}

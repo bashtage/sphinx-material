@@ -1,0 +1,147 @@
+// Thanks to Jeremy Maitin-Shepard. File sourced from
+// https://github.com/jbms/sphinx-material/blob/b3667d67eee0a42a627c97a5a81a736c99dadb61/src/assets/stylesheets/main/_sphinx.scss
+
+// Additional styles expected by sphinx.
+
+// alignment of text and inline objects inside block objects
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  clear: both;
+  text-align: center;
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.align-bottom {
+  vertical-align: bottom;
+}
+
+// Figures, Images, and Tables
+.figure.align-left,
+figure.align-left,
+img.align-left,
+object.align-left,
+table.align-left {
+  margin-right: auto;
+}
+
+.figure.align-center,
+figure.align-center,
+img.align-center,
+object.align-center,
+table.align-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.figure.align-right,
+figure.align-right,
+img.align-right,
+object.align-right,
+table.align-right {
+  margin-left: auto;
+}
+
+.figure.align-center,
+.figure.align-right,
+figure.align-center,
+figure.align-right,
+img.align-center,
+img.align-right,
+object.align-center,
+object.align-right {
+  display: block;
+}
+
+// reset inner alignment in figures and tables
+.figure.align-left,
+.figure.align-right,
+figure.align-left,
+figure.align-right,
+table.align-left,
+table.align-center,
+table.align-right {
+  text-align: inherit;
+}
+
+.rubric {
+  font-weight: bold;
+}
+
+// And now my own rules
+/// Code with line numbers
+table.highlighttable {
+  td.linenos {
+    @include unselectable;
+    padding-left: 0;
+    padding-right: 0;
+    .linenodiv pre {
+      padding-right: 0;
+    }
+    + td.code {
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: 0;
+      .highlight pre {
+        border-left: solid 2px $border;
+      }
+    }
+  }
+}
+
+// Unselectable prompts
+.highlight .gp {
+  @include unselectable;
+}
+
+// Docs button in source on right
+.viewcode-back {
+  float: right;
+}
+
+// Header links
+.headerlink {
+  visibility: hidden;
+  font-size: 14px;
+  font-family: "Font Awesome 5 Free";
+  &::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0c1";
+  }
+}
+
+:hover > .headerlink::after {
+  visibility: visible;
+}
+
+// Format captions
+.toctree-wrapper .caption {
+  @extend h2;
+}
+
+// Don't let Sphinx try to be clever about what header level the index heading is
+#index h3 {
+  @extend h2;
+}
+// add some invisible spacing before header targets so the navbar is out of the way
+// :target::before {
+//   margin-top: -($navbar-height + $below-navbar-spacing);
+//   padding-top: ($navbar-height + $below-navbar-spacing);
+//   display: block;
+//   content: "";
+//   visibility: hidden;
+//   pointer-events: none;
+// }
