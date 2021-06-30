@@ -60,16 +60,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Find the PR associated with this push, if there is one.
-      - name: Find the PR number
-        uses: jwalton/gh-find-current-pr@v1
-        if: github.event_name == 'pull_request'
-        id: findPr
-
       - name: Prepare PR subfolder
-        if: success() && steps.findPr.outputs.number
+        if: success()
         env:
-          PR: ${{ steps.findPr.outputs.pr }}
+          PR: ${{ github.event.number }}
         run: |
           git checkout gh-pages
           rm -rf PR${PR}
@@ -83,7 +77,7 @@ jobs:
           target_branch: gh-pages
           build_dir: .
           jekyll: false
-          commit_message: Deploy PR \#${{ steps.findPr.outputs.pr }} to GH Pages
+          commit_message: "Deploy PR #${{ steps.findPr.outputs.pr }} to GH Pages"
           keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
