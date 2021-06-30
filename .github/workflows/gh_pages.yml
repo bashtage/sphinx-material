@@ -16,29 +16,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: conda-incubator/setup-miniconda@v2.1.1
+      - name: Cache conda
+        uses: actions/cache@v2
+        with:
+          path: ~/conda_pkgs_dir
+          key: ${{ runner.os }}-conda-${{hashFiles('docs/environment.yml') }}
+
+      - uses: conda-incubator/setup-miniconda@v2
         name: Install dependencies
         with:
-          python-version: 3.7
           environment-file: docs/environment.yml
           activate-environment: docs
           auto-activate-base: false
+          miniforge-version: latest
+          miniforge-variant: Mambaforge
+          use-mamba: true
 
       - name: Install current theme in dev mode
         run: |
-          conda activate docs
           pip install -e .
 
       - name: Describe environment
         run: |
-          conda activate docs
           pwd
           ls
           conda list
 
       - name: Build Sphinx documentation
         run: |
-          conda activate docs
           cd docs
           make html
 
