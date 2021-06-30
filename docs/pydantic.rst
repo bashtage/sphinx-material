@@ -2,8 +2,8 @@
 Pydantic API docs
 =================
 
-This page shows how ``autosummary`` works with ``numpydoc`` and a
-NumPy-style docstring.
+This page shows how ``autosummary`` works with ``autodoc_pydantic`` and a
+Pydantic object.
 
 .. autosummary::
    :toctree: _build/generated/api

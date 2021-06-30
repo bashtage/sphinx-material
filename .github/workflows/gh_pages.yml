@@ -60,24 +60,31 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+
+      - name: Checkout gh-pages
+        if: success() && github.event_name == 'pull_request'
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: 'deploy'
+          clean: false
+
       - name: Prepare PR subfolder
-        if: success()
+        if: success() && github.event_name == 'pull_request'
         env:
           PR: ${{ github.event.number }}
         run: |
-          git checkout gh-pages
-          rm -rf PR${PR}
-          cp -r docs/_build/html/* PR${PR}/
-          rm -rf docs/_build
+          rm -rf deploy/PR${PR}
+          cp -r docs/_build/html/* deploy/PR${PR}/
 
       - name: Deploy PR to GitHub Pages
         if: success() && github.event_name == 'pull_request'
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
-          build_dir: .
+          build_dir: deploy
           jekyll: false
-          commit_message: "Deploy PR #${{ steps.findPr.outputs.pr }} to GH Pages"
+          commit_message: "Deploy PR #${{ github.event.number }} to GH Pages"
           keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

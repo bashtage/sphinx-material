@@ -8,4 +8,4 @@ NumPy-style docstring.
 .. autosummary::
    :toctree: _build/generated/api
 
-    ~numpy.polynomial.Polynomial
+    ~openff.toolkit.topology.molecule.Molecule

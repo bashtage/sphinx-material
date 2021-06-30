@@ -41,6 +41,7 @@ extensions = [
     "nbsphinx",
     "myst_parser",
     "openff_sphinx_theme",
+    "autodoc_pydantic",
 ]
 
 # Autodoc settings
