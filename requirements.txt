@@ -1,4 +1,4 @@
-sphinx>=2.0
+sphinx>=4.0<5.0
 beautifulsoup4
 python-slugify[unidecode]
 css_html_js_minify
