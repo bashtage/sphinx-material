@@ -99,6 +99,7 @@ or ``theme.conf`` for more details.
 
     pymethod
     numpydoc
+    pydantic
     notebook.ipynb
     markdown.md
     rst-cheatsheet/rst-cheatsheet

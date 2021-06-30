@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+
 
 jobs:
   publish:
@@ -12,29 +16,56 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2
+      - uses: conda-incubator/setup-miniconda@v2.1.1
+        name: Install dependencies
         with:
           python-version: 3.7
+          activate-environment: openff-sphinx-theme-docs
+          environment-file: docs/environment.yml
+          auto-activate-base: false
 
-      - name: Install dependencies
+      - name: Install current theme in dev mode
         run: |
-          sudo apt-get install pandoc
-          python -m pip install --upgrade pip
-          pip install wheel
-          if [ -f docs/requirements.txt ]; then pip install -r docs/requirements.txt; fi
+          pip install -e .
 
       - name: Build Sphinx documentation
         run: |
           cd docs
           make html
 
-      - name: Deploy to GitHub Pages
-        if: success()
+      - name: Deploy main to GitHub Pages
+        if: success() && github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
           build_dir: docs/_build/html
           jekyll: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Find the PR associated with this push, if there is one.
+      - uses: jwalton/gh-find-current-pr@v1
+        if: github.event_name == 'pull_request'
+        id: findPr
+
+      - name: Prepare PR subfolder
+        if: success() && steps.findPr.outputs.number
+        env:
+          PR: ${{ steps.findPr.outputs.pr }}
+        run: |
+          git checkout gh-pages
+          rm -rf PR${PR}
+          cp -r docs/_build/html/* PR${PR}/
+          rm -rf docs/_build
+
+      - name: Deploy PR to GitHub Pages
+        if: success() && github.event_name == 'pull_request'
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: .
+          jekyll: false
+          commit_message: Deploy PR \#${{ steps.findPr.outputs.pr }} to GH Pages
+          keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

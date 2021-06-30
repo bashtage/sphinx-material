@@ -1,0 +1,23 @@
+name: openff-sphinx-theme-docs
+channels:
+  - conda-forge
+dependencies:
+  - python >= 3.7
+  - pip
+  - openff-qcsubmit
+  - numpy>=1.16
+  - pandas
+  - matplotlib
+  - numpydoc
+  - nbsphinx
+  - jupyter_client
+  - notebook
+  - nbconvert
+  - ipykernel
+  - myst-parser
+  - pandoc
+  - wheel
+  - pip:
+    - autodoc_pydantic
+    - git+https://github.com/openforcefield/openff-sphinx-theme.git@main
+
