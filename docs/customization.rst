@@ -69,7 +69,12 @@ Configuration Options
    Minify css files found in the output directory.
 ``logo_icon``
    Set the logo icon. Should be a pre-escaped html string that indicates a
-   unicode point, e.g., ``'&#xe869'`` which is used on this site.
+   unicode point, e.g., ``'&#xe869'`` which is used on this site. The code
+   point refers to the `Material Icons <https://fonts.google.com/icons>`_ font.
+   This set provides a reasonable set of utility icons. Most sites should not
+   use ``logo_icon`` and instead should set ``html_logo`` in ``conf.py`` to
+   point to a custom SVG icon. Note that ``logo_icon`` takes precedent over
+   ``html_logo`` and so it should be left empty when using ``html_logo``.
 ``master_doc``
    Include the master document at the top of the page in the breadcrumb bar.
    You must also set this to true if you want to override the rootrellink block, in which
