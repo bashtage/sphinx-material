@@ -11,3 +11,4 @@ ipykernel
 recommonmark
 sphinx_markdown_tables
 sphinx-copybutton
+readthedocs-sphinx-search
