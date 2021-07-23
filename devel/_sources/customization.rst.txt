@@ -106,6 +106,12 @@ Configuration Options
 
 Sidebars
 ========
+
+.. note::
+
+   You must *explicitly* include ``globaltoc.html`` in ``html_sidebars`` if you want
+   the toc to show up.
+
 You must set ``html_sidebars`` in order for the side bar to appear. There are
 four in the complete set.
 
