@@ -3,6 +3,7 @@
   {% set toctree_nodes = derender_toc(toctree, False) %}
   <ul class="md-nav__list">
   {%- for item in toctree_nodes recursive %}
+    {% if (theme_globaltoc_includeinternal|tobool) or not ("#" in item.href and not item.href.endswith("#")) %}
     <li class="md-nav__item">
     {% if "caption" in item %}
       <span class="md-nav__link caption">{{ item.caption }}</span>
@@ -22,6 +23,7 @@
       {%- endif %}
     {% endif %}
     </li>
+    {% endif %}
   {%- endfor %}
   </ul>
   {# TODO: Fallback to toc? #}
