@@ -601,6 +601,15 @@ from all files.  Use them like so::
 Citation usage is similar to footnote usage, but with a label that is not
 numeric or begins with ``#``.
 
+Here we take a look at some actual citations of famous papers such as [Chetty]_
+in the American Economic Review or [Silver]_ in Nature.
+
+.. [Chetty] Chetty, Raj, Nathaniel Hendren, and Lawrence F. Katz. "The effects of
+   exposure to better neighborhoods on children: New evidence from the Moving to
+   Opportunity experiment." *American Economic Review* 106.4 (2016): 855-902.
+
+.. [Silver] Silver, David, et al. "Mastering the game of Go with deep neural
+   networks and tree search." *nature* 529.7587 (2016): 484-489.
 
 Substitutions
 -------------
