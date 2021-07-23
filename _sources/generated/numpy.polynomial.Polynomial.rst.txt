@@ -1,4 +1,4 @@
-numpy.polynomial.Polynomial
+﻿numpy.polynomial.Polynomial
 ===========================
 
 .. currentmodule:: numpy.polynomial
@@ -46,7 +46,6 @@ numpy.polynomial.Polynomial
       ~Polynomial.basis_name
       ~Polynomial.domain
       ~Polynomial.maxpower
-      ~Polynomial.nickname
       ~Polynomial.window
    
    

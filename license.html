@@ -2,6 +2,8 @@
 <html lang="en">
  <head>
   <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -34,23 +36,27 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'UA-XXXXX', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXX');
   </script>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
    License — Material for Sphinx
   </title>
-  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/css/rtd_sphinx_search.min.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
   </script>
   <script src="_static/jquery.js">
@@ -59,18 +65,13 @@
   </script>
   <script src="_static/doctools.js">
   </script>
-  <script src="_static/language_data.js">
-  </script>
   <script src="_static/clipboard.min.js">
   </script>
   <script src="_static/copybutton.js">
   </script>
+  <script src="_static/js/rtd_sphinx_search.min.js">
+  </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
-  </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
   </script>
   <link href="_static/favicon.ico" rel="shortcut icon"/>
   <link href="genindex.html" rel="index" title="Index"/>
@@ -125,7 +126,7 @@
        <label class="md-search__overlay" for="__search">
        </label>
        <div class="md-search__inner" role="search">
-        <form action="search.html" class="md-search__form" method="GET" name="search">
+        <form action="search.html" class="md-search__form" method="get" name="search">
          <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
@@ -230,12 +231,14 @@
            </div>
           </a>
          </div>
-         <p class="caption">
-          <span class="caption-text">
-           Basic Use
-          </span>
-         </p>
          <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             Basic Use
+            </span>
+           </span>
+          </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="customization.html">
             Customization
@@ -260,13 +263,13 @@
             </code>
            </a>
           </li>
-         </ul>
-         <p class="caption">
-          <span class="caption-text">
-           Other Examples and Uses
-          </span>
-         </p>
-         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             Other Examples and Uses
+            </span>
+           </span>
+          </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="pymethod.html">
             Python Methods
@@ -297,13 +300,13 @@
             reStructuredText Primer
            </a>
           </li>
-         </ul>
-         <p class="caption">
-          <span class="caption-text">
-           Changes and License
-          </span>
-         </p>
-         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             Changes and License
+            </span>
+           </span>
+          </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="change-log.html">
             Change Log
@@ -351,98 +354,100 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="license--page-root">
-        License
-        <a class="headerlink" href="#license--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        Copyright (c) 2019 Kevin Sheppard &lt;
-        <a class="reference external" href="mailto:kevin.k.sheppard%40gmail.com">
-         kevin
-         <span>
-          .
-         </span>
-         k
-         <span>
-          .
-         </span>
-         sheppard
-         <span>
-          @
-         </span>
-         gmail
-         <span>
-          .
-         </span>
-         com
-        </a>
-        &gt;
-       </p>
-       <p>
-        Derived from:
-       </p>
-       <ul class="simple">
-        <li>
-         <p>
-          Material for Mkdocs: Copyright (c) 2016-2019 Martin Donath &lt;
-          <a class="reference external" href="mailto:martin.donath%40squidfunk.com">
-           martin
-           <span>
-            .
-           </span>
-           donath
-           <span>
-            @
-           </span>
-           squidfunk
-           <span>
-            .
-           </span>
-           com
-          </a>
-          &gt;
-         </p>
-        </li>
-        <li>
-         <p>
-          Guzzle Sphinx Theme: Copyright (c) 2013 Michael Dowling &lt;
-          <a class="reference external" href="mailto:mtdowling%40gmail.com">
-           mtdowling
-           <span>
-            @
-           </span>
-           gmail
-           <span>
-            .
-           </span>
-           com
-          </a>
-          &gt;
-         </p>
-        </li>
-       </ul>
-       <p>
-        Permission is hereby granted, free of charge, to any person obtaining a copy
+       <section id="license">
+        <h1 id="license--page-root">
+         License
+         <a class="headerlink" href="#license--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         Copyright (c) 2019 Kevin Sheppard &lt;
+         <a class="reference external" href="mailto:kevin.k.sheppard%40gmail.com">
+          kevin
+          <span>
+           .
+          </span>
+          k
+          <span>
+           .
+          </span>
+          sheppard
+          <span>
+           @
+          </span>
+          gmail
+          <span>
+           .
+          </span>
+          com
+         </a>
+         &gt;
+        </p>
+        <p>
+         Derived from:
+        </p>
+        <ul class="simple">
+         <li>
+          <p>
+           Material for Mkdocs: Copyright (c) 2016-2019 Martin Donath &lt;
+           <a class="reference external" href="mailto:martin.donath%40squidfunk.com">
+            martin
+            <span>
+             .
+            </span>
+            donath
+            <span>
+             @
+            </span>
+            squidfunk
+            <span>
+             .
+            </span>
+            com
+           </a>
+           &gt;
+          </p>
+         </li>
+         <li>
+          <p>
+           Guzzle Sphinx Theme: Copyright (c) 2013 Michael Dowling &lt;
+           <a class="reference external" href="mailto:mtdowling%40gmail.com">
+            mtdowling
+            <span>
+             @
+            </span>
+            gmail
+            <span>
+             .
+            </span>
+            com
+           </a>
+           &gt;
+          </p>
+         </li>
+        </ul>
+        <p>
+         Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is furnished
 to do so, subject to the following conditions:
-       </p>
-       <p>
-        The above copyright notice and this permission notice shall be included in all
+        </p>
+        <p>
+         The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-       </p>
-       <p>
-        THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        </p>
+        <p>
+         THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
 FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-       </p>
+        </p>
+       </section>
       </article>
      </div>
     </div>
@@ -474,13 +479,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Apr 28, 2020.
+              Jul 23, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.0.3.
+      4.1.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

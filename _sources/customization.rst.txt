@@ -53,7 +53,7 @@ Configuration Options
 ``theme_color``
     The theme color for mobile browsers. Hex Color without the leading #.
 ``color_primary``
-    Primary colo. Options are
+    Primary color. Options are
     red, pink, purple, deep-purple, indigo, blue, light-blue, cyan,
     teal, green, light-green, lime, yellow, amber, orange, deep-orange,
     brown, grey, blue-grey, and white.
@@ -69,7 +69,12 @@ Configuration Options
    Minify css files found in the output directory.
 ``logo_icon``
    Set the logo icon. Should be a pre-escaped html string that indicates a
-   unicode point, e.g., ``'&#xe869'`` which is used on this site.
+   unicode point, e.g., ``'&#xe869'`` which is used on this site. The code
+   point refers to the `Material Icons <https://fonts.google.com/icons>`_ font.
+   This set provides a reasonable set of utility icons. Most sites should not
+   use ``logo_icon`` and instead should set ``html_logo`` in ``conf.py`` to
+   point to a custom SVG icon. Note that ``logo_icon`` takes precedent over
+   ``html_logo`` and so it should be left empty when using ``html_logo``.
 ``master_doc``
    Include the master document at the top of the page in the breadcrumb bar.
    You must also set this to true if you want to override the rootrellink block, in which
@@ -101,6 +106,12 @@ Configuration Options
 
 Sidebars
 ========
+
+.. note::
+
+   You must *explicitly* include ``globaltoc.html`` in ``html_sidebars`` if you want
+   the toc to show up.
+
 You must set ``html_sidebars`` in order for the side bar to appear. There are
 four in the complete set.
 
@@ -214,7 +225,7 @@ located in /devel.
    dropdown in _older_ versions of the documentation to reflect additional versions
    that are released later. Changing the Javascript file changes the version dropdown
    content in all versions.  This approach is used in
-   `statsmodels <https://www.statsmodels.org/>`.
+   `statsmodels <https://www.statsmodels.org/>`_.
 
 Using ``conf.py``
 -----------------

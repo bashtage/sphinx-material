@@ -2,6 +2,8 @@
 <html lang="en">
  <head>
   <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -34,23 +36,27 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'UA-XXXXX', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXX');
   </script>
   <link href="../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
    numpy.polynomial.Polynomial.cast — Material for Sphinx
   </title>
-  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/css/rtd_sphinx_search.min.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js">
   </script>
   <script src="../../_static/jquery.js">
@@ -59,18 +65,13 @@
   </script>
   <script src="../../_static/doctools.js">
   </script>
-  <script src="../../_static/language_data.js">
-  </script>
   <script src="../../_static/clipboard.min.js">
   </script>
   <script src="../../_static/copybutton.js">
   </script>
+  <script src="../../_static/js/rtd_sphinx_search.min.js">
+  </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
-  </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
   </script>
   <link href="../../_static/favicon.ico" rel="shortcut icon"/>
   <link href="../../genindex.html" rel="index" title="Index"/>
@@ -126,7 +127,7 @@
        <label class="md-search__overlay" for="__search">
        </label>
        <div class="md-search__inner" role="search">
-        <form action="../../search.html" class="md-search__form" method="GET" name="search">
+        <form action="../../search.html" class="md-search__form" method="get" name="search">
          <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
@@ -241,12 +242,14 @@
            </div>
           </a>
          </div>
-         <p class="caption">
-          <span class="caption-text">
-           Basic Use
-          </span>
-         </p>
          <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             Basic Use
+            </span>
+           </span>
+          </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="../../customization.html">
             Customization
@@ -271,13 +274,13 @@
             </code>
            </a>
           </li>
-         </ul>
-         <p class="caption">
-          <span class="caption-text">
-           Other Examples and Uses
-          </span>
-         </p>
-         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             Other Examples and Uses
+            </span>
+           </span>
+          </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="../../pymethod.html">
             Python Methods
@@ -315,13 +318,13 @@
             reStructuredText Primer
            </a>
           </li>
-         </ul>
-         <p class="caption">
-          <span class="caption-text">
-           Changes and License
-          </span>
-         </p>
-         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             Changes and License
+            </span>
+           </span>
+          </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="../../change-log.html">
             Change Log
@@ -356,226 +359,248 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="generated-generated-numpy-polynomial-polynomial-cast--page-root">
-        numpy.polynomial.Polynomial.cast
-        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-cast--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        method
-       </p>
-       <dl class="py method">
-        <dt id="numpy.polynomial.Polynomial.cast">
-         <em class="property">
-          classmethod
-         </em>
-         <code class="sig-prename descclassname">
-          Polynomial.
-         </code>
-         <code class="sig-name descname">
-          cast
-         </code>
-         <span class="sig-paren">
-          (
-         </span>
-         <em class="sig-param">
-          <span class="n">
-           series
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           domain
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           window
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         <span class="sig-paren">
-          )
-         </span>
-         <a class="headerlink" href="#numpy.polynomial.Polynomial.cast" title="Permalink to this definition">
+       <section id="numpy-polynomial-polynomial-cast">
+        <h1 id="generated-generated-numpy-polynomial-polynomial-cast--page-root">
+         numpy.polynomial.Polynomial.cast
+         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-cast--page-root" title="Permalink to this headline">
           ¶
          </a>
-        </dt>
-        <dd>
-         <p>
-          Convert series to series of this class.
-         </p>
-         <p>
-          The
-          <cite>
-           series
-          </cite>
-          is expected to be an instance of some polynomial
+        </h1>
+        <p>
+         method
+        </p>
+        <dl class="py method">
+         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.cast">
+          <em class="property">
+           <span class="pre">
+            classmethod
+           </span>
+          </em>
+          <span class="sig-prename descclassname">
+           <span class="pre">
+            Polynomial.
+           </span>
+          </span>
+          <span class="sig-name descname">
+           <span class="pre">
+            cast
+           </span>
+          </span>
+          <span class="sig-paren">
+           (
+          </span>
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             series
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             domain
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             window
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          <span class="sig-paren">
+           )
+          </span>
+          <a class="headerlink" href="#numpy.polynomial.Polynomial.cast" title="Permalink to this definition">
+           ¶
+          </a>
+         </dt>
+         <dd>
+          <p>
+           Convert series to series of this class.
+          </p>
+          <p>
+           The
+           <cite>
+            series
+           </cite>
+           is expected to be an instance of some polynomial
 series of one of the types supported by by the numpy.polynomial
 module, but could be some other class that supports the convert
 method.
-         </p>
-         <div class="versionadded">
-          <p>
-           <span class="versionmodified added">
-            New in version 1.7.0.
-           </span>
           </p>
-         </div>
-         <dl class="field-list simple">
-          <dt class="field-odd">
-           Parameters
-          </dt>
-          <dd class="field-odd">
-           <dl class="simple">
-            <dt>
-             <strong>
-              series
-             </strong>
-             <span class="classifier">
-              series
-             </span>
-            </dt>
-            <dd>
-             <p>
-              The series instance to be converted.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              domain
-             </strong>
-             <span class="classifier">
-              {None, array_like}, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              If given, the array must be of the form
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                [beg,
-               </span>
-               <span class="pre">
-                end]
-               </span>
-              </code>
-              , where
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                beg
-               </span>
-              </code>
-              and
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                end
-               </span>
-              </code>
-              are the endpoints of the domain. If None is
+          <div class="versionadded">
+           <p>
+            <span class="versionmodified added">
+             New in version 1.7.0.
+            </span>
+           </p>
+          </div>
+          <dl class="field-list simple">
+           <dt class="field-odd">
+            Parameters
+           </dt>
+           <dd class="field-odd">
+            <dl class="simple">
+             <dt>
+              <strong>
+               series
+              </strong>
+              <span class="classifier">
+               series
+              </span>
+             </dt>
+             <dd>
+              <p>
+               The series instance to be converted.
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               domain
+              </strong>
+              <span class="classifier">
+               {None, array_like}, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               If given, the array must be of the form
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 [beg,
+                </span>
+                <span class="pre">
+                 end]
+                </span>
+               </code>
+               , where
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 beg
+                </span>
+               </code>
+               and
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 end
+                </span>
+               </code>
+               are the endpoints of the domain. If None is
 given then the class domain is used. The default is None.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              window
-             </strong>
-             <span class="classifier">
-              {None, array_like}, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              If given, the resulting array must be if the form
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                [beg,
-               </span>
-               <span class="pre">
-                end]
-               </span>
-              </code>
-              , where
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                beg
-               </span>
-              </code>
-              and
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                end
-               </span>
-              </code>
-              are the endpoints of
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               window
+              </strong>
+              <span class="classifier">
+               {None, array_like}, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               If given, the resulting array must be if the form
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 [beg,
+                </span>
+                <span class="pre">
+                 end]
+                </span>
+               </code>
+               , where
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 beg
+                </span>
+               </code>
+               and
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 end
+                </span>
+               </code>
+               are the endpoints of
 the window. If None is given then the class window is used. The
 default is None.
-             </p>
-            </dd>
-           </dl>
-          </dd>
-          <dt class="field-even">
-           Returns
-          </dt>
-          <dd class="field-even">
+              </p>
+             </dd>
+            </dl>
+           </dd>
+           <dt class="field-even">
+            Returns
+           </dt>
+           <dd class="field-even">
+            <dl class="simple">
+             <dt>
+              <strong>
+               new_series
+              </strong>
+              <span class="classifier">
+               series
+              </span>
+             </dt>
+             <dd>
+              <p>
+               A series of the same kind as the calling class and equal to
+               <cite>
+                series
+               </cite>
+               when evaluated.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <div class="admonition seealso">
+           <p class="admonition-title">
+            See also
+           </p>
            <dl class="simple">
             <dt>
-             <strong>
-              new_series
-             </strong>
-             <span class="classifier">
-              series
-             </span>
+             <a class="reference internal" href="numpy.polynomial.Polynomial.convert.html#numpy.polynomial.Polynomial.convert" title="numpy.polynomial.Polynomial.convert">
+              <code class="xref py py-obj docutils literal notranslate">
+               <span class="pre">
+                convert
+               </span>
+              </code>
+             </a>
             </dt>
             <dd>
              <p>
-              A series of the same kind as the calling class and equal to
-              <cite>
-               series
-              </cite>
-              when evaluated.
+              similar instance method
              </p>
             </dd>
            </dl>
-          </dd>
-         </dl>
-         <div class="admonition seealso">
-          <p class="admonition-title">
-           See also
-          </p>
-          <dl class="simple">
-           <dt>
-            <a class="reference internal" href="numpy.polynomial.Polynomial.convert.html#numpy.polynomial.Polynomial.convert" title="numpy.polynomial.Polynomial.convert">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               convert
-              </span>
-             </code>
-            </a>
-           </dt>
-           <dd>
-            <p>
-             similar instance method
-            </p>
-           </dd>
-          </dl>
-         </div>
-        </dd>
-       </dl>
+          </div>
+         </dd>
+        </dl>
+       </section>
       </article>
      </div>
     </div>
@@ -621,13 +646,13 @@ default is None.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Apr 28, 2020.
+              Jul 23, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.0.3.
+      4.1.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

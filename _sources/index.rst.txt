@@ -100,6 +100,7 @@ or ``theme.conf`` for more details.
     markdown.md
     rst-cheatsheet/rst-cheatsheet
     basics
+    titleless
 
 .. toctree::
     :caption: Changes and License
