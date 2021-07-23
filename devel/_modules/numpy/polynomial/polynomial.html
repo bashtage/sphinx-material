@@ -35,22 +35,25 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../../../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'UA-XXXXX', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXX');
   </script>
   <link href="../../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
    numpy.polynomial.polynomial — Material for Sphinx
   </title>
-  <link href="../../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js">
   </script>
@@ -60,18 +63,11 @@
   </script>
   <script src="../../../_static/doctools.js">
   </script>
-  <script src="../../../_static/language_data.js">
-  </script>
   <script src="../../../_static/clipboard.min.js">
   </script>
   <script src="../../../_static/copybutton.js">
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
-  </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
   </script>
   <link href="../../../_static/favicon.ico" rel="shortcut icon"/>
   <link href="../../../genindex.html" rel="index" title="Index"/>
@@ -346,7 +342,9 @@
        <div class="highlight">
         <pre>
 <span></span><span class="sd">"""</span>
-<span class="sd">Objects for dealing with polynomials.</span>
+<span class="sd">=================================================</span>
+<span class="sd">Power Series (:mod:`numpy.polynomial.polynomial`)</span>
+<span class="sd">=================================================</span>
 
 <span class="sd">This module provides a number of objects (mostly functions) useful for</span>
 <span class="sd">dealing with polynomials, including a `Polynomial` class that</span>
@@ -354,56 +352,69 @@
 <span class="sd">on how this module represents and works with polynomial objects is in</span>
 <span class="sd">the docstring for its "parent" sub-package, `numpy.polynomial`).</span>
 
+<span class="sd">Classes</span>
+<span class="sd">-------</span>
+<span class="sd">.. autosummary::</span>
+<span class="sd">   :toctree: generated/</span>
+
+<span class="sd">   Polynomial</span>
+
 <span class="sd">Constants</span>
 <span class="sd">---------</span>
-<span class="sd">- `polydomain` -- Polynomial default domain, [-1,1].</span>
-<span class="sd">- `polyzero` -- (Coefficients of the) "zero polynomial."</span>
-<span class="sd">- `polyone` -- (Coefficients of the) constant polynomial 1.</span>
-<span class="sd">- `polyx` -- (Coefficients of the) identity map polynomial, ``f(x) = x``.</span>
+<span class="sd">.. autosummary::</span>
+<span class="sd">   :toctree: generated/</span>
+
+<span class="sd">   polydomain</span>
+<span class="sd">   polyzero</span>
+<span class="sd">   polyone</span>
+<span class="sd">   polyx</span>
 
 <span class="sd">Arithmetic</span>
 <span class="sd">----------</span>
-<span class="sd">- `polyadd` -- add two polynomials.</span>
-<span class="sd">- `polysub` -- subtract one polynomial from another.</span>
-<span class="sd">- `polymulx` -- multiply a polynomial in ``P_i(x)`` by ``x``.</span>
-<span class="sd">- `polymul` -- multiply two polynomials.</span>
-<span class="sd">- `polydiv` -- divide one polynomial by another.</span>
-<span class="sd">- `polypow` -- raise a polynomial to a positive integer power.</span>
-<span class="sd">- `polyval` -- evaluate a polynomial at given points.</span>
-<span class="sd">- `polyval2d` -- evaluate a 2D polynomial at given points.</span>
-<span class="sd">- `polyval3d` -- evaluate a 3D polynomial at given points.</span>
-<span class="sd">- `polygrid2d` -- evaluate a 2D polynomial on a Cartesian product.</span>
-<span class="sd">- `polygrid3d` -- evaluate a 3D polynomial on a Cartesian product.</span>
+<span class="sd">.. autosummary::</span>
+<span class="sd">   :toctree: generated/</span>
+
+<span class="sd">   polyadd</span>
+<span class="sd">   polysub</span>
+<span class="sd">   polymulx</span>
+<span class="sd">   polymul</span>
+<span class="sd">   polydiv</span>
+<span class="sd">   polypow</span>
+<span class="sd">   polyval</span>
+<span class="sd">   polyval2d</span>
+<span class="sd">   polyval3d</span>
+<span class="sd">   polygrid2d</span>
+<span class="sd">   polygrid3d</span>
 
 <span class="sd">Calculus</span>
 <span class="sd">--------</span>
-<span class="sd">- `polyder` -- differentiate a polynomial.</span>
-<span class="sd">- `polyint` -- integrate a polynomial.</span>
+<span class="sd">.. autosummary::</span>
+<span class="sd">   :toctree: generated/</span>
+
+<span class="sd">   polyder</span>
+<span class="sd">   polyint</span>
 
 <span class="sd">Misc Functions</span>
 <span class="sd">--------------</span>
-<span class="sd">- `polyfromroots` -- create a polynomial with specified roots.</span>
-<span class="sd">- `polyroots` -- find the roots of a polynomial.</span>
-<span class="sd">- `polyvalfromroots` -- evaluate a polynomial at given points from roots.</span>
-<span class="sd">- `polyvander` -- Vandermonde-like matrix for powers.</span>
-<span class="sd">- `polyvander2d` -- Vandermonde-like matrix for 2D power series.</span>
-<span class="sd">- `polyvander3d` -- Vandermonde-like matrix for 3D power series.</span>
-<span class="sd">- `polycompanion` -- companion matrix in power series form.</span>
-<span class="sd">- `polyfit` -- least-squares fit returning a polynomial.</span>
-<span class="sd">- `polytrim` -- trim leading coefficients from a polynomial.</span>
-<span class="sd">- `polyline` -- polynomial representing given straight line.</span>
+<span class="sd">.. autosummary::</span>
+<span class="sd">   :toctree: generated/</span>
 
-<span class="sd">Classes</span>
-<span class="sd">-------</span>
-<span class="sd">- `Polynomial` -- polynomial class.</span>
+<span class="sd">   polyfromroots</span>
+<span class="sd">   polyroots</span>
+<span class="sd">   polyvalfromroots</span>
+<span class="sd">   polyvander</span>
+<span class="sd">   polyvander2d</span>
+<span class="sd">   polyvander3d</span>
+<span class="sd">   polycompanion</span>
+<span class="sd">   polyfit</span>
+<span class="sd">   polytrim</span>
+<span class="sd">   polyline</span>
 
 <span class="sd">See Also</span>
 <span class="sd">--------</span>
 <span class="sd">`numpy.polynomial`</span>
 
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
-
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">'polyzero'</span><span class="p">,</span> <span class="s1">'polyone'</span><span class="p">,</span> <span class="s1">'polyx'</span><span class="p">,</span> <span class="s1">'polydomain'</span><span class="p">,</span> <span class="s1">'polyline'</span><span class="p">,</span> <span class="s1">'polyadd'</span><span class="p">,</span>
     <span class="s1">'polysub'</span><span class="p">,</span> <span class="s1">'polymulx'</span><span class="p">,</span> <span class="s1">'polymul'</span><span class="p">,</span> <span class="s1">'polydiv'</span><span class="p">,</span> <span class="s1">'polypow'</span><span class="p">,</span> <span class="s1">'polyval'</span><span class="p">,</span>
@@ -411,7 +422,6 @@
     <span class="s1">'polyfit'</span><span class="p">,</span> <span class="s1">'polytrim'</span><span class="p">,</span> <span class="s1">'polyroots'</span><span class="p">,</span> <span class="s1">'Polynomial'</span><span class="p">,</span> <span class="s1">'polyval2d'</span><span class="p">,</span> <span class="s1">'polyval3d'</span><span class="p">,</span>
     <span class="s1">'polygrid2d'</span><span class="p">,</span> <span class="s1">'polygrid3d'</span><span class="p">,</span> <span class="s1">'polyvander2d'</span><span class="p">,</span> <span class="s1">'polyvander3d'</span><span class="p">]</span>
 
-<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">from</span> <span class="nn">numpy.core.multiarray</span> <span class="kn">import</span> <span class="n">normalize_axis_index</span>
@@ -460,7 +470,11 @@
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    chebline</span>
+<span class="sd">    numpy.polynomial.chebyshev.chebline</span>
+<span class="sd">    numpy.polynomial.legendre.legline</span>
+<span class="sd">    numpy.polynomial.laguerre.lagline</span>
+<span class="sd">    numpy.polynomial.hermite.hermline</span>
+<span class="sd">    numpy.polynomial.hermite_e.hermeline</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -485,7 +499,7 @@
 
 <span class="sd">    .. math:: p(x) = (x - r_0) * (x - r_1) * ... * (x - r_n),</span>
 
-<span class="sd">    where the `r_n` are the roots specified in `roots`.  If a zero has</span>
+<span class="sd">    where the ``r_n`` are the roots specified in `roots`.  If a zero has</span>
 <span class="sd">    multiplicity n, then it must appear in `roots` n times. For instance,</span>
 <span class="sd">    if 2 is a root of multiplicity three and 3 is a root of multiplicity 2,</span>
 <span class="sd">    then `roots` looks something like [2, 2, 2, 3, 3]. The roots can appear</span>
@@ -512,17 +526,20 @@
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    chebfromroots, legfromroots, lagfromroots, hermfromroots</span>
-<span class="sd">    hermefromroots</span>
+<span class="sd">    numpy.polynomial.chebyshev.chebfromroots</span>
+<span class="sd">    numpy.polynomial.legendre.legfromroots</span>
+<span class="sd">    numpy.polynomial.laguerre.lagfromroots</span>
+<span class="sd">    numpy.polynomial.hermite.hermfromroots</span>
+<span class="sd">    numpy.polynomial.hermite_e.hermefromroots</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    The coefficients are determined by multiplying together linear factors</span>
-<span class="sd">    of the form `(x - r_i)`, i.e.</span>
+<span class="sd">    of the form ``(x - r_i)``, i.e.</span>
 
 <span class="sd">    .. math:: p(x) = (x - r_0) (x - r_1) ... (x - r_n)</span>
 
-<span class="sd">    where ``n == len(roots) - 1``; note that this implies that `1` is always</span>
+<span class="sd">    where ``n == len(roots) - 1``; note that this implies that ``1`` is always</span>
 <span class="sd">    returned for :math:`a_n`.</span>
 
 <span class="sd">    Examples</span>
@@ -838,7 +855,7 @@
 <span class="sd">    array([  6.,  24.])</span>
 
 <span class="sd">    """</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="s1">'?bBhHiIlLqQpP'</span><span class="p">:</span>
         <span class="c1"># astype fails with NA</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mf">0.0</span>
@@ -946,7 +963,7 @@
 <span class="sd">    array([ 0., -2., -2., -2.])</span>
 
 <span class="sd">    """</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="s1">'?bBhHiIlLqQpP'</span><span class="p">:</span>
         <span class="c1"># astype doesn't preserve mask attribute.</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mf">0.0</span>
@@ -1068,7 +1085,7 @@
 <span class="sd">    array([2.,  7.])</span>
 
 <span class="sd">    """</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="s1">'?bBhHiIlLqQpP'</span><span class="p">:</span>
         <span class="c1"># astype fails with NA</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mf">0.0</span>
@@ -1158,7 +1175,7 @@
 <span class="sd">    &gt;&gt;&gt; polyvalfromroots(b, r, tensor=False)</span>
 <span class="sd">    array([-0.,  0.])</span>
 <span class="sd">    """</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="s1">'?bBhHiIlLqQpP'</span><span class="p">:</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
@@ -1423,7 +1440,7 @@
     <span class="k">if</span> <span class="n">ideg</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"deg must be non-negative"</span><span class="p">)</span>
 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.0</span>
     <span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="n">ideg</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">dtyp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtyp</span><span class="p">)</span>
@@ -1480,7 +1497,7 @@
 <span class="sd">    polyvander, polyvander3d, polyval2d, polyval3d</span>
 
 <span class="sd">    """</span>
-    <span class="k">return</span> <span class="n">pu</span><span class="o">.</span><span class="n">_vander2d</span><span class="p">(</span><span class="n">polyvander</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pu</span><span class="o">.</span><span class="n">_vander_nd_flat</span><span class="p">((</span><span class="n">polyvander</span><span class="p">,</span> <span class="n">polyvander</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">deg</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">polyvander3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">deg</span><span class="p">):</span>
@@ -1534,7 +1551,7 @@
 <span class="sd">    .. versionadded:: 1.7.0</span>
 
 <span class="sd">    """</span>
-    <span class="k">return</span> <span class="n">pu</span><span class="o">.</span><span class="n">_vander3d</span><span class="p">(</span><span class="n">polyvander</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pu</span><span class="o">.</span><span class="n">_vander_nd_flat</span><span class="p">((</span><span class="n">polyvander</span><span class="p">,</span> <span class="n">polyvander</span><span class="p">,</span> <span class="n">polyvander</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="n">deg</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1579,7 +1596,7 @@
 <span class="sd">        to solve the fit's matrix equation) is also returned.</span>
 <span class="sd">    w : array_like, shape (`M`,), optional</span>
 <span class="sd">        Weights. If not None, the contribution of each point</span>
-<span class="sd">        ``(x[i],y[i])`` to the fit is weighted by `w[i]`. Ideally the</span>
+<span class="sd">        ``(x[i],y[i])`` to the fit is weighted by ``w[i]``. Ideally the</span>
 <span class="sd">        weights are chosen so that the errors of the products ``w[i]*y[i]``</span>
 <span class="sd">        all have the same variance.  The default value is None.</span>
 
@@ -1600,7 +1617,7 @@
 <span class="sd">        sv -- singular values of the scaled Vandermonde matrix</span>
 <span class="sd">        rcond -- value of `rcond`.</span>
 
-<span class="sd">        For more details, see `linalg.lstsq`.</span>
+<span class="sd">        For more details, see `numpy.linalg.lstsq`.</span>
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
@@ -1614,10 +1631,14 @@
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    chebfit, legfit, lagfit, hermfit, hermefit</span>
+<span class="sd">    numpy.polynomial.chebyshev.chebfit</span>
+<span class="sd">    numpy.polynomial.legendre.legfit</span>
+<span class="sd">    numpy.polynomial.laguerre.lagfit</span>
+<span class="sd">    numpy.polynomial.hermite.hermfit</span>
+<span class="sd">    numpy.polynomial.hermite_e.hermefit</span>
 <span class="sd">    polyval : Evaluates a polynomial.</span>
 <span class="sd">    polyvander : Vandermonde matrix for powers.</span>
-<span class="sd">    linalg.lstsq : Computes a least-squares fit from the matrix.</span>
+<span class="sd">    numpy.linalg.lstsq : Computes a least-squares fit from the matrix.</span>
 <span class="sd">    scipy.interpolate.UnivariateSpline : Computes spline fits.</span>
 
 <span class="sd">    Notes</span>
@@ -1744,7 +1765,11 @@
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    chebroots</span>
+<span class="sd">    numpy.polynomial.chebyshev.chebroots</span>
+<span class="sd">    numpy.polynomial.legendre.legroots</span>
+<span class="sd">    numpy.polynomial.laguerre.lagroots</span>
+<span class="sd">    numpy.polynomial.hermite.hermroots</span>
+<span class="sd">    numpy.polynomial.hermite_e.hermeroots</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -1823,21 +1848,28 @@
     <span class="n">_fromroots</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">polyfromroots</span><span class="p">)</span>
 
     <span class="c1"># Virtual properties</span>
-    <span class="n">nickname</span> <span class="o">=</span> <span class="s1">'poly'</span>
     <span class="n">domain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">polydomain</span><span class="p">)</span>
     <span class="n">window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">polydomain</span><span class="p">)</span>
     <span class="n">basis_name</span> <span class="o">=</span> <span class="kc">None</span>
 
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_str_term_unicode</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"·</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}{</span><span class="n">i</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_superscript_mapping</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_str_term_ascii</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">**</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span>
+
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_repr_latex_term</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">,</span> <span class="n">needs_parens</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">needs_parens</span><span class="p">:</span>
-            <span class="n">arg_str</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'\left(</span><span class="si">{}</span><span class="s1">\right)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg_str</span><span class="p">)</span>
+            <span class="n">arg_str</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">"\left(</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">\right)"</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">'1'</span>
         <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">arg_str</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">^{{</span><span class="si">{}</span><span class="s1">}}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg_str</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span></div>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">^</span><span class="se">{{</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="se">}}</span><span class="s2">"</span></div>
 </pre>
        </div>
       </article>
@@ -1857,13 +1889,13 @@
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 14, 2020.
+              Jul 23, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.2.1.
+      4.1.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

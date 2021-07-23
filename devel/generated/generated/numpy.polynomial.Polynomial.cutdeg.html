@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -35,22 +36,25 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'UA-XXXXX', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXX');
   </script>
   <link href="../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
    numpy.polynomial.Polynomial.cutdeg — Material for Sphinx
   </title>
-  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js">
   </script>
@@ -60,18 +64,11 @@
   </script>
   <script src="../../_static/doctools.js">
   </script>
-  <script src="../../_static/language_data.js">
-  </script>
   <script src="../../_static/clipboard.min.js">
   </script>
   <script src="../../_static/copybutton.js">
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
-  </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
   </script>
   <link href="../../_static/favicon.ico" rel="shortcut icon"/>
   <link href="../../genindex.html" rel="index" title="Index"/>
@@ -359,117 +356,125 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="generated-generated-numpy-polynomial-polynomial-cutdeg--page-root">
-        numpy.polynomial.Polynomial.cutdeg
-        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-cutdeg--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        method
-       </p>
-       <dl class="py method">
-        <dt id="numpy.polynomial.Polynomial.cutdeg">
-         <code class="sig-prename descclassname">
-          Polynomial.
-         </code>
-         <code class="sig-name descname">
-          cutdeg
-         </code>
-         <span class="sig-paren">
-          (
-         </span>
-         <em class="sig-param">
-          <span class="n">
-           deg
-          </span>
-         </em>
-         <span class="sig-paren">
-          )
-         </span>
-         <a class="headerlink" href="#numpy.polynomial.Polynomial.cutdeg" title="Permalink to this definition">
+       <section id="numpy-polynomial-polynomial-cutdeg">
+        <h1 id="generated-generated-numpy-polynomial-polynomial-cutdeg--page-root">
+         numpy.polynomial.Polynomial.cutdeg
+         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-cutdeg--page-root" title="Permalink to this headline">
           ¶
          </a>
-        </dt>
-        <dd>
-         <p>
-          Truncate series to the given degree.
-         </p>
-         <p>
-          Reduce the degree of the series to
-          <cite>
-           deg
-          </cite>
-          by discarding the
+        </h1>
+        <p>
+         method
+        </p>
+        <dl class="py method">
+         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.cutdeg">
+          <span class="sig-prename descclassname">
+           <span class="pre">
+            Polynomial.
+           </span>
+          </span>
+          <span class="sig-name descname">
+           <span class="pre">
+            cutdeg
+           </span>
+          </span>
+          <span class="sig-paren">
+           (
+          </span>
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             deg
+            </span>
+           </span>
+          </em>
+          <span class="sig-paren">
+           )
+          </span>
+          <a class="headerlink" href="#numpy.polynomial.Polynomial.cutdeg" title="Permalink to this definition">
+           ¶
+          </a>
+         </dt>
+         <dd>
+          <p>
+           Truncate series to the given degree.
+          </p>
+          <p>
+           Reduce the degree of the series to
+           <cite>
+            deg
+           </cite>
+           by discarding the
 high order terms. If
-          <cite>
-           deg
-          </cite>
-          is greater than the current degree a
+           <cite>
+            deg
+           </cite>
+           is greater than the current degree a
 copy of the current series is returned. This can be useful in least
 squares where the coefficients of the high degree terms may be very
 small.
-         </p>
-         <div class="versionadded">
-          <p>
-           <span class="versionmodified added">
-            New in version 1.5.0.
-           </span>
           </p>
-         </div>
-         <dl class="field-list simple">
-          <dt class="field-odd">
-           Parameters
-          </dt>
-          <dd class="field-odd">
-           <dl class="simple">
-            <dt>
-             <strong>
-              deg
-             </strong>
-             <span class="classifier">
-              non-negative int
-             </span>
-            </dt>
-            <dd>
-             <p>
-              The series is reduced to degree
-              <cite>
+          <div class="versionadded">
+           <p>
+            <span class="versionmodified added">
+             New in version 1.5.0.
+            </span>
+           </p>
+          </div>
+          <dl class="field-list simple">
+           <dt class="field-odd">
+            Parameters
+           </dt>
+           <dd class="field-odd">
+            <dl class="simple">
+             <dt>
+              <strong>
                deg
-              </cite>
-              by discarding the high
+              </strong>
+              <span class="classifier">
+               non-negative int
+              </span>
+             </dt>
+             <dd>
+              <p>
+               The series is reduced to degree
+               <cite>
+                deg
+               </cite>
+               by discarding the high
 order terms. The value of
-              <cite>
-               deg
-              </cite>
-              must be a non-negative integer.
-             </p>
-            </dd>
-           </dl>
-          </dd>
-          <dt class="field-even">
-           Returns
-          </dt>
-          <dd class="field-even">
-           <dl class="simple">
-            <dt>
-             <strong>
-              new_series
-             </strong>
-             <span class="classifier">
-              series
-             </span>
-            </dt>
-            <dd>
-             <p>
-              New instance of series with reduced degree.
-             </p>
-            </dd>
-           </dl>
-          </dd>
-         </dl>
-        </dd>
-       </dl>
+               <cite>
+                deg
+               </cite>
+               must be a non-negative integer.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+           <dt class="field-even">
+            Returns
+           </dt>
+           <dd class="field-even">
+            <dl class="simple">
+             <dt>
+              <strong>
+               new_series
+              </strong>
+              <span class="classifier">
+               series
+              </span>
+             </dt>
+             <dd>
+              <p>
+               New instance of series with reduced degree.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+         </dd>
+        </dl>
+       </section>
       </article>
      </div>
     </div>
@@ -515,13 +520,13 @@ order terms. The value of
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 14, 2020.
+              Jul 23, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.2.1.
+      4.1.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -35,22 +36,25 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'UA-XXXXX', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXX');
   </script>
   <link href="../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
    numpy.polynomial.Polynomial.convert — Material for Sphinx
   </title>
-  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js">
   </script>
@@ -60,18 +64,11 @@
   </script>
   <script src="../../_static/doctools.js">
   </script>
-  <script src="../../_static/language_data.js">
-  </script>
   <script src="../../_static/clipboard.min.js">
   </script>
   <script src="../../_static/copybutton.js">
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
-  </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
   </script>
   <link href="../../_static/favicon.ico" rel="shortcut icon"/>
   <link href="../../genindex.html" rel="index" title="Index"/>
@@ -359,163 +356,187 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="generated-generated-numpy-polynomial-polynomial-convert--page-root">
-        numpy.polynomial.Polynomial.convert
-        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-convert--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        method
-       </p>
-       <dl class="py method">
-        <dt id="numpy.polynomial.Polynomial.convert">
-         <code class="sig-prename descclassname">
-          Polynomial.
-         </code>
-         <code class="sig-name descname">
-          convert
-         </code>
-         <span class="sig-paren">
-          (
-         </span>
-         <em class="sig-param">
-          <span class="n">
-           domain
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           kind
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           window
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         <span class="sig-paren">
-          )
-         </span>
-         <a class="headerlink" href="#numpy.polynomial.Polynomial.convert" title="Permalink to this definition">
+       <section id="numpy-polynomial-polynomial-convert">
+        <h1 id="generated-generated-numpy-polynomial-polynomial-convert--page-root">
+         numpy.polynomial.Polynomial.convert
+         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-convert--page-root" title="Permalink to this headline">
           ¶
          </a>
-        </dt>
-        <dd>
-         <p>
-          Convert series to a different kind and/or domain and/or window.
-         </p>
-         <dl class="field-list simple">
-          <dt class="field-odd">
-           Parameters
-          </dt>
-          <dd class="field-odd">
-           <dl class="simple">
-            <dt>
-             <strong>
-              domain
-             </strong>
-             <span class="classifier">
-              array_like, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              The domain of the converted series. If the value is None,
+        </h1>
+        <p>
+         method
+        </p>
+        <dl class="py method">
+         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.convert">
+          <span class="sig-prename descclassname">
+           <span class="pre">
+            Polynomial.
+           </span>
+          </span>
+          <span class="sig-name descname">
+           <span class="pre">
+            convert
+           </span>
+          </span>
+          <span class="sig-paren">
+           (
+          </span>
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             domain
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             kind
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             window
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          <span class="sig-paren">
+           )
+          </span>
+          <a class="headerlink" href="#numpy.polynomial.Polynomial.convert" title="Permalink to this definition">
+           ¶
+          </a>
+         </dt>
+         <dd>
+          <p>
+           Convert series to a different kind and/or domain and/or window.
+          </p>
+          <dl class="field-list simple">
+           <dt class="field-odd">
+            Parameters
+           </dt>
+           <dd class="field-odd">
+            <dl class="simple">
+             <dt>
+              <strong>
+               domain
+              </strong>
+              <span class="classifier">
+               array_like, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               The domain of the converted series. If the value is None,
 the default domain of
-              <cite>
+               <cite>
+                kind
+               </cite>
+               is used.
+              </p>
+             </dd>
+             <dt>
+              <strong>
                kind
-              </cite>
-              is used.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              kind
-             </strong>
-             <span class="classifier">
-              class, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              The polynomial series type class to which the current instance
+              </strong>
+              <span class="classifier">
+               class, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               The polynomial series type class to which the current instance
 should be converted. If kind is None, then the class of the
 current instance is used.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              window
-             </strong>
-             <span class="classifier">
-              array_like, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              The window of the converted series. If the value is None,
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               window
+              </strong>
+              <span class="classifier">
+               array_like, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               The window of the converted series. If the value is None,
 the default window of
-              <cite>
-               kind
-              </cite>
-              is used.
-             </p>
-            </dd>
-           </dl>
-          </dd>
-          <dt class="field-even">
-           Returns
-          </dt>
-          <dd class="field-even">
-           <dl class="simple">
-            <dt>
-             <strong>
-              new_series
-             </strong>
-             <span class="classifier">
-              series
-             </span>
-            </dt>
-            <dd>
-             <p>
-              The returned class can be of different type than the current
+               <cite>
+                kind
+               </cite>
+               is used.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+           <dt class="field-even">
+            Returns
+           </dt>
+           <dd class="field-even">
+            <dl class="simple">
+             <dt>
+              <strong>
+               new_series
+              </strong>
+              <span class="classifier">
+               series
+              </span>
+             </dt>
+             <dd>
+              <p>
+               The returned class can be of different type than the current
 instance and/or have a different domain and/or different
 window.
-             </p>
-            </dd>
-           </dl>
-          </dd>
-         </dl>
-         <p class="rubric">
-          Notes
-         </p>
-         <p>
-          Conversion between domains and class types can result in
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <p class="rubric">
+           Notes
+          </p>
+          <p>
+           Conversion between domains and class types can result in
 numerically ill defined series.
-         </p>
-        </dd>
-       </dl>
+          </p>
+         </dd>
+        </dl>
+       </section>
       </article>
      </div>
     </div>
@@ -561,13 +582,13 @@ numerically ill defined series.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 14, 2020.
+              Jul 23, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.2.1.
+      4.1.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

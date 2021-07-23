@@ -46,7 +46,6 @@
       ~Polynomial.basis_name
       ~Polynomial.domain
       ~Polynomial.maxpower
-      ~Polynomial.nickname
       ~Polynomial.window
    
    

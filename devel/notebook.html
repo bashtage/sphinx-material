@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -35,22 +36,25 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'UA-XXXXX', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXX');
   </script>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
    Jupyter Notebooks — Material for Sphinx
   </title>
-  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
   </script>
@@ -60,18 +64,16 @@
   </script>
   <script src="_static/doctools.js">
   </script>
-  <script src="_static/language_data.js">
-  </script>
   <script src="_static/clipboard.min.js">
   </script>
   <script src="_static/copybutton.js">
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
   </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
+  <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
+  <script>
+   window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}
   </script>
   <link href="_static/favicon.ico" rel="shortcut icon"/>
   <link href="genindex.html" rel="index" title="Index"/>
@@ -430,21 +432,35 @@
         /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -545,7 +561,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -611,6 +627,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -658,60 +675,64 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
        </style>
-       <h1 id="notebook--page-root">
-        Jupyter Notebooks
-        <a class="headerlink" href="#notebook--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        The
-        <a class="reference external" href="https://github.com/spatialaudio/nbsphinx">
-         nbsphinx extension
-        </a>
-        allow notebooks to be seemlessly integrated into a Sphinx website. This page demonstrates how notebooks are rendered.
-       </p>
-       <h2 id="Mathematics">
-        Mathematics
-        <a class="headerlink" href="#Mathematics" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        <a class="reference external" href="https://www.mathjax.org">
-         MathJax
-        </a>
-        can use used to render mathematical equations. Equations can be rendered either in their own line using double dollar signs
-       </p>
-       <div class="math notranslate nohighlight">
-        \[y_{it} = \alpha_i + \gamma_t + \beta x_{it} + \epsilon_{it}\]
-       </div>
-       <p>
-        or inline using single dollar signs (
-        <span class="math notranslate nohighlight">
-         \(\LaTeX\)
-        </span>
-        ).
-       </p>
-       <h2 id="DataFrames">
-        DataFrames
-        <a class="headerlink" href="#DataFrames" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        pandas DataFrames are rendered with useful markup.
-       </p>
-       <div class="nbinput docutils container">
-        <div class="prompt highlight-none notranslate">
-         <div class="highlight">
-          <pre><span></span>[1]:
-</pre>
+       <section id="Jupyter-Notebooks">
+        <h1 id="notebook--page-root">
+         Jupyter Notebooks
+         <a class="headerlink" href="#notebook--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         The
+         <a class="reference external" href="https://github.com/spatialaudio/nbsphinx">
+          nbsphinx extension
+         </a>
+         allow notebooks to be seemlessly integrated into a Sphinx website. This page demonstrates how notebooks are rendered.
+        </p>
+        <section id="Mathematics">
+         <h2 id="Mathematics">
+          Mathematics
+          <a class="headerlink" href="#Mathematics" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          <a class="reference external" href="https://www.mathjax.org">
+           MathJax
+          </a>
+          can use used to render mathematical equations. Equations can be rendered either in their own line using double dollar signs
+         </p>
+         <div class="math notranslate nohighlight">
+          \[y_{it} = \alpha_i + \gamma_t + \beta x_{it} + \epsilon_{it}\]
          </div>
-        </div>
-        <div class="input_area highlight-ipython3 notranslate">
-         <div class="highlight">
-          <pre>
+         <p>
+          or inline using single dollar signs (
+          <span class="math notranslate nohighlight">
+           \(\LaTeX\)
+          </span>
+          ).
+         </p>
+        </section>
+        <section id="DataFrames">
+         <h2 id="DataFrames">
+          DataFrames
+          <a class="headerlink" href="#DataFrames" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          pandas DataFrames are rendered with useful markup.
+         </p>
+         <div class="nbinput docutils container">
+          <div class="prompt highlight-none notranslate">
+           <div class="highlight">
+            <pre><span></span>[1]:
+</pre>
+           </div>
+          </div>
+          <div class="input_area highlight-ipython3 notranslate">
+           <div class="highlight">
+            <pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -721,20 +742,20 @@ div.rendered_html tbody tr:hover {
 
 <span class="n">df</span>
 </pre>
+           </div>
+          </div>
          </div>
-        </div>
-       </div>
-       <div class="nboutput nblast docutils container">
-        <div class="prompt highlight-none notranslate">
-         <div class="highlight">
-          <pre><span></span>[1]:
+         <div class="nboutput nblast docutils container">
+          <div class="prompt highlight-none notranslate">
+           <div class="highlight">
+            <pre><span></span>[1]:
 </pre>
-         </div>
-        </div>
-        <div class="output_area rendered_html docutils container">
-         <div>
-          <style scoped="">
-           .dataframe tbody tr th:only-of-type {
+           </div>
+          </div>
+          <div class="output_area rendered_html docutils container">
+           <div>
+            <style scoped="">
+             .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
 
@@ -745,97 +766,99 @@ div.rendered_html tbody tr:hover {
     .dataframe thead th {
         text-align: right;
     }
-          </style>
-          <table border="1" class="dataframe">
-           <thead>
-            <tr style="text-align: right;">
-             <th>
-             </th>
-             <th>
-              ints
-             </th>
-             <th>
-              floats
-             </th>
-             <th>
-              strings
-             </th>
-            </tr>
-           </thead>
-           <tbody>
-            <tr>
-             <th>
-              0
-             </th>
-             <td>
-              1
-             </td>
-             <td>
-              3.141593
-             </td>
-             <td>
-              aardvark
-             </td>
-            </tr>
-            <tr>
-             <th>
-              1
-             </th>
-             <td>
-              2
-             </td>
-             <td>
-              2.718282
-             </td>
-             <td>
-              bananarama
-             </td>
-            </tr>
-            <tr>
-             <th>
-              2
-             </th>
-             <td>
-              3
-             </td>
-             <td>
-              1.618034
-             </td>
-             <td>
-              charcuterie
-             </td>
-            </tr>
-           </tbody>
-          </table>
+            </style>
+            <table border="1" class="dataframe">
+             <thead>
+              <tr style="text-align: right;">
+               <th>
+               </th>
+               <th>
+                ints
+               </th>
+               <th>
+                floats
+               </th>
+               <th>
+                strings
+               </th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <th>
+                0
+               </th>
+               <td>
+                1
+               </td>
+               <td>
+                3.141593
+               </td>
+               <td>
+                aardvark
+               </td>
+              </tr>
+              <tr>
+               <th>
+                1
+               </th>
+               <td>
+                2
+               </td>
+               <td>
+                2.718282
+               </td>
+               <td>
+                bananarama
+               </td>
+              </tr>
+              <tr>
+               <th>
+                2
+               </th>
+               <td>
+                3
+               </td>
+               <td>
+                1.618034
+               </td>
+               <td>
+                charcuterie
+               </td>
+              </tr>
+             </tbody>
+            </table>
+           </div>
+          </div>
          </div>
-        </div>
-       </div>
-       <h2 id="Plots-and-Figures">
-        Plots and Figures
-        <a class="headerlink" href="#Plots-and-Figures" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        matplotlib can be used to produce plots in notebooks
-       </p>
-       <p>
-        This example comes from the
-        <a class="reference external" href="https://matplotlib.org/3.1.1/gallery/ticks_and_spines/colorbar_tick_labelling_demo.html#sphx-glr-gallery-ticks-and-spines-colorbar-tick-labelling-demo-py">
-         matplotlib gallery
-        </a>
-        .
-       </p>
-       <div class="nbinput docutils container">
-        <div class="prompt highlight-none notranslate">
-         <div class="highlight">
-          <pre><span></span>[2]:
+        </section>
+        <section id="Plots-and-Figures">
+         <h2 id="Plots-and-Figures">
+          Plots and Figures
+          <a class="headerlink" href="#Plots-and-Figures" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          matplotlib can be used to produce plots in notebooks
+         </p>
+         <p>
+          This example comes from the
+          <a class="reference external" href="https://matplotlib.org/3.1.1/gallery/ticks_and_spines/colorbar_tick_labelling_demo.html#sphx-glr-gallery-ticks-and-spines-colorbar-tick-labelling-demo-py">
+           matplotlib gallery
+          </a>
+          .
+         </p>
+         <div class="nbinput docutils container">
+          <div class="prompt highlight-none notranslate">
+           <div class="highlight">
+            <pre><span></span>[2]:
 </pre>
-         </div>
-        </div>
-        <div class="input_area highlight-ipython3 notranslate">
-         <div class="highlight">
-          <pre>
+           </div>
+          </div>
+          <div class="input_area highlight-ipython3 notranslate">
+           <div class="highlight">
+            <pre>
 <span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -855,16 +878,18 @@ div.rendered_html tbody tr:hover {
 <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">'&lt; -1'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="s1">'&gt; 1'</span><span class="p">])</span>  <span class="c1"># vertically oriented colorbar</span>
 <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre>
+           </div>
+          </div>
          </div>
-        </div>
-       </div>
-       <div class="nboutput nblast docutils container">
-        <div class="prompt empty docutils container">
-        </div>
-        <div class="output_area docutils container">
-         <img alt="_images/notebook_5_0.png" src="_images/notebook_5_0.png"/>
-        </div>
-       </div>
+         <div class="nboutput nblast docutils container">
+          <div class="prompt empty docutils container">
+          </div>
+          <div class="output_area docutils container">
+           <img alt="_images/notebook_5_0.png" src="_images/notebook_5_0.png"/>
+          </div>
+         </div>
+        </section>
+       </section>
       </article>
      </div>
     </div>
@@ -910,13 +935,13 @@ div.rendered_html tbody tr:hover {
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 14, 2020.
+              Jul 23, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.2.1.
+      4.1.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

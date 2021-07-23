@@ -51,7 +51,7 @@
   </script>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
-   Material for Sphinx — Material for Sphinx
+   &lt;no title&gt; — Material for Sphinx
   </title>
   <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="_static/material.css" rel="stylesheet" type="text/css"/>
@@ -73,7 +73,8 @@
   <link href="_static/favicon.ico" rel="shortcut icon"/>
   <link href="genindex.html" rel="index" title="Index"/>
   <link href="search.html" rel="search" title="Search"/>
-  <link href="customization.html" rel="next" title="Customization"/>
+  <link href="change-log.html" rel="next" title="Change Log"/>
+  <link href="basics.html" rel="prev" title="reStructuredText Primer"/>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
@@ -89,14 +90,14 @@
   <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
   <label class="md-overlay" data-md-component="overlay" for="__drawer">
   </label>
-  <a class="md-skip" href="#index" tabindex="1">
+  <a class="md-skip" href="#titleless" tabindex="1">
    Skip to content
   </a>
   <header class="md-header" data-md-component="header">
    <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
      <div class="md-flex__cell md-flex__cell--shrink">
-      <a class="md-header-nav__button md-logo" href="#" title="Material for Sphinx">
+      <a class="md-header-nav__button md-logo" href="index.html" title="Material for Sphinx">
        <i class="md-icon">
         
        </i>
@@ -112,7 +113,7 @@
         Material for Sphinx
        </span>
        <span class="md-header-nav__topic">
-        Material for Sphinx
+        &lt;no title&gt;
        </span>
       </div>
      </div>
@@ -183,18 +184,11 @@
    </nav>
   </header>
   <div class="md-container">
-   <div class="md-hero" data-md-component="hero">
-    <div class="md-hero__inner md-grid">
-     <p>
-      A responsive Material Design theme for Sphinx sites.
-     </p>
-    </div>
-   </div>
    <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
      <ul class="md-tabs__list">
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="#">
+       <a class="md-tabs__link" href="index.html">
         Material
        </a>
       </li>
@@ -213,12 +207,12 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title md-nav__title--site" for="__drawer">
-          <a class="md-nav__button md-logo" href="#" title="Material for Sphinx">
+          <a class="md-nav__button md-logo" href="index.html" title="Material for Sphinx">
            <i class="md-icon">
             
            </i>
           </a>
-          <a href="#" title="Material for Sphinx">
+          <a href="index.html" title="Material for Sphinx">
            Material for Sphinx
           </a>
          </label>
@@ -330,40 +324,9 @@
       <div class="md-sidebar__scrollwrap">
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          Contents
-         </label>
          <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#index--page-root">
-            Material for Sphinx
-           </a>
-           <nav class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#roadmap">
-               Roadmap
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#getting-started">
-               Getting Started
-              </a>
-              <nav class="md-nav">
-               <ul class="md-nav__list">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#index">
-                  Index
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__extra_link" href="_sources/index.rst.txt">
+           <a class="md-nav__extra_link" href="_sources/titleless.rst.txt">
             Show Source
            </a>
           </li>
@@ -376,274 +339,57 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="material-for-sphinx">
-        <h1 id="index--page-root">
-         Material for Sphinx
-         <a class="headerlink" href="#index--page-root" title="Permalink to this headline">
-          ¶
-         </a>
-        </h1>
-        <img alt="Material for Sphinx Screenshots" src="_images/screenshot.png"/>
-        <p>
-         This theme provides a responsive Material Design theme for Sphinx
-documentation. It derives heavily from
-         <a class="reference external" href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs
-         </a>
-         ,
-and also uses code from
-         <a class="reference external" href="https://github.com/guzzle/guzzle_sphinx_theme">
-          Guzzle Sphinx Theme
-         </a>
-         .
-        </p>
-        <section id="roadmap">
-         <h2 id="roadmap">
-          Roadmap
-          <a class="headerlink" href="#roadmap" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <p>
-          <a class="reference external" href="https://github.com/bashtage/sphinx-material">
-           Material for Sphinx
-          </a>
-          is a work in progress.  While
-I believe that it is ready for use, there are a number of important limitation.  The most
-important it to improve the CSS generation to use
-          <a class="reference external" href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)">
-           SASS
-          </a>
-          . It uses some python to
-modify Sphinx output, which is not ideal.
-         </p>
-         <p>
-          The other issues are:
-         </p>
-         <ul class="simple">
-          <li>
-           <p>
-            improving the documentation;
-           </p>
-          </li>
-          <li>
-           <p>
-            providing examples;
-           </p>
-          </li>
-          <li>
-           <p>
-            sidebar customization;
-           </p>
-          </li>
-          <li>
-           <p>
-            improving the search box; and
-           </p>
-          </li>
-          <li>
-           <p>
-            ensuring that all Sphinx blocks work as intended.
-           </p>
-          </li>
-         </ul>
-         <p>
-          You can see how it works on
-          <a class="reference external" href="https://www.statsmodels.org/">
-           statsmodels
-          </a>
-          .
-         </p>
-        </section>
-        <section id="getting-started">
-         <h2 id="getting-started">
-          Getting Started
-          <a class="headerlink" href="#getting-started" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <p>
-          Install from git
-         </p>
-         <div class="highlight-bash notranslate">
-          <div class="highlight">
-           <pre><span></span>pip install git+https://github.com/bashtage/sphinx-material.git
-</pre>
-          </div>
-         </div>
-         <p>
-          Update your
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            conf.py
-           </span>
-          </code>
-          with the required changes:
-         </p>
-         <div class="highlight-python notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
-</pre>
-          </div>
-         </div>
-         <p>
-          There are a lot more ways to customize this theme. See
-          <a class="reference internal" href="customization.html#customization">
-           <span class="std std-ref">
-            Customization
-           </span>
-          </a>
-          or
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            theme.conf
-           </span>
-          </code>
-          for more details.
-         </p>
-         <div class="highlight-python notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
-
-<span class="c1"># Material theme options (see theme.conf for more information)</span>
-<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
-
-    <span class="c1"># Set the name of the project to appear in the navigation.</span>
-    <span class="s1">'nav_title'</span><span class="p">:</span> <span class="s1">'Project Name'</span><span class="p">,</span>
-
-    <span class="c1"># Set you GA account ID to enable tracking</span>
-    <span class="s1">'google_analytics_account'</span><span class="p">:</span> <span class="s1">'UA-XXXXX'</span><span class="p">,</span>
-
-    <span class="c1"># Specify a base_url used to generate sitemap.xml. If not</span>
-    <span class="c1"># specified, then no sitemap will be built.</span>
-    <span class="s1">'base_url'</span><span class="p">:</span> <span class="s1">'https://project.github.io/project'</span><span class="p">,</span>
-
-    <span class="c1"># Set the color and the accent color</span>
-    <span class="s1">'color_primary'</span><span class="p">:</span> <span class="s1">'blue'</span><span class="p">,</span>
-    <span class="s1">'color_accent'</span><span class="p">:</span> <span class="s1">'light-blue'</span><span class="p">,</span>
-
-    <span class="c1"># Set the repo location to get a badge with stats</span>
-    <span class="s1">'repo_url'</span><span class="p">:</span> <span class="s1">'https://github.com/project/project/'</span><span class="p">,</span>
-    <span class="s1">'repo_name'</span><span class="p">:</span> <span class="s1">'Project'</span><span class="p">,</span>
-
-    <span class="c1"># Visible levels of the global TOC; -1 means unlimited</span>
-    <span class="s1">'globaltoc_depth'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="c1"># If False, expand all TOC entries</span>
-    <span class="s1">'globaltoc_collapse'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="c1"># If True, show hidden TOC entries</span>
-    <span class="s1">'globaltoc_includehidden'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">}</span>
-</pre>
-          </div>
-         </div>
-         <div class="toctree-wrapper compound">
-          <p class="caption" role="heading">
-           <span class="caption-text">
-            Basic Use
-           </span>
-          </p>
-          <ul>
-           <li class="toctree-l1">
-            <a class="reference internal" href="customization.html">
-             Customization
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="specimen.html">
-             Specimen
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="additional_samples.html">
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               Additional
-              </span>
-             </code>
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               Samples
-              </span>
-             </code>
-            </a>
-           </li>
-          </ul>
-         </div>
-         <div class="toctree-wrapper compound">
-          <p class="caption" role="heading">
-           <span class="caption-text">
-            Other Examples and Uses
-           </span>
-          </p>
-          <ul>
-           <li class="toctree-l1">
-            <a class="reference internal" href="pymethod.html">
-             Python Methods
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="numpydoc.html">
-             NumPy Docstrings
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="notebook.html">
-             Jupyter Notebooks
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="markdown.html">
-             Markdown
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html">
-             rst Cheatsheet
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="basics.html">
-             reStructuredText Primer
-            </a>
-           </li>
-          </ul>
-         </div>
-         <div class="toctree-wrapper compound">
-          <p class="caption" role="heading">
-           <span class="caption-text">
-            Changes and License
-           </span>
-          </p>
-          <ul>
-           <li class="toctree-l1">
-            <a class="reference internal" href="change-log.html">
-             Change Log
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="license.html">
-             License
-            </a>
-           </li>
-          </ul>
-         </div>
-         <section id="index">
-          <h3 id="index">
-           Index
-           <a class="headerlink" href="#index" title="Permalink to this headline">
-            ¶
-           </a>
-          </h3>
-          <p>
-           <a class="reference internal" href="genindex.html">
-            <span class="std std-ref">
-             Index
-            </span>
-           </a>
-          </p>
-         </section>
-        </section>
-       </section>
+       <p class="rubric">
+        Titleless
+       </p>
+       <p>
+        This page does not have a title.
+       </p>
+       <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida dui eu erat tincidunt mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut porta, tortor nec suscipit vulputate, sapien dolor bibendum arcu, vel volutpat tortor ligula pellentesque arcu. Praesent rutrum lacus non dui imperdiet, vitae dignissim sem ultricies. Pellentesque hendrerit purus sed nulla ultricies, sit amet venenatis lacus sodales. Phasellus eget luctus dolor. Suspendisse diam diam, scelerisque ac ante at, volutpat hendrerit ipsum. Fusce consectetur, eros eu volutpat tincidunt, sem sem accumsan diam, sed mattis sem sem id turpis. Nullam consequat elit a posuere tempus. Quisque ultrices, arcu varius rutrum luctus, nisi sapien interdum erat, eu vestibulum enim orci quis purus. Pellentesque ut nunc vitae ex pretium mollis quis non diam. Aenean fermentum diam finibus, euismod sapien quis, viverra elit. Vivamus vel dolor quam.
+       </p>
+       <p>
+        Vivamus neque velit, volutpat eget tortor in, porttitor porta felis. Cras mauris diam, viverra id orci venenatis, vehicula eleifend diam. In vehicula dui ac justo elementum, tristique finibus nisi laoreet. Morbi at aliquam eros, ac consectetur orci. Fusce venenatis, ligula nec finibus vehicula, dui lectus viverra dui, et porta ligula turpis in nulla. Donec ipsum diam, placerat in erat vitae, blandit lobortis orci. Phasellus velit augue, ornare nec est sit amet, dictum mollis sem. Etiam varius metus vel magna ultrices sagittis. Nullam id finibus purus. Donec pretium quis purus eu ullamcorper. Mauris ac cursus arcu. Aliquam tempus aliquet mauris, ac tincidunt diam imperdiet sed. Donec vestibulum posuere turpis non venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras urna odio, varius et risus id, tristique maximus purus. Donec lectus magna, venenatis ac enim vitae, consectetur aliquam magna.
+       </p>
+       <p>
+        Maecenas facilisis et dolor in molestie. Quisque consectetur dui eu eleifend condimentum. Sed aliquam accumsan metus, elementum sodales leo iaculis quis. Quisque venenatis sapien ac nibh pretium tincidunt. In blandit tellus libero, sed fermentum augue ultrices vel. Phasellus lectus mauris, molestie id lectus et, blandit malesuada risus. In pretium nisi pulvinar, tristique sem vitae, dignissim augue. Vivamus non metus condimentum, suscipit justo at, venenatis nulla. Donec hendrerit consequat efficitur.
+       </p>
+       <p>
+        Aliquam erat volutpat. Quisque ligula eros, faucibus non pulvinar sed, euismod sed purus. Pellentesque pretium turpis at suscipit ornare. Nullam non nunc nec turpis vehicula porttitor quis vel velit. Nam hendrerit mi urna, ut finibus eros efficitur sit amet. Sed dictum, felis a ullamcorper tincidunt, metus libero tincidunt lectus, sed aliquam felis mi et nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla eget hendrerit mi. Morbi semper lectus eu magna egestas molestie. In et libero sagittis, convallis dui ut, commodo sem.
+       </p>
+       <p>
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent lacinia purus mauris, vehicula auctor dolor fringilla vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus faucibus lacus vel lacus hendrerit, et porttitor mi cursus. Curabitur nisl turpis, vehicula euismod mollis eu, sagittis id erat. Aenean tortor dolor, mollis porttitor dignissim nec, scelerisque id magna. Pellentesque bibendum quis nisi eget mollis. Sed purus lectus, hendrerit nec dolor ac, condimentum ornare velit. Praesent efficitur iaculis tempor. Curabitur convallis, quam ut luctus blandit, orci nunc tempor orci, ac vehicula est arcu in sapien. Quisque quam mi, sagittis quis finibus vulputate, commodo nec lorem.
+       </p>
+       <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida dui eu erat tincidunt mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut porta, tortor nec suscipit vulputate, sapien dolor bibendum arcu, vel volutpat tortor ligula pellentesque arcu. Praesent rutrum lacus non dui imperdiet, vitae dignissim sem ultricies. Pellentesque hendrerit purus sed nulla ultricies, sit amet venenatis lacus sodales. Phasellus eget luctus dolor. Suspendisse diam diam, scelerisque ac ante at, volutpat hendrerit ipsum. Fusce consectetur, eros eu volutpat tincidunt, sem sem accumsan diam, sed mattis sem sem id turpis. Nullam consequat elit a posuere tempus. Quisque ultrices, arcu varius rutrum luctus, nisi sapien interdum erat, eu vestibulum enim orci quis purus. Pellentesque ut nunc vitae ex pretium mollis quis non diam. Aenean fermentum diam finibus, euismod sapien quis, viverra elit. Vivamus vel dolor quam.
+       </p>
+       <p>
+        Vivamus neque velit, volutpat eget tortor in, porttitor porta felis. Cras mauris diam, viverra id orci venenatis, vehicula eleifend diam. In vehicula dui ac justo elementum, tristique finibus nisi laoreet. Morbi at aliquam eros, ac consectetur orci. Fusce venenatis, ligula nec finibus vehicula, dui lectus viverra dui, et porta ligula turpis in nulla. Donec ipsum diam, placerat in erat vitae, blandit lobortis orci. Phasellus velit augue, ornare nec est sit amet, dictum mollis sem. Etiam varius metus vel magna ultrices sagittis. Nullam id finibus purus. Donec pretium quis purus eu ullamcorper. Mauris ac cursus arcu. Aliquam tempus aliquet mauris, ac tincidunt diam imperdiet sed. Donec vestibulum posuere turpis non venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras urna odio, varius et risus id, tristique maximus purus. Donec lectus magna, venenatis ac enim vitae, consectetur aliquam magna.
+       </p>
+       <p>
+        Maecenas facilisis et dolor in molestie. Quisque consectetur dui eu eleifend condimentum. Sed aliquam accumsan metus, elementum sodales leo iaculis quis. Quisque venenatis sapien ac nibh pretium tincidunt. In blandit tellus libero, sed fermentum augue ultrices vel. Phasellus lectus mauris, molestie id lectus et, blandit malesuada risus. In pretium nisi pulvinar, tristique sem vitae, dignissim augue. Vivamus non metus condimentum, suscipit justo at, venenatis nulla. Donec hendrerit consequat efficitur.
+       </p>
+       <p>
+        Aliquam erat volutpat. Quisque ligula eros, faucibus non pulvinar sed, euismod sed purus. Pellentesque pretium turpis at suscipit ornare. Nullam non nunc nec turpis vehicula porttitor quis vel velit. Nam hendrerit mi urna, ut finibus eros efficitur sit amet. Sed dictum, felis a ullamcorper tincidunt, metus libero tincidunt lectus, sed aliquam felis mi et nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla eget hendrerit mi. Morbi semper lectus eu magna egestas molestie. In et libero sagittis, convallis dui ut, commodo sem.
+       </p>
+       <p>
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent lacinia purus mauris, vehicula auctor dolor fringilla vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus faucibus lacus vel lacus hendrerit, et porttitor mi cursus. Curabitur nisl turpis, vehicula euismod mollis eu, sagittis id erat. Aenean tortor dolor, mollis porttitor dignissim nec, scelerisque id magna. Pellentesque bibendum quis nisi eget mollis. Sed purus lectus, hendrerit nec dolor ac, condimentum ornare velit. Praesent efficitur iaculis tempor. Curabitur convallis, quam ut luctus blandit, orci nunc tempor orci, ac vehicula est arcu in sapien. Quisque quam mi, sagittis quis finibus vulputate, commodo nec lorem.
+       </p>
+       <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam gravida dui eu erat tincidunt mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut porta, tortor nec suscipit vulputate, sapien dolor bibendum arcu, vel volutpat tortor ligula pellentesque arcu. Praesent rutrum lacus non dui imperdiet, vitae dignissim sem ultricies. Pellentesque hendrerit purus sed nulla ultricies, sit amet venenatis lacus sodales. Phasellus eget luctus dolor. Suspendisse diam diam, scelerisque ac ante at, volutpat hendrerit ipsum. Fusce consectetur, eros eu volutpat tincidunt, sem sem accumsan diam, sed mattis sem sem id turpis. Nullam consequat elit a posuere tempus. Quisque ultrices, arcu varius rutrum luctus, nisi sapien interdum erat, eu vestibulum enim orci quis purus. Pellentesque ut nunc vitae ex pretium mollis quis non diam. Aenean fermentum diam finibus, euismod sapien quis, viverra elit. Vivamus vel dolor quam.
+       </p>
+       <p>
+        Vivamus neque velit, volutpat eget tortor in, porttitor porta felis. Cras mauris diam, viverra id orci venenatis, vehicula eleifend diam. In vehicula dui ac justo elementum, tristique finibus nisi laoreet. Morbi at aliquam eros, ac consectetur orci. Fusce venenatis, ligula nec finibus vehicula, dui lectus viverra dui, et porta ligula turpis in nulla. Donec ipsum diam, placerat in erat vitae, blandit lobortis orci. Phasellus velit augue, ornare nec est sit amet, dictum mollis sem. Etiam varius metus vel magna ultrices sagittis. Nullam id finibus purus. Donec pretium quis purus eu ullamcorper. Mauris ac cursus arcu. Aliquam tempus aliquet mauris, ac tincidunt diam imperdiet sed. Donec vestibulum posuere turpis non venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras urna odio, varius et risus id, tristique maximus purus. Donec lectus magna, venenatis ac enim vitae, consectetur aliquam magna.
+       </p>
+       <p>
+        Maecenas facilisis et dolor in molestie. Quisque consectetur dui eu eleifend condimentum. Sed aliquam accumsan metus, elementum sodales leo iaculis quis. Quisque venenatis sapien ac nibh pretium tincidunt. In blandit tellus libero, sed fermentum augue ultrices vel. Phasellus lectus mauris, molestie id lectus et, blandit malesuada risus. In pretium nisi pulvinar, tristique sem vitae, dignissim augue. Vivamus non metus condimentum, suscipit justo at, venenatis nulla. Donec hendrerit consequat efficitur.
+       </p>
+       <p>
+        Aliquam erat volutpat. Quisque ligula eros, faucibus non pulvinar sed, euismod sed purus. Pellentesque pretium turpis at suscipit ornare. Nullam non nunc nec turpis vehicula porttitor quis vel velit. Nam hendrerit mi urna, ut finibus eros efficitur sit amet. Sed dictum, felis a ullamcorper tincidunt, metus libero tincidunt lectus, sed aliquam felis mi et nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla eget hendrerit mi. Morbi semper lectus eu magna egestas molestie. In et libero sagittis, convallis dui ut, commodo sem.
+       </p>
+       <p>
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent lacinia purus mauris, vehicula auctor dolor fringilla vel. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus faucibus lacus vel lacus hendrerit, et porttitor mi cursus. Curabitur nisl turpis, vehicula euismod mollis eu, sagittis id erat. Aenean tortor dolor, mollis porttitor dignissim nec, scelerisque id magna. Pellentesque bibendum quis nisi eget mollis. Sed purus lectus, hendrerit nec dolor ac, condimentum ornare velit. Praesent efficitur iaculis tempor. Curabitur convallis, quam ut luctus blandit, orci nunc tempor orci, ac vehicula est arcu in sapien. Quisque quam mi, sagittis quis finibus vulputate, commodo nec lorem.
+       </p>
       </article>
      </div>
     </div>
@@ -652,13 +398,27 @@ modify Sphinx output, which is not ideal.
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="customization.html" rel="next" title="Customization">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="basics.html" rel="prev" title="reStructuredText Primer">
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
+       </i>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Previous
+        </span>
+        reStructuredText Primer
+       </span>
+      </div>
+     </a>
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="change-log.html" rel="next" title="Change Log">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
          Next
         </span>
-        Customization
+        Change Log
        </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">

@@ -35,22 +35,25 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../../../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'UA-XXXXX', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXX');
   </script>
   <link href="../../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
    numpy.polynomial._polybase — Material for Sphinx
   </title>
-  <link href="../../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js">
   </script>
@@ -60,18 +63,11 @@
   </script>
   <script src="../../../_static/doctools.js">
   </script>
-  <script src="../../../_static/language_data.js">
-  </script>
   <script src="../../../_static/clipboard.min.js">
   </script>
   <script src="../../../_static/copybutton.js">
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
-  </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
   </script>
   <link href="../../../_static/favicon.ico" rel="shortcut icon"/>
   <link href="../../../genindex.html" rel="index" title="Index"/>
@@ -353,8 +349,7 @@
 <span class="sd">abc module from the stdlib, hence it is only available for Python &gt;= 2.6.</span>
 
 <span class="sd">"""</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">print_function</span>
-
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">abc</span>
 <span class="kn">import</span> <span class="nn">numbers</span>
 
@@ -416,6 +411,37 @@
     <span class="c1"># Limit runaway size. T_n^m has degree n*m</span>
     <span class="n">maxpower</span> <span class="o">=</span> <span class="mi">100</span>
 
+    <span class="c1"># Unicode character mappings for improved __str__</span>
+    <span class="n">_superscript_mapping</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">({</span>
+        <span class="s2">"0"</span><span class="p">:</span> <span class="s2">"⁰"</span><span class="p">,</span>
+        <span class="s2">"1"</span><span class="p">:</span> <span class="s2">"¹"</span><span class="p">,</span>
+        <span class="s2">"2"</span><span class="p">:</span> <span class="s2">"²"</span><span class="p">,</span>
+        <span class="s2">"3"</span><span class="p">:</span> <span class="s2">"³"</span><span class="p">,</span>
+        <span class="s2">"4"</span><span class="p">:</span> <span class="s2">"⁴"</span><span class="p">,</span>
+        <span class="s2">"5"</span><span class="p">:</span> <span class="s2">"⁵"</span><span class="p">,</span>
+        <span class="s2">"6"</span><span class="p">:</span> <span class="s2">"⁶"</span><span class="p">,</span>
+        <span class="s2">"7"</span><span class="p">:</span> <span class="s2">"⁷"</span><span class="p">,</span>
+        <span class="s2">"8"</span><span class="p">:</span> <span class="s2">"⁸"</span><span class="p">,</span>
+        <span class="s2">"9"</span><span class="p">:</span> <span class="s2">"⁹"</span>
+    <span class="p">})</span>
+    <span class="n">_subscript_mapping</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">({</span>
+        <span class="s2">"0"</span><span class="p">:</span> <span class="s2">"₀"</span><span class="p">,</span>
+        <span class="s2">"1"</span><span class="p">:</span> <span class="s2">"₁"</span><span class="p">,</span>
+        <span class="s2">"2"</span><span class="p">:</span> <span class="s2">"₂"</span><span class="p">,</span>
+        <span class="s2">"3"</span><span class="p">:</span> <span class="s2">"₃"</span><span class="p">,</span>
+        <span class="s2">"4"</span><span class="p">:</span> <span class="s2">"₄"</span><span class="p">,</span>
+        <span class="s2">"5"</span><span class="p">:</span> <span class="s2">"₅"</span><span class="p">,</span>
+        <span class="s2">"6"</span><span class="p">:</span> <span class="s2">"₆"</span><span class="p">,</span>
+        <span class="s2">"7"</span><span class="p">:</span> <span class="s2">"₇"</span><span class="p">,</span>
+        <span class="s2">"8"</span><span class="p">:</span> <span class="s2">"₈"</span><span class="p">,</span>
+        <span class="s2">"9"</span><span class="p">:</span> <span class="s2">"₉"</span>
+    <span class="p">})</span>
+    <span class="c1"># Some fonts don't support full unicode character ranges necessary for</span>
+    <span class="c1"># the full set of superscripts and subscripts, including common/default</span>
+    <span class="c1"># fonts in Windows shells/terminals. Therefore, default to ascii-only</span>
+    <span class="c1"># printing on windows.</span>
+    <span class="n">_use_unicode</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'nt'</span>
+
     <span class="nd">@property</span>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">domain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -424,11 +450,6 @@
     <span class="nd">@property</span>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">window</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-    <span class="nd">@property</span>
-    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
-    <span class="k">def</span> <span class="nf">nickname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
     <span class="nd">@property</span>
@@ -626,18 +647,94 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">format</span> <span class="o">=</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">, domain=</span><span class="si">%s</span><span class="s2">, window=</span><span class="si">%s</span><span class="s2">)"</span>
         <span class="n">coef</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">)[</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">domain</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)[</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">window</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">)[</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
-        <span class="k">return</span> <span class="nb">format</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">coef</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">coef</span><span class="si">}</span><span class="s2">, domain=</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">, window=</span><span class="si">{</span><span class="n">window</span><span class="si">}</span><span class="s2">)"</span>
+
+    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt_str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">fmt_str</span> <span class="o">==</span> <span class="s1">''</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">fmt_str</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'ascii'</span><span class="p">,</span> <span class="s1">'unicode'</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Unsupported format string '</span><span class="si">{</span><span class="n">fmt_str</span><span class="si">}</span><span class="s2">' passed to "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">.__format__. Valid options are "</span>
+                <span class="sa">f</span><span class="s2">"'ascii' and 'unicode'"</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">fmt_str</span> <span class="o">==</span> <span class="s1">'ascii'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_str_term_ascii</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_str_term_unicode</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">format</span> <span class="o">=</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)"</span>
-        <span class="n">coef</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">)</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nickname</span>
-        <span class="k">return</span> <span class="nb">format</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">coef</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_use_unicode</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_str_term_unicode</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_str_term_ascii</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_generate_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term_method</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        Generate the full string representation of the polynomial, using</span>
+<span class="sd">        ``term_method`` to generate each polynomial term.</span>
+<span class="sd">        """</span>
+        <span class="c1"># Get configuration for line breaks</span>
+        <span class="n">linewidth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">get_printoptions</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'linewidth'</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">linewidth</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">coef</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="s2">" "</span>
+            <span class="n">power</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Polynomial coefficient</span>
+            <span class="c1"># The coefficient array can be an object array with elements that</span>
+            <span class="c1"># will raise a TypeError with &gt;= 0 (e.g. strings or Python</span>
+            <span class="c1"># complex). In this case, represent the coeficient as-is.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">coef</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">next_term</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"+ </span><span class="si">{</span><span class="n">coef</span><span class="si">}</span><span class="s2">"</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">next_term</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="o">-</span><span class="n">coef</span><span class="si">}</span><span class="s2">"</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="n">next_term</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"+ </span><span class="si">{</span><span class="n">coef</span><span class="si">}</span><span class="s2">"</span>
+            <span class="c1"># Polynomial term</span>
+            <span class="n">next_term</span> <span class="o">+=</span> <span class="n">term_method</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+            <span class="c1"># Length of the current line with next term added</span>
+            <span class="n">line_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">next_term</span><span class="p">)</span>
+            <span class="c1"># If not the last term in the polynomial, it will be two</span>
+            <span class="c1"># characters longer due to the +/- with the next term</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">line_len</span> <span class="o">+=</span> <span class="mi">2</span>
+            <span class="c1"># Handle linebreaking</span>
+            <span class="k">if</span> <span class="n">line_len</span> <span class="o">&gt;=</span> <span class="n">linewidth</span><span class="p">:</span>
+                <span class="n">next_term</span> <span class="o">=</span> <span class="n">next_term</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="n">next_term</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_str_term_unicode</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        String representation of single polynomial term using unicode</span>
+<span class="sd">        characters for superscripts and subscripts.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">basis_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">"Subclasses must define either a basis_name, or override "</span>
+                <span class="s2">"_str_term_unicode(cls, i, arg_str)"</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"·</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">basis_name</span><span class="si">}{</span><span class="n">i</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_subscript_mapping</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_str_term_ascii</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">):</span>
+        <span class="sd">"""</span>
+<span class="sd">        String representation of a single polynomial term using ** and _ to</span>
+<span class="sd">        represent superscripts and subscripts, respectively.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">basis_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">"Subclasses must define either a basis_name, or override "</span>
+                <span class="s2">"_str_term_ascii(cls, i, arg_str)"</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">basis_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">)"</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_repr_latex_term</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">,</span> <span class="n">needs_parens</span><span class="p">):</span>
@@ -646,9 +743,7 @@
                 <span class="s2">"Subclasses must define either a basis name, or override "</span>
                 <span class="s2">"_repr_latex_term(i, arg_str, needs_parens)"</span><span class="p">)</span>
         <span class="c1"># since we always add parens, we don't care if the expression needs them</span>
-        <span class="k">return</span> <span class="s2">"{{</span><span class="si">{basis}</span><span class="s2">}}_{{</span><span class="si">{i}</span><span class="s2">}}(</span><span class="si">{arg_str}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">basis</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">basis_name</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="o">=</span><span class="n">arg_str</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="se">{{</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">basis_name</span><span class="si">}</span><span class="se">}}</span><span class="s2">_</span><span class="se">{{</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="se">}}</span><span class="s2">(</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">)"</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_repr_latex_scalar</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -663,19 +758,15 @@
             <span class="n">term</span> <span class="o">=</span> <span class="s1">'x'</span>
             <span class="n">needs_parens</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">elif</span> <span class="n">scale</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">term</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{}</span><span class="s1"> + x'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">off</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">off</span><span class="p">)</span><span class="si">}</span><span class="s2"> + x"</span>
             <span class="n">needs_parens</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="n">off</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">term</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">x'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span><span class="si">}</span><span class="s2">x"</span>
             <span class="n">needs_parens</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">term</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{}</span><span class="s1"> + </span><span class="si">{}</span><span class="s1">x'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">off</span><span class="p">),</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">off</span><span class="p">)</span><span class="si">}</span><span class="s2"> + "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span><span class="si">}</span><span class="s2">x"</span>
             <span class="p">)</span>
             <span class="n">needs_parens</span> <span class="o">=</span> <span class="kc">True</span>
 
@@ -685,20 +776,20 @@
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">):</span>
             <span class="c1"># prevent duplication of + and - signs</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">coef_str</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+                <span class="n">coef_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
             <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Real</span><span class="p">):</span>
-                <span class="n">coef_str</span> <span class="o">=</span> <span class="s1">' + (</span><span class="si">{}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+                <span class="n">coef_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">" + (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span>
             <span class="k">elif</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">signbit</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
-                <span class="n">coef_str</span> <span class="o">=</span> <span class="s1">' + </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+                <span class="n">coef_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">" + </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">coef_str</span> <span class="o">=</span> <span class="s1">' - </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="o">-</span><span class="n">c</span><span class="p">))</span>
+                <span class="n">coef_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">" - </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_scalar</span><span class="p">(</span><span class="o">-</span><span class="n">c</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 
             <span class="c1"># produce the string for the term</span>
             <span class="n">term_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_term</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">needs_parens</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">term_str</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
                 <span class="n">part</span> <span class="o">=</span> <span class="n">coef_str</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">part</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'</span><span class="si">{}</span><span class="s1">\,</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coef_str</span><span class="p">,</span> <span class="n">term_str</span><span class="p">)</span>
+                <span class="n">part</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">"</span><span class="si">{</span><span class="n">coef_str</span><span class="si">}</span><span class="s2">\,</span><span class="si">{</span><span class="n">term_str</span><span class="si">}</span><span class="s2">"</span>
 
             <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">part</span> <span class="o">=</span> <span class="n">mute</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
@@ -711,7 +802,7 @@
             <span class="c1"># in case somehow there are no coefficients at all</span>
             <span class="n">body</span> <span class="o">=</span> <span class="s1">'0'</span>
 
-        <span class="k">return</span> <span class="sa">r</span><span class="s1">'$x \mapsto </span><span class="si">{}</span><span class="s1">$'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">rf</span><span class="s2">"$x \mapsto </span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">$"</span>
 
 
 
@@ -772,17 +863,15 @@
             <span class="k">return</span> <span class="bp">NotImplemented</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">coef</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="c1"># this can be removed when python 2 support is dropped.</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__floordiv__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="c1"># there is no true divide if the rhs is not a Number, although it</span>
         <span class="c1"># could return the first n elements of an infinite series.</span>
         <span class="c1"># It is hard to see where n would come from, though.</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-            <span class="n">form</span> <span class="o">=</span> <span class="s2">"unsupported types for true division: '</span><span class="si">%s</span><span class="s2">', '</span><span class="si">%s</span><span class="s2">'"</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">form</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"unsupported types for true division: "</span>
+                <span class="sa">f</span><span class="s2">"'</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">', '</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">'"</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__floordiv__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -801,8 +890,8 @@
         <span class="n">othercoef</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_coefficients</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">quo</span><span class="p">,</span> <span class="n">rem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_div</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">,</span> <span class="n">othercoef</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">e</span>
+        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+            <span class="k">raise</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">NotImplemented</span>
         <span class="n">quo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">quo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">)</span>
@@ -859,8 +948,8 @@
     <span class="k">def</span> <span class="fm">__rdivmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">quo</span><span class="p">,</span> <span class="n">rem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_div</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">e</span>
+        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+            <span class="k">raise</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">NotImplemented</span>
         <span class="n">quo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">quo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">)</span>
@@ -948,7 +1037,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        new_series : series</span>
-<span class="sd">            Contains the new set of coefficients.</span>
+<span class="sd">            New instance of series with trimmed coefficients.</span>
 
 <span class="sd">        """</span>
         <span class="n">coef</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">trimcoef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
@@ -1010,9 +1099,6 @@
 <span class="sd">        -----</span>
 <span class="sd">        Conversion between domains and class types can result in</span>
 <span class="sd">        numerically ill defined series.</span>
-
-<span class="sd">        Examples</span>
-<span class="sd">        --------</span>
 
 <span class="sd">        """</span>
         <span class="k">if</span> <span class="n">kind</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1168,10 +1254,8 @@
 <span class="sd">        ----------</span>
 <span class="sd">        x : array_like, shape (M,)</span>
 <span class="sd">            x-coordinates of the M sample points ``(x[i], y[i])``.</span>
-<span class="sd">        y : array_like, shape (M,) or (M, K)</span>
-<span class="sd">            y-coordinates of the sample points. Several data sets of sample</span>
-<span class="sd">            points sharing the same x-coordinates can be fitted at once by</span>
-<span class="sd">            passing in a 2D-array that contains one dataset per column.</span>
+<span class="sd">        y : array_like, shape (M,)</span>
+<span class="sd">            y-coordinates of the M sample points ``(x[i], y[i])``.</span>
 <span class="sd">        deg : int or 1-D array_like</span>
 <span class="sd">            Degree(s) of the fitting polynomials. If `deg` is a single integer</span>
 <span class="sd">            all terms up to and including the `deg`'th term are included in the</span>
@@ -1196,7 +1280,7 @@
 <span class="sd">            also returned.</span>
 <span class="sd">        w : array_like, shape (M,), optional</span>
 <span class="sd">            Weights. If not None the contribution of each point</span>
-<span class="sd">            ``(x[i],y[i])`` to the fit is weighted by `w[i]`. Ideally the</span>
+<span class="sd">            ``(x[i],y[i])`` to the fit is weighted by ``w[i]``. Ideally the</span>
 <span class="sd">            weights are chosen so that the errors of the products</span>
 <span class="sd">            ``w[i]*y[i]`` all have the same variance.  The default value is</span>
 <span class="sd">            None.</span>
@@ -1417,13 +1501,13 @@
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 14, 2020.
+              Jul 23, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.2.1.
+      4.1.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

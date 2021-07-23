@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -35,22 +36,25 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'UA-XXXXX', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-XXXXX');
   </script>
   <link href="../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
    numpy.polynomial.Polynomial.fit — Material for Sphinx
   </title>
-  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
   <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js">
   </script>
@@ -60,18 +64,11 @@
   </script>
   <script src="../../_static/doctools.js">
   </script>
-  <script src="../../_static/language_data.js">
-  </script>
   <script src="../../_static/clipboard.min.js">
   </script>
   <script src="../../_static/copybutton.js">
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
-  </script>
-  <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
-  </script>
-  <script type="text/x-mathjax-config">
-   MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})
   </script>
   <link href="../../_static/favicon.ico" rel="shortcut icon"/>
   <link href="../../genindex.html" rel="index" title="Index"/>
@@ -359,401 +356,454 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="generated-generated-numpy-polynomial-polynomial-fit--page-root">
-        numpy.polynomial.Polynomial.fit
-        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-fit--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        method
-       </p>
-       <dl class="py method">
-        <dt id="numpy.polynomial.Polynomial.fit">
-         <em class="property">
-          classmethod
-         </em>
-         <code class="sig-prename descclassname">
-          Polynomial.
-         </code>
-         <code class="sig-name descname">
-          fit
-         </code>
-         <span class="sig-paren">
-          (
-         </span>
-         <em class="sig-param">
-          <span class="n">
-           x
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           y
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           deg
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           domain
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           rcond
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           full
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           False
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           w
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="n">
-           window
-          </span>
-          <span class="o">
-           =
-          </span>
-          <span class="default_value">
-           None
-          </span>
-         </em>
-         <span class="sig-paren">
-          )
-         </span>
-         <a class="headerlink" href="#numpy.polynomial.Polynomial.fit" title="Permalink to this definition">
+       <section id="numpy-polynomial-polynomial-fit">
+        <h1 id="generated-generated-numpy-polynomial-polynomial-fit--page-root">
+         numpy.polynomial.Polynomial.fit
+         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-fit--page-root" title="Permalink to this headline">
           ¶
          </a>
-        </dt>
-        <dd>
-         <p>
-          Least squares fit to data.
-         </p>
-         <p>
-          Return a series instance that is the least squares fit to the data
-          <cite>
-           y
-          </cite>
-          sampled at
-          <cite>
-           x
-          </cite>
-          . The domain of the returned instance can be
+        </h1>
+        <p>
+         method
+        </p>
+        <dl class="py method">
+         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.fit">
+          <em class="property">
+           <span class="pre">
+            classmethod
+           </span>
+          </em>
+          <span class="sig-prename descclassname">
+           <span class="pre">
+            Polynomial.
+           </span>
+          </span>
+          <span class="sig-name descname">
+           <span class="pre">
+            fit
+           </span>
+          </span>
+          <span class="sig-paren">
+           (
+          </span>
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             x
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             y
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             deg
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             domain
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             rcond
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             full
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             False
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             w
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             window
+            </span>
+           </span>
+           <span class="o">
+            <span class="pre">
+             =
+            </span>
+           </span>
+           <span class="default_value">
+            <span class="pre">
+             None
+            </span>
+           </span>
+          </em>
+          <span class="sig-paren">
+           )
+          </span>
+          <a class="headerlink" href="#numpy.polynomial.Polynomial.fit" title="Permalink to this definition">
+           ¶
+          </a>
+         </dt>
+         <dd>
+          <p>
+           Least squares fit to data.
+          </p>
+          <p>
+           Return a series instance that is the least squares fit to the data
+           <cite>
+            y
+           </cite>
+           sampled at
+           <cite>
+            x
+           </cite>
+           . The domain of the returned instance can be
 specified and this will often result in a superior fit with less
 chance of ill conditioning.
-         </p>
-         <dl class="field-list">
-          <dt class="field-odd">
-           Parameters
-          </dt>
-          <dd class="field-odd">
-           <dl>
-            <dt>
-             <strong>
-              x
-             </strong>
-             <span class="classifier">
-              array_like, shape (M,)
-             </span>
-            </dt>
-            <dd>
-             <p>
-              x-coordinates of the M sample points
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                (x[i],
-               </span>
-               <span class="pre">
-                y[i])
-               </span>
-              </code>
-              .
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              y
-             </strong>
-             <span class="classifier">
-              array_like, shape (M,) or (M, K)
-             </span>
-            </dt>
-            <dd>
-             <p>
-              y-coordinates of the sample points. Several data sets of sample
-points sharing the same x-coordinates can be fitted at once by
-passing in a 2D-array that contains one dataset per column.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              deg
-             </strong>
-             <span class="classifier">
-              int or 1-D array_like
-             </span>
-            </dt>
-            <dd>
-             <p>
-              Degree(s) of the fitting polynomials. If
-              <cite>
+          </p>
+          <dl class="field-list">
+           <dt class="field-odd">
+            Parameters
+           </dt>
+           <dd class="field-odd">
+            <dl>
+             <dt>
+              <strong>
+               x
+              </strong>
+              <span class="classifier">
+               array_like, shape (M,)
+              </span>
+             </dt>
+             <dd>
+              <p>
+               x-coordinates of the M sample points
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 (x[i],
+                </span>
+                <span class="pre">
+                 y[i])
+                </span>
+               </code>
+               .
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               y
+              </strong>
+              <span class="classifier">
+               array_like, shape (M,)
+              </span>
+             </dt>
+             <dd>
+              <p>
+               y-coordinates of the M sample points
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 (x[i],
+                </span>
+                <span class="pre">
+                 y[i])
+                </span>
+               </code>
+               .
+              </p>
+             </dd>
+             <dt>
+              <strong>
                deg
-              </cite>
-              is a single integer
+              </strong>
+              <span class="classifier">
+               int or 1-D array_like
+              </span>
+             </dt>
+             <dd>
+              <p>
+               Degree(s) of the fitting polynomials. If
+               <cite>
+                deg
+               </cite>
+               is a single integer
 all terms up to and including the
-              <cite>
-               deg
-              </cite>
-              ’th term are included in the
+               <cite>
+                deg
+               </cite>
+               ’th term are included in the
 fit. For NumPy versions &gt;= 1.11.0 a list of integers specifying the
 degrees of the terms to include may be used instead.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              domain
-             </strong>
-             <span class="classifier">
-              {None, [beg, end], []}, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              Domain to use for the returned series. If
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                None
-               </span>
-              </code>
-              ,
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               domain
+              </strong>
+              <span class="classifier">
+               {None, [beg, end], []}, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               Domain to use for the returned series. If
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 None
+                </span>
+               </code>
+               ,
 then a minimal domain that covers the points
-              <cite>
-               x
-              </cite>
-              is chosen.  If
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                []
-               </span>
-              </code>
-              the class domain is used. The default value was the
+               <cite>
+                x
+               </cite>
+               is chosen.  If
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 []
+                </span>
+               </code>
+               the class domain is used. The default value was the
 class domain in NumPy 1.4 and
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                None
-               </span>
-              </code>
-              in later versions.
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 None
+                </span>
+               </code>
+               in later versions.
 The
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                []
-               </span>
-              </code>
-              option was added in numpy 1.5.0.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              rcond
-             </strong>
-             <span class="classifier">
-              float, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              Relative condition number of the fit. Singular values smaller
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 []
+                </span>
+               </code>
+               option was added in numpy 1.5.0.
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               rcond
+              </strong>
+              <span class="classifier">
+               float, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               Relative condition number of the fit. Singular values smaller
 than this relative to the largest singular value will be
 ignored. The default value is len(x)*eps, where eps is the
 relative precision of the float type, about 2e-16 in most
 cases.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              full
-             </strong>
-             <span class="classifier">
-              bool, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              Switch determining nature of return value. When it is False
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               full
+              </strong>
+              <span class="classifier">
+               bool, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               Switch determining nature of return value. When it is False
 (the default) just the coefficients are returned, when True
 diagnostic information from the singular value decomposition is
 also returned.
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              w
-             </strong>
-             <span class="classifier">
-              array_like, shape (M,), optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              Weights. If not None the contribution of each point
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                (x[i],y[i])
-               </span>
-              </code>
-              to the fit is weighted by
-              <cite>
-               w[i]
-              </cite>
-              . Ideally the
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               w
+              </strong>
+              <span class="classifier">
+               array_like, shape (M,), optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               Weights. If not None the contribution of each point
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 (x[i],y[i])
+                </span>
+               </code>
+               to the fit is weighted by
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 w[i]
+                </span>
+               </code>
+               . Ideally the
 weights are chosen so that the errors of the products
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                w[i]*y[i]
-               </span>
-              </code>
-              all have the same variance.  The default value is
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 w[i]*y[i]
+                </span>
+               </code>
+               all have the same variance.  The default value is
 None.
-             </p>
-             <div class="versionadded">
-              <p>
-               <span class="versionmodified added">
-                New in version 1.5.0.
-               </span>
               </p>
-             </div>
-            </dd>
-            <dt>
-             <strong>
-              window
-             </strong>
-             <span class="classifier">
-              {[beg, end]}, optional
-             </span>
-            </dt>
-            <dd>
-             <p>
-              Window to use for the returned series. The default
+              <div class="versionadded">
+               <p>
+                <span class="versionmodified added">
+                 New in version 1.5.0.
+                </span>
+               </p>
+              </div>
+             </dd>
+             <dt>
+              <strong>
+               window
+              </strong>
+              <span class="classifier">
+               {[beg, end]}, optional
+              </span>
+             </dt>
+             <dd>
+              <p>
+               Window to use for the returned series. The default
 value is the default class domain
-             </p>
-             <div class="versionadded">
-              <p>
-               <span class="versionmodified added">
-                New in version 1.6.0.
-               </span>
               </p>
-             </div>
-            </dd>
-           </dl>
-          </dd>
-          <dt class="field-even">
-           Returns
-          </dt>
-          <dd class="field-even">
-           <dl>
-            <dt>
-             <strong>
-              new_series
-             </strong>
-             <span class="classifier">
-              series
-             </span>
-            </dt>
-            <dd>
-             <p>
-              A series that represents the least squares fit to the data and
+              <div class="versionadded">
+               <p>
+                <span class="versionmodified added">
+                 New in version 1.6.0.
+                </span>
+               </p>
+              </div>
+             </dd>
+            </dl>
+           </dd>
+           <dt class="field-even">
+            Returns
+           </dt>
+           <dd class="field-even">
+            <dl>
+             <dt>
+              <strong>
+               new_series
+              </strong>
+              <span class="classifier">
+               series
+              </span>
+             </dt>
+             <dd>
+              <p>
+               A series that represents the least squares fit to the data and
 has the domain and window specified in the call. If the
 coefficients for the unscaled and unshifted basis polynomials are
 of interest, do
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                new_series.convert().coef
-               </span>
-              </code>
-              .
-             </p>
-            </dd>
-            <dt>
-             <strong>
-              [resid, rank, sv, rcond]
-             </strong>
-             <span class="classifier">
-              list
-             </span>
-            </dt>
-            <dd>
-             <p>
-              These values are only returned if
-              <cite>
-               full
-              </cite>
-              = True
-             </p>
-             <p>
-              resid – sum of squared residuals of the least squares fit
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 new_series.convert().coef
+                </span>
+               </code>
+               .
+              </p>
+             </dd>
+             <dt>
+              <strong>
+               [resid, rank, sv, rcond]
+              </strong>
+              <span class="classifier">
+               list
+              </span>
+             </dt>
+             <dd>
+              <p>
+               These values are only returned if
+               <cite>
+                full
+               </cite>
+               = True
+              </p>
+              <p>
+               resid – sum of squared residuals of the least squares fit
 rank – the numerical rank of the scaled Vandermonde matrix
 sv – singular values of the scaled Vandermonde matrix
 rcond – value of
-              <cite>
-               rcond
-              </cite>
-              .
-             </p>
-             <p>
-              For more details, see
-              <cite>
-               linalg.lstsq
-              </cite>
-              .
-             </p>
-            </dd>
-           </dl>
-          </dd>
-         </dl>
-        </dd>
-       </dl>
+               <cite>
+                rcond
+               </cite>
+               .
+              </p>
+              <p>
+               For more details, see
+               <cite>
+                linalg.lstsq
+               </cite>
+               .
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+         </dd>
+        </dl>
+       </section>
       </article>
      </div>
     </div>
@@ -799,13 +849,13 @@ rcond – value of
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 14, 2020.
+              Jul 23, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.2.1.
+      4.1.1.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
