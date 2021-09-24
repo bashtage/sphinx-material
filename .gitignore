@@ -5,12 +5,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
+/.eslintcache
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -126,3 +124,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea/
+
+# NPM modules
+/node_modules/
+
+# Built version
+/sphinx_material/partials
+/sphinx_material/*.html
+/sphinx_material/.icons
+/sphinx_material/static

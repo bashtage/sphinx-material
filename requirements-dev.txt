@@ -1,1 +1,10 @@
 black==19.10b0
+recommonmark
+numpydoc
+nbsphinx
+sphinx_markdown_tables
+jupyter
+numpy
+pandas
+matplotlib
+mypy

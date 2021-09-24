@@ -390,3 +390,15 @@ Right Alignment
     :alt: Right Image, 60% scale
     :scale: 60%
     :align: right
+
+Math again
+----------
+
+This serves as a test when using the ``navigation.instant`` feature and
+switching between two pages with math.
+
+.. math::
+
+   (a + b)^2 = a^2 + 2ab + b^2
+
+   (a - b)^2 = a^2 - 2ab + b^2

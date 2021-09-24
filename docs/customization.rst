@@ -11,14 +11,12 @@ options are:
 .. code-block:: python
 
     html_theme_options = {
-        'base_url': 'http://bashtage.github.io/sphinx-material/',
+        'site_url': 'http://bashtage.github.io/sphinx-material/',
         'repo_url': 'https://github.com/bashtage/sphinx-material/',
         'repo_name': 'Material for Sphinx',
-        'google_analytics_account': 'UA-XXXXX',
+        'google_analytics': ['UA-XXXXX','auto'],
         'html_minify': True,
         'css_minify': True,
-        'nav_title': 'Material Sphinx Demo',
-        'logo_icon': '&#xe869',
         'globaltoc_depth': 2
     }
 
@@ -28,9 +26,9 @@ The complete list of options with detailed explanations appears in
 Configuration Options
 =====================
 
-``nav_title``
-   Set the name to appear in the left sidebar/header. If not provided, uses
-   html_short_title if defined, or html_title.
+``direction``
+  Specifies the text direction.  Set to ``ltr`` (default) for left-to-right,
+  or ``rtl`` for right-to-left.
 ``touch_icon``
    Path to a touch icon, should be 152x152 or larger.
 ``google_analytics_account``
@@ -41,8 +39,8 @@ Configuration Options
    The name of the repo. If must be set if repo_url is set.
 ``repo_type``
    Must be one of github, gitlab or bitbucket.
-``base_url``
-   Specify a base_url used to generate sitemap.xml links. If not specified, then
+``site_url``
+   Specify a site_url used to generate sitemap.xml links. If not specified, then
    no sitemap will be built.
 ``globaltoc_depth``
    The maximum depth of the global TOC; set it to -1 to allow unlimited depth.
@@ -67,20 +65,6 @@ Configuration Options
    Prettify pages, usually only for debugging.
 ``css_minify``
    Minify css files found in the output directory.
-``logo_icon``
-   Set the logo icon. Should be a pre-escaped html string that indicates a
-   unicode point, e.g., ``'&#xe869'`` which is used on this site.
-``master_doc``
-   Include the master document at the top of the page in the breadcrumb bar.
-   You must also set this to true if you want to override the rootrellink block, in which
-   case the content of the overridden block will appear
-``nav_links``
-   A list of dictionaries where each has three keys:
-
-   - ``href``: The URL or pagename (str)
-   - ``title``: The title to appear (str)
-   - ``internal``: Flag indicating to use pathto to find the page.  Set to False for
-     external content. (bool)
 ``heroes``
    A ``dict[str,str]`` where the key is a pagename and the value is the text to display in the
    page's hero location.
@@ -95,9 +79,6 @@ Configuration Options
 ``version_info``
    A dictionary used to populate the version dropdown.  If this variable is provided, the static
    dropdown is used and any JavaScript information is ignored.
-``table_classes``
-   A list of classes to **not strip** from tables. All other classes are stripped, and the default
-   table has no class attribute. Custom table classes need to provide the full style for the table.
 
 Sidebars
 ========
