@@ -22,6 +22,7 @@ del get_versions
 ROOT_SUFFIX = "--page-root"
 
 USER_TABLE_CLASSES = []
+USER_TABLE_NO_STRIP_CLASSES = ["no-sphinx-material-strip"]
 
 
 def setup(app):
@@ -150,6 +151,10 @@ def update_table_classes(app, config):
     if table_classes:
         USER_TABLE_CLASSES.extend(table_classes)
 
+    table_no_strip_classes = config.html_theme_options.get("table_no_strip")
+    if table_no_strip_classes:
+        USER_TABLE_NO_STRIP_CLASSES.extend(table_no_strip_classes)
+
 
 def html_theme_path():
     return [os.path.dirname(os.path.abspath(__file__))]
@@ -228,7 +233,9 @@ def walk_contents(tags):
 
 def table_fix(body_text, page_name="md-page-root--link"):
     # This is a hack to skip certain classes of tables
-    ignore_table_classes = {"highlighttable", "longtable", "dataframe"}
+    ignore_table_classes = {"highlighttable", "longtable", "dataframe"} | set(
+        USER_TABLE_NO_STRIP_CLASSES
+    )
     try:
         body = BeautifulSoup(body_text, features="html.parser")
         for table in body.select("table"):
