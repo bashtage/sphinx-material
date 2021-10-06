@@ -3,7 +3,6 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -379,134 +378,130 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="material-for-sphinx">
-        <h1 id="index--page-root">
-         Material for Sphinx
-         <a class="headerlink" href="#index--page-root" title="Permalink to this headline">
-          ¶
-         </a>
-        </h1>
-        <img alt="Material for Sphinx Screenshots" src="_images/screenshot.png"/>
-        <p>
-         This theme provides a responsive Material Design theme for Sphinx
+       <h1 id="index--page-root">
+        Material for Sphinx
+        <a class="headerlink" href="#index--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <img alt="Material for Sphinx Screenshots" src="_images/screenshot.png"/>
+       <p>
+        This theme provides a responsive Material Design theme for Sphinx
 documentation. It derives heavily from
-         <a class="reference external" href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs
-         </a>
-         ,
+        <a class="reference external" href="https://squidfunk.github.io/mkdocs-material/">
+         Material for MkDocs
+        </a>
+        ,
 and also uses code from
-         <a class="reference external" href="https://github.com/guzzle/guzzle_sphinx_theme">
-          Guzzle Sphinx Theme
-         </a>
-         .
-        </p>
-        <section id="roadmap">
-         <h2 id="roadmap">
-          Roadmap
-          <a class="headerlink" href="#roadmap" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <p>
-          <a class="reference external" href="https://github.com/bashtage/sphinx-material">
-           Material for Sphinx
-          </a>
-          is a work in progress.  While
+        <a class="reference external" href="https://github.com/guzzle/guzzle_sphinx_theme">
+         Guzzle Sphinx Theme
+        </a>
+        .
+       </p>
+       <h2 id="roadmap">
+        Roadmap
+        <a class="headerlink" href="#roadmap" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <a class="reference external" href="https://github.com/bashtage/sphinx-material">
+         Material for Sphinx
+        </a>
+        is a work in progress.  While
 I believe that it is ready for use, there are a number of important limitation.  The most
 important it to improve the CSS generation to use
-          <a class="reference external" href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)">
-           SASS
-          </a>
-          . It uses some python to
+        <a class="reference external" href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)">
+         SASS
+        </a>
+        . It uses some python to
 modify Sphinx output, which is not ideal.
-         </p>
+       </p>
+       <p>
+        The other issues are:
+       </p>
+       <ul class="simple">
+        <li>
          <p>
-          The other issues are:
+          improving the documentation;
          </p>
-         <ul class="simple">
-          <li>
-           <p>
-            improving the documentation;
-           </p>
-          </li>
-          <li>
-           <p>
-            providing examples;
-           </p>
-          </li>
-          <li>
-           <p>
-            sidebar customization;
-           </p>
-          </li>
-          <li>
-           <p>
-            improving the search box; and
-           </p>
-          </li>
-          <li>
-           <p>
-            ensuring that all Sphinx blocks work as intended.
-           </p>
-          </li>
-         </ul>
+        </li>
+        <li>
          <p>
-          You can see how it works on
-          <a class="reference external" href="https://www.statsmodels.org/">
-           statsmodels
-          </a>
-          .
+          providing examples;
          </p>
-        </section>
-        <section id="getting-started">
-         <h2 id="getting-started">
-          Getting Started
-          <a class="headerlink" href="#getting-started" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
+        </li>
+        <li>
          <p>
-          Install from git
+          sidebar customization;
          </p>
-         <div class="highlight-bash notranslate">
-          <div class="highlight">
-           <pre><span></span>pip install git+https://github.com/bashtage/sphinx-material.git
+        </li>
+        <li>
+         <p>
+          improving the search box; and
+         </p>
+        </li>
+        <li>
+         <p>
+          ensuring that all Sphinx blocks work as intended.
+         </p>
+        </li>
+       </ul>
+       <p>
+        You can see how it works on
+        <a class="reference external" href="https://www.statsmodels.org/">
+         statsmodels
+        </a>
+        .
+       </p>
+       <h2 id="getting-started">
+        Getting Started
+        <a class="headerlink" href="#getting-started" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        Install from git
+       </p>
+       <div class="highlight-bash notranslate">
+        <div class="highlight">
+         <pre><span></span>pip install git+https://github.com/bashtage/sphinx-material.git
 </pre>
-          </div>
-         </div>
-         <p>
-          Update your
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            conf.py
-           </span>
-          </code>
-          with the required changes:
-         </p>
-         <div class="highlight-python notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
+        </div>
+       </div>
+       <p>
+        Update your
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          conf.py
+         </span>
+        </code>
+        with the required changes:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
 </pre>
-          </div>
-         </div>
-         <p>
-          There are a lot more ways to customize this theme. See
-          <a class="reference internal" href="customization.html#customization">
-           <span class="std std-ref">
-            Customization
-           </span>
-          </a>
-          or
-          <code class="docutils literal notranslate">
-           <span class="pre">
-            theme.conf
-           </span>
-          </code>
-          for more details.
-         </p>
-         <div class="highlight-python notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
+        </div>
+       </div>
+       <p>
+        There are a lot more ways to customize this theme. See
+        <a class="reference internal" href="customization.html#customization">
+         <span class="std std-ref">
+          Customization
+         </span>
+        </a>
+        or
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          theme.conf
+         </span>
+        </code>
+        for more details.
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_material'</span>
 
 <span class="c1"># Material theme options (see theme.conf for more information)</span>
 <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
@@ -537,116 +532,112 @@ modify Sphinx output, which is not ideal.
     <span class="s1">'globaltoc_includehidden'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">}</span>
 </pre>
-          </div>
-         </div>
-         <div class="toctree-wrapper compound">
-          <p class="caption" role="heading">
-           <span class="caption-text">
-            Basic Use
-           </span>
-          </p>
-          <ul>
-           <li class="toctree-l1">
-            <a class="reference internal" href="customization.html">
-             Customization
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="specimen.html">
-             Specimen
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="additional_samples.html">
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               Additional
-              </span>
-             </code>
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               Samples
-              </span>
-             </code>
-            </a>
-           </li>
-          </ul>
-         </div>
-         <div class="toctree-wrapper compound">
-          <p class="caption" role="heading">
-           <span class="caption-text">
-            Other Examples and Uses
-           </span>
-          </p>
-          <ul>
-           <li class="toctree-l1">
-            <a class="reference internal" href="pymethod.html">
-             Python Methods
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="numpydoc.html">
-             NumPy Docstrings
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="notebook.html">
-             Jupyter Notebooks
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="markdown.html">
-             Markdown
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html">
-             rst Cheatsheet
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="basics.html">
-             reStructuredText Primer
-            </a>
-           </li>
-          </ul>
-         </div>
-         <div class="toctree-wrapper compound">
-          <p class="caption" role="heading">
-           <span class="caption-text">
-            Changes and License
-           </span>
-          </p>
-          <ul>
-           <li class="toctree-l1">
-            <a class="reference internal" href="change-log.html">
-             Change Log
-            </a>
-           </li>
-           <li class="toctree-l1">
-            <a class="reference internal" href="license.html">
-             License
-            </a>
-           </li>
-          </ul>
-         </div>
-         <section id="index">
-          <h3 id="index">
-           Index
-           <a class="headerlink" href="#index" title="Permalink to this headline">
-            ¶
-           </a>
-          </h3>
-          <p>
-           <a class="reference internal" href="genindex.html">
-            <span class="std std-ref">
-             Index
+        </div>
+       </div>
+       <div class="toctree-wrapper compound">
+        <p class="caption">
+         <span class="caption-text">
+          Basic Use
+         </span>
+        </p>
+        <ul>
+         <li class="toctree-l1">
+          <a class="reference internal" href="customization.html">
+           Customization
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="specimen.html">
+           Specimen
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="additional_samples.html">
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             Additional
             </span>
-           </a>
-          </p>
-         </section>
-        </section>
-       </section>
+           </code>
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             Samples
+            </span>
+           </code>
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="toctree-wrapper compound">
+        <p class="caption">
+         <span class="caption-text">
+          Other Examples and Uses
+         </span>
+        </p>
+        <ul>
+         <li class="toctree-l1">
+          <a class="reference internal" href="pymethod.html">
+           Python Methods
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="numpydoc.html">
+           NumPy Docstrings
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="notebook.html">
+           Jupyter Notebooks
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="markdown.html">
+           Markdown
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="rst-cheatsheet/rst-cheatsheet.html">
+           rst Cheatsheet
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="basics.html">
+           reStructuredText Primer
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="toctree-wrapper compound">
+        <p class="caption">
+         <span class="caption-text">
+          Changes and License
+         </span>
+        </p>
+        <ul>
+         <li class="toctree-l1">
+          <a class="reference internal" href="change-log.html">
+           Change Log
+          </a>
+         </li>
+         <li class="toctree-l1">
+          <a class="reference internal" href="license.html">
+           License
+          </a>
+         </li>
+        </ul>
+       </div>
+       <h3 id="index">
+        Index
+        <a class="headerlink" href="#index" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        <a class="reference internal" href="genindex.html">
+         <span class="std std-ref">
+          Index
+         </span>
+        </a>
+       </p>
       </article>
      </div>
     </div>
@@ -678,13 +669,13 @@ modify Sphinx output, which is not ideal.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

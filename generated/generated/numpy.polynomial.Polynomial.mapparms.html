@@ -3,7 +3,6 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -359,169 +358,167 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="numpy-polynomial-polynomial-mapparms">
-        <h1 id="generated-generated-numpy-polynomial-polynomial-mapparms--page-root">
-         numpy.polynomial.Polynomial.mapparms
-         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-mapparms--page-root" title="Permalink to this headline">
+       <h1 id="generated-generated-numpy-polynomial-polynomial-mapparms--page-root">
+        numpy.polynomial.Polynomial.mapparms
+        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-mapparms--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <p>
+        method
+       </p>
+       <dl class="py method">
+        <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.mapparms">
+         <span class="sig-prename descclassname">
+          <span class="pre">
+           Polynomial.
+          </span>
+         </span>
+         <span class="sig-name descname">
+          <span class="pre">
+           mapparms
+          </span>
+         </span>
+         <span class="sig-paren">
+          (
+         </span>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="headerlink" href="#numpy.polynomial.Polynomial.mapparms" title="Permalink to this definition">
           ¶
          </a>
-        </h1>
-        <p>
-         method
-        </p>
-        <dl class="py method">
-         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.mapparms">
-          <span class="sig-prename descclassname">
+        </dt>
+        <dd>
+         <p>
+          Return the mapping parameters.
+         </p>
+         <p>
+          The returned values define a linear map
+          <code class="docutils literal notranslate">
            <span class="pre">
-            Polynomial.
+            off
            </span>
-          </span>
-          <span class="sig-name descname">
            <span class="pre">
-            mapparms
+            +
            </span>
-          </span>
-          <span class="sig-paren">
-           (
-          </span>
-          <span class="sig-paren">
-           )
-          </span>
-          <a class="headerlink" href="#numpy.polynomial.Polynomial.mapparms" title="Permalink to this definition">
-           ¶
-          </a>
-         </dt>
-         <dd>
-          <p>
-           Return the mapping parameters.
-          </p>
-          <p>
-           The returned values define a linear map
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             off
-            </span>
-            <span class="pre">
-             +
-            </span>
-            <span class="pre">
-             scl*x
-            </span>
-           </code>
-           that is
+           <span class="pre">
+            scl*x
+           </span>
+          </code>
+          that is
 applied to the input arguments before the series is evaluated. The
 map depends on the
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             domain
-            </span>
-           </code>
-           and
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             window
-            </span>
-           </code>
-           ; if the current
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             domain
-            </span>
-           </code>
-           is equal to the
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             window
-            </span>
-           </code>
-           the resulting map is the
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            domain
+           </span>
+          </code>
+          and
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            window
+           </span>
+          </code>
+          ; if the current
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            domain
+           </span>
+          </code>
+          is equal to the
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            window
+           </span>
+          </code>
+          the resulting map is the
 identity.  If the coefficients of the series instance are to be
 used by themselves outside this class, then the linear function
 must be substituted for the
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             x
-            </span>
-           </code>
-           in the standard representation of
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            x
+           </span>
+          </code>
+          in the standard representation of
 the base polynomials.
-          </p>
-          <dl class="field-list simple">
-           <dt class="field-odd">
-            Returns
-           </dt>
-           <dd class="field-odd">
-            <dl class="simple">
-             <dt>
-              <strong>
-               off, scl
-              </strong>
-              <span class="classifier">
-               float or complex
-              </span>
-             </dt>
-             <dd>
-              <p>
-               The mapping function is defined by
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 off
-                </span>
-                <span class="pre">
-                 +
-                </span>
-                <span class="pre">
-                 scl*x
-                </span>
-               </code>
-               .
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-          <p class="rubric">
-           Notes
-          </p>
-          <p>
-           If the current domain is the interval
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             [l1,
-            </span>
-            <span class="pre">
-             r1]
-            </span>
-           </code>
-           and the window
+         </p>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Returns
+          </dt>
+          <dd class="field-odd">
+           <dl class="simple">
+            <dt>
+             <strong>
+              off, scl
+             </strong>
+             <span class="classifier">
+              float or complex
+             </span>
+            </dt>
+            <dd>
+             <p>
+              The mapping function is defined by
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                off
+               </span>
+               <span class="pre">
+                +
+               </span>
+               <span class="pre">
+                scl*x
+               </span>
+              </code>
+              .
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <p class="rubric">
+          Notes
+         </p>
+         <p>
+          If the current domain is the interval
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            [l1,
+           </span>
+           <span class="pre">
+            r1]
+           </span>
+          </code>
+          and the window
 is
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             [l2,
-            </span>
-            <span class="pre">
-             r2]
-            </span>
-           </code>
-           , then the linear mapping function
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             L
-            </span>
-           </code>
-           is
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            [l2,
+           </span>
+           <span class="pre">
+            r2]
+           </span>
+          </code>
+          , then the linear mapping function
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            L
+           </span>
+          </code>
+          is
 defined by the equations:
-          </p>
-          <div class="highlight-default notranslate">
-           <div class="highlight">
-            <pre><span></span><span class="n">L</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="o">=</span> <span class="n">l2</span>
+         </p>
+         <div class="highlight-default notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="n">L</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="o">=</span> <span class="n">l2</span>
 <span class="n">L</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span> <span class="o">=</span> <span class="n">r2</span>
 </pre>
-           </div>
           </div>
-         </dd>
-        </dl>
-       </section>
+         </div>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
@@ -567,13 +564,13 @@ defined by the equations:
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

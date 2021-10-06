@@ -3,7 +3,6 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -359,121 +358,119 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="numpy-polynomial-polynomial-truncate">
-        <h1 id="generated-generated-numpy-polynomial-polynomial-truncate--page-root">
-         numpy.polynomial.Polynomial.truncate
-         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-truncate--page-root" title="Permalink to this headline">
+       <h1 id="generated-generated-numpy-polynomial-polynomial-truncate--page-root">
+        numpy.polynomial.Polynomial.truncate
+        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-truncate--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <p>
+        method
+       </p>
+       <dl class="py method">
+        <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.truncate">
+         <span class="sig-prename descclassname">
+          <span class="pre">
+           Polynomial.
+          </span>
+         </span>
+         <span class="sig-name descname">
+          <span class="pre">
+           truncate
+          </span>
+         </span>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            size
+           </span>
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="headerlink" href="#numpy.polynomial.Polynomial.truncate" title="Permalink to this definition">
           ¶
          </a>
-        </h1>
-        <p>
-         method
-        </p>
-        <dl class="py method">
-         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.truncate">
-          <span class="sig-prename descclassname">
-           <span class="pre">
-            Polynomial.
-           </span>
-          </span>
-          <span class="sig-name descname">
-           <span class="pre">
-            truncate
-           </span>
-          </span>
-          <span class="sig-paren">
-           (
-          </span>
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             size
-            </span>
-           </span>
-          </em>
-          <span class="sig-paren">
-           )
-          </span>
-          <a class="headerlink" href="#numpy.polynomial.Polynomial.truncate" title="Permalink to this definition">
-           ¶
-          </a>
-         </dt>
-         <dd>
-          <p>
-           Truncate series to length
-           <cite>
-            size
-           </cite>
-           .
-          </p>
-          <p>
-           Reduce the series to length
-           <cite>
-            size
-           </cite>
-           by discarding the high
+        </dt>
+        <dd>
+         <p>
+          Truncate series to length
+          <cite>
+           size
+          </cite>
+          .
+         </p>
+         <p>
+          Reduce the series to length
+          <cite>
+           size
+          </cite>
+          by discarding the high
 degree terms. The value of
-           <cite>
-            size
-           </cite>
-           must be a positive integer. This
+          <cite>
+           size
+          </cite>
+          must be a positive integer. This
 can be useful in least squares where the coefficients of the
 high degree terms may be very small.
-          </p>
-          <dl class="field-list simple">
-           <dt class="field-odd">
-            Parameters
-           </dt>
-           <dd class="field-odd">
-            <dl class="simple">
-             <dt>
-              <strong>
+         </p>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
+           <dl class="simple">
+            <dt>
+             <strong>
+              size
+             </strong>
+             <span class="classifier">
+              positive int
+             </span>
+            </dt>
+            <dd>
+             <p>
+              The series is reduced to length
+              <cite>
                size
-              </strong>
-              <span class="classifier">
-               positive int
-              </span>
-             </dt>
-             <dd>
-              <p>
-               The series is reduced to length
-               <cite>
-                size
-               </cite>
-               by discarding the high
+              </cite>
+              by discarding the high
 degree terms. The value of
-               <cite>
-                size
-               </cite>
-               must be a positive integer.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-           <dt class="field-even">
-            Returns
-           </dt>
-           <dd class="field-even">
-            <dl class="simple">
-             <dt>
-              <strong>
-               new_series
-              </strong>
-              <span class="classifier">
-               series
-              </span>
-             </dt>
-             <dd>
-              <p>
-               New instance of series with truncated coefficients.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-         </dd>
-        </dl>
-       </section>
+              <cite>
+               size
+              </cite>
+              must be a positive integer.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+          <dt class="field-even">
+           Returns
+          </dt>
+          <dd class="field-even">
+           <dl class="simple">
+            <dt>
+             <strong>
+              new_series
+             </strong>
+             <span class="classifier">
+              series
+             </span>
+            </dt>
+            <dd>
+             <p>
+              New instance of series with truncated coefficients.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
@@ -519,13 +516,13 @@ degree terms. The value of
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

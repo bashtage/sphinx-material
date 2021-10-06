@@ -3,7 +3,6 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -359,229 +358,227 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="numpy-polynomial-polynomial-basis">
-        <h1 id="generated-generated-numpy-polynomial-polynomial-basis--page-root">
-         numpy.polynomial.Polynomial.basis
-         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-basis--page-root" title="Permalink to this headline">
+       <h1 id="generated-generated-numpy-polynomial-polynomial-basis--page-root">
+        numpy.polynomial.Polynomial.basis
+        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-basis--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <p>
+        method
+       </p>
+       <dl class="py method">
+        <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.basis">
+         <em class="property">
+          <span class="pre">
+           classmethod
+          </span>
+         </em>
+         <span class="sig-prename descclassname">
+          <span class="pre">
+           Polynomial.
+          </span>
+         </span>
+         <span class="sig-name descname">
+          <span class="pre">
+           basis
+          </span>
+         </span>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            deg
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            domain
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            None
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            window
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            None
+           </span>
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="headerlink" href="#numpy.polynomial.Polynomial.basis" title="Permalink to this definition">
           ¶
          </a>
-        </h1>
-        <p>
-         method
-        </p>
-        <dl class="py method">
-         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.basis">
-          <em class="property">
-           <span class="pre">
-            classmethod
-           </span>
-          </em>
-          <span class="sig-prename descclassname">
-           <span class="pre">
-            Polynomial.
-           </span>
-          </span>
-          <span class="sig-name descname">
-           <span class="pre">
-            basis
-           </span>
-          </span>
-          <span class="sig-paren">
-           (
-          </span>
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             deg
-            </span>
-           </span>
-          </em>
-          ,
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             domain
-            </span>
-           </span>
-           <span class="o">
-            <span class="pre">
-             =
-            </span>
-           </span>
-           <span class="default_value">
-            <span class="pre">
-             None
-            </span>
-           </span>
-          </em>
-          ,
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             window
-            </span>
-           </span>
-           <span class="o">
-            <span class="pre">
-             =
-            </span>
-           </span>
-           <span class="default_value">
-            <span class="pre">
-             None
-            </span>
-           </span>
-          </em>
-          <span class="sig-paren">
-           )
-          </span>
-          <a class="headerlink" href="#numpy.polynomial.Polynomial.basis" title="Permalink to this definition">
-           ¶
-          </a>
-         </dt>
-         <dd>
+        </dt>
+        <dd>
+         <p>
+          Series basis polynomial of degree
+          <cite>
+           deg
+          </cite>
+          .
+         </p>
+         <p>
+          Returns the series representing the basis polynomial of degree
+          <cite>
+           deg
+          </cite>
+          .
+         </p>
+         <div class="versionadded">
           <p>
-           Series basis polynomial of degree
-           <cite>
-            deg
-           </cite>
-           .
+           <span class="versionmodified added">
+            New in version 1.7.0.
+           </span>
           </p>
-          <p>
-           Returns the series representing the basis polynomial of degree
-           <cite>
-            deg
-           </cite>
-           .
-          </p>
-          <div class="versionadded">
-           <p>
-            <span class="versionmodified added">
-             New in version 1.7.0.
-            </span>
-           </p>
-          </div>
-          <dl class="field-list simple">
-           <dt class="field-odd">
-            Parameters
-           </dt>
-           <dd class="field-odd">
-            <dl class="simple">
-             <dt>
-              <strong>
-               deg
-              </strong>
-              <span class="classifier">
-               int
-              </span>
-             </dt>
-             <dd>
-              <p>
-               Degree of the basis polynomial for the series. Must be &gt;= 0.
-              </p>
-             </dd>
-             <dt>
-              <strong>
-               domain
-              </strong>
-              <span class="classifier">
-               {None, array_like}, optional
-              </span>
-             </dt>
-             <dd>
-              <p>
-               If given, the array must be of the form
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 [beg,
-                </span>
-                <span class="pre">
-                 end]
-                </span>
-               </code>
-               , where
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 beg
-                </span>
-               </code>
-               and
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 end
-                </span>
-               </code>
-               are the endpoints of the domain. If None is
+         </div>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
+           <dl class="simple">
+            <dt>
+             <strong>
+              deg
+             </strong>
+             <span class="classifier">
+              int
+             </span>
+            </dt>
+            <dd>
+             <p>
+              Degree of the basis polynomial for the series. Must be &gt;= 0.
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              domain
+             </strong>
+             <span class="classifier">
+              {None, array_like}, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              If given, the array must be of the form
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                [beg,
+               </span>
+               <span class="pre">
+                end]
+               </span>
+              </code>
+              , where
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                beg
+               </span>
+              </code>
+              and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                end
+               </span>
+              </code>
+              are the endpoints of the domain. If None is
 given then the class domain is used. The default is None.
-              </p>
-             </dd>
-             <dt>
-              <strong>
-               window
-              </strong>
-              <span class="classifier">
-               {None, array_like}, optional
-              </span>
-             </dt>
-             <dd>
-              <p>
-               If given, the resulting array must be if the form
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 [beg,
-                </span>
-                <span class="pre">
-                 end]
-                </span>
-               </code>
-               , where
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 beg
-                </span>
-               </code>
-               and
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 end
-                </span>
-               </code>
-               are the endpoints of
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              window
+             </strong>
+             <span class="classifier">
+              {None, array_like}, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              If given, the resulting array must be if the form
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                [beg,
+               </span>
+               <span class="pre">
+                end]
+               </span>
+              </code>
+              , where
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                beg
+               </span>
+              </code>
+              and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                end
+               </span>
+              </code>
+              are the endpoints of
 the window. If None is given then the class window is used. The
 default is None.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-           <dt class="field-even">
-            Returns
-           </dt>
-           <dd class="field-even">
-            <dl class="simple">
-             <dt>
-              <strong>
-               new_series
-              </strong>
-              <span class="classifier">
-               series
-              </span>
-             </dt>
-             <dd>
-              <p>
-               A series with the coefficient of the
-               <cite>
-                deg
-               </cite>
-               term set to one and
+             </p>
+            </dd>
+           </dl>
+          </dd>
+          <dt class="field-even">
+           Returns
+          </dt>
+          <dd class="field-even">
+           <dl class="simple">
+            <dt>
+             <strong>
+              new_series
+             </strong>
+             <span class="classifier">
+              series
+             </span>
+            </dt>
+            <dd>
+             <p>
+              A series with the coefficient of the
+              <cite>
+               deg
+              </cite>
+              term set to one and
 all others zero.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-         </dd>
-        </dl>
-       </section>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
@@ -627,13 +624,13 @@ all others zero.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

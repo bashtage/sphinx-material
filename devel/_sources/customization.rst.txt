@@ -103,7 +103,10 @@ Configuration Options
 ``table_classes``
    A list of classes to **not strip** from tables. All other classes are stripped, and the default
    table has no class attribute. Custom table classes need to provide the full style for the table.
-
+``table_no_strip``
+   A list of classes to deactivate the complete table handling by sphinx-material for this specific table,
+   so that all set table classes are kept.
+   Default value: ``no-sphinx-material-strip``.
 Sidebars
 ========
 

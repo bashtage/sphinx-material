@@ -502,7 +502,7 @@
 
 <span class="sd">    .. math:: p(x) = (x - r_0) * (x - r_1) * ... * (x - r_n),</span>
 
-<span class="sd">    where the ``r_n`` are the roots specified in `roots`.  If a zero has</span>
+<span class="sd">    where the `r_n` are the roots specified in `roots`.  If a zero has</span>
 <span class="sd">    multiplicity n, then it must appear in `roots` n times. For instance,</span>
 <span class="sd">    if 2 is a root of multiplicity three and 3 is a root of multiplicity 2,</span>
 <span class="sd">    then `roots` looks something like [2, 2, 2, 3, 3]. The roots can appear</span>
@@ -538,11 +538,11 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    The coefficients are determined by multiplying together linear factors</span>
-<span class="sd">    of the form ``(x - r_i)``, i.e.</span>
+<span class="sd">    of the form `(x - r_i)`, i.e.</span>
 
 <span class="sd">    .. math:: p(x) = (x - r_0) (x - r_1) ... (x - r_n)</span>
 
-<span class="sd">    where ``n == len(roots) - 1``; note that this implies that ``1`` is always</span>
+<span class="sd">    where ``n == len(roots) - 1``; note that this implies that `1` is always</span>
 <span class="sd">    returned for :math:`a_n`.</span>
 
 <span class="sd">    Examples</span>
@@ -1599,7 +1599,7 @@
 <span class="sd">        to solve the fit's matrix equation) is also returned.</span>
 <span class="sd">    w : array_like, shape (`M`,), optional</span>
 <span class="sd">        Weights. If not None, the contribution of each point</span>
-<span class="sd">        ``(x[i],y[i])`` to the fit is weighted by ``w[i]``. Ideally the</span>
+<span class="sd">        ``(x[i],y[i])`` to the fit is weighted by `w[i]`. Ideally the</span>
 <span class="sd">        weights are chosen so that the errors of the products ``w[i]*y[i]``</span>
 <span class="sd">        all have the same variance.  The default value is None.</span>
 
@@ -1892,13 +1892,13 @@
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

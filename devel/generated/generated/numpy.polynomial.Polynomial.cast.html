@@ -3,7 +3,6 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -359,248 +358,246 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="numpy-polynomial-polynomial-cast">
-        <h1 id="generated-generated-numpy-polynomial-polynomial-cast--page-root">
-         numpy.polynomial.Polynomial.cast
-         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-cast--page-root" title="Permalink to this headline">
+       <h1 id="generated-generated-numpy-polynomial-polynomial-cast--page-root">
+        numpy.polynomial.Polynomial.cast
+        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-cast--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <p>
+        method
+       </p>
+       <dl class="py method">
+        <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.cast">
+         <em class="property">
+          <span class="pre">
+           classmethod
+          </span>
+         </em>
+         <span class="sig-prename descclassname">
+          <span class="pre">
+           Polynomial.
+          </span>
+         </span>
+         <span class="sig-name descname">
+          <span class="pre">
+           cast
+          </span>
+         </span>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            series
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            domain
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            None
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            window
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            None
+           </span>
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="headerlink" href="#numpy.polynomial.Polynomial.cast" title="Permalink to this definition">
           ¶
          </a>
-        </h1>
-        <p>
-         method
-        </p>
-        <dl class="py method">
-         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.cast">
-          <em class="property">
-           <span class="pre">
-            classmethod
-           </span>
-          </em>
-          <span class="sig-prename descclassname">
-           <span class="pre">
-            Polynomial.
-           </span>
-          </span>
-          <span class="sig-name descname">
-           <span class="pre">
-            cast
-           </span>
-          </span>
-          <span class="sig-paren">
-           (
-          </span>
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             series
-            </span>
-           </span>
-          </em>
-          ,
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             domain
-            </span>
-           </span>
-           <span class="o">
-            <span class="pre">
-             =
-            </span>
-           </span>
-           <span class="default_value">
-            <span class="pre">
-             None
-            </span>
-           </span>
-          </em>
-          ,
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             window
-            </span>
-           </span>
-           <span class="o">
-            <span class="pre">
-             =
-            </span>
-           </span>
-           <span class="default_value">
-            <span class="pre">
-             None
-            </span>
-           </span>
-          </em>
-          <span class="sig-paren">
-           )
-          </span>
-          <a class="headerlink" href="#numpy.polynomial.Polynomial.cast" title="Permalink to this definition">
-           ¶
-          </a>
-         </dt>
-         <dd>
-          <p>
-           Convert series to series of this class.
-          </p>
-          <p>
-           The
-           <cite>
-            series
-           </cite>
-           is expected to be an instance of some polynomial
+        </dt>
+        <dd>
+         <p>
+          Convert series to series of this class.
+         </p>
+         <p>
+          The
+          <cite>
+           series
+          </cite>
+          is expected to be an instance of some polynomial
 series of one of the types supported by by the numpy.polynomial
 module, but could be some other class that supports the convert
 method.
+         </p>
+         <div class="versionadded">
+          <p>
+           <span class="versionmodified added">
+            New in version 1.7.0.
+           </span>
           </p>
-          <div class="versionadded">
-           <p>
-            <span class="versionmodified added">
-             New in version 1.7.0.
-            </span>
-           </p>
-          </div>
-          <dl class="field-list simple">
-           <dt class="field-odd">
-            Parameters
-           </dt>
-           <dd class="field-odd">
-            <dl class="simple">
-             <dt>
-              <strong>
-               series
-              </strong>
-              <span class="classifier">
-               series
-              </span>
-             </dt>
-             <dd>
-              <p>
-               The series instance to be converted.
-              </p>
-             </dd>
-             <dt>
-              <strong>
-               domain
-              </strong>
-              <span class="classifier">
-               {None, array_like}, optional
-              </span>
-             </dt>
-             <dd>
-              <p>
-               If given, the array must be of the form
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 [beg,
-                </span>
-                <span class="pre">
-                 end]
-                </span>
-               </code>
-               , where
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 beg
-                </span>
-               </code>
-               and
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 end
-                </span>
-               </code>
-               are the endpoints of the domain. If None is
-given then the class domain is used. The default is None.
-              </p>
-             </dd>
-             <dt>
-              <strong>
-               window
-              </strong>
-              <span class="classifier">
-               {None, array_like}, optional
-              </span>
-             </dt>
-             <dd>
-              <p>
-               If given, the resulting array must be if the form
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 [beg,
-                </span>
-                <span class="pre">
-                 end]
-                </span>
-               </code>
-               , where
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 beg
-                </span>
-               </code>
-               and
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 end
-                </span>
-               </code>
-               are the endpoints of
-the window. If None is given then the class window is used. The
-default is None.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-           <dt class="field-even">
-            Returns
-           </dt>
-           <dd class="field-even">
-            <dl class="simple">
-             <dt>
-              <strong>
-               new_series
-              </strong>
-              <span class="classifier">
-               series
-              </span>
-             </dt>
-             <dd>
-              <p>
-               A series of the same kind as the calling class and equal to
-               <cite>
-                series
-               </cite>
-               when evaluated.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-          <div class="admonition seealso">
-           <p class="admonition-title">
-            See also
-           </p>
+         </div>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
            <dl class="simple">
             <dt>
-             <a class="reference internal" href="numpy.polynomial.Polynomial.convert.html#numpy.polynomial.Polynomial.convert" title="numpy.polynomial.Polynomial.convert">
-              <code class="xref py py-obj docutils literal notranslate">
-               <span class="pre">
-                convert
-               </span>
-              </code>
-             </a>
+             <strong>
+              series
+             </strong>
+             <span class="classifier">
+              series
+             </span>
             </dt>
             <dd>
              <p>
-              similar instance method
+              The series instance to be converted.
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              domain
+             </strong>
+             <span class="classifier">
+              {None, array_like}, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              If given, the array must be of the form
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                [beg,
+               </span>
+               <span class="pre">
+                end]
+               </span>
+              </code>
+              , where
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                beg
+               </span>
+              </code>
+              and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                end
+               </span>
+              </code>
+              are the endpoints of the domain. If None is
+given then the class domain is used. The default is None.
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              window
+             </strong>
+             <span class="classifier">
+              {None, array_like}, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              If given, the resulting array must be if the form
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                [beg,
+               </span>
+               <span class="pre">
+                end]
+               </span>
+              </code>
+              , where
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                beg
+               </span>
+              </code>
+              and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                end
+               </span>
+              </code>
+              are the endpoints of
+the window. If None is given then the class window is used. The
+default is None.
              </p>
             </dd>
            </dl>
-          </div>
-         </dd>
-        </dl>
-       </section>
+          </dd>
+          <dt class="field-even">
+           Returns
+          </dt>
+          <dd class="field-even">
+           <dl class="simple">
+            <dt>
+             <strong>
+              new_series
+             </strong>
+             <span class="classifier">
+              series
+             </span>
+            </dt>
+            <dd>
+             <p>
+              A series of the same kind as the calling class and equal to
+              <cite>
+               series
+              </cite>
+              when evaluated.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <div class="admonition seealso">
+          <p class="admonition-title">
+           See also
+          </p>
+          <dl class="simple">
+           <dt>
+            <a class="reference internal" href="numpy.polynomial.Polynomial.convert.html#numpy.polynomial.Polynomial.convert" title="numpy.polynomial.Polynomial.convert">
+             <code class="xref py py-obj docutils literal notranslate">
+              <span class="pre">
+               convert
+              </span>
+             </code>
+            </a>
+           </dt>
+           <dd>
+            <p>
+             similar instance method
+            </p>
+           </dd>
+          </dl>
+         </div>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
@@ -646,13 +643,13 @@ default is None.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

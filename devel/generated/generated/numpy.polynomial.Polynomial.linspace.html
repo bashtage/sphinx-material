@@ -3,7 +3,6 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -359,161 +358,159 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="numpy-polynomial-polynomial-linspace">
-        <h1 id="generated-generated-numpy-polynomial-polynomial-linspace--page-root">
-         numpy.polynomial.Polynomial.linspace
-         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-linspace--page-root" title="Permalink to this headline">
+       <h1 id="generated-generated-numpy-polynomial-polynomial-linspace--page-root">
+        numpy.polynomial.Polynomial.linspace
+        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-linspace--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <p>
+        method
+       </p>
+       <dl class="py method">
+        <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.linspace">
+         <span class="sig-prename descclassname">
+          <span class="pre">
+           Polynomial.
+          </span>
+         </span>
+         <span class="sig-name descname">
+          <span class="pre">
+           linspace
+          </span>
+         </span>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            n
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            100
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            domain
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            None
+           </span>
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="headerlink" href="#numpy.polynomial.Polynomial.linspace" title="Permalink to this definition">
           ¶
          </a>
-        </h1>
-        <p>
-         method
-        </p>
-        <dl class="py method">
-         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.linspace">
-          <span class="sig-prename descclassname">
-           <span class="pre">
-            Polynomial.
-           </span>
-          </span>
-          <span class="sig-name descname">
-           <span class="pre">
-            linspace
-           </span>
-          </span>
-          <span class="sig-paren">
-           (
-          </span>
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             n
-            </span>
-           </span>
-           <span class="o">
-            <span class="pre">
-             =
-            </span>
-           </span>
-           <span class="default_value">
-            <span class="pre">
-             100
-            </span>
-           </span>
-          </em>
-          ,
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             domain
-            </span>
-           </span>
-           <span class="o">
-            <span class="pre">
-             =
-            </span>
-           </span>
-           <span class="default_value">
-            <span class="pre">
-             None
-            </span>
-           </span>
-          </em>
-          <span class="sig-paren">
-           )
-          </span>
-          <a class="headerlink" href="#numpy.polynomial.Polynomial.linspace" title="Permalink to this definition">
-           ¶
-          </a>
-         </dt>
-         <dd>
-          <p>
-           Return x, y values at equally spaced points in domain.
-          </p>
-          <p>
-           Returns the x, y values at
-           <cite>
-            n
-           </cite>
-           linearly spaced points across the
+        </dt>
+        <dd>
+         <p>
+          Return x, y values at equally spaced points in domain.
+         </p>
+         <p>
+          Returns the x, y values at
+          <cite>
+           n
+          </cite>
+          linearly spaced points across the
 domain.  Here y is the value of the polynomial at the points x. By
 default the domain is the same as that of the series instance.
 This method is intended mostly as a plotting aid.
+         </p>
+         <div class="versionadded">
+          <p>
+           <span class="versionmodified added">
+            New in version 1.5.0.
+           </span>
           </p>
-          <div class="versionadded">
-           <p>
-            <span class="versionmodified added">
-             New in version 1.5.0.
-            </span>
-           </p>
-          </div>
-          <dl class="field-list simple">
-           <dt class="field-odd">
-            Parameters
-           </dt>
-           <dd class="field-odd">
-            <dl class="simple">
-             <dt>
-              <strong>
-               n
-              </strong>
-              <span class="classifier">
-               int, optional
-              </span>
-             </dt>
-             <dd>
-              <p>
-               Number of point pairs to return. The default value is 100.
-              </p>
-             </dd>
-             <dt>
-              <strong>
-               domain
-              </strong>
-              <span class="classifier">
-               {None, array_like}, optional
-              </span>
-             </dt>
-             <dd>
-              <p>
-               If not None, the specified domain is used instead of that of
+         </div>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
+           <dl class="simple">
+            <dt>
+             <strong>
+              n
+             </strong>
+             <span class="classifier">
+              int, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              Number of point pairs to return. The default value is 100.
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              domain
+             </strong>
+             <span class="classifier">
+              {None, array_like}, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              If not None, the specified domain is used instead of that of
 the calling instance. It should be of the form
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 [beg,end]
-                </span>
-               </code>
-               .
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                [beg,end]
+               </span>
+              </code>
+              .
 The default is None which case the class domain is used.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-           <dt class="field-even">
-            Returns
-           </dt>
-           <dd class="field-even">
-            <dl class="simple">
-             <dt>
-              <strong>
-               x, y
-              </strong>
-              <span class="classifier">
-               ndarray
-              </span>
-             </dt>
-             <dd>
-              <p>
-               x is equal to linspace(self.domain[0], self.domain[1], n) and
+             </p>
+            </dd>
+           </dl>
+          </dd>
+          <dt class="field-even">
+           Returns
+          </dt>
+          <dd class="field-even">
+           <dl class="simple">
+            <dt>
+             <strong>
+              x, y
+             </strong>
+             <span class="classifier">
+              ndarray
+             </span>
+            </dt>
+            <dd>
+             <p>
+              x is equal to linspace(self.domain[0], self.domain[1], n) and
 y is the series evaluated at element of x.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-         </dd>
-        </dl>
-       </section>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
@@ -559,13 +556,13 @@ y is the series evaluated at element of x.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

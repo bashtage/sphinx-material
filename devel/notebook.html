@@ -3,7 +3,6 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -678,64 +677,60 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
        </style>
-       <section id="Jupyter-Notebooks">
-        <h1 id="notebook--page-root">
-         Jupyter Notebooks
-         <a class="headerlink" href="#notebook--page-root" title="Permalink to this headline">
-          ¶
-         </a>
-        </h1>
-        <p>
-         The
-         <a class="reference external" href="https://github.com/spatialaudio/nbsphinx">
-          nbsphinx extension
-         </a>
-         allow notebooks to be seemlessly integrated into a Sphinx website. This page demonstrates how notebooks are rendered.
-        </p>
-        <section id="Mathematics">
-         <h2 id="Mathematics">
-          Mathematics
-          <a class="headerlink" href="#Mathematics" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <p>
-          <a class="reference external" href="https://www.mathjax.org">
-           MathJax
-          </a>
-          can use used to render mathematical equations. Equations can be rendered either in their own line using double dollar signs
-         </p>
-         <div class="math notranslate nohighlight">
-          \[y_{it} = \alpha_i + \gamma_t + \beta x_{it} + \epsilon_{it}\]
-         </div>
-         <p>
-          or inline using single dollar signs (
-          <span class="math notranslate nohighlight">
-           \(\LaTeX\)
-          </span>
-          ).
-         </p>
-        </section>
-        <section id="DataFrames">
-         <h2 id="DataFrames">
-          DataFrames
-          <a class="headerlink" href="#DataFrames" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <p>
-          pandas DataFrames are rendered with useful markup.
-         </p>
-         <div class="nbinput docutils container">
-          <div class="prompt highlight-none notranslate">
-           <div class="highlight">
-            <pre><span></span>[1]:
+       <h1 id="notebook--page-root">
+        Jupyter Notebooks
+        <a class="headerlink" href="#notebook--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <p>
+        The
+        <a class="reference external" href="https://github.com/spatialaudio/nbsphinx">
+         nbsphinx extension
+        </a>
+        allow notebooks to be seemlessly integrated into a Sphinx website. This page demonstrates how notebooks are rendered.
+       </p>
+       <h2 id="Mathematics">
+        Mathematics
+        <a class="headerlink" href="#Mathematics" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <a class="reference external" href="https://www.mathjax.org">
+         MathJax
+        </a>
+        can use used to render mathematical equations. Equations can be rendered either in their own line using double dollar signs
+       </p>
+       <div class="math notranslate nohighlight">
+        \[y_{it} = \alpha_i + \gamma_t + \beta x_{it} + \epsilon_{it}\]
+       </div>
+       <p>
+        or inline using single dollar signs (
+        <span class="math notranslate nohighlight">
+         \(\LaTeX\)
+        </span>
+        ).
+       </p>
+       <h2 id="DataFrames">
+        DataFrames
+        <a class="headerlink" href="#DataFrames" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        pandas DataFrames are rendered with useful markup.
+       </p>
+       <div class="nbinput docutils container">
+        <div class="prompt highlight-none notranslate">
+         <div class="highlight">
+          <pre><span></span>[1]:
 </pre>
-           </div>
-          </div>
-          <div class="input_area highlight-ipython3 notranslate">
-           <div class="highlight">
-            <pre>
+         </div>
+        </div>
+        <div class="input_area highlight-ipython3 notranslate">
+         <div class="highlight">
+          <pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -745,20 +740,20 @@ div.rendered_html tbody tr:hover {
 
 <span class="n">df</span>
 </pre>
-           </div>
-          </div>
          </div>
-         <div class="nboutput nblast docutils container">
-          <div class="prompt highlight-none notranslate">
-           <div class="highlight">
-            <pre><span></span>[1]:
+        </div>
+       </div>
+       <div class="nboutput nblast docutils container">
+        <div class="prompt highlight-none notranslate">
+         <div class="highlight">
+          <pre><span></span>[1]:
 </pre>
-           </div>
-          </div>
-          <div class="output_area rendered_html docutils container">
-           <div>
-            <style scoped="">
-             .dataframe tbody tr th:only-of-type {
+         </div>
+        </div>
+        <div class="output_area rendered_html docutils container">
+         <div>
+          <style scoped="">
+           .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
 
@@ -769,99 +764,97 @@ div.rendered_html tbody tr:hover {
     .dataframe thead th {
         text-align: right;
     }
-            </style>
-            <table border="1" class="dataframe">
-             <thead>
-              <tr style="text-align: right;">
-               <th>
-               </th>
-               <th>
-                ints
-               </th>
-               <th>
-                floats
-               </th>
-               <th>
-                strings
-               </th>
-              </tr>
-             </thead>
-             <tbody>
-              <tr>
-               <th>
-                0
-               </th>
-               <td>
-                1
-               </td>
-               <td>
-                3.141593
-               </td>
-               <td>
-                aardvark
-               </td>
-              </tr>
-              <tr>
-               <th>
-                1
-               </th>
-               <td>
-                2
-               </td>
-               <td>
-                2.718282
-               </td>
-               <td>
-                bananarama
-               </td>
-              </tr>
-              <tr>
-               <th>
-                2
-               </th>
-               <td>
-                3
-               </td>
-               <td>
-                1.618034
-               </td>
-               <td>
-                charcuterie
-               </td>
-              </tr>
-             </tbody>
-            </table>
-           </div>
-          </div>
+          </style>
+          <table border="1" class="dataframe">
+           <thead>
+            <tr style="text-align: right;">
+             <th>
+             </th>
+             <th>
+              ints
+             </th>
+             <th>
+              floats
+             </th>
+             <th>
+              strings
+             </th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr>
+             <th>
+              0
+             </th>
+             <td>
+              1
+             </td>
+             <td>
+              3.141593
+             </td>
+             <td>
+              aardvark
+             </td>
+            </tr>
+            <tr>
+             <th>
+              1
+             </th>
+             <td>
+              2
+             </td>
+             <td>
+              2.718282
+             </td>
+             <td>
+              bananarama
+             </td>
+            </tr>
+            <tr>
+             <th>
+              2
+             </th>
+             <td>
+              3
+             </td>
+             <td>
+              1.618034
+             </td>
+             <td>
+              charcuterie
+             </td>
+            </tr>
+           </tbody>
+          </table>
          </div>
-        </section>
-        <section id="Plots-and-Figures">
-         <h2 id="Plots-and-Figures">
-          Plots and Figures
-          <a class="headerlink" href="#Plots-and-Figures" title="Permalink to this headline">
-           ¶
-          </a>
-         </h2>
-         <p>
-          matplotlib can be used to produce plots in notebooks
-         </p>
-         <p>
-          This example comes from the
-          <a class="reference external" href="https://matplotlib.org/3.1.1/gallery/ticks_and_spines/colorbar_tick_labelling_demo.html#sphx-glr-gallery-ticks-and-spines-colorbar-tick-labelling-demo-py">
-           matplotlib gallery
-          </a>
-          .
-         </p>
-         <div class="nbinput docutils container">
-          <div class="prompt highlight-none notranslate">
-           <div class="highlight">
-            <pre><span></span>[2]:
+        </div>
+       </div>
+       <h2 id="Plots-and-Figures">
+        Plots and Figures
+        <a class="headerlink" href="#Plots-and-Figures" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        matplotlib can be used to produce plots in notebooks
+       </p>
+       <p>
+        This example comes from the
+        <a class="reference external" href="https://matplotlib.org/3.1.1/gallery/ticks_and_spines/colorbar_tick_labelling_demo.html#sphx-glr-gallery-ticks-and-spines-colorbar-tick-labelling-demo-py">
+         matplotlib gallery
+        </a>
+        .
+       </p>
+       <div class="nbinput docutils container">
+        <div class="prompt highlight-none notranslate">
+         <div class="highlight">
+          <pre><span></span>[2]:
 </pre>
-           </div>
-          </div>
-          <div class="input_area highlight-ipython3 notranslate">
-           <div class="highlight">
-            <pre>
+         </div>
+        </div>
+        <div class="input_area highlight-ipython3 notranslate">
+         <div class="highlight">
+          <pre>
 <span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -881,18 +874,16 @@ div.rendered_html tbody tr:hover {
 <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">'&lt; -1'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="s1">'&gt; 1'</span><span class="p">])</span>  <span class="c1"># vertically oriented colorbar</span>
 <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre>
-           </div>
-          </div>
          </div>
-         <div class="nboutput nblast docutils container">
-          <div class="prompt empty docutils container">
-          </div>
-          <div class="output_area docutils container">
-           <img alt="_images/notebook_5_0.png" src="_images/notebook_5_0.png"/>
-          </div>
-         </div>
-        </section>
-       </section>
+        </div>
+       </div>
+       <div class="nboutput nblast docutils container">
+        <div class="prompt empty docutils container">
+        </div>
+        <div class="output_area docutils container">
+         <img alt="_images/notebook_5_0.png" src="_images/notebook_5_0.png"/>
+        </div>
+       </div>
       </article>
      </div>
     </div>
@@ -938,13 +929,13 @@ div.rendered_html tbody tr:hover {
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

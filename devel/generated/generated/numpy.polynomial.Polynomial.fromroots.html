@@ -3,7 +3,6 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -359,198 +358,196 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="numpy-polynomial-polynomial-fromroots">
-        <h1 id="generated-generated-numpy-polynomial-polynomial-fromroots--page-root">
-         numpy.polynomial.Polynomial.fromroots
-         <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-fromroots--page-root" title="Permalink to this headline">
+       <h1 id="generated-generated-numpy-polynomial-polynomial-fromroots--page-root">
+        numpy.polynomial.Polynomial.fromroots
+        <a class="headerlink" href="#generated-generated-numpy-polynomial-polynomial-fromroots--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <p>
+        method
+       </p>
+       <dl class="py method">
+        <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.fromroots">
+         <em class="property">
+          <span class="pre">
+           classmethod
+          </span>
+         </em>
+         <span class="sig-prename descclassname">
+          <span class="pre">
+           Polynomial.
+          </span>
+         </span>
+         <span class="sig-name descname">
+          <span class="pre">
+           fromroots
+          </span>
+         </span>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            roots
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            domain
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            []
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            window
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            None
+           </span>
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="headerlink" href="#numpy.polynomial.Polynomial.fromroots" title="Permalink to this definition">
           ¶
          </a>
-        </h1>
-        <p>
-         method
-        </p>
-        <dl class="py method">
-         <dt class="sig sig-object py" id="numpy.polynomial.Polynomial.fromroots">
-          <em class="property">
+        </dt>
+        <dd>
+         <p>
+          Return series instance that has the specified roots.
+         </p>
+         <p>
+          Returns a series representing the product
+          <code class="docutils literal notranslate">
            <span class="pre">
-            classmethod
+            (x
            </span>
-          </em>
-          <span class="sig-prename descclassname">
            <span class="pre">
-            Polynomial.
+            -
            </span>
-          </span>
-          <span class="sig-name descname">
            <span class="pre">
-            fromroots
+            r[0])*(x
            </span>
-          </span>
-          <span class="sig-paren">
-           (
-          </span>
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             roots
-            </span>
+           <span class="pre">
+            -
            </span>
-          </em>
-          ,
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             domain
-            </span>
+           <span class="pre">
+            r[1])*...*(x
            </span>
-           <span class="o">
-            <span class="pre">
-             =
-            </span>
+           <span class="pre">
+            -
            </span>
-           <span class="default_value">
-            <span class="pre">
-             []
-            </span>
+           <span class="pre">
+            r[n-1])
            </span>
-          </em>
-          ,
-          <em class="sig-param">
-           <span class="n">
-            <span class="pre">
-             window
-            </span>
+          </code>
+          , where
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            r
            </span>
-           <span class="o">
-            <span class="pre">
-             =
-            </span>
-           </span>
-           <span class="default_value">
-            <span class="pre">
-             None
-            </span>
-           </span>
-          </em>
-          <span class="sig-paren">
-           )
-          </span>
-          <a class="headerlink" href="#numpy.polynomial.Polynomial.fromroots" title="Permalink to this definition">
-           ¶
-          </a>
-         </dt>
-         <dd>
-          <p>
-           Return series instance that has the specified roots.
-          </p>
-          <p>
-           Returns a series representing the product
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             (x
-            </span>
-            <span class="pre">
-             -
-            </span>
-            <span class="pre">
-             r[0])*(x
-            </span>
-            <span class="pre">
-             -
-            </span>
-            <span class="pre">
-             r[1])*...*(x
-            </span>
-            <span class="pre">
-             -
-            </span>
-            <span class="pre">
-             r[n-1])
-            </span>
-           </code>
-           , where
-           <code class="docutils literal notranslate">
-            <span class="pre">
-             r
-            </span>
-           </code>
-           is a
+          </code>
+          is a
 list of roots.
-          </p>
-          <dl class="field-list simple">
-           <dt class="field-odd">
-            Parameters
-           </dt>
-           <dd class="field-odd">
-            <dl class="simple">
-             <dt>
-              <strong>
-               roots
-              </strong>
-              <span class="classifier">
-               array_like
-              </span>
-             </dt>
-             <dd>
-              <p>
-               List of roots.
-              </p>
-             </dd>
-             <dt>
-              <strong>
-               domain
-              </strong>
-              <span class="classifier">
-               {[], None, array_like}, optional
-              </span>
-             </dt>
-             <dd>
-              <p>
-               Domain for the resulting series. If None the domain is the
+         </p>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
+           <dl class="simple">
+            <dt>
+             <strong>
+              roots
+             </strong>
+             <span class="classifier">
+              array_like
+             </span>
+            </dt>
+            <dd>
+             <p>
+              List of roots.
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              domain
+             </strong>
+             <span class="classifier">
+              {[], None, array_like}, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              Domain for the resulting series. If None the domain is the
 interval from the smallest root to the largest. If [] the
 domain is the class domain. The default is [].
-              </p>
-             </dd>
-             <dt>
-              <strong>
-               window
-              </strong>
-              <span class="classifier">
-               {None, array_like}, optional
-              </span>
-             </dt>
-             <dd>
-              <p>
-               Window for the returned series. If None the class window is
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              window
+             </strong>
+             <span class="classifier">
+              {None, array_like}, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              Window for the returned series. If None the class window is
 used. The default is None.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-           <dt class="field-even">
-            Returns
-           </dt>
-           <dd class="field-even">
-            <dl class="simple">
-             <dt>
-              <strong>
-               new_series
-              </strong>
-              <span class="classifier">
-               series
-              </span>
-             </dt>
-             <dd>
-              <p>
-               Series with the specified roots.
-              </p>
-             </dd>
-            </dl>
-           </dd>
-          </dl>
-         </dd>
-        </dl>
-       </section>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+          <dt class="field-even">
+           Returns
+          </dt>
+          <dd class="field-even">
+           <dl class="simple">
+            <dt>
+             <strong>
+              new_series
+             </strong>
+             <span class="classifier">
+              series
+             </span>
+            </dt>
+            <dd>
+             <p>
+              Series with the specified roots.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
@@ -596,13 +593,13 @@ used. The default is None.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Jul 23, 2021.
+              Oct 06, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.1.1.
+      4.0.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
