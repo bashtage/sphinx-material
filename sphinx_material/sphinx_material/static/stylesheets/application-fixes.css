@@ -175,6 +175,14 @@ table.longtable.docutils.align-default {
     }
 }
 
+[data-md-color-primary=custom] .md-nav__extra_link:active {
+    color: var(--custom-color-primary)
+}
+
+[data-md-color-primary=custom] .md-nav__item--nested > .md-nav__extra_link {
+    color: inherit
+}
+
 [data-md-color-primary=red] .md-nav__extra_link:active {
     color: #ef5350
 }
@@ -325,6 +333,10 @@ table.longtable.docutils.align-default {
 
 [data-md-color-primary=blue-grey] .md-nav__item--nested > .md-nav__extra_link {
     color: inherit
+}
+
+[data-md-color-accent=custom] .md-nav__extra_link:focus, [data-md-color-accent=custom] .md-nav__extra_link:hover {
+    color: var(--custom-color-accent)
 }
 
 [data-md-color-accent=red] .md-nav__extra_link:focus, [data-md-color-accent=red] .md-nav__extra_link:hover {
