@@ -6,6 +6,7 @@
 
 # -- Path setup --------------------------------------------------------------
 
+import os
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -14,10 +15,10 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 from distutils.version import LooseVersion
-import os
+
+from recommonmark.transform import AutoStructify
 
 import sphinx_material
-from recommonmark.transform import AutoStructify
 
 FORCE_CLASSIC = os.environ.get("SPHINX_MATERIAL_FORCE_CLASSIC", False)
 FORCE_CLASSIC = FORCE_CLASSIC in ("1", "true")
@@ -149,10 +150,13 @@ nbsphinx_kernel_name = "python3"
 extlinks = {
     "duref": (
         "http://docutils.sourceforge.net/docs/ref/rst/" "restructuredtext.html#%s",
-        "",
+        None,
     ),
-    "durole": ("http://docutils.sourceforge.net/docs/ref/rst/" "roles.html#%s", ""),
-    "dudir": ("http://docutils.sourceforge.net/docs/ref/rst/" "directives.html#%s", ""),
+    "durole": ("http://docutils.sourceforge.net/docs/ref/rst/" "roles.html#%s", None),
+    "dudir": (
+        "http://docutils.sourceforge.net/docs/ref/rst/" "directives.html#%s",
+        None,
+    ),
 }
 
 # Enable eval_rst in markdown

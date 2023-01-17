@@ -125,6 +125,7 @@ def minify_css(app, exception):
         app.multiprocess_manager.shutdown()
         return
     import glob
+
     from css_html_js_minify.css_minifier import css_minify
 
     css_files = glob.glob(os.path.join(app.outdir, "**", "*.css"), recursive=True)
