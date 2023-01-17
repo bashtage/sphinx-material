@@ -8,4 +8,4 @@ NumPy-style docstring.
 .. autosummary::
    :toctree: generated/
 
-    ~numpy.polynomial.Polynomial
+    ~numpy.polynomial.polynomial.Polynomial
