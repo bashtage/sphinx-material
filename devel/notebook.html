@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -58,11 +59,9 @@
   <link href="_static/css/rtd_sphinx_search.min.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
   </script>
-  <script src="_static/jquery.js">
-  </script>
-  <script src="_static/underscore.js">
-  </script>
   <script src="_static/doctools.js">
+  </script>
+  <script src="_static/sphinx_highlight.js">
   </script>
   <script src="_static/clipboard.min.js">
   </script>
@@ -72,16 +71,16 @@
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
   </script>
-  <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
   <script>
-   window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}
+   window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}
   </script>
-  <link href="_static/favicon.ico" rel="shortcut icon"/>
+  <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <link href="_static/favicon.ico" rel="icon"/>
   <link href="genindex.html" rel="index" title="Index"/>
   <link href="search.html" rel="search" title="Search"/>
   <link href="markdown.html" rel="next" title="Markdown"/>
-  <link href="generated/generated/numpy.polynomial.Polynomial.window.html" rel="prev" title="numpy.polynomial.Polynomial.window"/>
+  <link href="generated/generated/numpy.polynomial.polynomial.Polynomial.window.html" rel="prev" title="numpy.polynomial.polynomial.Polynomial.window"/>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
@@ -132,7 +131,7 @@
        </label>
        <div class="md-search__inner" role="search">
         <form action="search.html" class="md-search__form" method="get" name="search">
-         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="" search="" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
          <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
@@ -295,7 +294,7 @@
            </a>
            <nav class="md-nav md-nav--secondary">
             <label class="md-nav__title" for="__toc">
-             Contents
+             "Contents"
             </label>
             <ul class="md-nav__list" data-md-scrollfix="">
              <li class="md-nav__item">
@@ -389,7 +388,7 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--secondary">
          <label class="md-nav__title" for="__toc">
-          Contents
+          "Contents"
          </label>
          <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item">
@@ -539,10 +538,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -639,11 +639,12 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -652,10 +653,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -667,93 +672,103 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
        </style>
-       <h1 id="notebook--page-root">
-        Jupyter Notebooks
-        <a class="headerlink" href="#notebook--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        The
-        <a class="reference external" href="https://github.com/spatialaudio/nbsphinx">
-         nbsphinx extension
-        </a>
-        allow notebooks to be seemlessly integrated into a Sphinx website. This page demonstrates how notebooks are rendered.
-       </p>
-       <h2 id="Mathematics">
-        Mathematics
-        <a class="headerlink" href="#Mathematics" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        <a class="reference external" href="https://www.mathjax.org">
-         MathJax
-        </a>
-        can use used to render mathematical equations. Equations can be rendered either in their own line using double dollar signs
-       </p>
-       <div class="math notranslate nohighlight">
-        \[y_{it} = \alpha_i + \gamma_t + \beta x_{it} + \epsilon_{it}\]
-       </div>
-       <p>
-        or inline using single dollar signs (
-        <span class="math notranslate nohighlight">
-         \(\LaTeX\)
-        </span>
-        ).
-       </p>
-       <h2 id="DataFrames">
-        DataFrames
-        <a class="headerlink" href="#DataFrames" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        pandas DataFrames are rendered with useful markup.
-       </p>
-       <div class="nbinput docutils container">
-        <div class="prompt highlight-none notranslate">
-         <div class="highlight">
-          <pre><span></span>[1]:
-</pre>
+       <section id="Jupyter-Notebooks">
+        <h1 id="notebook--page-root">
+         Jupyter Notebooks
+         <a class="headerlink" href="#notebook--page-root" title="Permalink to this heading">
+          ¶
+         </a>
+        </h1>
+        <p>
+         The
+         <a class="reference external" href="https://github.com/spatialaudio/nbsphinx">
+          nbsphinx extension
+         </a>
+         allow notebooks to be seemlessly integrated into a Sphinx website. This page demonstrates how notebooks are rendered.
+        </p>
+        <section id="Mathematics">
+         <h2 id="Mathematics">
+          Mathematics
+          <a class="headerlink" href="#Mathematics" title="Permalink to this heading">
+           ¶
+          </a>
+         </h2>
+         <p>
+          <a class="reference external" href="https://www.mathjax.org">
+           MathJax
+          </a>
+          can use used to render mathematical equations. Equations can be rendered either in their own line using double dollar signs
+         </p>
+         <div class="math notranslate nohighlight">
+          \[y_{it} = \alpha_i + \gamma_t + \beta x_{it} + \epsilon_{it}\]
          </div>
-        </div>
-        <div class="input_area highlight-ipython3 notranslate">
-         <div class="highlight">
-          <pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+         <p>
+          or inline using single dollar signs (
+          <span class="math notranslate nohighlight">
+           \(\LaTeX\)
+          </span>
+          ).
+         </p>
+        </section>
+        <section id="DataFrames">
+         <h2 id="DataFrames">
+          DataFrames
+          <a class="headerlink" href="#DataFrames" title="Permalink to this heading">
+           ¶
+          </a>
+         </h2>
+         <p>
+          pandas DataFrames are rendered with useful markup.
+         </p>
+         <div class="nbinput docutils container">
+          <div class="prompt highlight-none notranslate">
+           <div class="highlight">
+            <pre><span></span>[1]:
+</pre>
+           </div>
+          </div>
+          <div class="input_area highlight-ipython3 notranslate">
+           <div class="highlight">
+            <pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'ints'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-                   <span class="s1">'floats'</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span>
-                   <span class="s1">'strings'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'aardvark'</span><span class="p">,</span> <span class="s1">'bananarama'</span><span class="p">,</span> <span class="s1">'charcuterie'</span> <span class="p">]})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">"ints"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="s2">"floats"</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="s2">"strings"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"aardvark"</span><span class="p">,</span> <span class="s2">"bananarama"</span><span class="p">,</span> <span class="s2">"charcuterie"</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
 
 <span class="n">df</span>
 </pre>
+           </div>
+          </div>
          </div>
-        </div>
-       </div>
-       <div class="nboutput nblast docutils container">
-        <div class="prompt highlight-none notranslate">
-         <div class="highlight">
-          <pre><span></span>[1]:
+         <div class="nboutput nblast docutils container">
+          <div class="prompt highlight-none notranslate">
+           <div class="highlight">
+            <pre><span></span>[1]:
 </pre>
-         </div>
-        </div>
-        <div class="output_area rendered_html docutils container">
-         <div>
-          <style scoped="">
-           .dataframe tbody tr th:only-of-type {
+           </div>
+          </div>
+          <div class="output_area rendered_html docutils container">
+           <div>
+            <style scoped="">
+             .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
 
@@ -764,126 +779,129 @@ div.rendered_html tbody tr:hover {
     .dataframe thead th {
         text-align: right;
     }
-          </style>
-          <table border="1" class="dataframe">
-           <thead>
-            <tr style="text-align: right;">
-             <th>
-             </th>
-             <th>
-              ints
-             </th>
-             <th>
-              floats
-             </th>
-             <th>
-              strings
-             </th>
-            </tr>
-           </thead>
-           <tbody>
-            <tr>
-             <th>
-              0
-             </th>
-             <td>
-              1
-             </td>
-             <td>
-              3.141593
-             </td>
-             <td>
-              aardvark
-             </td>
-            </tr>
-            <tr>
-             <th>
-              1
-             </th>
-             <td>
-              2
-             </td>
-             <td>
-              2.718282
-             </td>
-             <td>
-              bananarama
-             </td>
-            </tr>
-            <tr>
-             <th>
-              2
-             </th>
-             <td>
-              3
-             </td>
-             <td>
-              1.618034
-             </td>
-             <td>
-              charcuterie
-             </td>
-            </tr>
-           </tbody>
-          </table>
+            </style>
+            <table border="1" class="dataframe">
+             <thead>
+              <tr style="text-align: right;">
+               <th>
+               </th>
+               <th>
+                ints
+               </th>
+               <th>
+                floats
+               </th>
+               <th>
+                strings
+               </th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <th>
+                0
+               </th>
+               <td>
+                1
+               </td>
+               <td>
+                3.141593
+               </td>
+               <td>
+                aardvark
+               </td>
+              </tr>
+              <tr>
+               <th>
+                1
+               </th>
+               <td>
+                2
+               </td>
+               <td>
+                2.718282
+               </td>
+               <td>
+                bananarama
+               </td>
+              </tr>
+              <tr>
+               <th>
+                2
+               </th>
+               <td>
+                3
+               </td>
+               <td>
+                1.618034
+               </td>
+               <td>
+                charcuterie
+               </td>
+              </tr>
+             </tbody>
+            </table>
+           </div>
+          </div>
          </div>
-        </div>
-       </div>
-       <h2 id="Plots-and-Figures">
-        Plots and Figures
-        <a class="headerlink" href="#Plots-and-Figures" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        matplotlib can be used to produce plots in notebooks
-       </p>
-       <p>
-        This example comes from the
-        <a class="reference external" href="https://matplotlib.org/3.1.1/gallery/ticks_and_spines/colorbar_tick_labelling_demo.html#sphx-glr-gallery-ticks-and-spines-colorbar-tick-labelling-demo-py">
-         matplotlib gallery
-        </a>
-        .
-       </p>
-       <div class="nbinput docutils container">
-        <div class="prompt highlight-none notranslate">
-         <div class="highlight">
-          <pre><span></span>[2]:
+        </section>
+        <section id="Plots-and-Figures">
+         <h2 id="Plots-and-Figures">
+          Plots and Figures
+          <a class="headerlink" href="#Plots-and-Figures" title="Permalink to this heading">
+           ¶
+          </a>
+         </h2>
+         <p>
+          matplotlib can be used to produce plots in notebooks
+         </p>
+         <p>
+          This example comes from the
+          <a class="reference external" href="https://matplotlib.org/3.1.1/gallery/ticks_and_spines/colorbar_tick_labelling_demo.html#sphx-glr-gallery-ticks-and-spines-colorbar-tick-labelling-demo-py">
+           matplotlib gallery
+          </a>
+          .
+         </p>
+         <div class="nbinput docutils container">
+          <div class="prompt highlight-none notranslate">
+           <div class="highlight">
+            <pre><span></span>[2]:
 </pre>
-         </div>
-        </div>
-        <div class="input_area highlight-ipython3 notranslate">
-         <div class="highlight">
-          <pre>
-<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+           </div>
+          </div>
+          <div class="input_area highlight-ipython3 notranslate">
+           <div class="highlight">
+            <pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Gaussian noise with vertical colorbar'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Gaussian noise with vertical colorbar"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Add colorbar, make sure to specify tick locations to match desired ticklabels</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">'&lt; -1'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="s1">'&gt; 1'</span><span class="p">])</span>  <span class="c1"># vertically oriented colorbar</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">"&lt; -1"</span><span class="p">,</span> <span class="s2">"0"</span><span class="p">,</span> <span class="s2">"&gt; 1"</span><span class="p">])</span>  <span class="c1"># vertically oriented colorbar</span>
 <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre>
+           </div>
+          </div>
          </div>
-        </div>
-       </div>
-       <div class="nboutput nblast docutils container">
-        <div class="prompt empty docutils container">
-        </div>
-        <div class="output_area docutils container">
-         <img alt="_images/notebook_5_0.png" src="_images/notebook_5_0.png"/>
-        </div>
-       </div>
+         <div class="nboutput nblast docutils container">
+          <div class="prompt empty docutils container">
+          </div>
+          <div class="output_area docutils container">
+           <img alt="_images/notebook_5_0.png" src="_images/notebook_5_0.png"/>
+          </div>
+         </div>
+        </section>
+       </section>
       </article>
      </div>
     </div>
@@ -892,7 +910,7 @@ div.rendered_html tbody tr:hover {
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="generated/generated/numpy.polynomial.Polynomial.window.html" rel="prev" title="numpy.polynomial.Polynomial.window">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="generated/generated/numpy.polynomial.polynomial.Polynomial.window.html" rel="prev" title="numpy.polynomial.polynomial.Polynomial.window">
       <div class="md-flex__cell md-flex__cell--shrink">
        <i class="md-icon md-icon--arrow-back md-footer-nav__button">
        </i>
@@ -900,9 +918,9 @@ div.rendered_html tbody tr:hover {
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
-         Previous
+         "Previous"
         </span>
-        numpy.polynomial.Polynomial.window
+        numpy.polynomial.polynomial.Polynomial.window
        </span>
       </div>
      </a>
@@ -910,7 +928,7 @@ div.rendered_html tbody tr:hover {
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
-         Next
+         "Next"
         </span>
         Markdown
        </span>
@@ -929,13 +947,13 @@ div.rendered_html tbody tr:hover {
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 06, 2021.
+              Jan 17, 2023.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.3.
+      6.1.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

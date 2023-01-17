@@ -1,0 +1,6 @@
+numpy.polynomial.polynomial.Polynomial.symbol
+=============================================
+
+.. currentmodule:: numpy.polynomial.polynomial
+
+.. autoproperty:: Polynomial.symbol

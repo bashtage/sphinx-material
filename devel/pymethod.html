@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -58,11 +59,9 @@
   <link href="_static/css/rtd_sphinx_search.min.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js">
   </script>
-  <script src="_static/jquery.js">
-  </script>
-  <script src="_static/underscore.js">
-  </script>
   <script src="_static/doctools.js">
+  </script>
+  <script src="_static/sphinx_highlight.js">
   </script>
   <script src="_static/clipboard.min.js">
   </script>
@@ -72,7 +71,7 @@
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
   </script>
-  <link href="_static/favicon.ico" rel="shortcut icon"/>
+  <link href="_static/favicon.ico" rel="icon"/>
   <link href="genindex.html" rel="index" title="Index"/>
   <link href="search.html" rel="search" title="Search"/>
   <link href="numpydoc.html" rel="next" title="NumPy Docstrings"/>
@@ -127,7 +126,7 @@
        </label>
        <div class="md-search__inner" role="search">
         <form action="search.html" class="md-search__form" method="get" name="search">
-         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="" search="" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
          <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
@@ -280,7 +279,7 @@
            </a>
            <nav class="md-nav md-nav--secondary">
             <label class="md-nav__title" for="__toc">
-             Contents
+             "Contents"
             </label>
             <ul class="md-nav__list" data-md-scrollfix="">
              <li class="md-nav__item">
@@ -290,9 +289,40 @@
               <nav class="md-nav">
                <ul class="md-nav__list">
                 <li class="md-nav__item">
+                 <a class="md-nav__link" href="#send_message">
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    send_message()
+                   </span>
+                  </code>
+                 </a>
+                </li>
+                <li class="md-nav__item">
                  <a class="md-nav__link" href="#client">
                   Client
                  </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#Foo.Client">
+                     <code class="docutils literal notranslate">
+                      <span class="pre">
+                       Foo.Client
+                      </span>
+                     </code>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#bar">
+                     <code class="docutils literal notranslate">
+                      <span class="pre">
+                       bar()
+                      </span>
+                     </code>
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
                 </li>
                </ul>
               </nav>
@@ -305,6 +335,15 @@
             </ul>
            </nav>
            <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#send_message">
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                send_message()
+               </span>
+              </code>
+             </a>
+            </li>
             <li class="md-nav__item">
              <a class="md-nav__link" href="#client">
               Client
@@ -364,7 +403,7 @@
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--secondary">
          <label class="md-nav__title" for="__toc">
-          Contents
+          "Contents"
          </label>
          <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item">
@@ -374,9 +413,40 @@
            <nav class="md-nav">
             <ul class="md-nav__list">
              <li class="md-nav__item">
+              <a class="md-nav__link" href="#send_message">
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 send_message()
+                </span>
+               </code>
+              </a>
+             </li>
+             <li class="md-nav__item">
               <a class="md-nav__link" href="#client">
                Client
               </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#Foo.Client">
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    Foo.Client
+                   </span>
+                  </code>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#bar">
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    bar()
+                   </span>
+                  </code>
+                 </a>
+                </li>
+               </ul>
+              </nav>
              </li>
             </ul>
            </nav>
@@ -395,364 +465,397 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="pymethod--page-root">
-        <a class="toc-backref" href="#pymethod--page-root">
-         Python Methods
-        </a>
-        <a class="headerlink" href="#pymethod--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <div class="contents topic" id="table-of-contents">
-        <p class="topic-title">
-         Table of Contents
-        </p>
-        <ul class="simple">
-         <li>
-          <p>
-           <a class="reference internal" href="#python-methods" id="id1">
-            Python Methods
-           </a>
-          </p>
-          <ul>
-           <li>
-            <p>
-             <a class="reference internal" href="#client" id="id2">
-              Client
-             </a>
-            </p>
-           </li>
-          </ul>
-         </li>
-        </ul>
-       </div>
-       <dl class="py function">
-        <dt class="sig sig-object py" id="send_message">
-         <span class="sig-name descname">
-          <span class="pre">
-           send_message
-          </span>
-         </span>
-         <span class="sig-paren">
-          (
-         </span>
-         <em class="sig-param">
-          <span class="pre">
-           sender
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="pre">
-           recipient
-          </span>
-         </em>
-         ,
-         <em class="sig-param">
-          <span class="pre">
-           message_body
-          </span>
-         </em>
-         <span class="optional">
-          [
-         </span>
-         ,
-         <em class="sig-param">
-          <span class="pre">
-           priority=1
-          </span>
-         </em>
-         <span class="optional">
-          ]
-         </span>
-         <span class="sig-paren">
-          )
-         </span>
-         <a class="headerlink" href="#send_message" title="Permalink to this definition">
+       <section id="python-methods">
+        <h1 id="pymethod--page-root">
+         <a class="toc-backref" href="#pymethod--page-root" role="doc-backlink">
+          Python Methods
+         </a>
+         <a class="headerlink" href="#pymethod--page-root" title="Permalink to this heading">
           ¶
          </a>
-        </dt>
-        <dd>
-         <p>
-          Send a message to a recipient
+        </h1>
+        <nav class="contents" id="table-of-contents">
+         <p class="topic-title">
+          Table of Contents
          </p>
-         <dl class="field-list simple">
-          <dt class="field-odd">
-           Parameters
-          </dt>
-          <dd class="field-odd">
-           <ul class="simple">
+         <ul class="simple">
+          <li>
+           <p>
+            <a class="reference internal" href="#python-methods" id="id1">
+             Python Methods
+            </a>
+           </p>
+           <ul>
             <li>
              <p>
-              <strong>
-               sender
-              </strong>
-              (
-              <em>
-               str
-              </em>
-              ) – The person sending the message
-             </p>
-            </li>
-            <li>
-             <p>
-              <strong>
-               recipient
-              </strong>
-              (
-              <em>
-               str
-              </em>
-              ) – The recipient of the message
-             </p>
-            </li>
-            <li>
-             <p>
-              <strong>
-               message_body
-              </strong>
-              (
-              <em>
-               str
-              </em>
-              ) – The body of the message
-             </p>
-            </li>
-            <li>
-             <p>
-              <strong>
-               priority
-              </strong>
-              (
-              <em>
-               integer
-              </em>
-              <em>
-               or
-              </em>
-              <em>
-               None
-              </em>
-              ) – The priority of the message, can be a number 1-5
+              <a class="reference internal" href="#client" id="id2">
+               Client
+              </a>
              </p>
             </li>
            </ul>
-          </dd>
-          <dt class="field-even">
-           Returns
+          </li>
+         </ul>
+        </nav>
+        <dl class="py function">
+         <dt class="sig sig-object py" id="send_message">
+          <span class="sig-name descname">
+           <span class="pre">
+            send_message
+           </span>
+          </span>
+          <span class="sig-paren">
+           (
+          </span>
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             sender
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             recipient
+            </span>
+           </span>
+          </em>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             message_body
+            </span>
+           </span>
+          </em>
+          <span class="optional">
+           [
+          </span>
+          ,
+          <em class="sig-param">
+           <span class="n">
+            <span class="pre">
+             priority=1
+            </span>
+           </span>
+          </em>
+          <span class="optional">
+           ]
+          </span>
+          <span class="sig-paren">
+           )
+          </span>
+          <a class="headerlink" href="#send_message" title="Permalink to this definition">
+           ¶
+          </a>
+         </dt>
+         <dd>
+          <p>
+           Send a message to a recipient
+          </p>
+          <dl class="field-list simple">
+           <dt class="field-odd">
+            Parameters
+            <span class="colon">
+             :
+            </span>
+           </dt>
+           <dd class="field-odd">
+            <ul class="simple">
+             <li>
+              <p>
+               <strong>
+                sender
+               </strong>
+               (
+               <em>
+                str
+               </em>
+               ) – The person sending the message
+              </p>
+             </li>
+             <li>
+              <p>
+               <strong>
+                recipient
+               </strong>
+               (
+               <em>
+                str
+               </em>
+               ) – The recipient of the message
+              </p>
+             </li>
+             <li>
+              <p>
+               <strong>
+                message_body
+               </strong>
+               (
+               <em>
+                str
+               </em>
+               ) – The body of the message
+              </p>
+             </li>
+             <li>
+              <p>
+               <strong>
+                priority
+               </strong>
+               (
+               <em>
+                integer
+               </em>
+               <em>
+                or
+               </em>
+               <em>
+                None
+               </em>
+               ) – The priority of the message, can be a number 1-5
+              </p>
+             </li>
+            </ul>
+           </dd>
+           <dt class="field-even">
+            Returns
+            <span class="colon">
+             :
+            </span>
+           </dt>
+           <dd class="field-even">
+            <p>
+             the message id
+            </p>
+           </dd>
+           <dt class="field-odd">
+            Return type
+            <span class="colon">
+             :
+            </span>
+           </dt>
+           <dd class="field-odd">
+            <p>
+             int
+            </p>
+           </dd>
+           <dt class="field-even">
+            Raises
+            <span class="colon">
+             :
+            </span>
+           </dt>
+           <dd class="field-even">
+            <ul class="simple">
+             <li>
+              <p>
+               <strong>
+                ValueError
+               </strong>
+               – if the message_body exceeds 160 characters
+              </p>
+             </li>
+             <li>
+              <p>
+               <strong>
+                TypeError
+               </strong>
+               – if the message_body is not a basestring
+              </p>
+             </li>
+            </ul>
+           </dd>
+          </dl>
+         </dd>
+        </dl>
+        <section id="client">
+         <h2 id="client">
+          <a class="toc-backref" href="#id2" role="doc-backlink">
+           Client
+          </a>
+          <a class="headerlink" href="#client" title="Permalink to this heading">
+           ¶
+          </a>
+         </h2>
+         <dl class="py class">
+          <dt class="sig sig-object py" id="Foo.Client">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+            <span class="w">
+            </span>
+           </em>
+           <span class="sig-prename descclassname">
+            <span class="pre">
+             Foo.
+            </span>
+           </span>
+           <span class="sig-name descname">
+            <span class="pre">
+             Client
+            </span>
+           </span>
+           <a class="headerlink" href="#Foo.Client" title="Permalink to this definition">
+            ¶
+           </a>
           </dt>
-          <dd class="field-even">
+          <dd>
            <p>
-            the message id
+            Lorem ipsum dolor. Lorem ipsum dolor:
            </p>
-          </dd>
-          <dt class="field-odd">
-           Return type
-          </dt>
-          <dd class="field-odd">
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="s1">'baz'</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
            <p>
-            int
+            Available methods:
            </p>
-          </dd>
-          <dt class="field-even">
-           Raises
-          </dt>
-          <dd class="field-even">
            <ul class="simple">
             <li>
              <p>
-              <strong>
-               ValueError
-              </strong>
-              – if the message_body exceeds 160 characters
-             </p>
-            </li>
-            <li>
-             <p>
-              <strong>
-               TypeError
-              </strong>
-              – if the message_body is not a basestring
+              <a class="reference internal" href="#bar" title="bar">
+               <code class="xref py py-meth docutils literal notranslate">
+                <span class="pre">
+                 bar()
+                </span>
+               </code>
+              </a>
              </p>
             </li>
            </ul>
           </dd>
          </dl>
-        </dd>
-       </dl>
-       <h2 id="client">
-        <a class="toc-backref" href="#id2">
-         Client
-        </a>
-        <a class="headerlink" href="#client" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <dl class="py class">
-        <dt class="sig sig-object py" id="Foo.Client">
-         <em class="property">
-          <span class="pre">
-           class
-          </span>
-         </em>
-         <span class="sig-prename descclassname">
-          <span class="pre">
-           Foo.
-          </span>
-         </span>
-         <span class="sig-name descname">
-          <span class="pre">
-           Client
-          </span>
-         </span>
-         <a class="headerlink" href="#Foo.Client" title="Permalink to this definition">
-          ¶
-         </a>
-        </dt>
-        <dd>
-         <p>
-          Lorem ipsum dolor. Lorem ipsum dolor:
-         </p>
-         <div class="highlight-default notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="s1">'baz'</span><span class="p">)</span>
-</pre>
-          </div>
-         </div>
-         <p>
-          Available methods:
-         </p>
-         <ul class="simple">
-          <li>
-           <p>
-            <a class="reference internal" href="#bar" title="bar">
-             <code class="xref py py-meth docutils literal notranslate">
-              <span class="pre">
-               bar()
-              </span>
-             </code>
-            </a>
-           </p>
-          </li>
-         </ul>
-        </dd>
-       </dl>
-       <dl class="py method">
-        <dt class="sig sig-object py" id="bar">
-         <span class="sig-name descname">
-          <span class="pre">
-           bar
-          </span>
-         </span>
-         <span class="sig-paren">
-          (
-         </span>
-         <em class="sig-param">
-          <span class="o">
-           <span class="pre">
-            **
+         <dl class="py method">
+          <dt class="sig sig-object py" id="bar">
+           <span class="sig-name descname">
+            <span class="pre">
+             bar
+            </span>
            </span>
-          </span>
-          <span class="n">
-           <span class="pre">
-            kwargs
+           <span class="sig-paren">
+            (
            </span>
-          </span>
-         </em>
-         <span class="sig-paren">
-          )
-         </span>
-         <a class="headerlink" href="#bar" title="Permalink to this definition">
-          ¶
-         </a>
-        </dt>
-        <dd>
-         <p>
-          Lorem ipsum dolor. Lorem ipsum dolor.
-         </p>
-         <p>
-          <strong>
-           Request Syntax
-          </strong>
-         </p>
-         <div class="highlight-default notranslate">
-          <div class="highlight">
-           <pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">accept_vpc_peering_connection</span><span class="p">(</span>
-    <span class="n">DryRun</span><span class="o">=</span><span class="kc">True</span><span class="o">|</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">VpcPeeringConnectionId</span><span class="o">=</span><span class="s1">'string'</span>
-<span class="p">)</span>
-</pre>
-          </div>
-         </div>
-         <dl class="field-list simple">
-          <dt class="field-odd">
-           Parameters
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#bar" title="Permalink to this definition">
+            ¶
+           </a>
           </dt>
-          <dd class="field-odd">
-           <ul class="simple">
-            <li>
-             <p>
-              <strong>
-               DryRun
-              </strong>
-              (
-              <em>
-               boolean
-              </em>
-              ) – Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                DryRunOperation
-               </span>
-              </code>
-              .
-Otherwise, it is
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                UnauthorizedOperation
-               </span>
-              </code>
-              .
-             </p>
-            </li>
-            <li>
-             <p>
-              <strong>
-               VpcPeeringConnectionId
-              </strong>
-              (
-              <em>
-               string
-              </em>
-              ) – The ID of the VPC peering connection.
-             </p>
-            </li>
-           </ul>
-          </dd>
-          <dt class="field-even">
-           Return type
-          </dt>
-          <dd class="field-even">
+          <dd>
            <p>
-            dict
-           </p>
-          </dd>
-          <dt class="field-odd">
-           Returns
-          </dt>
-          <dd class="field-odd">
-           <p>
+            Lorem ipsum dolor. Lorem ipsum dolor.
            </p>
            <p>
             <strong>
-             Response Syntax
+             Request Syntax
             </strong>
            </p>
            <div class="highlight-default notranslate">
             <div class="highlight">
-             <pre><span></span><span class="p">{</span>
+             <pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">accept_vpc_peering_connection</span><span class="p">(</span>
+    <span class="n">DryRun</span><span class="o">=</span><span class="kc">True</span><span class="o">|</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">VpcPeeringConnectionId</span><span class="o">=</span><span class="s1">'string'</span>
+<span class="p">)</span>
+</pre>
+            </div>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+             <span class="colon">
+              :
+             </span>
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 DryRun
+                </strong>
+                (
+                <em>
+                 boolean
+                </em>
+                ) – Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  DryRunOperation
+                 </span>
+                </code>
+                .
+Otherwise, it is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  UnauthorizedOperation
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 VpcPeeringConnectionId
+                </strong>
+                (
+                <em>
+                 string
+                </em>
+                ) – The ID of the VPC peering connection.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Return type
+             <span class="colon">
+              :
+             </span>
+            </dt>
+            <dd class="field-even">
+             <p>
+              dict
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Returns
+             <span class="colon">
+              :
+             </span>
+            </dt>
+            <dd class="field-odd">
+             <p>
+             </p>
+             <p>
+              <strong>
+               Response Syntax
+              </strong>
+             </p>
+             <div class="highlight-default notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="p">{</span>
     <span class="s1">'VpcPeeringConnection'</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">'AccepterVpcInfo'</span><span class="p">:</span> <span class="p">{</span>
             <span class="s1">'CidrBlock'</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
@@ -779,109 +882,54 @@ Otherwise, it is
     <span class="p">}</span>
 <span class="p">}</span>
 </pre>
-            </div>
-           </div>
-           <p>
-            <strong>
-             Response Structure
-            </strong>
-           </p>
-           <ul>
-            <li>
+              </div>
+             </div>
              <p>
-              <em>
-               (dict) –
-              </em>
+              <strong>
+               Response Structure
+              </strong>
              </p>
              <ul>
               <li>
                <p>
-                <strong>
-                 VpcPeeringConnection
-                </strong>
                 <em>
                  (dict) –
                 </em>
-                Information about the VPC peering connection.
                </p>
                <ul>
                 <li>
                  <p>
                   <strong>
-                   AccepterVpcInfo
+                   VpcPeeringConnection
                   </strong>
                   <em>
                    (dict) –
                   </em>
-                  The information of the peer VPC.
+                  Information about the VPC peering connection.
                  </p>
                  <ul>
                   <li>
                    <p>
                     <strong>
-                     CidrBlock
+                     AccepterVpcInfo
                     </strong>
                     <em>
-                     (string) –
+                     (dict) –
                     </em>
-                    The CIDR block for the VPC.
+                    The information of the peer VPC.
                    </p>
                    <ul>
                     <li>
                      <p>
                       <strong>
-                       OwnerId
+                       CidrBlock
                       </strong>
                       <em>
                        (string) –
                       </em>
-                      The AWS account ID of the VPC owner.
-                     </p>
-                    </li>
-                    <li>
-                     <p>
-                      <strong>
-                       VpcId
-                      </strong>
-                      <em>
-                       (string) –
-                      </em>
-                      The ID of the VPC.
-                     </p>
-                    </li>
-                    <li>
-                     <p>
-                      <strong>
-                       ExpirationTime
-                      </strong>
-                      <em>
-                       (datetime) –
-                      </em>
-                      The time that an unaccepted VPC peering connection will expire.
-                     </p>
-                    </li>
-                    <li>
-                     <p>
-                      <strong>
-                       RequesterVpcInfo
-                      </strong>
-                      <em>
-                       (dict) –
-                      </em>
-                      The information of the requester VPC.
+                      The CIDR block for the VPC.
                      </p>
                      <ul>
-                      <li>
-                       <p>
-                        <strong>
-                         CidrBlock
-                        </strong>
-                        <em>
-                         (string) –
-                        </em>
-                        The CIDR block for the VPC.
-                       </p>
-                      </li>
                       <li>
                        <p>
                         <strong>
@@ -907,106 +955,163 @@ Otherwise, it is
                       <li>
                        <p>
                         <strong>
-                         Status
+                         ExpirationTime
+                        </strong>
+                        <em>
+                         (datetime) –
+                        </em>
+                        The time that an unaccepted VPC peering connection will expire.
+                       </p>
+                      </li>
+                      <li>
+                       <p>
+                        <strong>
+                         RequesterVpcInfo
                         </strong>
                         <em>
                          (dict) –
                         </em>
-                        The status of the VPC peering connection.
-                       </p>
-                      </li>
-                      <li>
-                       <p>
-                        <strong>
-                         Code
-                        </strong>
-                        <em>
-                         (string) –
-                        </em>
-                        The status of the VPC peering connection.
-                       </p>
-                      </li>
-                      <li>
-                       <p>
-                        <strong>
-                         Message
-                        </strong>
-                        <em>
-                         (string) –
-                        </em>
-                        A message that provides more information about the status, if applicable.
-                       </p>
-                      </li>
-                      <li>
-                       <p>
-                        <strong>
-                         Tags
-                        </strong>
-                        <em>
-                         (list) –
-                        </em>
-                        Any tags assigned to the resource.
+                        The information of the requester VPC.
                        </p>
                        <ul>
                         <li>
                          <p>
+                          <strong>
+                           CidrBlock
+                          </strong>
+                          <em>
+                           (string) –
+                          </em>
+                          The CIDR block for the VPC.
+                         </p>
+                        </li>
+                        <li>
+                         <p>
+                          <strong>
+                           OwnerId
+                          </strong>
+                          <em>
+                           (string) –
+                          </em>
+                          The AWS account ID of the VPC owner.
+                         </p>
+                        </li>
+                        <li>
+                         <p>
+                          <strong>
+                           VpcId
+                          </strong>
+                          <em>
+                           (string) –
+                          </em>
+                          The ID of the VPC.
+                         </p>
+                        </li>
+                        <li>
+                         <p>
+                          <strong>
+                           Status
+                          </strong>
                           <em>
                            (dict) –
                           </em>
-                          Describes a tag.
+                          The status of the VPC peering connection.
+                         </p>
+                        </li>
+                        <li>
+                         <p>
+                          <strong>
+                           Code
+                          </strong>
+                          <em>
+                           (string) –
+                          </em>
+                          The status of the VPC peering connection.
+                         </p>
+                        </li>
+                        <li>
+                         <p>
+                          <strong>
+                           Message
+                          </strong>
+                          <em>
+                           (string) –
+                          </em>
+                          A message that provides more information about the status, if applicable.
+                         </p>
+                        </li>
+                        <li>
+                         <p>
+                          <strong>
+                           Tags
+                          </strong>
+                          <em>
+                           (list) –
+                          </em>
+                          Any tags assigned to the resource.
                          </p>
                          <ul>
                           <li>
                            <p>
-                            <strong>
-                             Key
-                            </strong>
                             <em>
-                             (string) –
+                             (dict) –
                             </em>
-                            The key of the tag.
+                            Describes a tag.
                            </p>
-                           <blockquote>
-                            <div>
+                           <ul>
+                            <li>
                              <p>
-                              Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with
-                              <code class="docutils literal notranslate">
-                               <span class="pre">
-                                aws:
-                               </span>
-                              </code>
+                              <strong>
+                               Key
+                              </strong>
+                              <em>
+                               (string) –
+                              </em>
+                              The key of the tag.
                              </p>
-                            </div>
-                           </blockquote>
-                          </li>
-                          <li>
-                           <p>
-                            <strong>
-                             Value
-                            </strong>
-                            <em>
-                             (string) –
-                            </em>
-                            The value of the tag.
-                           </p>
-                           <blockquote>
-                            <div>
+                             <blockquote>
+                              <div>
+                               <p>
+                                Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with
+                                <code class="docutils literal notranslate">
+                                 <span class="pre">
+                                  aws:
+                                 </span>
+                                </code>
+                               </p>
+                              </div>
+                             </blockquote>
+                            </li>
+                            <li>
                              <p>
-                              Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
+                              <strong>
+                               Value
+                              </strong>
+                              <em>
+                               (string) –
+                              </em>
+                              The value of the tag.
                              </p>
-                            </div>
-                           </blockquote>
-                          </li>
-                          <li>
-                           <p>
-                            <strong>
-                             VpcPeeringConnectionId
-                            </strong>
-                            <em>
-                             (string) –
-                            </em>
-                            The ID of the VPC peering connection.
-                           </p>
+                             <blockquote>
+                              <div>
+                               <p>
+                                Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
+                               </p>
+                              </div>
+                             </blockquote>
+                            </li>
+                            <li>
+                             <p>
+                              <strong>
+                               VpcPeeringConnectionId
+                              </strong>
+                              <em>
+                               (string) –
+                              </em>
+                              The ID of the VPC peering connection.
+                             </p>
+                            </li>
+                           </ul>
                           </li>
                          </ul>
                         </li>
@@ -1021,12 +1126,12 @@ Otherwise, it is
                </ul>
               </li>
              </ul>
-            </li>
-           </ul>
+            </dd>
+           </dl>
           </dd>
          </dl>
-        </dd>
-       </dl>
+        </section>
+       </section>
       </article>
      </div>
     </div>
@@ -1043,7 +1148,7 @@ Otherwise, it is
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
-         Previous
+         "Previous"
         </span>
         <span class="section-number">
          2.
@@ -1056,7 +1161,7 @@ Otherwise, it is
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
-         Next
+         "Next"
         </span>
         NumPy Docstrings
        </span>
@@ -1075,13 +1180,13 @@ Otherwise, it is
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 06, 2021.
+              Jan 17, 2023.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.3.
+      6.1.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

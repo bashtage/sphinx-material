@@ -58,11 +58,9 @@
   <link href="../../../_static/css/rtd_sphinx_search.min.css" rel="stylesheet" type="text/css"/>
   <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js">
   </script>
-  <script src="../../../_static/jquery.js">
-  </script>
-  <script src="../../../_static/underscore.js">
-  </script>
   <script src="../../../_static/doctools.js">
+  </script>
+  <script src="../../../_static/sphinx_highlight.js">
   </script>
   <script src="../../../_static/clipboard.min.js">
   </script>
@@ -72,7 +70,7 @@
   </script>
   <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
   </script>
-  <link href="../../../_static/favicon.ico" rel="shortcut icon"/>
+  <link href="../../../_static/favicon.ico" rel="icon"/>
   <link href="../../../genindex.html" rel="index" title="Index"/>
   <link href="../../../search.html" rel="search" title="Search"/>
   <link href="../../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
@@ -125,7 +123,7 @@
        </label>
        <div class="md-search__inner" role="search">
         <form action="../../../search.html" class="md-search__form" method="get" name="search">
-         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="" search="" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
          <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
@@ -457,7 +455,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyline</span><span class="p">(</span><span class="n">off</span><span class="p">,</span> <span class="n">scl</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Returns an array representing a linear polynomial.</span>
 
 <span class="sd">    Parameters</span>
@@ -495,14 +493,14 @@
 
 
 <span class="k">def</span> <span class="nf">polyfromroots</span><span class="p">(</span><span class="n">roots</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate a monic polynomial with given roots.</span>
 
 <span class="sd">    Return the coefficients of the polynomial</span>
 
 <span class="sd">    .. math:: p(x) = (x - r_0) * (x - r_1) * ... * (x - r_n),</span>
 
-<span class="sd">    where the `r_n` are the roots specified in `roots`.  If a zero has</span>
+<span class="sd">    where the ``r_n`` are the roots specified in `roots`.  If a zero has</span>
 <span class="sd">    multiplicity n, then it must appear in `roots` n times. For instance,</span>
 <span class="sd">    if 2 is a root of multiplicity three and 3 is a root of multiplicity 2,</span>
 <span class="sd">    then `roots` looks something like [2, 2, 2, 3, 3]. The roots can appear</span>
@@ -538,11 +536,11 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    The coefficients are determined by multiplying together linear factors</span>
-<span class="sd">    of the form `(x - r_i)`, i.e.</span>
+<span class="sd">    of the form ``(x - r_i)``, i.e.</span>
 
 <span class="sd">    .. math:: p(x) = (x - r_0) (x - r_1) ... (x - r_n)</span>
 
-<span class="sd">    where ``n == len(roots) - 1``; note that this implies that `1` is always</span>
+<span class="sd">    where ``n == len(roots) - 1``; note that this implies that ``1`` is always</span>
 <span class="sd">    returned for :math:`a_n`.</span>
 
 <span class="sd">    Examples</span>
@@ -559,7 +557,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyadd</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Add one polynomial to another.</span>
 
 <span class="sd">    Returns the sum of two polynomials `c1` + `c2`.  The arguments are</span>
@@ -595,7 +593,7 @@
 
 
 <span class="k">def</span> <span class="nf">polysub</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Subtract one polynomial from another.</span>
 
 <span class="sd">    Returns the difference of two polynomials `c1` - `c2`.  The arguments</span>
@@ -632,7 +630,7 @@
 
 
 <span class="k">def</span> <span class="nf">polymulx</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
-    <span class="sd">"""Multiply a polynomial by x.</span>
+<span class="w">    </span><span class="sd">"""Multiply a polynomial by x.</span>
 
 <span class="sd">    Multiply the polynomial `c` by x, where x is the independent</span>
 <span class="sd">    variable.</span>
@@ -672,7 +670,7 @@
 
 
 <span class="k">def</span> <span class="nf">polymul</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Multiply one polynomial by another.</span>
 
 <span class="sd">    Returns the product of two polynomials `c1` * `c2`.  The arguments are</span>
@@ -710,7 +708,7 @@
 
 
 <span class="k">def</span> <span class="nf">polydiv</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Divide one polynomial by another.</span>
 
 <span class="sd">    Returns the quotient-with-remainder of two polynomials `c1` / `c2`.</span>
@@ -768,7 +766,7 @@
 
 
 <span class="k">def</span> <span class="nf">polypow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">maxpower</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">"""Raise a polynomial to a power.</span>
+<span class="w">    </span><span class="sd">"""Raise a polynomial to a power.</span>
 
 <span class="sd">    Returns the polynomial `c` raised to the power `pow`. The argument</span>
 <span class="sd">    `c` is a sequence of coefficients ordered from low to high. i.e.,</span>
@@ -807,7 +805,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyder</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Differentiate a polynomial.</span>
 
 <span class="sd">    Returns the polynomial coefficients `c` differentiated `m` times along</span>
@@ -889,7 +887,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyint</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">[],</span> <span class="n">lbnd</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Integrate a polynomial.</span>
 
 <span class="sd">    Returns the polynomial coefficients `c` integrated `m` times from</span>
@@ -1008,7 +1006,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyval</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Evaluate a polynomial at points x.</span>
 
 <span class="sd">    If `c` is of length `n + 1`, this function returns the value</span>
@@ -1104,7 +1102,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyvalfromroots</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Evaluate a polynomial specified by its roots at points x.</span>
 
 <span class="sd">    If `r` is of length `N`, this function returns the value</span>
@@ -1118,7 +1116,7 @@
 
 <span class="sd">    If `r` is a 1-D array, then `p(x)` will have the same shape as `x`.  If `r`</span>
 <span class="sd">    is multidimensional, then the shape of the result depends on the value of</span>
-<span class="sd">    `tensor`. If `tensor is ``True`` the shape will be r.shape[1:] + x.shape;</span>
+<span class="sd">    `tensor`. If `tensor` is ``True`` the shape will be r.shape[1:] + x.shape;</span>
 <span class="sd">    that is, each polynomial is evaluated at every value of `x`. If `tensor` is</span>
 <span class="sd">    ``False``, the shape will be r.shape[1:]; that is, each polynomial is</span>
 <span class="sd">    evaluated only for the corresponding broadcast value of `x`. Note that</span>
@@ -1192,7 +1190,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyval2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Evaluate a 2-D polynomial at points (x, y).</span>
 
 <span class="sd">    This function returns the value</span>
@@ -1242,7 +1240,7 @@
 
 
 <span class="k">def</span> <span class="nf">polygrid2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Evaluate a 2-D polynomial on the Cartesian product of x and y.</span>
 
 <span class="sd">    This function returns the values:</span>
@@ -1295,7 +1293,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyval3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Evaluate a 3-D polynomial at points (x, y, z).</span>
 
 <span class="sd">    This function returns the values:</span>
@@ -1346,7 +1344,7 @@
 
 
 <span class="k">def</span> <span class="nf">polygrid3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Evaluate a 3-D polynomial on the Cartesian product of x, y and z.</span>
 
 <span class="sd">    This function returns the values:</span>
@@ -1402,7 +1400,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyvander</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">deg</span><span class="p">):</span>
-    <span class="sd">"""Vandermonde matrix of given degree.</span>
+<span class="w">    </span><span class="sd">"""Vandermonde matrix of given degree.</span>
 
 <span class="sd">    Returns the Vandermonde matrix of degree `deg` and sample points</span>
 <span class="sd">    `x`. The Vandermonde matrix is defined by</span>
@@ -1456,7 +1454,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyvander2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="p">):</span>
-    <span class="sd">"""Pseudo-Vandermonde matrix of given degrees.</span>
+<span class="w">    </span><span class="sd">"""Pseudo-Vandermonde matrix of given degrees.</span>
 
 <span class="sd">    Returns the pseudo-Vandermonde matrix of degrees `deg` and sample</span>
 <span class="sd">    points `(x, y)`. The pseudo-Vandermonde matrix is defined by</span>
@@ -1504,7 +1502,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyvander3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">deg</span><span class="p">):</span>
-    <span class="sd">"""Pseudo-Vandermonde matrix of given degrees.</span>
+<span class="w">    </span><span class="sd">"""Pseudo-Vandermonde matrix of given degrees.</span>
 
 <span class="sd">    Returns the pseudo-Vandermonde matrix of degrees `deg` and sample</span>
 <span class="sd">    points `(x, y, z)`. If `l, m, n` are the given degrees in `x, y, z`,</span>
@@ -1558,7 +1556,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Least-squares fit of a polynomial to data.</span>
 
 <span class="sd">    Return the coefficients of a polynomial of degree `deg` that is the</span>
@@ -1598,10 +1596,11 @@
 <span class="sd">        diagnostic information from the singular value decomposition (used</span>
 <span class="sd">        to solve the fit's matrix equation) is also returned.</span>
 <span class="sd">    w : array_like, shape (`M`,), optional</span>
-<span class="sd">        Weights. If not None, the contribution of each point</span>
-<span class="sd">        ``(x[i],y[i])`` to the fit is weighted by `w[i]`. Ideally the</span>
-<span class="sd">        weights are chosen so that the errors of the products ``w[i]*y[i]``</span>
-<span class="sd">        all have the same variance.  The default value is None.</span>
+<span class="sd">        Weights. If not None, the weight ``w[i]`` applies to the unsquared</span>
+<span class="sd">        residual ``y[i] - y_hat[i]`` at ``x[i]``. Ideally the weights are</span>
+<span class="sd">        chosen so that the errors of the products ``w[i]*y[i]`` all have the</span>
+<span class="sd">        same variance.  When using inverse-variance weighting, use</span>
+<span class="sd">        ``w[i] = 1/sigma(y[i])``.  The default value is None.</span>
 
 <span class="sd">        .. versionadded:: 1.5.0</span>
 
@@ -1613,12 +1612,12 @@
 <span class="sd">        fit to the data in `y`'s `k`-th column.</span>
 
 <span class="sd">    [residuals, rank, singular_values, rcond] : list</span>
-<span class="sd">        These values are only returned if `full` = True</span>
+<span class="sd">        These values are only returned if ``full == True``</span>
 
-<span class="sd">        resid -- sum of squared residuals of the least squares fit</span>
-<span class="sd">        rank -- the numerical rank of the scaled Vandermonde matrix</span>
-<span class="sd">        sv -- singular values of the scaled Vandermonde matrix</span>
-<span class="sd">        rcond -- value of `rcond`.</span>
+<span class="sd">        - residuals -- sum of squared residuals of the least squares fit</span>
+<span class="sd">        - rank -- the numerical rank of the scaled Vandermonde matrix</span>
+<span class="sd">        - singular_values -- singular values of the scaled Vandermonde matrix</span>
+<span class="sd">        - rcond -- value of `rcond`.</span>
 
 <span class="sd">        For more details, see `numpy.linalg.lstsq`.</span>
 
@@ -1626,7 +1625,7 @@
 <span class="sd">    ------</span>
 <span class="sd">    RankWarning</span>
 <span class="sd">        Raised if the matrix in the least-squares fit is rank deficient.</span>
-<span class="sd">        The warning is only raised if `full` == False.  The warnings can</span>
+<span class="sd">        The warning is only raised if ``full == False``.  The warnings can</span>
 <span class="sd">        be turned off by:</span>
 
 <span class="sd">        &gt;&gt;&gt; import warnings</span>
@@ -1649,12 +1648,12 @@
 <span class="sd">    The solution is the coefficients of the polynomial `p` that minimizes</span>
 <span class="sd">    the sum of the weighted squared errors</span>
 
-<span class="sd">    .. math :: E = \\sum_j w_j^2 * |y_j - p(x_j)|^2,</span>
+<span class="sd">    .. math:: E = \\sum_j w_j^2 * |y_j - p(x_j)|^2,</span>
 
 <span class="sd">    where the :math:`w_j` are the weights. This problem is solved by</span>
 <span class="sd">    setting up the (typically) over-determined matrix equation:</span>
 
-<span class="sd">    .. math :: V(x) * c = w * y,</span>
+<span class="sd">    .. math:: V(x) * c = w * y,</span>
 
 <span class="sd">    where `V` is the weighted pseudo Vandermonde matrix of `x`, `c` are the</span>
 <span class="sd">    coefficients to be solved for, `w` are the weights, and `y` are the</span>
@@ -1684,7 +1683,7 @@
 <span class="sd">    &gt;&gt;&gt; np.random.seed(123)</span>
 <span class="sd">    &gt;&gt;&gt; from numpy.polynomial import polynomial as P</span>
 <span class="sd">    &gt;&gt;&gt; x = np.linspace(-1,1,51) # x "data": [-1, -0.96, ..., 0.96, 1]</span>
-<span class="sd">    &gt;&gt;&gt; y = x**3 - x + np.random.randn(len(x)) # x^3 - x + N(0,1) "noise"</span>
+<span class="sd">    &gt;&gt;&gt; y = x**3 - x + np.random.randn(len(x))  # x^3 - x + Gaussian noise</span>
 <span class="sd">    &gt;&gt;&gt; c, stats = P.polyfit(x,y,3,full=True)</span>
 <span class="sd">    &gt;&gt;&gt; np.random.seed(123)</span>
 <span class="sd">    &gt;&gt;&gt; c # c[0], c[2] should be approx. 0, c[1] approx. -1, c[3] approx. 1</span>
@@ -1708,7 +1707,7 @@
 
 
 <span class="k">def</span> <span class="nf">polycompanion</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the companion matrix of c.</span>
 
 <span class="sd">    The companion matrix for power series cannot be made symmetric by</span>
@@ -1748,7 +1747,7 @@
 
 
 <span class="k">def</span> <span class="nf">polyroots</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
-    <span class="sd">"""</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Compute the roots of a polynomial.</span>
 
 <span class="sd">    Return the roots (a.k.a. "zeros") of the polynomial</span>
@@ -1814,8 +1813,8 @@
 <span class="c1"># polynomial class</span>
 <span class="c1">#</span>
 
-<div class="viewcode-block" id="Polynomial"><a class="viewcode-back" href="../../../generated/numpy.polynomial.Polynomial.html#numpy.polynomial.Polynomial">[docs]</a><span class="k">class</span> <span class="nc">Polynomial</span><span class="p">(</span><span class="n">ABCPolyBase</span><span class="p">):</span>
-    <span class="sd">"""A power series class.</span>
+<div class="viewcode-block" id="Polynomial"><a class="viewcode-back" href="../../../generated/numpy.polynomial.polynomial.Polynomial.html#numpy.polynomial.polynomial.Polynomial">[docs]</a><span class="k">class</span> <span class="nc">Polynomial</span><span class="p">(</span><span class="n">ABCPolyBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""A power series class.</span>
 
 <span class="sd">    The Polynomial class provides the standard Python numerical methods</span>
 <span class="sd">    '+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the</span>
@@ -1857,11 +1856,17 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_str_term_unicode</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"·</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}{</span><span class="n">i</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_superscript_mapping</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">"·</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">"·</span><span class="si">{</span><span class="n">arg_str</span><span class="si">}{</span><span class="n">i</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_superscript_mapping</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_str_term_ascii</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">**</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">arg_str</span><span class="si">}</span><span class="s2">**</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_repr_latex_term</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">,</span> <span class="n">needs_parens</span><span class="p">):</span>
@@ -1892,13 +1897,13 @@
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Oct 06, 2021.
+              Jan 17, 2023.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.3.
+      6.1.3.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
