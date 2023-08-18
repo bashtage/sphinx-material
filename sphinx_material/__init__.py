@@ -6,6 +6,7 @@ import os
 import re
 import sys
 from multiprocessing import Manager
+from pathlib import Path
 from typing import List, Optional
 from xml.etree import ElementTree
 
@@ -71,7 +72,9 @@ def create_sitemap(app, exception):
     ):
         return
 
-    filename = app.outdir + "/sitemap.xml"
+    outdir = app.outdir if isinstance(app.outdir, Path) else str(app.outdir)
+    filename = str(Path(outdir) / "sitemap.xml")
+
     print(
         "Generating sitemap for {0} pages in "
         "{1}".format(len(app.sitemap_links), console.colorize("blue", filename))
