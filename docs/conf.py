@@ -16,8 +16,6 @@ import os
 # sys.path.insert(0, os.path.abspath('.'))
 from distutils.version import LooseVersion
 
-from recommonmark.transform import AutoStructify
-
 import sphinx_material
 
 FORCE_CLASSIC = os.environ.get("SPHINX_MATERIAL_FORCE_CLASSIC", False)
@@ -49,10 +47,10 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "nbsphinx",
-    "recommonmark",
     "sphinx_markdown_tables",
     "sphinx_copybutton",
     "sphinx_search.extension",
+    "myst_parser",
 ]
 
 autosummary_generate = True
@@ -161,12 +159,6 @@ extlinks = {
 
 # Enable eval_rst in markdown
 def setup(app):
-    app.add_config_value(
-        "recommonmark_config",
-        {"enable_math": True, "enable_inline_math": True, "enable_eval_rst": True},
-        True,
-    )
-    app.add_transform(AutoStructify)
     app.add_object_type(
         "confval",
         "confval",

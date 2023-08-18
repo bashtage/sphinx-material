@@ -1,8 +1,7 @@
 # Markdown
 
-Sphinx can be configured to use markdown using the [recommonmark](https://github.com/readthedocs/recommonmark)
-extension. recommonmark is strict and does not natively support tables or common extensions
-to markdown.
+Sphinx can be configured to use markdown using the [MyST-parser](https://github.com/executablebooks/MyST-Parser)
+extension. 
 
 ---
 

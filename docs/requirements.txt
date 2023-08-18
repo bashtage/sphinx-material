@@ -8,7 +8,7 @@ jupyter_client
 notebook
 nbconvert
 ipykernel
-recommonmark
+myst-parser
 sphinx_markdown_tables
 sphinx-copybutton
 readthedocs-sphinx-search
