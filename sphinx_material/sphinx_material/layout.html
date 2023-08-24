@@ -58,6 +58,12 @@
   {% if theme_touch_icon %}
     <link rel="apple-touch-icon" href="{{ pathto('_static/' ~ theme_touch_icon, 1) }}"/>
   {% endif %}
+  <style>
+    :root {
+      --custom-color-primary: #{{ theme_custom_color_primary }};
+      --custom-color-accent: #{{ theme_custom_color_accent }};
+    }
+  </style>
   {{ super() }}
 {% endblock %}
 
