@@ -15,9 +15,9 @@ and also uses code from
 Roadmap
 -------
 `Material for Sphinx <https://github.com/bashtage/sphinx-material>`_ is a work in progress.  While
-I believe that it is ready for use, there are a number of important limitation.  The most
-important it to improve the CSS generation to use
-`SASS <https://en.wikipedia.org/wiki/Sass_(stylesheet_language)>`_. It uses some python to
+I believe that it is ready for use, there are a number of important limitations.  The most
+important milestone is to improve the CSS generation to use
+`SASS <https://en.wikipedia.org/wiki/Sass_(stylesheet_language)>`_. It uses some Python to
 modify Sphinx output, which is not ideal.
 
 The other issues are:

@@ -57,7 +57,7 @@
   <link href="_static/material.css?v=79c92029" rel="stylesheet" type="text/css"/>
   <link href="_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
   <link href="_static/css/rtd_sphinx_search.min.css" rel="stylesheet" type="text/css"/>
-  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=d3929e6b">
+  <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=ab6b3b51">
   </script>
   <script src="_static/doctools.js?v=888ff710">
   </script>
@@ -1000,310 +1000,313 @@ reStructuredText used to create these examples.
 <span class="linenos">  6</span><span class="kn">import</span> <span class="nn">re</span>
 <span class="linenos">  7</span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="linenos">  8</span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Manager</span>
-<span class="linenos">  9</span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
-<span class="linenos"> 10</span><span class="kn">from</span> <span class="nn">xml.etree</span> <span class="kn">import</span> <span class="n">ElementTree</span>
-<span class="linenos"> 11</span>
-<span class="linenos"> 12</span><span class="kn">import</span> <span class="nn">bs4</span>
-<span class="linenos"> 13</span><span class="kn">import</span> <span class="nn">slugify</span>
-<span class="linenos"> 14</span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-<span class="linenos"> 15</span><span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">console</span><span class="p">,</span> <span class="n">logging</span>
-<span class="linenos"> 16</span>
-<span class="linenos"> 17</span><span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">get_versions</span>
-<span class="linenos"> 18</span>
-<span class="linenos"> 19</span><span class="n">__version__</span> <span class="o">=</span> <span class="n">get_versions</span><span class="p">()[</span><span class="s2">"version"</span><span class="p">]</span>
-<span class="linenos"> 20</span><span class="k">del</span> <span class="n">get_versions</span>
-<span class="linenos"> 21</span>
-<span class="linenos"> 22</span><span class="n">ROOT_SUFFIX</span> <span class="o">=</span> <span class="s2">"--page-root"</span>
-<span class="linenos"> 23</span>
-<span class="linenos"> 24</span><span class="n">USER_TABLE_CLASSES</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos"> 25</span><span class="n">USER_TABLE_NO_STRIP_CLASSES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"no-sphinx-material-strip"</span><span class="p">]</span>
-<span class="linenos"> 26</span>
+<span class="linenos">  9</span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="linenos"> 10</span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="linenos"> 11</span><span class="kn">from</span> <span class="nn">xml.etree</span> <span class="kn">import</span> <span class="n">ElementTree</span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="kn">import</span> <span class="nn">bs4</span>
+<span class="linenos"> 14</span><span class="kn">import</span> <span class="nn">slugify</span>
+<span class="linenos"> 15</span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="linenos"> 16</span><span class="kn">from</span> <span class="nn">sphinx.util</span> <span class="kn">import</span> <span class="n">console</span><span class="p">,</span> <span class="n">logging</span>
+<span class="linenos"> 17</span>
+<span class="linenos"> 18</span><span class="kn">from</span> <span class="nn">._version</span> <span class="kn">import</span> <span class="n">get_versions</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="n">__version__</span> <span class="o">=</span> <span class="n">get_versions</span><span class="p">()[</span><span class="s2">"version"</span><span class="p">]</span>
+<span class="linenos"> 21</span><span class="k">del</span> <span class="n">get_versions</span>
+<span class="linenos"> 22</span>
+<span class="linenos"> 23</span><span class="n">ROOT_SUFFIX</span> <span class="o">=</span> <span class="s2">"--page-root"</span>
+<span class="linenos"> 24</span>
+<span class="linenos"> 25</span><span class="n">USER_TABLE_CLASSES</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos"> 26</span><span class="n">USER_TABLE_NO_STRIP_CLASSES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"no-sphinx-material-strip"</span><span class="p">]</span>
 <span class="linenos"> 27</span>
-<span class="linenos"> 28</span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
-<span class="linenos"> 29</span><span class="w">    </span><span class="sd">"""Setup connects events to the sitemap builder"""</span>
-<span class="linenos"> 30</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"html-page-context"</span><span class="p">,</span> <span class="n">add_html_link</span><span class="p">)</span>
-<span class="linenos"> 31</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">create_sitemap</span><span class="p">)</span>
-<span class="linenos"> 32</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">reformat_pages</span><span class="p">)</span>
-<span class="linenos"> 33</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">minify_css</span><span class="p">)</span>
-<span class="linenos"> 34</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"builder-inited"</span><span class="p">,</span> <span class="n">update_html_context</span><span class="p">)</span>
-<span class="linenos"> 35</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"config-inited"</span><span class="p">,</span> <span class="n">update_table_classes</span><span class="p">)</span>
-<span class="linenos"> 36</span>    <span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span>
-<span class="linenos"> 37</span>    <span class="n">site_pages</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-<span class="linenos"> 38</span>    <span class="n">sitemap_links</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-<span class="linenos"> 39</span>    <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span> <span class="o">=</span> <span class="n">manager</span>
-<span class="linenos"> 40</span>    <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span> <span class="o">=</span> <span class="n">sitemap_links</span>
-<span class="linenos"> 41</span>    <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span> <span class="o">=</span> <span class="n">site_pages</span>
-<span class="linenos"> 42</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_html_theme</span><span class="p">(</span>
-<span class="linenos"> 43</span>        <span class="s2">"sphinx_material"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_theme_path</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"sphinx_material"</span><span class="p">)</span>
-<span class="linenos"> 44</span>    <span class="p">)</span>
-<span class="linenos"> 45</span>    <span class="k">return</span> <span class="p">{</span>
-<span class="linenos"> 46</span>        <span class="s2">"version"</span><span class="p">:</span> <span class="n">__version__</span><span class="p">,</span>
-<span class="linenos"> 47</span>        <span class="s2">"parallel_read_safe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos"> 48</span>        <span class="s2">"parallel_write_safe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos"> 49</span>    <span class="p">}</span>
-<span class="linenos"> 50</span>
+<span class="linenos"> 28</span>
+<span class="linenos"> 29</span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+<span class="linenos"> 30</span><span class="w">    </span><span class="sd">"""Setup connects events to the sitemap builder"""</span>
+<span class="linenos"> 31</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"html-page-context"</span><span class="p">,</span> <span class="n">add_html_link</span><span class="p">)</span>
+<span class="linenos"> 32</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">create_sitemap</span><span class="p">)</span>
+<span class="linenos"> 33</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">reformat_pages</span><span class="p">)</span>
+<span class="linenos"> 34</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"build-finished"</span><span class="p">,</span> <span class="n">minify_css</span><span class="p">)</span>
+<span class="linenos"> 35</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"builder-inited"</span><span class="p">,</span> <span class="n">update_html_context</span><span class="p">)</span>
+<span class="linenos"> 36</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"config-inited"</span><span class="p">,</span> <span class="n">update_table_classes</span><span class="p">)</span>
+<span class="linenos"> 37</span>    <span class="n">manager</span> <span class="o">=</span> <span class="n">Manager</span><span class="p">()</span>
+<span class="linenos"> 38</span>    <span class="n">site_pages</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="linenos"> 39</span>    <span class="n">sitemap_links</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="linenos"> 40</span>    <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span> <span class="o">=</span> <span class="n">manager</span>
+<span class="linenos"> 41</span>    <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span> <span class="o">=</span> <span class="n">sitemap_links</span>
+<span class="linenos"> 42</span>    <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span> <span class="o">=</span> <span class="n">site_pages</span>
+<span class="linenos"> 43</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_html_theme</span><span class="p">(</span>
+<span class="linenos"> 44</span>        <span class="s2">"sphinx_material"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">html_theme_path</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"sphinx_material"</span><span class="p">)</span>
+<span class="linenos"> 45</span>    <span class="p">)</span>
+<span class="linenos"> 46</span>    <span class="k">return</span> <span class="p">{</span>
+<span class="linenos"> 47</span>        <span class="s2">"version"</span><span class="p">:</span> <span class="n">__version__</span><span class="p">,</span>
+<span class="linenos"> 48</span>        <span class="s2">"parallel_read_safe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos"> 49</span>        <span class="s2">"parallel_write_safe"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos"> 50</span>    <span class="p">}</span>
 <span class="linenos"> 51</span>
-<span class="linenos"> 52</span><span class="k">def</span> <span class="nf">add_html_link</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span> <span class="n">templatename</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
-<span class="linenos"> 53</span><span class="w">    </span><span class="sd">"""As each page is built, collect page names for the sitemap"""</span>
-<span class="linenos"> 54</span>    <span class="n">base_url</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"base_url"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
-<span class="linenos"> 55</span>    <span class="k">if</span> <span class="n">base_url</span><span class="p">:</span>
-<span class="linenos"> 56</span>        <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">pagename</span> <span class="o">+</span> <span class="s2">".html"</span><span class="p">)</span>
-<span class="linenos"> 57</span>    <span class="n">minify</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"html_minify"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="linenos"> 58</span>    <span class="n">prettify</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"html_prettify"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="linenos"> 59</span>    <span class="k">if</span> <span class="n">minify</span> <span class="ow">and</span> <span class="n">prettify</span><span class="p">:</span>
-<span class="linenos"> 60</span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"html_minify and html_prettify cannot both be True"</span><span class="p">)</span>
-<span class="linenos"> 61</span>    <span class="k">if</span> <span class="n">minify</span> <span class="ow">or</span> <span class="n">prettify</span><span class="p">:</span>
-<span class="linenos"> 62</span>        <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="n">pagename</span> <span class="o">+</span> <span class="s2">".html"</span><span class="p">))</span>
-<span class="linenos"> 63</span>
+<span class="linenos"> 52</span>
+<span class="linenos"> 53</span><span class="k">def</span> <span class="nf">add_html_link</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span> <span class="n">templatename</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+<span class="linenos"> 54</span><span class="w">    </span><span class="sd">"""As each page is built, collect page names for the sitemap"""</span>
+<span class="linenos"> 55</span>    <span class="n">base_url</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"base_url"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+<span class="linenos"> 56</span>    <span class="k">if</span> <span class="n">base_url</span><span class="p">:</span>
+<span class="linenos"> 57</span>        <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">pagename</span> <span class="o">+</span> <span class="s2">".html"</span><span class="p">)</span>
+<span class="linenos"> 58</span>    <span class="n">minify</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"html_minify"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 59</span>    <span class="n">prettify</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"html_prettify"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 60</span>    <span class="k">if</span> <span class="n">minify</span> <span class="ow">and</span> <span class="n">prettify</span><span class="p">:</span>
+<span class="linenos"> 61</span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"html_minify and html_prettify cannot both be True"</span><span class="p">)</span>
+<span class="linenos"> 62</span>    <span class="k">if</span> <span class="n">minify</span> <span class="ow">or</span> <span class="n">prettify</span><span class="p">:</span>
+<span class="linenos"> 63</span>        <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="n">pagename</span> <span class="o">+</span> <span class="s2">".html"</span><span class="p">))</span>
 <span class="linenos"> 64</span>
-<span class="linenos"> 65</span><span class="k">def</span> <span class="nf">create_sitemap</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
-<span class="linenos"> 66</span><span class="w">    </span><span class="sd">"""Generates the sitemap.xml from the collected HTML page links"""</span>
-<span class="linenos"> 67</span>    <span class="k">if</span> <span class="p">(</span>
-<span class="linenos"> 68</span>        <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"base_url"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
-<span class="linenos"> 69</span>        <span class="ow">or</span> <span class="n">exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="linenos"> 70</span>        <span class="ow">or</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span>
-<span class="linenos"> 71</span>    <span class="p">):</span>
-<span class="linenos"> 72</span>        <span class="k">return</span>
-<span class="linenos"> 73</span>
-<span class="linenos"> 74</span>    <span class="n">filename</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">outdir</span> <span class="o">+</span> <span class="s2">"/sitemap.xml"</span>
-<span class="linenos"> 75</span>    <span class="nb">print</span><span class="p">(</span>
-<span class="linenos"> 76</span>        <span class="s2">"Generating sitemap for </span><span class="si">{0}</span><span class="s2"> pages in "</span>
-<span class="linenos"> 77</span>        <span class="s2">"</span><span class="si">{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span><span class="p">),</span> <span class="n">console</span><span class="o">.</span><span class="n">colorize</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
-<span class="linenos"> 78</span>    <span class="p">)</span>
-<span class="linenos"> 79</span>
-<span class="linenos"> 80</span>    <span class="n">root</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s2">"urlset"</span><span class="p">)</span>
-<span class="linenos"> 81</span>    <span class="n">root</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"xmlns"</span><span class="p">,</span> <span class="s2">"http://www.sitemaps.org/schemas/sitemap/0.9"</span><span class="p">)</span>
+<span class="linenos"> 65</span>
+<span class="linenos"> 66</span><span class="k">def</span> <span class="nf">create_sitemap</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
+<span class="linenos"> 67</span><span class="w">    </span><span class="sd">"""Generates the sitemap.xml from the collected HTML page links"""</span>
+<span class="linenos"> 68</span>    <span class="k">if</span> <span class="p">(</span>
+<span class="linenos"> 69</span>        <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"base_url"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+<span class="linenos"> 70</span>        <span class="ow">or</span> <span class="n">exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="linenos"> 71</span>        <span class="ow">or</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span>
+<span class="linenos"> 72</span>    <span class="p">):</span>
+<span class="linenos"> 73</span>        <span class="k">return</span>
+<span class="linenos"> 74</span>
+<span class="linenos"> 75</span>    <span class="n">outdir</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">outdir</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">outdir</span><span class="p">)</span>
+<span class="linenos"> 76</span>    <span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"sitemap.xml"</span><span class="p">)</span>
+<span class="linenos"> 77</span>
+<span class="linenos"> 78</span>    <span class="nb">print</span><span class="p">(</span>
+<span class="linenos"> 79</span>        <span class="s2">"Generating sitemap for </span><span class="si">{0}</span><span class="s2"> pages in "</span>
+<span class="linenos"> 80</span>        <span class="s2">"</span><span class="si">{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span><span class="p">),</span> <span class="n">console</span><span class="o">.</span><span class="n">colorize</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+<span class="linenos"> 81</span>    <span class="p">)</span>
 <span class="linenos"> 82</span>
-<span class="linenos"> 83</span>    <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span><span class="p">:</span>
-<span class="linenos"> 84</span>        <span class="n">url</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">"url"</span><span class="p">)</span>
-<span class="linenos"> 85</span>        <span class="n">ElementTree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">"loc"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">link</span>
-<span class="linenos"> 86</span>    <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos"> 87</span>
-<span class="linenos"> 88</span>    <span class="n">ElementTree</span><span class="o">.</span><span class="n">ElementTree</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-<span class="linenos"> 89</span>
+<span class="linenos"> 83</span>    <span class="n">root</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s2">"urlset"</span><span class="p">)</span>
+<span class="linenos"> 84</span>    <span class="n">root</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"xmlns"</span><span class="p">,</span> <span class="s2">"http://www.sitemaps.org/schemas/sitemap/0.9"</span><span class="p">)</span>
+<span class="linenos"> 85</span>
+<span class="linenos"> 86</span>    <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span><span class="p">:</span>
+<span class="linenos"> 87</span>        <span class="n">url</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">"url"</span><span class="p">)</span>
+<span class="linenos"> 88</span>        <span class="n">ElementTree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">"loc"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">link</span>
+<span class="linenos"> 89</span>    <span class="n">app</span><span class="o">.</span><span class="n">sitemap_links</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="linenos"> 90</span>
-<span class="linenos"> 91</span><span class="k">def</span> <span class="nf">reformat_pages</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
-<span class="linenos"> 92</span>    <span class="k">if</span> <span class="n">exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="p">:</span>
-<span class="linenos"> 93</span>        <span class="k">return</span>
-<span class="linenos"> 94</span>    <span class="n">minify</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"html_minify"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="linenos"> 95</span>    <span class="n">last</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="linenos"> 96</span>    <span class="n">npages</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="p">)</span>
-<span class="linenos"> 97</span>    <span class="n">transform</span> <span class="o">=</span> <span class="s2">"Minifying"</span> <span class="k">if</span> <span class="n">minify</span> <span class="k">else</span> <span class="s2">"Prettifying"</span>
-<span class="linenos"> 98</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2"> files"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">transform</span><span class="p">,</span> <span class="n">npages</span><span class="p">))</span>
-<span class="linenos"> 99</span>    <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="linenos">100</span>    <span class="c1"># TODO: Consider using parallel execution</span>
-<span class="linenos">101</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="p">):</span>
-<span class="linenos">102</span>        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">npages</span><span class="p">))</span> <span class="o">-</span> <span class="n">last</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
-<span class="linenos">103</span>            <span class="n">last</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">npages</span><span class="p">))</span>
-<span class="linenos">104</span>            <span class="n">color_page</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">colorize</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">page</span><span class="p">)</span>
-<span class="linenos">105</span>            <span class="n">msg</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{0}</span><span class="s2"> files... [</span><span class="si">{1}</span><span class="s2">%] </span><span class="si">{2}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">transform</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">color_page</span><span class="p">)</span>
-<span class="linenos">106</span>            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\033</span><span class="s2">[K"</span> <span class="o">+</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">)</span>
-<span class="linenos">107</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
-<span class="linenos">108</span>            <span class="k">if</span> <span class="n">minify</span><span class="p">:</span>
-<span class="linenos">109</span>                <span class="kn">from</span> <span class="nn">css_html_js_minify.html_minifier</span> <span class="kn">import</span> <span class="n">html_minify</span>
-<span class="linenos">110</span>
-<span class="linenos">111</span>                <span class="n">html</span> <span class="o">=</span> <span class="n">html_minify</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-<span class="linenos">112</span>            <span class="k">else</span><span class="p">:</span>
-<span class="linenos">113</span>                <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">features</span><span class="o">=</span><span class="s2">"lxml"</span><span class="p">)</span>
-<span class="linenos">114</span>                <span class="n">html</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
-<span class="linenos">115</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
-<span class="linenos">116</span>            <span class="n">content</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-<span class="linenos">117</span>    <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">118</span>    <span class="nb">print</span><span class="p">()</span>
-<span class="linenos">119</span>
-<span class="linenos">120</span>
-<span class="linenos">121</span><span class="k">def</span> <span class="nf">minify_css</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
-<span class="linenos">122</span>    <span class="k">if</span> <span class="n">exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-<span class="linenos">123</span>        <span class="s2">"css_minify"</span><span class="p">,</span> <span class="kc">False</span>
-<span class="linenos">124</span>    <span class="p">):</span>
-<span class="linenos">125</span>        <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
-<span class="linenos">126</span>        <span class="k">return</span>
-<span class="linenos">127</span>    <span class="kn">import</span> <span class="nn">glob</span>
-<span class="linenos">128</span>
-<span class="linenos">129</span>    <span class="kn">from</span> <span class="nn">css_html_js_minify.css_minifier</span> <span class="kn">import</span> <span class="n">css_minify</span>
-<span class="linenos">130</span>
-<span class="linenos">131</span>    <span class="n">css_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="s2">"**"</span><span class="p">,</span> <span class="s2">"*.css"</span><span class="p">),</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos">132</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Minifying </span><span class="si">{0}</span><span class="s2"> css files"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">css_files</span><span class="p">)))</span>
-<span class="linenos">133</span>    <span class="k">for</span> <span class="n">css_file</span> <span class="ow">in</span> <span class="n">css_files</span><span class="p">:</span>
-<span class="linenos">134</span>        <span class="n">colorized</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">colorize</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">css_file</span><span class="p">)</span>
-<span class="linenos">135</span>        <span class="n">msg</span> <span class="o">=</span> <span class="s2">"minifying css file </span><span class="si">{0}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">colorized</span><span class="p">)</span>
-<span class="linenos">136</span>        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\033</span><span class="s2">[K"</span> <span class="o">+</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">)</span>
-<span class="linenos">137</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">css_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
-<span class="linenos">138</span>            <span class="n">css</span> <span class="o">=</span> <span class="n">css_minify</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-<span class="linenos">139</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">css_file</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
-<span class="linenos">140</span>            <span class="n">content</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">css</span><span class="p">)</span>
-<span class="linenos">141</span>    <span class="nb">print</span><span class="p">()</span>
-<span class="linenos">142</span>    <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
-<span class="linenos">143</span>
-<span class="linenos">144</span>
-<span class="linenos">145</span><span class="k">def</span> <span class="nf">update_html_context</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
-<span class="linenos">146</span>    <span class="n">config</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span>
-<span class="linenos">147</span>    <span class="n">config</span><span class="o">.</span><span class="n">html_context</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">get_html_context</span><span class="p">(),</span> <span class="o">**</span><span class="n">config</span><span class="o">.</span><span class="n">html_context</span><span class="p">}</span>
-<span class="linenos">148</span>
-<span class="linenos">149</span>
-<span class="linenos">150</span><span class="k">def</span> <span class="nf">update_table_classes</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-<span class="linenos">151</span>    <span class="n">table_classes</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">html_theme_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"table_classes"</span><span class="p">)</span>
-<span class="linenos">152</span>    <span class="k">if</span> <span class="n">table_classes</span><span class="p">:</span>
-<span class="linenos">153</span>        <span class="n">USER_TABLE_CLASSES</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">table_classes</span><span class="p">)</span>
-<span class="linenos">154</span>
-<span class="linenos">155</span>    <span class="n">table_no_strip_classes</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">html_theme_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"table_no_strip"</span><span class="p">)</span>
-<span class="linenos">156</span>    <span class="k">if</span> <span class="n">table_no_strip_classes</span><span class="p">:</span>
-<span class="linenos">157</span>        <span class="n">USER_TABLE_NO_STRIP_CLASSES</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">table_no_strip_classes</span><span class="p">)</span>
-<span class="linenos">158</span>
-<span class="linenos">159</span>
-<span class="linenos">160</span><span class="k">def</span> <span class="nf">html_theme_path</span><span class="p">():</span>
-<span class="linenos">161</span>    <span class="k">return</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))]</span>
+<span class="linenos"> 91</span>    <span class="n">ElementTree</span><span class="o">.</span><span class="n">ElementTree</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="linenos"> 92</span>
+<span class="linenos"> 93</span>
+<span class="linenos"> 94</span><span class="k">def</span> <span class="nf">reformat_pages</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
+<span class="linenos"> 95</span>    <span class="k">if</span> <span class="n">exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="p">:</span>
+<span class="linenos"> 96</span>        <span class="k">return</span>
+<span class="linenos"> 97</span>    <span class="n">minify</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"html_minify"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 98</span>    <span class="n">last</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos"> 99</span>    <span class="n">npages</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="p">)</span>
+<span class="linenos">100</span>    <span class="n">transform</span> <span class="o">=</span> <span class="s2">"Minifying"</span> <span class="k">if</span> <span class="n">minify</span> <span class="k">else</span> <span class="s2">"Prettifying"</span>
+<span class="linenos">101</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2"> files"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">transform</span><span class="p">,</span> <span class="n">npages</span><span class="p">))</span>
+<span class="linenos">102</span>    <span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="linenos">103</span>    <span class="c1"># TODO: Consider using parallel execution</span>
+<span class="linenos">104</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="p">):</span>
+<span class="linenos">105</span>        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">npages</span><span class="p">))</span> <span class="o">-</span> <span class="n">last</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos">106</span>            <span class="n">last</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">npages</span><span class="p">))</span>
+<span class="linenos">107</span>            <span class="n">color_page</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">colorize</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">page</span><span class="p">)</span>
+<span class="linenos">108</span>            <span class="n">msg</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{0}</span><span class="s2"> files... [</span><span class="si">{1}</span><span class="s2">%] </span><span class="si">{2}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">transform</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">color_page</span><span class="p">)</span>
+<span class="linenos">109</span>            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\033</span><span class="s2">[K"</span> <span class="o">+</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">)</span>
+<span class="linenos">110</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
+<span class="linenos">111</span>            <span class="k">if</span> <span class="n">minify</span><span class="p">:</span>
+<span class="linenos">112</span>                <span class="kn">from</span> <span class="nn">css_html_js_minify.html_minifier</span> <span class="kn">import</span> <span class="n">html_minify</span>
+<span class="linenos">113</span>
+<span class="linenos">114</span>                <span class="n">html</span> <span class="o">=</span> <span class="n">html_minify</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="linenos">115</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos">116</span>                <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">features</span><span class="o">=</span><span class="s2">"lxml"</span><span class="p">)</span>
+<span class="linenos">117</span>                <span class="n">html</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+<span class="linenos">118</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
+<span class="linenos">119</span>            <span class="n">content</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+<span class="linenos">120</span>    <span class="n">app</span><span class="o">.</span><span class="n">site_pages</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">121</span>    <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">122</span>
+<span class="linenos">123</span>
+<span class="linenos">124</span><span class="k">def</span> <span class="nf">minify_css</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
+<span class="linenos">125</span>    <span class="k">if</span> <span class="n">exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"html_theme_options"</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="linenos">126</span>        <span class="s2">"css_minify"</span><span class="p">,</span> <span class="kc">False</span>
+<span class="linenos">127</span>    <span class="p">):</span>
+<span class="linenos">128</span>        <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<span class="linenos">129</span>        <span class="k">return</span>
+<span class="linenos">130</span>    <span class="kn">import</span> <span class="nn">glob</span>
+<span class="linenos">131</span>
+<span class="linenos">132</span>    <span class="kn">from</span> <span class="nn">css_html_js_minify.css_minifier</span> <span class="kn">import</span> <span class="n">css_minify</span>
+<span class="linenos">133</span>
+<span class="linenos">134</span>    <span class="n">css_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="s2">"**"</span><span class="p">,</span> <span class="s2">"*.css"</span><span class="p">),</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">135</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Minifying </span><span class="si">{0}</span><span class="s2"> css files"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">css_files</span><span class="p">)))</span>
+<span class="linenos">136</span>    <span class="k">for</span> <span class="n">css_file</span> <span class="ow">in</span> <span class="n">css_files</span><span class="p">:</span>
+<span class="linenos">137</span>        <span class="n">colorized</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="n">colorize</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">css_file</span><span class="p">)</span>
+<span class="linenos">138</span>        <span class="n">msg</span> <span class="o">=</span> <span class="s2">"minifying css file </span><span class="si">{0}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">colorized</span><span class="p">)</span>
+<span class="linenos">139</span>        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\033</span><span class="s2">[K"</span> <span class="o">+</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">)</span>
+<span class="linenos">140</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">css_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
+<span class="linenos">141</span>            <span class="n">css</span> <span class="o">=</span> <span class="n">css_minify</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="linenos">142</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">css_file</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">content</span><span class="p">:</span>
+<span class="linenos">143</span>            <span class="n">content</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">css</span><span class="p">)</span>
+<span class="linenos">144</span>    <span class="nb">print</span><span class="p">()</span>
+<span class="linenos">145</span>    <span class="n">app</span><span class="o">.</span><span class="n">multiprocess_manager</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<span class="linenos">146</span>
+<span class="linenos">147</span>
+<span class="linenos">148</span><span class="k">def</span> <span class="nf">update_html_context</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+<span class="linenos">149</span>    <span class="n">config</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span>
+<span class="linenos">150</span>    <span class="n">config</span><span class="o">.</span><span class="n">html_context</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">get_html_context</span><span class="p">(),</span> <span class="o">**</span><span class="n">config</span><span class="o">.</span><span class="n">html_context</span><span class="p">}</span>
+<span class="linenos">151</span>
+<span class="linenos">152</span>
+<span class="linenos">153</span><span class="k">def</span> <span class="nf">update_table_classes</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+<span class="linenos">154</span>    <span class="n">table_classes</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">html_theme_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"table_classes"</span><span class="p">)</span>
+<span class="linenos">155</span>    <span class="k">if</span> <span class="n">table_classes</span><span class="p">:</span>
+<span class="linenos">156</span>        <span class="n">USER_TABLE_CLASSES</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">table_classes</span><span class="p">)</span>
+<span class="linenos">157</span>
+<span class="linenos">158</span>    <span class="n">table_no_strip_classes</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">html_theme_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"table_no_strip"</span><span class="p">)</span>
+<span class="linenos">159</span>    <span class="k">if</span> <span class="n">table_no_strip_classes</span><span class="p">:</span>
+<span class="linenos">160</span>        <span class="n">USER_TABLE_NO_STRIP_CLASSES</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">table_no_strip_classes</span><span class="p">)</span>
+<span class="linenos">161</span>
 <span class="linenos">162</span>
-<span class="linenos">163</span>
-<span class="linenos">164</span><span class="k">def</span> <span class="nf">ul_to_list</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">bs4</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">Tag</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-<span class="linenos">165</span>    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">166</span>    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="linenos">167</span>        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
-<span class="linenos">168</span>            <span class="k">continue</span>
-<span class="linenos">169</span>        <span class="n">formatted</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="linenos">170</span>        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos">171</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span>
-<span class="linenos">172</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"contents"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">))</span>
-<span class="linenos">173</span>            <span class="k">if</span> <span class="n">fix_root</span> <span class="ow">and</span> <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#"</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
-<span class="linenos">174</span>                <span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">ROOT_SUFFIX</span>
-<span class="linenos">175</span>                <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slug</span>
-<span class="linenos">176</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"current"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"current"</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="p">[])</span>
-<span class="linenos">177</span>        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">ul</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos">178</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"children"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">,</span> <span class="n">page_name</span><span class="p">)</span>
-<span class="linenos">179</span>        <span class="k">else</span><span class="p">:</span>
-<span class="linenos">180</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"children"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">181</span>        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
-<span class="linenos">182</span>    <span class="k">return</span> <span class="n">out</span>
-<span class="linenos">183</span>
-<span class="linenos">184</span>
-<span class="linenos">185</span><span class="k">class</span> <span class="nc">CaptionList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-<span class="linenos">186</span>    <span class="n">_caption</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="linenos">163</span><span class="k">def</span> <span class="nf">html_theme_path</span><span class="p">():</span>
+<span class="linenos">164</span>    <span class="k">return</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))]</span>
+<span class="linenos">165</span>
+<span class="linenos">166</span>
+<span class="linenos">167</span><span class="k">def</span> <span class="nf">ul_to_list</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">bs4</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">Tag</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="linenos">168</span>    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">169</span>    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"li"</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="linenos">170</span>        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
+<span class="linenos">171</span>            <span class="k">continue</span>
+<span class="linenos">172</span>        <span class="n">formatted</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos">173</span>        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">174</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span>
+<span class="linenos">175</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"contents"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">))</span>
+<span class="linenos">176</span>            <span class="k">if</span> <span class="n">fix_root</span> <span class="ow">and</span> <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"#"</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
+<span class="linenos">177</span>                <span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">ROOT_SUFFIX</span>
+<span class="linenos">178</span>                <span class="n">formatted</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slug</span>
+<span class="linenos">179</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"current"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"current"</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="p">[])</span>
+<span class="linenos">180</span>        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">ul</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">181</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"children"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">,</span> <span class="n">page_name</span><span class="p">)</span>
+<span class="linenos">182</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">183</span>            <span class="n">formatted</span><span class="p">[</span><span class="s2">"children"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">184</span>        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formatted</span><span class="p">)</span>
+<span class="linenos">185</span>    <span class="k">return</span> <span class="n">out</span>
+<span class="linenos">186</span>
 <span class="linenos">187</span>
-<span class="linenos">188</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">):</span>
-<span class="linenos">189</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-<span class="linenos">190</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="n">caption</span>
-<span class="linenos">191</span>
-<span class="linenos">192</span>    <span class="nd">@property</span>
-<span class="linenos">193</span>    <span class="k">def</span> <span class="nf">caption</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">194</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span>
-<span class="linenos">195</span>
-<span class="linenos">196</span>    <span class="nd">@caption</span><span class="o">.</span><span class="n">setter</span>
-<span class="linenos">197</span>    <span class="k">def</span> <span class="nf">caption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="linenos">198</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="n">value</span>
-<span class="linenos">199</span>
-<span class="linenos">200</span>
-<span class="linenos">201</span><span class="k">def</span> <span class="nf">derender_toc</span><span class="p">(</span>
-<span class="linenos">202</span>    <span class="n">toc_text</span><span class="p">,</span> <span class="n">fix_root</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"md-page-root--link"</span>
-<span class="linenos">203</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
-<span class="linenos">204</span>    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">205</span>    <span class="k">try</span><span class="p">:</span>
-<span class="linenos">206</span>        <span class="n">toc</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">toc_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
-<span class="linenos">207</span>        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">toc</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
-<span class="linenos">208</span>            <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
-<span class="linenos">209</span>                <span class="k">continue</span>
-<span class="linenos">210</span>            <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"p"</span><span class="p">:</span>
-<span class="linenos">211</span>                <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"caption"</span><span class="p">:</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">contents</span><span class="p">))})</span>
-<span class="linenos">212</span>            <span class="k">elif</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"ul"</span><span class="p">:</span>
-<span class="linenos">213</span>                <span class="n">nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">,</span> <span class="n">page_name</span><span class="p">))</span>
-<span class="linenos">214</span>            <span class="k">else</span><span class="p">:</span>
-<span class="linenos">215</span>                <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-<span class="linenos">216</span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="linenos">217</span>        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="linenos">218</span>        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-<span class="linenos">219</span>            <span class="s2">"Failed to process toctree_text</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">toc_text</span><span class="p">)</span>
-<span class="linenos">220</span>        <span class="p">)</span>
-<span class="linenos">221</span>
-<span class="linenos">222</span>    <span class="k">return</span> <span class="n">nodes</span>
-<span class="linenos">223</span>
+<span class="linenos">188</span><span class="k">class</span> <span class="nc">CaptionList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+<span class="linenos">189</span>    <span class="n">_caption</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="linenos">190</span>
+<span class="linenos">191</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">):</span>
+<span class="linenos">192</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="linenos">193</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="n">caption</span>
+<span class="linenos">194</span>
+<span class="linenos">195</span>    <span class="nd">@property</span>
+<span class="linenos">196</span>    <span class="k">def</span> <span class="nf">caption</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">197</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span>
+<span class="linenos">198</span>
+<span class="linenos">199</span>    <span class="nd">@caption</span><span class="o">.</span><span class="n">setter</span>
+<span class="linenos">200</span>    <span class="k">def</span> <span class="nf">caption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="linenos">201</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_caption</span> <span class="o">=</span> <span class="n">value</span>
+<span class="linenos">202</span>
+<span class="linenos">203</span>
+<span class="linenos">204</span><span class="k">def</span> <span class="nf">derender_toc</span><span class="p">(</span>
+<span class="linenos">205</span>    <span class="n">toc_text</span><span class="p">,</span> <span class="n">fix_root</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">page_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"md-page-root--link"</span>
+<span class="linenos">206</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="linenos">207</span>    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">208</span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos">209</span>        <span class="n">toc</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">toc_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
+<span class="linenos">210</span>        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">toc</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+<span class="linenos">211</span>            <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">)</span> <span class="ow">and</span> <span class="n">child</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
+<span class="linenos">212</span>                <span class="k">continue</span>
+<span class="linenos">213</span>            <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"p"</span><span class="p">:</span>
+<span class="linenos">214</span>                <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"caption"</span><span class="p">:</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">contents</span><span class="p">))})</span>
+<span class="linenos">215</span>            <span class="k">elif</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"ul"</span><span class="p">:</span>
+<span class="linenos">216</span>                <span class="n">nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ul_to_list</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">fix_root</span><span class="p">,</span> <span class="n">page_name</span><span class="p">))</span>
+<span class="linenos">217</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos">218</span>                <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+<span class="linenos">219</span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="linenos">220</span>        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="linenos">221</span>        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+<span class="linenos">222</span>            <span class="s2">"Failed to process toctree_text</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">toc_text</span><span class="p">)</span>
+<span class="linenos">223</span>        <span class="p">)</span>
 <span class="linenos">224</span>
-<span class="linenos">225</span><span class="k">def</span> <span class="nf">walk_contents</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
-<span class="linenos">226</span>    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">227</span>    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
-<span class="linenos">228</span>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="s2">"contents"</span><span class="p">):</span>
-<span class="linenos">229</span>            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">walk_contents</span><span class="p">(</span><span class="n">tag</span><span class="p">))</span>
-<span class="linenos">230</span>        <span class="k">else</span><span class="p">:</span>
-<span class="linenos">231</span>            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tag</span><span class="p">))</span>
-<span class="linenos">232</span>    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-<span class="linenos">233</span>
-<span class="linenos">234</span>
-<span class="linenos">235</span><span class="k">def</span> <span class="nf">table_fix</span><span class="p">(</span><span class="n">body_text</span><span class="p">,</span> <span class="n">page_name</span><span class="o">=</span><span class="s2">"md-page-root--link"</span><span class="p">):</span>
-<span class="linenos">236</span>    <span class="c1"># This is a hack to skip certain classes of tables</span>
-<span class="linenos">237</span>    <span class="n">ignore_table_classes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"highlighttable"</span><span class="p">,</span> <span class="s2">"longtable"</span><span class="p">,</span> <span class="s2">"dataframe"</span><span class="p">}</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span>
-<span class="linenos">238</span>        <span class="n">USER_TABLE_NO_STRIP_CLASSES</span>
-<span class="linenos">239</span>    <span class="p">)</span>
-<span class="linenos">240</span>    <span class="k">try</span><span class="p">:</span>
-<span class="linenos">241</span>        <span class="n">body</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">body_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
-<span class="linenos">242</span>        <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"table"</span><span class="p">):</span>
-<span class="linenos">243</span>            <span class="n">classes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">()))</span>
-<span class="linenos">244</span>            <span class="k">if</span> <span class="n">classes</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">ignore_table_classes</span><span class="p">):</span>
-<span class="linenos">245</span>                <span class="k">continue</span>
-<span class="linenos">246</span>            <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">tc</span> <span class="k">for</span> <span class="n">tc</span> <span class="ow">in</span> <span class="n">classes</span> <span class="k">if</span> <span class="n">tc</span> <span class="ow">in</span> <span class="n">USER_TABLE_CLASSES</span><span class="p">]</span>
-<span class="linenos">247</span>            <span class="k">if</span> <span class="n">classes</span><span class="p">:</span>
-<span class="linenos">248</span>                <span class="n">table</span><span class="p">[</span><span class="s2">"class"</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes</span>
-<span class="linenos">249</span>            <span class="k">else</span><span class="p">:</span>
-<span class="linenos">250</span>                <span class="k">del</span> <span class="n">table</span><span class="p">[</span><span class="s2">"class"</span><span class="p">]</span>
-<span class="linenos">251</span>        <span class="n">first_h1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">bs4</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">Tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)</span>
-<span class="linenos">252</span>        <span class="n">headers</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">"^h[1-6]$"</span><span class="p">))</span>
-<span class="linenos">253</span>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">header</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">headers</span><span class="p">):</span>
-<span class="linenos">254</span>            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">header</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
-<span class="linenos">255</span>                <span class="k">if</span> <span class="s2">"headerlink"</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="s2">""</span><span class="p">):</span>
-<span class="linenos">256</span>                    <span class="n">header</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
-<span class="linenos">257</span>        <span class="k">if</span> <span class="n">first_h1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="linenos">258</span>            <span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">ROOT_SUFFIX</span>
-<span class="linenos">259</span>            <span class="n">first_h1</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">slug</span>
-<span class="linenos">260</span>            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">first_h1</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
-<span class="linenos">261</span>                <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slug</span>
-<span class="linenos">262</span>
-<span class="linenos">263</span>        <span class="n">divs</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"div"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"class"</span><span class="p">:</span> <span class="s2">"section"</span><span class="p">})</span>
-<span class="linenos">264</span>        <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">divs</span><span class="p">:</span>
-<span class="linenos">265</span>            <span class="n">div</span><span class="o">.</span><span class="n">unwrap</span><span class="p">()</span>
-<span class="linenos">266</span>
-<span class="linenos">267</span>        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
-<span class="linenos">268</span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="linenos">269</span>        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="linenos">270</span>        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Failed to process body_text</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
-<span class="linenos">271</span>        <span class="k">return</span> <span class="n">body_text</span>
-<span class="linenos">272</span>
-<span class="linenos">273</span>
-<span class="linenos">274</span><span class="c1"># These final lines exist to give sphinx a stable str representation of</span>
-<span class="linenos">275</span><span class="c1"># these two functions across runs, and to ensure that the str changes</span>
-<span class="linenos">276</span><span class="c1"># if the source does.</span>
-<span class="linenos">277</span><span class="c1">#</span>
-<span class="linenos">278</span><span class="c1"># Note that this would be better down with a metaclass factory</span>
-<span class="linenos">279</span><span class="n">table_fix_src</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">table_fix</span><span class="p">)</span>
-<span class="linenos">280</span><span class="n">table_fix_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">table_fix_src</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-<span class="linenos">281</span><span class="n">derender_toc_src</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">derender_toc</span><span class="p">)</span>
-<span class="linenos">282</span><span class="n">derender_toc_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">derender_toc_src</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-<span class="linenos">283</span>
-<span class="linenos">284</span>
-<span class="linenos">285</span><span class="k">class</span> <span class="nc">TableFixMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-<span class="linenos">286</span>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">287</span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"table_fix, hash: </span><span class="si">{</span><span class="n">table_fix_hash</span><span class="si">}</span><span class="s2">"</span>
-<span class="linenos">288</span>
-<span class="linenos">289</span>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">225</span>    <span class="k">return</span> <span class="n">nodes</span>
+<span class="linenos">226</span>
+<span class="linenos">227</span>
+<span class="linenos">228</span><span class="k">def</span> <span class="nf">walk_contents</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+<span class="linenos">229</span>    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">230</span>    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
+<span class="linenos">231</span>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="s2">"contents"</span><span class="p">):</span>
+<span class="linenos">232</span>            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">walk_contents</span><span class="p">(</span><span class="n">tag</span><span class="p">))</span>
+<span class="linenos">233</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">234</span>            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tag</span><span class="p">))</span>
+<span class="linenos">235</span>    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="linenos">236</span>
+<span class="linenos">237</span>
+<span class="linenos">238</span><span class="k">def</span> <span class="nf">table_fix</span><span class="p">(</span><span class="n">body_text</span><span class="p">,</span> <span class="n">page_name</span><span class="o">=</span><span class="s2">"md-page-root--link"</span><span class="p">):</span>
+<span class="linenos">239</span>    <span class="c1"># This is a hack to skip certain classes of tables</span>
+<span class="linenos">240</span>    <span class="n">ignore_table_classes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"highlighttable"</span><span class="p">,</span> <span class="s2">"longtable"</span><span class="p">,</span> <span class="s2">"dataframe"</span><span class="p">}</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span>
+<span class="linenos">241</span>        <span class="n">USER_TABLE_NO_STRIP_CLASSES</span>
+<span class="linenos">242</span>    <span class="p">)</span>
+<span class="linenos">243</span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos">244</span>        <span class="n">body</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">body_text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html.parser"</span><span class="p">)</span>
+<span class="linenos">245</span>        <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"table"</span><span class="p">):</span>
+<span class="linenos">246</span>            <span class="n">classes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">()))</span>
+<span class="linenos">247</span>            <span class="k">if</span> <span class="n">classes</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">ignore_table_classes</span><span class="p">):</span>
+<span class="linenos">248</span>                <span class="k">continue</span>
+<span class="linenos">249</span>            <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">tc</span> <span class="k">for</span> <span class="n">tc</span> <span class="ow">in</span> <span class="n">classes</span> <span class="k">if</span> <span class="n">tc</span> <span class="ow">in</span> <span class="n">USER_TABLE_CLASSES</span><span class="p">]</span>
+<span class="linenos">250</span>            <span class="k">if</span> <span class="n">classes</span><span class="p">:</span>
+<span class="linenos">251</span>                <span class="n">table</span><span class="p">[</span><span class="s2">"class"</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes</span>
+<span class="linenos">252</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos">253</span>                <span class="k">del</span> <span class="n">table</span><span class="p">[</span><span class="s2">"class"</span><span class="p">]</span>
+<span class="linenos">254</span>        <span class="n">first_h1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">bs4</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">Tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">)</span>
+<span class="linenos">255</span>        <span class="n">headers</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">"^h[1-6]$"</span><span class="p">))</span>
+<span class="linenos">256</span>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">header</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">headers</span><span class="p">):</span>
+<span class="linenos">257</span>            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">header</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
+<span class="linenos">258</span>                <span class="k">if</span> <span class="s2">"headerlink"</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"class"</span><span class="p">,</span> <span class="s2">""</span><span class="p">):</span>
+<span class="linenos">259</span>                    <span class="n">header</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos">260</span>        <span class="k">if</span> <span class="n">first_h1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">261</span>            <span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="o">.</span><span class="n">slugify</span><span class="p">(</span><span class="n">page_name</span><span class="p">)</span> <span class="o">+</span> <span class="n">ROOT_SUFFIX</span>
+<span class="linenos">262</span>            <span class="n">first_h1</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">slug</span>
+<span class="linenos">263</span>            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">first_h1</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
+<span class="linenos">264</span>                <span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="n">slug</span>
+<span class="linenos">265</span>
+<span class="linenos">266</span>        <span class="n">divs</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"div"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"class"</span><span class="p">:</span> <span class="s2">"section"</span><span class="p">})</span>
+<span class="linenos">267</span>        <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">divs</span><span class="p">:</span>
+<span class="linenos">268</span>            <span class="n">div</span><span class="o">.</span><span class="n">unwrap</span><span class="p">()</span>
+<span class="linenos">269</span>
+<span class="linenos">270</span>        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+<span class="linenos">271</span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="linenos">272</span>        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="linenos">273</span>        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Failed to process body_text</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+<span class="linenos">274</span>        <span class="k">return</span> <span class="n">body_text</span>
+<span class="linenos">275</span>
+<span class="linenos">276</span>
+<span class="linenos">277</span><span class="c1"># These final lines exist to give sphinx a stable str representation of</span>
+<span class="linenos">278</span><span class="c1"># these two functions across runs, and to ensure that the str changes</span>
+<span class="linenos">279</span><span class="c1"># if the source does.</span>
+<span class="linenos">280</span><span class="c1">#</span>
+<span class="linenos">281</span><span class="c1"># Note that this would be better down with a metaclass factory</span>
+<span class="linenos">282</span><span class="n">table_fix_src</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">table_fix</span><span class="p">)</span>
+<span class="linenos">283</span><span class="n">table_fix_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">table_fix_src</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="linenos">284</span><span class="n">derender_toc_src</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">derender_toc</span><span class="p">)</span>
+<span class="linenos">285</span><span class="n">derender_toc_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="n">derender_toc_src</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="linenos">286</span>
+<span class="linenos">287</span>
+<span class="linenos">288</span><span class="k">class</span> <span class="nc">TableFixMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+<span class="linenos">289</span>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="linenos">290</span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"table_fix, hash: </span><span class="si">{</span><span class="n">table_fix_hash</span><span class="si">}</span><span class="s2">"</span>
 <span class="linenos">291</span>
-<span class="linenos">292</span>
-<span class="linenos">293</span><span class="k">class</span> <span class="nc">TableFix</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">TableFixMeta</span><span class="p">):</span>
-<span class="linenos">294</span>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="linenos">295</span>        <span class="k">return</span> <span class="n">table_fix</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="linenos">296</span>
-<span class="linenos">297</span>
-<span class="linenos">298</span><span class="k">class</span> <span class="nc">DerenderTocMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-<span class="linenos">299</span>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">300</span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"derender_toc, hash: </span><span class="si">{</span><span class="n">derender_toc_hash</span><span class="si">}</span><span class="s2">"</span>
-<span class="linenos">301</span>
-<span class="linenos">302</span>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">292</span>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">293</span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"table_fix, hash: </span><span class="si">{</span><span class="n">table_fix_hash</span><span class="si">}</span><span class="s2">"</span>
+<span class="linenos">294</span>
+<span class="linenos">295</span>
+<span class="linenos">296</span><span class="k">class</span> <span class="nc">TableFix</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">TableFixMeta</span><span class="p">):</span>
+<span class="linenos">297</span>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="linenos">298</span>        <span class="k">return</span> <span class="n">table_fix</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="linenos">299</span>
+<span class="linenos">300</span>
+<span class="linenos">301</span><span class="k">class</span> <span class="nc">DerenderTocMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+<span class="linenos">302</span>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="linenos">303</span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"derender_toc, hash: </span><span class="si">{</span><span class="n">derender_toc_hash</span><span class="si">}</span><span class="s2">"</span>
 <span class="linenos">304</span>
-<span class="linenos">305</span>
-<span class="linenos">306</span><span class="k">class</span> <span class="nc">DerenderToc</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">DerenderTocMeta</span><span class="p">):</span>
-<span class="linenos">307</span>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="linenos">308</span>        <span class="k">return</span> <span class="n">derender_toc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="linenos">309</span>
-<span class="linenos">310</span>
-<span class="linenos">311</span><span class="k">def</span> <span class="nf">get_html_context</span><span class="p">():</span>
-<span class="linenos">312</span>    <span class="k">return</span> <span class="p">{</span><span class="s2">"table_fix"</span><span class="p">:</span> <span class="n">TableFix</span><span class="p">,</span> <span class="s2">"derender_toc"</span><span class="p">:</span> <span class="n">DerenderToc</span><span class="p">}</span>
+<span class="linenos">305</span>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">306</span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"derender_toc, hash: </span><span class="si">{</span><span class="n">derender_toc_hash</span><span class="si">}</span><span class="s2">"</span>
+<span class="linenos">307</span>
+<span class="linenos">308</span>
+<span class="linenos">309</span><span class="k">class</span> <span class="nc">DerenderToc</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">DerenderTocMeta</span><span class="p">):</span>
+<span class="linenos">310</span>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="linenos">311</span>        <span class="k">return</span> <span class="n">derender_toc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="linenos">312</span>
+<span class="linenos">313</span>
+<span class="linenos">314</span><span class="k">def</span> <span class="nf">get_html_context</span><span class="p">():</span>
+<span class="linenos">315</span>    <span class="k">return</span> <span class="p">{</span><span class="s2">"table_fix"</span><span class="p">:</span> <span class="n">TableFix</span><span class="p">,</span> <span class="s2">"derender_toc"</span><span class="p">:</span> <span class="n">DerenderToc</span><span class="p">}</span>
 </pre>
           </div>
          </div>
@@ -2601,7 +2604,7 @@ source files for one Sphinx project.
        © Copyright 2019, Kevin Sheppard.
       </div>
       Last updated on
-              Aug 18, 2023.
+              Nov 26, 2024.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
