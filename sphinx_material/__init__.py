@@ -1,6 +1,7 @@
 """Sphinx Material theme."""
 
 import hashlib
+import html
 import inspect
 import os
 import re
@@ -312,4 +313,4 @@ class DerenderToc(object, metaclass=DerenderTocMeta):
 
 
 def get_html_context():
-    return {"table_fix": TableFix, "derender_toc": DerenderToc}
+    return {"table_fix": TableFix, "derender_toc": DerenderToc, "unescape": html.unescape}
