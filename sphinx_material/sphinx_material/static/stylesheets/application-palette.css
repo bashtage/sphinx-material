@@ -16,6 +16,28 @@ button[data-md-color-primary]:hover {
     opacity: .75
 }
 
+button[data-md-color-primary=custom] {
+    background-color: var(--custom-color-primary)
+}
+
+[data-md-color-primary=custom] .md-typeset a {
+    color: var(--custom-color-primary)
+}
+
+[data-md-color-primary=custom] .md-header,
+[data-md-color-primary=custom] .md-hero {
+    background-color: var(--custom-color-primary)
+}
+
+[data-md-color-primary=custom] .md-nav__link--active,
+[data-md-color-primary=custom] .md-nav__link:active {
+    color: var(--custom-color-primary)
+}
+
+[data-md-color-primary=custom] .md-nav__item--nested>.md-nav__link {
+    color: inherit
+}
+
 button[data-md-color-primary=red] {
     background-color: #ef5350
 }
@@ -1138,6 +1160,10 @@ button[data-md-color-accent=deep-orange] {
 }
 
 @media only screen and (max-width:59.9375em) {
+    [data-md-color-primary=custom] .md-nav__source {
+        background-color: var(--custom-color-primary);
+        opacity: 0.0325;
+    }
     [data-md-color-primary=red] .md-nav__source {
         background-color: rgba(190, 66, 64, .9675)
     }
@@ -1202,6 +1228,9 @@ button[data-md-color-accent=deep-orange] {
 }
 
 @media only screen and (max-width:76.1875em) {
+    html [data-md-color-primary=custom] .md-nav--primary .md-nav__title--site {
+        background-color: var(--custom-color-primary)
+    }
     html [data-md-color-primary=red] .md-nav--primary .md-nav__title--site {
         background-color: #ef5350
     }
@@ -1269,6 +1298,9 @@ button[data-md-color-accent=deep-orange] {
 }
 
 @media only screen and (min-width:76.25em) {
+    [data-md-color-primary=custom] .md-tabs {
+        background-color: var(--custom-color-primary)
+    }
     [data-md-color-primary=red] .md-tabs {
         background-color: #ef5350
     }
