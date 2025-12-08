@@ -14,7 +14,9 @@
     var json_loc = "{{ pathto(theme_version_json, 1) }}",
         target_loc = "{{ pathto('../', 1) }}",
         text = "{{ theme_version_dropdown_text }}";
-    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+    document.addEventListener("DOMContentLoaded", () => {
+      add_version_dropdown(json_loc, target_loc, text);
+    });
   </script>
   {% endif %}
 {% endif %}
