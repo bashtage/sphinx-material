@@ -8,22 +8,35 @@ function add_version_dropdown(json_loc, target_loc, text) {
     content.className = "dropdown-content md-hero";
     dropdown.appendChild(button);
     dropdown.appendChild(content);
-    $.getJSON(json_loc, function(versions) {
-        for (var key in versions) {
-            if (versions.hasOwnProperty(key)) {
+
+    fetch(json_loc)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(versions => {
+        for (const key in versions) {
+            if (Object.prototype.hasOwnProperty.call(versions, key)) {
                 console.log(key, versions[key]);
-                var a = document.createElement("a");
+                const a = document.createElement("a");
                 a.innerHTML = key;
                 a.title = key;
                 a.href = target_loc + versions[key];
                 content.appendChild(a);
             }
         }
-    }).done(function() {
+
+        // Success equivalent of `.done()`
         button.innerHTML = text;
-    }).fail(function() {
+    })
+    .catch(() => {
+        // Equivalent of `.fail()`
         button.innerHTML = "Other Versions Not Found";
-    }).always(function() {
-        $(".navheader").append(dropdown);
+    })
+    .finally(() => {
+        // Equivalent of `.always()`
+        document.querySelector(".navheader").appendChild(dropdown);
     });
 };
