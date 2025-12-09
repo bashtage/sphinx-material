@@ -1,6 +1,7 @@
 @charset "UTF-8";
 html{
-    box-sizing:border-box
+    box-sizing:border-box;
+    scroll-padding-top: 64px;
 }
 *,:after,:before{
     box-sizing:inherit
